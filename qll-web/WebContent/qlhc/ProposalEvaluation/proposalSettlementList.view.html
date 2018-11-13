@@ -1,0 +1,23 @@
+<div data-ng-controller="ProposalEvaluation as vm" >
+	<div class="btn-group margin-left-button" ng-controller="MenuController as menu">
+		<div style="margin-top:10px;" class="btn-toolbar margin-bottom-10 margin-top">
+				<button type="button" uib-tooltip="Đề nghị quyết toán"  class="btn btn-default padding-button  border-radius-left box-shadow" ng-click="vm.goTo('EstablishDetailedSettlementProposalTable')">
+					<div class="action-button BD"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" uib-tooltip="Thẩm định quyết toán" class="btn btn-default padding-button  box-shadow" ng-click="vm.goToEVA()">
+					<div class="action-button AC"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" uib-tooltip="Quyết toán A - B" class="btn btn-default padding-button box-shadow  border-radius-right " ng-click="vm.proposalCheck()" ng-disabled="vm.disabledButtom">
+					<div class="action-button AB"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+		</div>
+	</div>
+
+	<div ng-show="!vm.showSearch">
+		<input type="hidden" name="type" ng-init="vm.checktype.checktype = 1"  ng-model="vm.checktype.checktype"  id="type" />
+		<div data-ng-include="'qlhc/ProposalEvaluation/searchForm.html?tsVersion={{version}}'" kendo-validator="vm.validator" k-options="vm.validatorOptions"/>
+	</div>
+	<div kendo-grid="vm.ProposalEvaluation" k-options="vm.gridOptions" id="proposalEvaluationGrid">
+
+	</div>
+</div>

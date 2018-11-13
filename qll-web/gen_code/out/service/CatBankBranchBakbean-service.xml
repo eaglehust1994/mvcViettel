@@ -1,0 +1,9 @@
+<jaxrs:server id="catBankBranchBakServiceRest" address="/catBankBranchBakServiceRest">
+	<jaxrs:providers>
+		<ref bean="jsonProvider" />
+		<ref bean="exceptionMapper" />
+	</jaxrs:providers>
+	<jaxrs:serviceBeans>
+		<bean id="catBankBranchBakServiceClass" class="com.viettel.ims.rest.CatBankBranchBakRsServiceImpl"/>
+	</jaxrs:serviceBeans>
+</jaxrs:server>

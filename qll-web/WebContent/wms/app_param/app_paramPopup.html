@@ -1,0 +1,87 @@
+
+<form class="form-horizontal row padding10"  role="form" name="appParam" id="appParam" kendo-validator="validator" k-options="validatorOptions" style="width: 575px;">
+		<div class="clearfix" >
+			<div class="form-group row">
+				<label class="col-md-3 control-label req" translate>Loại tham số</label>
+				<div class="col-md-9">
+					<input class="form-control" ng-blur="focusOut()" name="parType" id="parType" maxlength="200"  ng-model="caller.appParam.parType"   
+					required data-required-msg="Loại tham số không được để trống"   />
+					<span data-for='parType' class='k-invalid-msg'></span>
+					<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">			 
+					<label class="col-md-3 control-label req" translate>Mã tham số</label>
+					<div class="col-md-9">
+						<input class="form-control" name="code" ng-blur="focusOut()" id="code" maxlength="50" ng-model="caller.appParam.code"
+						  required data-required-msg="Mã tham số số không được để trống"  />
+						  <span data-for='code' class='k-invalid-msg'></span>
+						  <span style="color:red">{{caller.listApp.mess1}}</span> 
+						  
+					</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-3 control-label req" translate>Tên tham số</label>
+				<div class="col-md-9" >
+					<input class="form-control" name="name" ng-blur="focusOut()" id="name" maxlength="200" ng-model="caller.appParam.name" 
+					required  data-required-msg="Tên tham số không được để trống"   />
+					<span data-for='name' class='k-invalid-msg'></span>
+					<!--  <span style="color:red">{{caller.listApp.mess2}}</span> -->
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-3 control-label " translate>Thứ tự</label>
+				<div class="col-md-9" id="parOderId">
+					<input class="form-control" name="parOder" ng-blur="focusOut()"   id="parOder" ng-change="caller.checkNumber()"  maxlength="2" ng-model="caller.appParam.parOrder" 
+					  data-required-msg="Thứ tự không được để trống"   />
+					<span data-for='parOder' class='k-invalid-msg'></span>
+					  <span style="color:red">{{caller.errNumber}}</span> 
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+		<div class="form-group row">
+				<label class="col-md-3 control-label " translate>Ghi chú</label>
+				<div class="col-md-9">
+					<textarea class="form-control" name="description" id="description" maxlength="1000" ng-model="caller.appParam.description" 
+					  ></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+							<button type="button" id="savepopupApp" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+			<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			   document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if(e.keyCode===13&& !$('#cancel:focus').length&& !$('#savepopupApp:focus').length){
+         				$("#savepopupApp").click();
+         				break;
+						}
+         		}
+         	} 
+			
+		
+			
+			  
+	</script>  
+</form>

@@ -1,0 +1,32 @@
+<div>
+	<!-- <div id="detailErrGrid"
+	kendo-grid="caller.detailErrGrid" k-editable="false"
+	k-options="caller.errGridOptions" ></div> -->
+
+	<div class="padding-width18">
+		<div class="clearfix border-gray">
+				<label class="col-md-4 control-label " translate>Tìm kiếm nhân viên :</label>
+				<div class="col-md-8">
+					<div class="input-icon right ">
+						<input class=" form-control width100" type="text"
+							k-options="caller.patternOptionsNV" kendo-auto-complete
+							name="pxkNhanVienAuto" ng-model="caller.pxkNhanVien.hoVaTen"
+							maxlength="200" id="pxkNhanVienAuto" />
+					</div>
+				</div>
+		</div>
+	</div>
+	<div class="portlet light text-right">
+		<button type="button"
+			class="btn btn-qlk padding-search-right saveQLK"
+			ng-click="caller.updatePXKNhanVien()" translate>Ghi lai</button>
+		<button type="button"
+			class="btn btn-qlk padding-search-right closeQLK"
+			ng-click="cancel()" translate>Đóng</button>
+	</div>
+</div>
+<script>
+$("input").change(function(){
+    $(this).val($.trim($(this).val()));
+   });
+</script>

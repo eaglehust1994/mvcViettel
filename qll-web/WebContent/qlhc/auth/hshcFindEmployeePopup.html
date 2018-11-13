@@ -1,0 +1,97 @@
+<div ng-controller="HshcAuthController as vm">
+<p>
+	<div class="clearfix">
+		<div class="form-body">
+			<div class="clearfix">
+			<combo-box-second searchtype="" model-label="Họ tên"
+						caller="vm" 
+						popup-id="input"
+						popup-type="grid"
+						popup-source-link="catEmployeeServiceRest/getAutoData"
+						combo-id="input"
+						combo-source-link="catEmployeeServiceRest/getAutoData"
+						combo-name="fullName" 
+						combo-value="id" 
+						combo-code="fullName"
+						combo-search="vm.search" 
+						combo-grid="vm.gridCommon"
+						model-id="employee.id"
+						model-name="vm.criteriaEmployee.fullName">
+			</combo-box-second>
+			<combo-box-second searchtype="" model-label="Email"
+						caller="vm" 
+						popup-id="inputEmail"
+						popup-type="grid"
+						popup-source-link="catEmployeeServiceRest/getAutoDataEmail"
+						combo-id="inputEmail"
+						combo-source-link="catEmployeeServiceRest/getAutoDataEmail"
+						combo-name="email" 
+						combo-value="id" 
+						combo-code="value"
+						combo-search="vm.search" 
+						combo-grid="vm.gridCommon"
+						model-id="email.id"
+						model-name="vm.criteriaEmployee.email">
+			</combo-box-second>
+			</div>
+
+			<div class="clearfix">
+			<combo-box-second searchtype="" model-label="Đơn vị"
+						caller="vm" 
+						popup-id="inputUnit"
+						popup-type="grid"
+						popup-source-link="catEmployeeServiceRest/getAutoDataUnit"
+						combo-id="inputUnit"
+						combo-source-link="catEmployeeServiceRest/getAutoDataUnit"
+						combo-name="groupName" 
+						combo-value="id" 
+						combo-code="value"
+						combo-search="vm.search" 
+						combo-grid="vm.gridCommon"
+						model-id="unit.id"
+						model-name="vm.criteriaEmployee.groupName">
+			</combo-box-second>
+				<combo-box-second searchtype="" model-label="Đối tác"
+						caller="vm" 
+						popup-id="inputPartner"
+						popup-type="grid"
+						popup-source-link="catEmployeeServiceRest/getAutoDataPartner"
+						combo-id="inputPartner"
+						combo-source-link="catEmployeeServiceRest/getAutoDataPartner"
+						combo-name="partnerName" 
+						combo-value="id" 
+						combo-code="value"
+						combo-search="vm.search" 
+						combo-grid="vm.gridCommon"
+						model-id="partner.id"
+						model-name="vm.criteriaEmployee.partnerName">
+			</combo-box-second>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12" style="text-align: center">
+					<input class="btn green btn-outline border-radius-all"
+						id="findButton" type="button" value="Tìm kiếm"
+						ng-click="vm.DoSearch()" />
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div kendo-grid="vm.userInfo" k-options="vm.optionsUserInfo"
+						id="userInfo"></div>
+				</div>
+			</div>
+			<div class="clearfix" align="center">
+				<div class="form-group col-md-12">
+					<input type="button"
+						class="btn green btn-outline border-radius-all " value="Xong"
+						ng-click="vm.done()" /> <input type="button"
+						class="btn green btn-outline border-radius-all " value="Đóng"
+						ng-click="vm.closePopup()" />
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

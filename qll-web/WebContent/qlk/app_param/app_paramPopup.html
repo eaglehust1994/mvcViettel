@@ -1,0 +1,50 @@
+
+<form class="form-horizontal row padding10"  role="form" name="appParam" id="appParam" kendo-validator="validator" k-options="validatorOptions">
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-3 control-label req" translate>Loại tham số</label>
+				<div class="col-md-9">
+					<input class="form-control" name="parType" id="parType" maxlength="200" ng-model="data.parType" 
+					required data-required-msg="Loại tham số không được để trống"   />
+					<span data-for='parType' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">			 
+					<label class="col-md-3 control-label req" translate>Mã tham số</label>
+					<div class="col-md-9">
+						<input class="form-control" name="code" id="code" maxlength="50" ng-model="data.code"
+						  required data-required-msg="Mã tham số số không được để trống"  />
+						  <span data-for='code' class='k-invalid-msg'></span>
+					</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-3 control-label req" translate>Tên tham số</label>
+				<div class="col-md-9">
+					<input class="form-control" name="name" id="name" maxlength="200" ng-model="data.name" 
+					required data-required-msg="Tên tham số không được để trống"   />
+					<span data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+		<div class="form-group row">
+				<label class="col-md-3 control-label " translate>Ghi chú</label>
+				<div class="col-md-9">
+					<textarea class="form-control" name="description" id="description" maxlength="500" ng-model="data.description" 
+					  ></textarea>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+							<button type="button" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+</form>

@@ -1,0 +1,154 @@
+ <h3 class="page-title" translate>
+	<i class="fa fa-line-chart" aria-hidden="true"></i>
+	Danh sách biên bản bàn giao qua nâng cấp tài sản qua xây lắp
+</h3> 
+<div data-ng-controller="multipleCheckBoxController as vm">
+
+    <div ng-show="vm.showSearch">
+        <form class="form-horizontal row" role="form">
+            <div class="form-body">
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption"><span
+                                class="caption-subject bold lowercase" translate>Thông tin tìm kiếm biên bản</span>
+                        </div>
+                    </div>
+                    <!--Begin search content-->
+                    <div class="clearfix">
+                        <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Mã biên bản bàn giao</label>
+                            <div class="col-md-8">
+                                <input  type="text" class="form-control" name="hanoOverCode" id="handoverCode" maxlength="50" ng-model="vm.searchForm.handoverCode" />
+                            </div>
+                        </div>
+                         <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Multicheck box bindata from server paging</label>
+                            <div class="col-md-8">
+                                 <input class="form-control form-control-auto"  kendo-multi-select="vm.multiSelect" k-options="vm.selectOptions"  k-ng-model="vm.selectedIds"></input>                                 
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="clearFix">
+                    	  <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Multiple checkbox bind data From client source</label>
+                            <div class="col-md-8">
+                                <input class="width100 form-control-auto" kendo-multi-select k-options="vm.multiSelectBindFromClient" k-ng-model="vm.selectedIdMultipleFromClient"  />
+                            </div>
+                        </div>
+                          <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Multiple checkbox bind data From client source</label>
+                            <div class="col-md-8">
+                                <input class="width100 form-control-auto" kendo-multi-select k-options="vm.multiSelectBindFromServerFilterFromClient" k-ng-model="vm.selectedIdMultipleFromClientFilterFromClient"  />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearFix">
+                        <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Ngày bàn giao từ</label>
+                            <div class="col-md-8">
+                                <input  class="width100 form-control date" kendo-date-picker name="fromHandoverDate" id="fromHandoverDate" data-k-ng-model="vm.searchForm.fromHandoverDate" k-format="'dd/MM/yyyy'"  data-date-msg="Ngày không đúng định dạng!" data-required-msg="Ngày bàn giao từ không được để trống" />
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Ngày bàn giao đến</label>
+                            <div class="col-md-8">
+                                <input class="width100 form-control date" kendo-date-picker name="toHandoverDate" id="toHandoverDate" data-k-ng-model="vm.searchForm.toHandoverDate" k-format="'dd/MM/yyyy'"  data-date-msg="Ngày không đúng định dạng!" data-required-msg="Ngày bàn giao từ không được để trống" />
+                            </div>
+                        </div>
+                    </div>
+					<div class="clearFix">
+						<div class="form-group col-md-12">
+							<div class="form-group  col-md-6">
+								<label class="col-md-4 control-label" translate>Tree view</label>							
+								<div class="col-md-8">
+									<ul class="ts-treeview" ng-init="showSub=false">
+										<script type="text/ng-template" id="subOrganizationTemplate">
+                        				<ul class="ts-treeview" >
+                            				<li class="ts-treeview" ng-repeat="subOrganization in subOrganizations">
+                                				<a href="javascript:;" ng-click="vm.getOrganizationsByParent(subOrganization)" aria-label="{{subOrganization.name}}">
+                                    				<i class="fa" ng-if="subOrganization.hasChildren" ng-class="{'fa-caret-right':!subOrganization.showSub,'fa-caret-down':subOrganization.showSub}"></i>
+												<i class="fa fa-file" ng-if="!subOrganization.hasChildren"></i>
+                                    				<span>{{subOrganization.text}}</span>
+                                				</a>
+                                				<ng-include ng-if="subOrganization.childrens && subOrganization.childrens !=null && subOrganization.childrens.length > 0 && subOrganization.showSub" 
+                                    			ng-init="subOrganizations = subOrganization.childrens;subLevel=subLevel+1;" src="'subOrganizationTemplate'"></ng-include>
+                            				</li>
+                        				</ul>
+                        			</script>
+	                        			<li class="ts-treeview" ng-repeat="organization in vm.organizations">
+	                        										<a href="javascript:;"
+													ng-click="vm.getOrganizationsByParent(organization)"
+													aria-label="{{organization.text}}"
+												> <i class="fa" ng-if="organization.hasChildren"
+														ng-class="{'fa-caret-right':!organization.showSub,'fa-caret-down':organization.showSub,'fa':organization.hasChildren,'file':!organization.hasChildren}"
+													></i> <span>{{organization.text}}</span>
+												</a> <ng-include
+														ng-if="organization.childrens && organization.childrens !=null && organization.childrens.length > 0 && organization.showSub"
+														ng-init="subOrganizations = organization.childrens;"
+														src="'subOrganizationTemplate'"
+													></ng-include>
+								
+	
+									</ul>
+								</div>
+							</div>
+							<div class="col-md-6">
+							</div>
+						</div>
+					</div>
+					
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+						 <div class="form-group  col-md-6">
+						 	<input name="files"
+			                   type="file"
+			                   kendo-upload
+			                   k-async="{ saveUrl: '/ktts-service/fileservice/uploadATTT', removeUrl: 'remove', autoUpload: true }"
+			                   k-select="vm.onSelect"
+			                   k-upload="vm.onUpload"
+			                   k-success="vm.onSucess"
+			                   k-template="vm.listFileTemplate"                
+			                   />			                    							   
+						 </div>
+						  <div class="form-group  col-md-6">
+						  	<upload-file ng-model="listFile" />
+						  </div>
+						  </div>
+					</div>
+					 <div class="item-attach-files" ng-repeat="item in vm.listFiles">
+							            <i class=" ace-icon fa fa-file"></i>
+							            <a href="javascript:;" ng-click="downloadFile($index)" title="{{item.name}}">{{item.name}}</a>
+							            
+							        </div>
+					<div class="clearfix form-actions margin-top">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="button" class="btn green btn-outline padding-search" ng-click="vm.canceldoSearch()" translate>Hủy bỏ</button>
+                                <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.doSearch()" translate>Tìm kiếm</button>
+                                <!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption"><span
+                    class="caption-subject bold lowercase" translate>Danh sách biên bản bàn giao</span>
+            </div>
+        </div>
+    </div>
+    <div id="catHandOverGrid" kendo-grid="vm.grid" k-editable="false" k-options="vm.gridOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+</div>
+
+<script id="fileTemplate" type="text/x-kendo-template">
+                <span class='k-progress'></span>
+                <div class='file-wrapper'>
+                    <span class='file-icon'></span>
+                    <h4 class='file-heading file-name-heading'>Name: #=name#</h4>
+                    <h4 class='file-heading file-size-heading'>Size: #=size# bytes</h4>                    
+                </div>
+            </script>

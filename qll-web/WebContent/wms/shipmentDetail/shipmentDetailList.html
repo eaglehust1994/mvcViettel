@@ -1,0 +1,610 @@
+<style>
+.border-right {
+	border-right: 1px solid #ccc;
+}
+.border-popup-management{
+	border-top: 1px solid #ccc;
+border-bottom: 1px solid #ccc;
+}
+</style>
+<div ng-controller="shipmentDetailController as caller">
+	<div class="col-md-12">
+		<div class="col-md-10">
+			<div id="flowBoxes" class="margin-bottom15">
+				<div class="Left right  active" id="one"
+					ng-click="caller.gotoTabOnePopUp()">
+					<p class="acceptQLK postion-icon" id="detail"></p>
+					<p class="width-80 ">1.Thông tin chung</p>
+				</div>
+				<div class="Left right " id="two"
+					ng-click="caller.gotoTabTwoPopUp()">
+					<p class="acceptQLK postion-icon" id="map"></p>
+					<p class="width-80">2.Map hàng hóa</p>
+				</div>
+				<div class="Left right " id="three"
+					ng-click="caller.gotoTabThreePopUp()">
+					<p class="acceptQLK postion-icon" id="quantity"></p>
+					<p class="width-80">3.Định lượng kỹ thuật</p>
+				</div>
+				<div class="Left right" id="four"
+					ng-click="caller.gotoTabFourPopUp()">
+					<p class="acceptQLK postion-icon" id="price"></p>
+					<p class="width-80DB">4.Định giá</p>
+				</div>
+				<div class="Left right" id="five"
+					ng-click="caller.gotoTabFivePopUp()">
+					<p class="declineQLK postion-icon" id="kcs"></p>
+					<p class="width-80DB">5.KCS</p>
+				</div>
+				<div class="Left right" id="six" ng-click="caller.gotoTabSixPopUp()">
+					<p class="declineQLK postion-icon" id="import"></p>
+					<p class="width-80DB">6.Nhập kho</p>
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-2">
+			<button type="button" ng-click="caller.exportExcelGrid()"
+				class="width-button-header-popup pull-right btn padding-search-right">
+				<div class="excelDBQLK"></div>
+				<div class="text-button ng-scope" translate="">Xuất Excel</div>
+			</button>
+		</div>
+
+		<div class="border-000  col-md-12"></div>
+	</div>
+
+	<div class="form-body">
+		<div ng-show="caller.showTabOne">
+		<div class="text-right margin-row col-md-12" style="margin-top:20px;"></div>
+			<div class="text-right margin-row" style="margin-top:10px;">
+				<label style="padding: 0px; float: left;margin-left:10px;">Thông
+					tin chung</label> <i data-toggle="collapse" data-target="#thongtinchung"
+					style="margin-right: 12px;"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+			<div id="thongtinchung" class="collapse in from-search row">
+				<div class="portlet light bordered"
+					style="margin-left: 12px; margin-right: 12px;">
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Mã
+								lô hàng</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								<span>{{caller.shipmentDetail.code}}</span>
+
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Mã
+								hợp đồng</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.contractCode}}</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Loại
+								lô hàng</label>
+							<div class="col-md-8" style="margin-top: 2px">
+								<span ng-if="caller.shipmentDetail.type ==1"
+									style="text-align: left;"> Lô hàng hợp đồng nội </span> <span
+									ng-if="caller.shipmentDetail.type ==2"
+									style="text-align: left;"> Lô hàng hợp đồng ngoại</span>
+
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Người
+								giao hàng</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.shiper}}</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Địa
+								điểm giao hàng</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.shipPlace}}</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Ngày
+								giao hàng</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.shiperDate}}</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Ghi
+								chú</label>
+							<div class="col-md-8" style="text-align: left;">
+								{{caller.shipmentDetail.description}}</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Số
+								tờ khai</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.customsProcedure}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="text-right margin-row"
+				style="margin-left: 12px; margin-top: 10px;">
+				<label style="float: left;">Danh sách file đính kèm</label> <i
+					data-toggle="collapse" data-target="#danhsachfile"
+					style="margin-right: 12px;" class="fa fa-chevron-circle-up"
+					aria-hidden="true"></i>
+			</div>
+			<div id="danhsachfile" class="collapse in from-search row">
+				<div id="shipmentFile1Grid" kendo-grid="caller.shipmentFile1Grid"
+					k-editable="false" k-options="caller.gridFile1Options"
+					k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+
+
+			</div>
+			<div class="text-right margin-row"
+				style="margin-left: 12px; margin-top: 10px;">
+				<label style="padding: 0px; float: left;">Thông tin bổ sung</label>
+				<i data-toggle="collapse" data-target="#thongtinbosung"
+					class="fa fa-chevron-circle-up" aria-hidden="true"
+					style="margin-right: 12px;"></i>
+			</div>
+			<div id="thongtinbosung" class="collapse in from-search row">
+				<div class="portlet light bordered"
+					style="margin-left: 12px; margin-right: 12px;">
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Người
+								tạo</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.fullName}}</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " style="text-align: right;">Ngày
+								tạo</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.createdDate}}</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" style="text-align: right;">Đơn
+								vị tạo</label>
+							<div class="col-md-8" style="text-align: left; margin-top: 2px">
+								{{caller.shipmentDetail.createdDeptName}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="collapse in from-search row">
+				<div class="text-right margin-row" style="margin-left: 12px">
+					<label style="padding: 0px; float: left;">Thông tin hủy</label> <i
+						data-toggle="collapse" data-target="#thongtinhuy"
+						class="fa fa-chevron-circle-up" style="margin-right: 12px;"
+						aria-hidden="false"></i>
+				</div>
+			</div>
+
+		</div>
+
+		<div ng-show="caller.showTabTwo" style="margin-top: 20px;">
+			<div>
+				<label
+					style="margin-bottom: -20px; padding-left: 20px; font-style: normal;"
+					class="portlet light ">Danh sách hàng hóa của lô hàng</label>
+			</div>
+
+			<div class="portlet light">
+				<div id="gridShipmentGoodsMap"
+					kendo-grid="caller.gridShipmentGoodsMap" k-editable="false"
+					k-options="caller.optionsShipmentGoodsMap"
+					k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+		</div>
+		<div ng-show="caller.showTabThree" style="margin-top: 20px;">
+			<label
+				style="margin-bottom: -20px; width: 1024px; padding-left: 20px; font-style: normal;"
+				class="portlet light ">Danh sách hàng hóa của lô hàng</label>
+			<div class="portlet light ">
+
+				<div id="shipmentGoodsGrid" kendo-grid="caller.shipmentGoodsGrid"
+					k-editable="false" k-options="caller.gridGoodsOptions"
+					k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+		</div>
+		<div ng-show="caller.showTabFour" style="margin-top: 20px;">
+			<div class="clearfix" id="button-header">
+				<div class="form-group col-md-12"
+					style="margin-top: 10px; margin-bottom: 9px; margin-left: 10px">
+					<button type="button" class="btn button-header-popup"
+						ng-click="caller.gotoTaxPopUp()" ng-show="caller.btn1">Thông
+						tin về giá và thuế</button>
+					<button type="button" class="btn button-header-popup"
+						style="background: black; color: #FFF"
+						ng-click="caller.gotoTaxPopUp()" ng-show="caller.btn3">Thông
+						tin về giá và thuế</button>
+
+
+					<button type="button" class="btn button-header-popup"
+						ng-click="caller.gotoPricePopUp()" ng-show="caller.btn2">Thông
+						tin giá</button>
+					<button type="button" class="btn button-header-popup"
+						style="background: black; color: #FFF"
+						ng-click="caller.gotoPricePopUp()" ng-show="caller.btn4">Thông
+						tin giá</button>
+				</div>
+			</div>
+			<div ng-show="caller.tab1" style="margin-left:15px;margin-right:15px;">
+				<div class=" row portlet light bordered">
+					<div class="col-md-8 border-right" style="padding:0px;">
+						<div class="portlet light totalfrees ">
+							<div class="portlet-title ">
+								<div class="caption">
+									<span class="caption-subject bold lowercase" translate>Thông
+										tin chi phí</span>
+								</div>
+							</div>
+							<p></p>
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<label style="text-align: right;"
+										class="col-md-2 control-label req" translate>Tổng chi
+										phí</label>
+									<div class="col-md-6" style="padding: 0px;">
+										<input class=" form-control width100" type="text" readonly
+											id="totalFee" name="totalFee"
+											ng-model="caller.shipmentDetail.totalFee |number:2"
+											style="text-align: right;" />
+									</div>
+									<div class="col-md-4" style="padding: 0px;">
+										<span
+											style="margin-top: 8px; text-align: left; display: block; margin-left: 5px;"
+											translate>VNĐ</span>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-2"></div>
+									<div class="col-md-10" style="padding: 0px;">
+										<span style="color: gray;">{{caller.docso.totalFee}}</span>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+									<div class="form-group col-md-12" style="margin-top: 10px;">
+										<label style="text-align: right;"
+											class="col-md-2 control-label" translate>Ghi chú</label>
+										<div class="col-md-10" style="padding: 0px;">
+											<textarea class=" form-control width100" type="text" readonly
+												id="feeDescription" name="feeDescription"
+												ng-model="caller.shipmentDetail.feeDescription"></textarea>
+										</div>
+								</div>
+							</div>
+							<div class="portlet-title">
+								<div class="caption">
+									<span class="caption-subject bold lowercase" translate>Thông
+										tin thuế</span>
+								</div>
+							</div>
+							<div id="shipmentTaxGrid" kendo-grid="caller.shipmentTaxGrid"
+								k-editable="false" k-options="caller.gridGoodsDetailOptions"
+								k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+						</div>
+					</div>
+
+					<div class="col-md-4 ">
+						<div class="portlet light ">
+							<div class="portlet-title ">
+								<div class="caption">
+									<span class="caption-subject bold lowercase" translate>Thông
+										tin tổng hợp</span>
+								</div>
+							</div>
+							<p></p>
+							<div class="clearfix">
+								<div class="col-md-12" style="padding: 0px;">
+									<div class="col-md-5 " style="text-align: right;padding:0px;">
+										<label class="control-label" style="text-align: right;padding-right:10px;">Tổng
+											nguyên giá lô hàng</label>
+									</div>
+									<div class="col-md-5" style="text-align: right; padding: 0px;">
+										<label style="margin-top: 5px;margin-right:12px;" class="control-label">{{caller.shipmentDetail.totalOriginMoney
+											|number:2}}</label>
+									</div>
+									<div class="col-md-1"
+										style="padding: 0px; margin-top: 5px; margin-left: 5px;">VNĐ</div>
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-5"></div>
+									<div class="col-md-6" style="padding: 0px;">
+										<span style="color: gray;">{{caller.docso.totalOriginMoney}}</span>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="col-md-12 " style="padding: 0px; margin-top: 10px;">
+									<div class="col-md-5 " style="text-align: right;">
+										<label class="control-label req">Tổng tiền thuế</label>
+									</div>
+									<div class="col-md-5" style="text-align: right; padding: 0px;">
+										<input class=" form-control width100" type="text" readonly
+											ng-model="caller.shipmentDetail.totalTax | number:2"
+											id="totalTax" style="text-align: right;" />
+									</div>
+									<div class="col-md-1" style="padding: 0px;">
+										<span
+											style="margin-top: 10px; text-align: left; display: block; margin-left: 5px;"
+											translate>VNĐ</span>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-5"></div>
+									<div class="col-md-6" style="padding: 0px;">
+										<span style="color: gray;">{{caller.docso.totalTax}}</span>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="col-md-12 " style="padding: 0px; margin-top: 10px;">
+									<div class="col-md-5 " style="text-align: right;">
+										<label class="control-label">Tổng giá trị lô hàng</label>
+									</div>
+									<div class="col-md-5" style="text-align: right; padding: 0px;">
+										<input class=" form-control width100" type="text" readonly
+											ng-model="caller.shipmentDetail.totalMoney| number:2"
+											id="totalMoney" style="text-align: right;" />
+									</div>
+									<div class="col-md-1" style="padding: 0px;">
+										<span
+											style="margin-top: 10px; text-align: left; display: block; margin-left: 5px;"
+											translate>VNĐ</span>
+									</div>
+
+								</div>
+								<div class="col-md-12">
+									<div class="col-md-5"></div>
+									<div class="col-md-6" style="padding: 0px;">
+										<span style="color: gray;">{{caller.docso.totalMoney}}</span>
+									</div>
+									<div class="col-md-1"></div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div ng-show="!caller.tab1">
+				<div>
+					<div class="portlet light ">
+						<div class="portlet-title ">
+							<div class="col-md-12">
+					<div class="col-md-3 caption" style="padding: 0px;">
+						<label translate>Kết quả phân bổ giá hàng hóa</label>
+					</div>
+					<div class="col-md-9 caption"
+						style="text-align: right; font-style: normal; font-size: 14px; padding: 0px;">
+						<span ng-bind="caller.applyTotalMoney | number:2 "></span>
+					</div>
+				</div>
+							
+						</div>
+						<div id="shipmentGoodsDetailGrid"
+							kendo-grid="caller.shipmentGoodsDetailGrid" k-editable="false"
+							k-options="caller.gridShipmentsDetailOptions"
+							k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+					</div>
+				</div>
+			</div>
+
+
+		</div>
+
+		<div ng-show="caller.showTabFive" style="margin-top: 20px;">
+			<div class="portlet light ">
+				<div class="portlet-title ">
+					<div class="caption" style="margin-top: 20px">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin yêu cầu kiểm tra</span>
+					</div>
+				</div>
+				<p></p>
+				<div class="clearfix">
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Mã yêu cầu</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs.objectCode}}</div>
+					</div>
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Ngày tạo</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs.objectCreatedDate}}</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Người tạo</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs.objectCreator}}</div>
+					</div>
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Trạng thái</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs.objectStatus}}</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-12" style="height: 30px">
+						<label class="col-md-2 control-label" style="text-align: right;"
+							translate>Ghi chú</label>
+						<div class="col-md-10" style="margin-top: 5px">{{caller.kcs.objectDescription}}</div>
+					</div>
+				</div>
+			</div>
+			<div class="portlet light ">
+				<div class="portlet-title ">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin biên bản kiểm tra</span>
+					</div>
+				</div>
+				<p></p>
+				<div class="clearfix">
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Mã yêu cầu</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs2.objectCode}}</div>
+					</div>
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Ngày tạo</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs2.objectCreatedDate}}</div>
+					</div>
+
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Người tạo</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs2.objectCreator}}</div>
+					</div>
+					<div class="form-group col-md-6" style="height: 30px">
+						<label class="col-md-4 control-label" style="text-align: right;"
+							translate>Trạng thái</label>
+						<div class="col-md-8" style="margin-top: 5px">{{caller.kcs2.objectStatus}}</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-12" style="height: 30px">
+						<label class="col-md-2 control-label" style="text-align: right;"
+							translate>Ghi chú</label>
+						<div class="col-md-10" style="margin-top: 5px">{{caller.kcs2.objectDescription}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="caller.showTabSix" style="margin-top: 20px;">
+
+			<form class="form-horizontal row" role="form">
+				<div>
+					<div class="portlet light ">
+						<div class="portlet-title ">
+							<div class="caption" style="margin-top: 20px;">
+								<span class="caption-subject bold lowercase" translate>Thông
+									tin yêu cầu nhập kho</span>
+							</div>
+						</div>
+						<p></p>
+						<div class="clearfix">
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;">Mã
+									yêu cầu</label>
+								<div class="col-md-8" style="margin-top: 5px">{{caller.order.code}}</div>
+							</div>
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Ngày tạo</label>
+								<div class="col-md-8" style="margin-top: 5px">{{caller.order.createdDate}}</div>
+							</div>
+
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Người tạo</label>
+								<div class="col-md-8" style="margin-top: 5px">{{caller.order.createdByName}}</div>
+							</div>
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Trạng thái</label>
+								<div class="col-md-8" style="margin-top: 5px">
+									<span ng-if="caller.order.status ==1" style="text-align: left;">
+										Chưa tạo phiếu </span> <span ng-if="caller.order.status ==2"
+										style="text-align: left;"> Đã tạo phiếu</span> <span
+										ng-if="caller.order.status ==3" style="text-align: left;">
+										Đã nhập/xuất </span> <span ng-if="caller.order.status ==4"
+										style="text-align: left;"> Đã hủy</span> <span
+										ng-if="caller.order.status ==5" style="text-align: left;">
+										.Đã từ chối </span>
+
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-12" style="height: 30px">
+								<label class="col-md-2 control-label" style="text-align: right;"
+									translate>Ghi chú</label>
+								<div class="col-md-10" style="margin-top: 5px">{{caller.order.description}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet light ">
+						<div class="portlet-title ">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông
+									tin phiếu nhập kho</span>
+							</div>
+						</div>
+						<p></p>
+						<div class="clearfix">
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Mã yêu cầu</label>
+								<div class="col-md-8" style="margin-top: 5px">{{caller.stock.code}}</div>
+							</div>
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Ngày tạo</label>
+								<div class="col-md-8" style="margin-top: 5px">{{caller.stock.createdDate}}</div>
+							</div>
+
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Người tạo</label>
+								<div class="col-md-8" style="margin-top: 5px">{{caller.stock.createdByName}}</div>
+							</div>
+							<div class="form-group col-md-6" style="height: 30px">
+								<label class="col-md-4 control-label" style="text-align: right;"
+									translate>Trạng thái</label>
+								<div class="col-md-8" style="margin-top: 5px">
+									<span ng-if="caller.order.status ==1" style="text-align: left;">
+										Chưa tạo phiếu </span> <span ng-if="caller.order.status ==2"
+										style="text-align: left;"> Đã tạo phiếu</span> <span
+										ng-if="caller.order.status ==3" style="text-align: left;">
+										Đã nhập/xuất </span> <span ng-if="caller.order.status ==4"
+										style="text-align: left;"> Đã hủy</span> <span
+										ng-if="caller.order.status ==5" style="text-align: left;">
+										.Đã từ chối </span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-12" style="height: 30px">
+								<label class="col-md-2 control-label" style="text-align: right;"
+									translate>Ghi chú</label>
+								<div class="col-md-10" style="margin-top: 5px">{{caller.stock.description}}</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<hr />
+<div class="clearfix">
+	<div class="col-md-12 text-right margin_bottom30"
+		style="margin: 0px; padding-bottom: 10px">
+		<button type="button"
+			class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+			ng-click="caller.cancel()" translate>Ðóng</button>
+	</div>
+</div>

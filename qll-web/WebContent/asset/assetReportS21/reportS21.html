@@ -1,0 +1,70 @@
+<div ng-controller="reportS21Controller as vm" >
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class=""></i> <span
+                    class="caption-subject  bold uppercase" translate>In sổ tài sản Mẫu 21</span>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="#" class="form-horizontal">
+                <div class="clearfix">
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Đơn vị quản lý</label>
+                        <div class="col-md-8">
+                            <div class="input-icon right">
+                                <i class="fa fa-chevron-down " ng-click="vm.sysGroupAuto.search();" style="cursor: pointer"></i>
+                                <input kendo-auto-complete="vm.sysGroupAuto" k-options="vm.sysGroupOptions"
+                                   ng-model="vm.search.groupCode" 
+                                   class="form-control width100" name="groupCode" required
+                                   data-required-msg="hãy nhập dữ liệu" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Loại tài sản</label>
+                        <div class="col-md-8">
+                            <input kendo-auto-complete k-options="vm.catAssetCodeOptions"
+                                   ng-model="vm.search.caacCode"
+                                   class="form-control width100" name="catAssetCode" required
+                                   data-required-msg="hãy nhập dữ liệu" />
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix">
+                    <div class="form-group col-md-6">
+
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Thời gian xuất báo cáo</label>
+                        <div class="col-md-4">
+                            <input style="width: 100%;" placeholder="Từ ngày" kendo-date-picker name="fromDate"
+                                   ng-disabled="isDisabled" required id="fromDate"
+                                   data-k-ng-model="vm.search.fromDate"
+                                   data-k-format="'dd/MM/yyyy'"
+                                   data-required-msg="Trường không được để trống" />
+                            <span data-for='fromDate' class='k-invalid-msg'></span>
+                        </div>
+                        <div class="col-md-1"></div>
+                        <div class="col-md-4">
+                            <input style="width: 100%;" kendo-date-picker name="toDate"
+                                   ng-disabled="isDisabled" required id="toDate" placeholder="Đến ngày"
+                                    k-format="'dd/MM/yyyy'"
+                                   data-k-ng-model="vm.search.toDate"
+                                   data-required-msg="Trường không được để trống" />
+                            <span data-for='toDate' class='k-invalid-msg'></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix form-actions">
+                    <div class="row">
+                        <div class="col-md-12"  style ="text-align: center;">
+                            <button type="button" class="btn green" translate ng-click="vm.doExportS21()">Xuất báo cáo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

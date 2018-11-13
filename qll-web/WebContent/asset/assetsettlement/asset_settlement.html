@@ -1,0 +1,124 @@
+<div ng-controller="assetSettlementController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class=""></i> <span
+						class="caption-subject  bold uppercase" translate>Quyết toán tài sản</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">
+					<div class="form-body">
+						<div class="clearfix">
+							<search-box-second 
+								model-label="Mã Tài sản" 
+								req="req" 
+								msg="Mã tài sản không được để trống" 
+								caller="vm" 
+								popup-id="term_asset_entity_code" 
+								popup-type="grid" 
+								popup-source-link="" 
+								combo-id="term_asset_entity_code" 
+								combo-name="code" 
+								combo-value="code" 
+								combo-code="code" 
+								combo-search="vm.commonSearch" 
+								combo-grid="vm.gridCommon" 
+								model-id="vm.termassetentity.merHandOverInfo" 
+								model-name="vm.termassetentity.code">
+							</search-box-second>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Giá trị thay đổi</label>
+								<div class="col-md-8">
+									<input class="form-control" name="catWarehouse" id="catWarehouse"
+										ng-model="vm.termassetentity.catWarehouse" required data-required-msg="Giá trị thay đổi không được để trống">
+										<!-- <span class="k-tooltip-validation" ng-show="budgetgroup.value.$error.pattern"
+			      					style="color: red;">Không được phép nhập kí tự đặc biệt</span> -->
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Số chứng từ</label>
+								<div class="col-md-8">
+									<input class="form-control" name="sysGroup" id="sysGroup"
+										ng-model="vm.termassetentity.sysGroup" required data-required-msg="Số chứng từ không được để trống">
+										<!-- <span class="k-tooltip-validation" ng-show="budgetgroup.value.$error.pattern"
+			      					style="color: red;">Không được phép nhập kí tự đặc biệt</span> -->
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Ngày chứng từ</label>
+				<div class="col-md-8">
+					<div class="input-icon right">
+							<input ng-change="vm.changeClearingType()" kendo-date-picker class="width100" name="transDate" id="transDate"
+								ng-model="vm.clearingap.transDate" k-format="'dd/MM/yyyy'"
+							 	id="transDate" required data-required-msg="Ngày chứng từ không được để trống"/> <span
+								data-for='transDate' class='k-invalid-msg'></span>
+						</div>	
+					</div>
+			
+					<script>
+						$(function() {
+							var transDate = $("#transDate");
+							transDate.kendoMaskedTextBox({
+								mask : "00/00/0000"
+							});
+	
+							transDate.kendoDatePicker({
+								format : "dd/MM/yyyy"
+							});
+	
+							transDate.closest(".k-datepicker").add(transDate)
+									.removeClass("k-textbox");
+						});
+					</script>
+					</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>File đính kèm BBBG</label>
+								<div class="col-md-6">
+									<input class="form-control" name="sysGroup" id="sysGroup"
+										ng-model="vm.termassetentity.sysGroup" required data-required-msg="File đính kèm không được để trống">
+										<!-- <span class="k-tooltip-validation" ng-show="budgetgroup.value.$error.pattern"
+			      					style="color: red;">Không được phép nhập kí tự đặc biệt</span> -->
+								</div>
+								<button class="col-md-2" ng-click = ""> Browse</button>
+							</div>
+						</div>
+					</div>
+				</form>
+				
+			</div>
+	</div>
+	<hr>
+	<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class=""></i> <span
+						class="caption-subject  bold uppercase" translate>Danh sách chi phí quyết toán</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">
+					<div kendo-grid="vm.merHandOverEntityGrid" k-options="vm.gridOptions"></div>
+					<div class="clearfix">
+					<div class="form-group col-md-12">
+						<label class="col-md-8 "></label>	
+						<div class="col-md-6">				
+						<div class="col-md-6">
+								<button ng-click = "">Hủy bỏ</button>
+						</div>
+						<div class="col-md-6">
+								<button ng-click = "">Ghi lại</button>
+							</div>
+						</div>
+					</div>
+					</div>
+				</form>
+			</div>
+	</div>		
+</div>

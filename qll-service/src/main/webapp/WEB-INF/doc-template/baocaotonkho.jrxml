@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="baocaotonkho" pageWidth="842" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="61fac50e-aa0b-4d24-8a44-b4d4bb032b5e">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="135"/>
+	<property name="ireport.y" value="0"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="Bold_Left" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" pdfFontName="TIMESBD.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="Bold_Right" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="TIMESBD.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box rightPadding="3"/>
+	</style>
+	<style name="Bold_Center" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="true" isItalic="false" isUnderline="false" pdfFontName="TIMESBD.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<style name="Italic_Left" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="true" isUnderline="false" pdfFontName="TIMESI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="Italic_Right" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="true" isUnderline="false" pdfFontName="TIMESI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box rightPadding="3"/>
+	</style>
+	<style name="Italic_Center" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="true" isUnderline="false" pdfFontName="TIMESI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<style name="Nomal_Left" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="false" pdfFontName="TIMES.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="Nomal_Right" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="false" pdfFontName="TIMES.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box rightPadding="3"/>
+	</style>
+	<style name="Nomal_Center" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="false" pdfFontName="TIMES.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<style name="BoldItalic_Left" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="true" isItalic="true" isUnderline="false" pdfFontName="TIMESBI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="BoldItalic_Right" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="true" isItalic="true" isUnderline="false" pdfFontName="TIMESBI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box rightPadding="3"/>
+	</style>
+	<style name="BoldItalic_Center" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="true" isItalic="true" isUnderline="false" pdfFontName="TIMESBI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<style name="Underline_Left" hAlign="Left" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="true" pdfFontName="TIMESBI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box leftPadding="3"/>
+	</style>
+	<style name="Underline_Right" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="true" pdfFontName="TIMESBI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true">
+		<box rightPadding="3"/>
+	</style>
+	<style name="Underline_Center" hAlign="Center" vAlign="Middle" isBlankWhenNull="true" fontName="Times New Roman" isBold="false" isItalic="false" isUnderline="true" pdfFontName="TIMESBI.TTF" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="goodsState" class="java.lang.String"/>
+	<parameter name="listGoodsType" class="java.util.List"/>
+	<parameter name="listStockId" class="java.util.List"/>
+	<queryString>
+		<![CDATA[SELECT
+                 sg.STOCK_NAME stockName,
+                 sg.STOCK_CODE stockCode,
+				 sg.STOCK_ID stockId,
+				 sg.GOODS_ID goodsId,
+				 sg.GOODS_CODE goodsCode,
+				 gt.NAME goodsTypeName,
+				 gt.GOODS_TYPE_ID goodsTypeId,
+				 sg.GOODS_NAME goodsName,
+				 sg.GOODS_STATE_NAME goodsStateName,
+				 sg.GOODS_UNIT_NAME goodsUnitName,
+				 sg.AMOUNT amount
+				 FROM WMS_OWNER_KTTS.STOCK_GOODS_TOTAL sg
+				 LEFT JOIN CAT_OWNER.GOODS_TYPE gt ON sg.GOODS_TYPE = gt.GOODS_TYPE_ID
+				 WHERE (CASE WHEN ($X{IN,sg.STOCK_ID,listStockId}) THEN 1 WHEN ($X{NOTIN,sg.STOCK_ID,listStockId}) THEN 0 ELSE 1 END)=1
+                 AND ((sg.GOODS_NAME = NVL($P{name},sg.GOODS_NAME))OR(sg.GOODS_CODE = NVL($P{name},sg.GOODS_CODE)))
+                 AND (CASE WHEN $P{goodsState} ='0' THEN 1 WHEN $P{goodsState} != '0' AND upper(sg.GOODS_STATE) = upper(NVL($P{goodsState},sg.GOODS_STATE)) THEN 1 END)=1
+                 AND (CASE WHEN $X{IN,gt.GOODS_TYPE_ID,listGoodsType} THEN 1 WHEN $X{NOTIN,gt.GOODS_TYPE_ID,listGoodsType} THEN 0 ELSE 1 END)=1
+                 ORDER BY sg.GOODS_TYPE, sg.GOODS_CODE]]>
+	</queryString>
+	<field name="goodsCode" class="java.lang.String"/>
+	<field name="goodsName" class="java.lang.String"/>
+	<field name="goodsStateName" class="java.lang.String"/>
+	<field name="goodsUnitName" class="java.lang.String"/>
+	<field name="amount" class="java.math.BigDecimal"/>
+	<field name="stockName" class="java.lang.String"/>
+	<field name="goodsTypeName" class="java.lang.String"/>
+	<field name="goodsTypeId" class="java.lang.Integer"/>
+	<field name="stockCode" class="java.lang.String"/>
+	<variable name="totalAmount" class="java.lang.Integer" resetType="Group" resetGroup="goodsTypeName" calculation="Sum">
+		<variableExpression><![CDATA[$F{amount}]]></variableExpression>
+	</variable>
+	<group name="goodsTypeName">
+		<groupExpression><![CDATA[$F{goodsTypeName}]]></groupExpression>
+		<groupHeader>
+			<band height="27">
+				<textField evaluationTime="Group" evaluationGroup="goodsTypeName" pattern="#,##0">
+					<reportElement style="Bold_Right" mode="Transparent" x="683" y="0" width="119" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="678ef8d8-b86f-487d-aeb6-3eacc8091fca"/>
+					<box rightPadding="3">
+						<pen lineWidth="0.5" lineColor="#000000"/>
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{totalAmount}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Bold_Left" mode="Transparent" x="0" y="0" width="683" height="27" forecolor="#000000" backcolor="#FFFFFF" uuid="7a7e2cc5-b7c9-441f-b848-660d21363c65"/>
+					<box leftPadding="3">
+						<topPen lineWidth="0.5" lineColor="#000000"/>
+						<leftPen lineWidth="0.5" lineColor="#000000"/>
+						<bottomPen lineWidth="0.5" lineColor="#000000"/>
+						<rightPen lineWidth="0.5" lineColor="#000000"/>
+					</box>
+					<textElement verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="12" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" Loại hàng hoá - "+$F{goodsTypeName}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement style="Nomal_Left" x="493" y="0" width="123" height="31" uuid="ed35078d-5c4b-44f4-bd99-9ae9419c05bf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ngày xuất báo cáo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Nomal_Center" x="0" y="0" width="288" height="31" forecolor="#000000" uuid="39ce69cb-e4cd-46f1-94dc-b87a92919c48"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG CÔNG TY MẠNG LƯỚI VIETTEL]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy HH:mm:ss">
+				<reportElement style="Nomal_Left" x="616" y="0" width="186" height="31" forecolor="#000000" uuid="bca5e3dc-dcd8-44cd-8b33-260b99fb094f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Nomal_Center" x="0" y="31" width="288" height="31" forecolor="#000000" uuid="a4faaee4-f5df-4ae9-bb58-16ef728f24ec"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG KHO THIẾT BỊ HÒA LẠC (VTN-A)]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+			<staticText>
+				<reportElement style="Bold_Center" x="0" y="0" width="802" height="51" uuid="702ca949-da66-4b98-8a0a-0d3a63f9ab8d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO HÀNG HOÁ TRONG KHO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="25" splitType="Stretch">
+			<printWhenExpression><![CDATA[$V{PAGE_NUMBER}==1]]></printWhenExpression>
+			<staticText>
+				<reportElement style="Bold_Center" mode="Opaque" x="683" y="0" width="119" height="25" backcolor="#FFFFFF" uuid="8d72647d-165e-4aea-8459-d47140d910c6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Bold_Center" mode="Opaque" x="0" y="0" width="64" height="25" backcolor="#FFFFFF" uuid="358a6c1b-b36e-493b-af71-b8f2b806a793"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[STT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Bold_Center" mode="Opaque" x="64" y="0" width="159" height="25" backcolor="#FFFFFF" uuid="05800440-9793-47f8-94d3-0ceb44b89d41"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã hàng]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Bold_Center" mode="Opaque" x="429" y="0" width="126" height="25" backcolor="#FFFFFF" uuid="b5750894-80c1-4163-ba09-ce6cda2ae3b6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trạng thái]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Bold_Center" mode="Opaque" x="223" y="0" width="206" height="25" backcolor="#FFFFFF" uuid="a25740b0-3036-42a8-ae3d-a030550740bc"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên hàng hoá]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Bold_Center" mode="Opaque" x="555" y="0" width="128" height="25" backcolor="#FFFFFF" uuid="b40ff6ea-a7b2-414b-a0c3-5fdb81bb8d10"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn vị tính]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="26" splitType="Stretch">
+			<textField>
+				<reportElement style="Nomal_Left" x="64" y="0" width="159" height="26" uuid="e36bc190-3bdc-4b74-a310-8e9c496eb64c"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsCode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement style="Nomal_Right" x="683" y="0" width="119" height="26" uuid="96a3e011-a6d7-4a0b-af2a-c64bbbd10d4d"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Nomal_Left" x="223" y="0" width="206" height="26" uuid="18643868-e6f6-49e0-b4cd-723a2c69f94a"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Nomal_Left" x="429" y="0" width="126" height="26" uuid="8d8395e6-57c1-434b-b193-1933fd571847"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsStateName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Nomal_Left" x="0" y="0" width="64" height="26" uuid="d7a2de52-7298-4db0-a1cf-dbeda4af8212"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Nomal_Left" x="555" y="0" width="128" height="26" uuid="cc3c0dfc-2f4a-407b-a7d9-ea9f4e1a60d6"/>
+				<box>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsUnitName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

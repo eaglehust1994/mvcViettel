@@ -1,0 +1,148 @@
+
+<form class="form-horizontal row" role="form">
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin yêu cầu kiểm tra</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" id="objectCode"
+							name="objectCode" readonly="readonly"
+							ng-model="vm.kcs.objectCode" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày tạo</label>
+					<div class="col-md-8">
+						<input kendo-date-picker class="form-control width100"
+							name="objectCreatedDate" ng-model="vm.kcs.objectCreatedDate"
+							readonly="readonly" k-format="'dd/MM/yyyy'"
+							id="objectCreatedDate" />
+					</div>
+				</div>
+				<script>
+					$(function() {
+						var transDate = $("#objectCreatedDate");
+						transDate.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+						transDate.closest(".k-datepicker").add(transDate)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người tạo</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text"
+							id="objectCreator" name="objectCreator" readonly="readonly"
+							ng-model="vm.kcs.objectCreator" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Trạng thái</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text"
+							id="objectStatus" name="objectStatus" readonly="readonly"
+							ng-model="vm.kcs.objectStatus" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<textarea class=" form-control width100" type="text"
+								name="objectDescription" id="objectDescription"
+								readonly="readonly" ng-model="vm.kcs.objectDescription"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin biên bản kiểm tra</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text"
+							name="objectCode2" id="objectCode2" readonly="readonly"
+							ng-model="vm.kcs2.objectCode" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày tạo</label>
+					<div class="col-md-8">
+						<input kendo-date-picker class="form-control width100"
+							name="objectCreatedDate2" ng-model="vm.kcs2.objectCreatedDate"
+							readonly="readonly" k-format="'dd/MM/yyyy'"
+							id="objectCreatedDate2" />
+					</div>
+				</div>
+				<script>
+					$(function() {
+						var transDate = $("#objectCreatedDate2");
+						transDate.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+						transDate.closest(".k-datepicker").add(transDate)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người tạo</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly
+							id="objectCreator2" name="objectCreator2"
+							ng-model="vm.kcs2.objectCreator" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Trạng thái</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly
+							id="objectStatus2" name="objectStatus2"
+							ng-model="vm.kcs2.objectStatus" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<textarea class=" form-control width100" type="text" readonly
+								id="objectDescription2" name="objectDescription2"
+								ng-model="vm.kcs2.objectDescription"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="col-md-12 text-right margin_bottom30">
+					<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Đóng</button>
+		</div>
+	</div>
+		</div>
+	</div>
+</form>

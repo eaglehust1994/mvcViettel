@@ -1,0 +1,91 @@
+<form class="form-horizontal row scroll" role="form"
+	kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				 translate>Ký CA</span>
+		</div>
+	</div>
+	<div class="form-body ">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Mã văn bản
+					trình ký</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name"
+						ng-model="vm.theSign.code" readonly="" /> <span data-for='name'
+						class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Ngày trình
+					ký</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name"
+						ng-model="vm.logDate" readonly="" /> <span data-for='name'
+						class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Account đăng
+				nhập Voffice</label>
+			<div class="col-md-8">
+				<input class="form-control" name="user" id="user" required
+					data-required-msg="Trường không được để trống"
+					ng-model="vm.theSign.user" /> <span data-for='user'
+					class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Password
+				Voffice</label>
+			<div class="col-md-8">
+				<input class="form-control" name="password" id="password"
+					type="password" required autocomplete="off"
+					data-required-msg="Trường không được để trống"
+					ng-model="vm.theSign.password" /> <span data-for='password'
+					class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate></label>
+			<div class="col-md-8">
+				<input type="checkbox" name="saveAccountVoffice"
+					id="saveAccountVoffice" ng-model="vm.saveAccountVoffice">Lưu Account đăng nhập Voffice
+			</div>
+		</div>
+	</div>
+
+	<!-- Danh Sach -->
+	<p></p>
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				 translate>Danh sách người ký</span>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div id="tableTheSign" kendo-grid="vm.reportGrid" k-editable="false"
+			k-on-change="vm.onChange()" k-options="vm.gridOptions"></div>
+	</div>
+	<p></p>
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				 translate>Danh sách file trình ký</span>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div id="tableFileSign" kendo-grid="vm.listFileSign"
+			k-options="vm.gridOptionsFileSign" k-editable="false"
+			style="height: 150px !important"></div>
+	</div>
+
+
+</form>
+

@@ -1,0 +1,210 @@
+
+<div data-ng-controller="export as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#extState1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="extState1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã phiếu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text" id="stockTransCode"
+										ng-model="vm.stockTransSearch.keySearch"  />
+								</div>
+								<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearKeySearch()"></i>
+									</div>
+							</div>
+							<multi-select model-label="Kho xuất" caller="vm"
+								template-url="views/popup/gridViewMulti.html"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplus" domain="true"
+								popup-source-link="stockRsServiceRest/getStocksForAutocomplete"
+								combo-id="stockTransExManaStock"
+								combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+								combo-name="name" combo-value="stockId" combo-code="code"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.stockTransSearch.listStockId"
+								model-name="vm.stockTransSearch.stockName"> </multi-select>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.stockTransSearch.orderCode" />
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.clearOrderCode()"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6" id="listExtNoteStatus">
+								<label class="col-md-4 control-label" translate>Trạng thái phiếu</label>
+								<div class="col-md-8">
+									<select kendo-multi-select 
+										id="exportNoteState" style="width: 100%"
+										name="exportNoteState"
+										ng-model="vm.stockTransSearch.listStatus">
+										<option value="1">1.Chưa nhập/xuất</option>
+										<option value="2">2.Đã nhập/xuất</option>
+										<option value="3">3.Đã hủy</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.clearSearchStatus()"></i>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Ngày tạo : Từ ngày</label>
+								<div class="col-md-4">
+									<input name="createFromExState" id="createFromExState" 
+										ng-model="vm.stockTransSearch.createdDateFrom" style="width: 100%;" data-required-msg="Ngày tạo bắt đầu không được để trống"
+										required ng-blur="vm.validateDate()"  min-year="1000" data-minyear-msg="Ngày tạo không hợp lệ" data-date-msg="Ngày tạo không hợp lệ"
+										 date-time  />
+										 <span
+										data-for="createFromExState" class="k-invalid-msg"></span>
+											<span style="color: red">{{vm.objMsg.errMessage1}}</span>
+											
+										
+								</div>
+								<label class="col-md-1 control-label" translate> đến</label>
+								<div class="col-md-3">
+									<input name="createToExState" id="createToExState" 
+										ng-model="vm.stockTransSearch.createdDateTo" style="width: 100%;"
+										 ng-blur="vm.validateDate()"  min-year="1000" data-minyear-msg="Ngày đến không hợp lệ" data-date-msg="Ngày tạo không hợp lệ"
+										 date-time />
+										<span data-for="createToExState" class="k-invalid-msg"></span>
+										<span style="color: red">{{vm.objMsg.errMessage}}</span>
+									 
+								</div>
+							
+								
+								
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.clearSearchDate()"></i>
+								</div>
+							</div>
+							<auto-search model-label="Người tạo" caller="vm"
+								template-url="views/popup/gridView.html"
+								header-template="vm.userHeaderTemplate"
+								template-auto="vm.userTemplate" page="1" page-size="20"
+								popup-id="ar_deposit_browser_adOrgId" popup-type="gridplusUser"
+								popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+								combo-id="stockTransExCreator"
+								combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+								combo-name="fullName" combo-value="sysUserId"
+								combo-code="employeeCode" combo-search="vm.commonSearch"
+								combo-grid="vm.gridCreator"
+								model-id="vm.stockTransSearch.createdBy"
+								model-name="vm.stockTransSearch.createdByName"
+								ng-model="vm.stockTransSearch.createdByName"> </auto-search>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6" id="listExtNoteSignCA">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng ký CA</label>
+								<div class="col-md-8">
+									<select kendo-multi-select 
+											id="signStateCAExNote" style="width: 100%" name="signStateCAExNote"
+											ng-model="vm.stockTransSearch.listSignState">
+										<option value="1">1.Chưa trình ký</option>
+										<option value="2">2.Đã trình ký</option>
+										<option value="3">3.Đã ký</option>
+										<option value="4">4.Đã từ chối</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearListSignState()"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị
+										tạo</label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartmentCreate()"></i></div>
+											<input kendo-auto-complete k-options="vm.deprtOptions" 
+											ng-blur="vm.changeDataAuto('expStateCreDept')"
+											class=" form-control width100" type="text" id="expStateCreDept"
+												ng-model="vm.stockTransSearch.createdDeptName" />
+										
+									</div>
+									
+									
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchCreatedDeptName()"></i>
+									</div>
+								</div>
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findExtState"
+										class="btn btn-qlk padding-search-right searchQLK btn-focus" translate
+										ng-click="vm.doSearch()">Tìm kiếm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết quả tìm kiếm :</span>&nbsp;<label class="control-label bold lowercase" id="extStateCount"></label><label class="control-label bold lowercase">&nbsp;bản ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#extState2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="extState2" class="collapse in from-search">
+			<div id="exGrid" kendo-grid="vm.exGrid" k-editable="false"
+				k-options="vm.gridOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">	
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 13:
+                    				$("#findExtState").click();
+                    				break;
+                    		}
+                    	} 
+                         
+$("#listExtNoteStatus").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+	$("#listExtNoteSignCA").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 					 
+						</script> 

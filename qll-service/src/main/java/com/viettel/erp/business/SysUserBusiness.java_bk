@@ -1,0 +1,12 @@
+package com.viettel.erp.business;
+
+import java.util.List;
+
+import com.viettel.erp.dto.SysUserDTO;
+
+public interface SysUserBusiness {
+
+    long count();
+    
+    List<SysUserDTO> getForAutoComplete(SysUserDTO query);
+}

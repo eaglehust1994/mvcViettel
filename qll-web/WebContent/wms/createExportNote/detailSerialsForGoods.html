@@ -1,0 +1,48 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+</head>
+<body>
+	<div class="modal-body">
+	<div class="portlet light">
+				<div id="demo1" class="collapse in from-search">
+					<div class="clearfix position-relative">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Hàng hóa</label>
+							<div class="col-md-10">
+								<label ng-bind="caller.orderGoodsSearch.goodsCode"></label>
+								<label>(</label>
+								<label ng-bind="caller.orderGoodsSearch.goodsName"></label>
+								<label>)</label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix position-relative">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Kho</label>
+							<div class="col-md-10">
+								<label ng-bind="caller.order.stockCode"></label>
+								<label>(</label>
+								<label ng-bind="caller.order.stockName"></label>
+								<label>)</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+    <!-- BEGIN PORTLET-->
+    	<div class="portlet light bordered">
+        	<div class="portlet-body">
+	        	<div id="addInforDeliveryOrder" kendo-grid="caller.addInforDeliveryOrder"
+						k-editable="false" k-options="caller.addInforDeliveryOrderOptions"></div>
+        	</div>
+        	</div>
+   	 	</div>
+   	 	
+	<div class="modal-footer row">
+<div class="col-md-12 margin-bottom margin-top15 button-radio" align="right"> 
+	    	<button type="button" class="btn btn-qlk padding-search-right margin_right10 closeQLK" ng-click="caller.close()">Đóng</button>
+		</div>
+	</div>
+</body>
+</html>

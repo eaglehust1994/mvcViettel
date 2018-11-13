@@ -1,0 +1,112 @@
+<form class="form-horizontal row" role="form" name="changeProduct" id="changeProduct"
+	kendo-validator="validator" k-options="validatorOptions">
+	<div class="">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Mã kho</label>
+				<div class="col-md-8">
+					<input class="form-control" name="parType" id="parType"
+						maxlength="2" ng-model="data.code" required
+						data-required-msg="Loại tham số không được để trống" /> <span
+						data-for='parType' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Tên kho</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name" maxlength="200"
+						ng-model="data.name" required
+						data-required-msg="Tên tham số không được để trống" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<div class="input-icon right ">
+					<label class="col-md-4 control-label req" translate>Đơn vị
+						quản lý</label>
+					<div class="col-md-8">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"></i>
+						</div>
+						<input class="form-control" name="code" id="code" maxlength="50"
+							ng-model="data.departmentId" required
+							data-required-msg="Mã tham số số không được để trống" /> <span
+							data-for='code' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Loại kho</label>
+				<div class="col-md-8">
+					<select kendo-drop-down-list="vm.applySelect" class="form-control"
+						id="apply" style="width: 100%" name="apply"
+						ng-model="vm.reasonSearch.apply">
+						<option value="01">01. Nhập Kho</option>
+						<option value="02">02. Xuất kho</option>
+						<option value="03">03.Kiểm kê kho</option>
+						<option value="04">04.Từ chối yêu cầu nhập kho</option>
+						<option value="05">05.Từ chối yêu cầu xuất kho</option>
+						<option value="06">06.Hủy yêu cầu nhập kho</option>
+						<option value="07">07.Hủy yêu cầu xuất kho</option>
+					</select> <span data-for='name' class='k-invalid-msg'></span>
+				</div>
+
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Kho cha</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name" maxlength="200"
+						ng-model="data.parentId" required
+						data-required-msg="Tên tham số không được để trống" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Mức phân
+					cấp</label>
+				<div class="col-md-8">
+					<select kendo-drop-down-list="vm.applySelect" class="form-control"
+						id="apply" style="width: 100%" name="apply"
+						ng-model="vm.reasonSearch.apply">
+						<option value="01">01. Nhập Kho</option>
+						<option value="02">02. Xuất kho</option>
+						<option value="03">03.Kiểm kê kho</option>
+						<option value="04">04.Từ chối yêu cầu nhập kho</option>
+						<option value="05">05.Từ chối yêu cầu xuất kho</option>
+						<option value="06">06.Hủy yêu cầu nhập kho</option>
+						<option value="07">07.Hủy yêu cầu xuất kho</option>
+					</select> <span data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Ghi chú</label>
+					<div class="col-md-10">
+						<div class="input-icon right">
+							<textarea class="form-control width100" name="name" id="name"
+								type="text" ng-model="data.description"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button type="button" class="btn green btn-outline padding-search"
+						id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+					<button type="button"
+						class="btn green btn-outline padding-search-right"
+						ng-click="save()" translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<br />

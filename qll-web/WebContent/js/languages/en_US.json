@@ -1,0 +1,30 @@
+{
+	"Hệ thống kho tàng tài sản":"Asset management System",
+	"home":{
+		"title":"Phần mềm tích hợp"
+	},
+	"HCQT":{
+		"XEM_HO_SO":"View Document"
+	},	
+	"error.not.has.handoverOfAsset": "Not exist handover Asset",
+	"TSCD":{
+		"lbl_DVQL":"Manage department"
+	}
+	,"Tất cả":"All"
+	,"Đã gửi tài chính":"Sent erp"
+	,"Chưa gửi tài chính":"Not send erp"
+	,"Đã duyệt":"Is approved"
+	,"Trang chủ":"Home Page"
+	,"Không có bản ghi nào trong danh sách":"No item to dislay"
+	,"Không có bản ghi":"No Item"
+	,"Mã biên bản bàn giao":"Handover Code"
+	,"Ngày bàn giao đến":"Handover to"
+	,"Ngày bàn giao từ":"Hand over from"
+	,"Thông tin tìm kiếm văn bản":"Search document information"
+	,"Hủy bỏ":"Cancel"
+	,"Đồng ý":"Agree"
+	,"Tìm kiếm":"Search"
+	
+		
+	
+}

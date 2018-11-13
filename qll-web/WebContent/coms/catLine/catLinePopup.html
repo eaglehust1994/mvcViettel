@@ -1,0 +1,145 @@
+
+<form name="form" class="form-horizontal row " role="form"
+	name="catLine" id="catLine" kendo-validator="validator"
+	k-options="validatorOptions" style="">
+	<div class="clearfix">
+		<div class="col-md-2 left-block">
+			<div class="row">
+				<div class="col-md-12 title-bot-radio">
+					<input style="float: left;" type="radio" id="type" name="type"
+						ng-model="caller.catLine.startPointType"
+						ng-change="caller.checkCatLineType1()" value="1"> <span
+						class="padding_radio">Nhà trạm</span>
+				</div>
+				<div class="col-md-12">
+					<input style="float: left;" type="radio" id="type" name="type"
+						ng-model="caller.catLine.startPointType"
+						ng-change="caller.checkCatLineType2()" value="2"> <span
+						class="padding_radio">Măng xông</span>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-10 right-block">
+			<div class="clearfix">
+				<div class="form-group row">
+					<label class="col-md-2 control-label req" translate>Mã
+						tuyến:</label>
+					<div class="col-md-4">
+						<input class="form-control" ng-blur="focusOut()" name="code"
+							id="code" maxlength="50" ng-model="caller.catLine.code" required
+							data-required-msg="Mã trạm không được để trống" /> <span
+							data-for='parType' class='k-invalid-msg'></span>
+						<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+					</div>
+					<label class="col-md-2 control-label req" translate>Phạm
+						vi:</label>
+					<div class="col-md-4">
+						<input id="scope" kendo-auto-complete
+							k-options="caller.scopeOptions" maxlength="50" tabindex="5"
+							header-template="caller.headerTemplate" required
+							data-required-msg="Phạm vi không được để trống"
+							class="form-control width100" id="scope" name="scope"
+							ng-model="caller.catLine.scopeName" />
+						<!-- <span class="label-error" ng-if="form.scope.$invalid && !form.scope.$pristine">Phạm vi không được để trống</span> -->
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group row">
+					<label class="col-md-2 control-label req " translate>Mã
+						điểm đầu:</label>
+					<div class="col-md-4" id="">
+						<input id="scope" kendo-auto-complete
+							k-options="caller.startPointOptions" maxlength="50" tabindex="5"
+							header-template="caller.headerTemplate1"
+							ng-required="!caller.isMangXong" class="form-control width100"
+							id="startPoint" name="startPoint" data-required-msg='Mã
+							điểm đầu không được để trống'
+							ng-model="caller.catLine.startPointCode" /> <div class="label-error"ng-if="form.startPoint.$invalid && !form.startPoint.$pristine"></div>
+					</div>
+					<div ng-show="!caller.isMangXong">
+						<label class="col-md-2 control-label req " translate>Mã
+							điểm cuối:</label>
+						<div class="col-md-4" id="">
+							<input id="scope" kendo-auto-complete
+								k-options="caller.endPointOptions" maxlength="50" tabindex="5"
+								header-template="caller.headerTemplate2"
+								ng-required="!caller.isMangXong" class="form-control width100"
+								id="endPoint" name="endPoint"data-required-msg='Mã
+								điểm cuối không được để trống'
+								ng-model="caller.catLine.endPointCode" /> 
+								<div class="label-error"ng-if="form.startPoint.$invalid && !form.startPoint.$pristine"></div>
+						</div>
+					</div>
+
+					<div ng-show="caller.isMangXong">
+						<label class="col-md-2 control-label req " translate>Thuộc
+							tuyến:</label>
+						<div class="col-md-4" id="">
+							<input ng-blur="focusOut()"
+								kendo-auto-complete k-options="caller.belongsPointOptions"
+								name="point" ng-disabled="!caller.isMangXong"
+								ng-required="caller.isMangXong" id="point" maxlength="50"
+								ng-model="caller.catLine.endPointCode"
+								header-template="caller.headerTemplate3"
+								class="form-control width100" required
+								data-required-msg="Thuộc tuyến không được để trống" /> <div class="label-error"ng-if="form.startPoint.$invalid && !form.startPoint.$pristine"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group row">
+					<label class="col-md-2 control-label " translate>Ghi chú</label>
+					<div class="col-md-10">
+						<textarea class="form-control" name="description" id="description"
+							rows="3" maxlength="1000" ng-model="caller.catLine.description"></textarea>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="savepopupApp"
+						class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+						translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <div class="modal-footer">
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="savepopupApp"
+						class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+						translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div> -->
+	<script type="text/javascript">
+		$("input").change(function() {
+			$(this).val($.trim($(this).val()));
+		});
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				if (e.keyCode === 13 && !$('#cancel:focus').length
+						&& !$('#savepopupApp:focus').length) {
+					$("#savepopupApp").click();
+					break;
+				}
+			}
+		}
+	</script>
+</form>

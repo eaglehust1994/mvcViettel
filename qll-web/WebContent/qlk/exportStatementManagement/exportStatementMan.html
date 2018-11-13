@@ -1,0 +1,218 @@
+<style>
+.glyphicon-search {margin-top:7px;margin-right:14px;color:orange;}
+.fa-file-excel-o {color:green}
+</style>
+
+<div data-ng-controller="export as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="portlet light bordered">
+				<div class="portlet-title background-title">
+					<div class="caption"><span class="caption-subject bold lowercase" translate>Thông tin tìm kiếm</span>
+					</div>
+					<div class="text-right margin-row-title">
+								<i  data-toggle="collapse" data-target="#demo" class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+							</div>
+				</div>
+				<div id="demo" class="collapse in from-search">
+						<div class="clearfix">
+			                 <div class="form-group col-md-6">
+			                        <label class="col-md-4 control-label" translate>Mã phiếu</label>
+			                         <div class="col-md-8">
+										<input id="idN" name="idN" class=" form-control width100" type="text"  
+										ng-model="vm.stockTrans.keySearch"	/>
+									 </div>
+								</div>
+					
+							<auto-search model-label="Kho xuất" caller="vm"
+								template-url="views/popup/gridView.html"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplus"
+								popup-source-link="appParamServiceRest/doSearch"
+								combo-id="stockExt"
+								combo-source-link="appParamServiceRest/getForAutoComplete"
+								combo-name="name" combo-value="code" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridStockCommon"
+								model-id="vm.orderSearch.stockId" model-name="vm.stockTrans.orderCodeSearch"
+								ng-model="vm.orderSearch.stock"> </auto-search>
+					    </div>
+					    
+						<div class="clearfix">
+			                     <div class="form-group col-md-6">
+			                        <label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+			                         <div class="col-md-8">
+										<input class=" form-control width100" type="text"  ng-model="vm.stockTrans.orderCodeSearch"/>
+									 </div>
+							</div>
+					
+								<div class="form-group col-md-6">
+										<label class="col-md-4 control-label " translate>Trạng thái phiếu</label>
+										<div class="col-md-8">
+											<select id="ns" multiple="multiple" name="ns"
+														ng-model="vm.stockTrans.listNoteStatus">
+												<option value="1" selected>1. Chưa xuất </option>
+												<option value="2">2. Đã xuất</option>
+												<option value="3">3. Đã hủy</option>
+											</select>
+										</div>
+										<div class="One_icon" ng-click="vm.cancelest('ns')">
+													<i class="fa fa-times" aria-hidden="true"></i>
+										</div>
+								</div>
+					</div>
+
+						<div class="clearfix">
+		                     <div class="form-group col-md-6">
+		                        <label class="col-md-4 control-label req" >Ngày tạo - Từ ngày</label>
+		                        <div class="col-md-4">
+											<input kendo-date-picker class="form-control width100" required data-date-msg="Ngày nhập/xuất từ ngày không hợp lệ"
+												name="startDate" ng-model="vm.stockTrans.startDate" data-required-msg="Ngày nhập/xuất từ ngày không được để trống" 
+												k-format="'dd/MM/yyyy'" id="startDate" />
+												<span data-for="startDate" class="k-invalid-msg"></span>
+										</div>
+									<script>
+										$(function() {
+											var transDate = $("#startDate");
+											transDate.kendoMaskedTextBox({
+												mask : "00/00/0000"
+											});
+											transDate.closest(".k-datepicker")
+											.add(transDate)
+											.removeClass("k-textbox");
+										});
+									</script>
+									
+									<label class="col-md-1 control-label" translate>đến</label>
+										<div class="col-md-3 position-relative">
+											<input kendo-date-picker class="form-control width100"  data-date-msg="Ngày nhập/xuất đến ngày không hợp lệ"
+												name="endDate" ng-model="vm.stockTrans.endDate"
+												k-format="'dd/MM/yyyy'" id="endDate" />
+												<span data-for="endDate" class="k-invalid-msg"></span>
+										</div>
+									
+									<script>
+										$(function() {
+											var transDate = $("#endDate");
+											transDate.kendoMaskedTextBox({
+												mask : "00/00/0000"
+											});
+											transDate.closest(".k-datepicker").add(
+													transDate).removeClass("k-textbox");
+										});
+									</script>
+									 <div class="One_icon"  ng-click="vm.cancelest('dates')">
+											<i class="fa fa-times" aria-hidden="true"></i>
+									</div>
+							
+								</div>
+							 <div class="form-group col-md-6">
+		                        <label class="col-md-4 control-label" translate>Tình trạng ký CA</label>
+		                         <div class="col-md-8">
+		                         <select id="cast" multiple="multiple" name="cast" ng-model="vm.stockTrans.listSignCAState">
+											<option value="1" selected>1.Chưa trình kí</option>
+											<option value="2">2.Đã trình kí</option>
+											<option value="3">3.Đã kí</option>
+											<option value="4">4.Hủy</option>
+								    </select>
+									
+								 </div>
+								 <div class="One_icon" ng-click="vm.cancelest('cast')">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</div> 
+								</div>							
+		    	      </div>
+
+						<div class="clearfix">
+		                     <div class="form-group col-md-6">
+		                        <label class="col-md-4 control-label" translate>Người tạo</label>
+		                         <div class="col-md-8">
+		                        		<input name="creater" ng-click="vm.showPopup('CrePopup')" class=" form-control width100" type="text"  ng-model="vm.exSk.creater"/>
+							
+								 </div>
+								 <div class="One_icon" ng-click="vm.cancelest('creater')">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</div> 
+								</div>
+							
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị tạo</label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+											<input id="createdDeptedName" class=" form-control width100" type="text"
+												name="createdDeptedName" ng-model="vm.stockTrans.createdDeptedName" />
+										</div>
+									</div>
+									<div class="One_icon" ng-click="vm.cancelest('createdDeptedName')">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</div>
+								</div>
+								
+						</div>
+				
+			
+				<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-center">
+						
+							<button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.doSearch()" translate>
+							<i class="glyphicon glyphicon-search"></i>Tìm kiếm
+							</button>
+							<!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			</div>
+		
+		</form>
+	</div>
+	<div class="portlet light bordered">
+	
+		<div class="portlet-title background-title">
+				<div class="caption"><span
+						class="caption-subject bold lowercase" translate>
+								Kết quả tìm kiếm :  {{vm.exGrid.dataSource.total()}} bản ghi???
+								
+								
+						</span>
+				</div>
+				<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo2" class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+		</div>
+		
+		<div id="demo2" class="collapse in from-search">
+			<button type="button"
+					class="btn green btn-outline padding-search-right"
+					ng-click="vm.sign()" translate>Trình ký???</button>
+			<div id="result">fddsđf</div> 
+				<button type="button" id="xbk"
+					class="btn green btn-outline padding-search-right"
+					ng-click="" translate>Xuất bảng kê</button>
+			
+				<button type="button" id="xbbbbg"
+					class="btn green btn-outline padding-search-right"
+					ng-click="" translate>Xuất BBBG</button>
+	
+				<div id="grid" kendo-grid="vm.Grid" k-editable="false" k-options="vm.gridOptions2" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+				
+				<div id="grid2" kendo-grid="vm.Grid2" k-editable="false" k-options="vm.gridOptions3" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+				
+			 <div id="exGrid" kendo-grid="vm.exGrid" k-editable="false" k-options="vm.gridOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+          
+	      <!--     <table id="states" kendo-grid="vm.stateGrid" k-editable="false" k-options="vm.gridExOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></table>
+			  <table id="cities"></table> -->
+          
+          	  <table id="orderGoods"></table>
+          	  <table id="goodsDetailForNoteGrid2"></table>
+           </div>
+           
+ 
+         
+		
+	</div>
+</div>

@@ -1,0 +1,121 @@
+
+<form class="form-horizontal row padding10"  role="form" name="appParam" id="appParam" kendo-validator="validator" k-options="validatorOptions">
+		<div class = "border-gray">
+		<div class="clearfix" >
+			<div class="row">
+				
+					<label class="col-md-2 control-label req" translate>Đơn vị</label>
+					<div class="col-md-4">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openGroup()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text"
+								k-options="caller.patternGroupOptions" kendo-auto-complete
+								name="workItemQuotaId" required data-required-msg="Giá trị không được bỏ trống" 
+								ng-model="caller.workItemQuota.sysGroupName" maxlength="200"
+								id="workItemQuotaId1" />
+						</div>
+						<span data-for='workItemQuotaId1' class='k-invalid-msg'></span>
+					</div>
+			
+				
+				
+					<label class="col-md-2 control-label req" translate>Loại công trình</label>
+					<div class="col-md-4">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openConstruction()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text"
+								k-options="caller.patternConstructOptions" kendo-auto-complete
+								name="constructionType1" required data-required-msg="Giá trị không được bỏ trống" 
+								ng-model="caller.workItemQuota.catConstructionTypeName" maxlength="200"
+								id="constructionType1" />
+								<span data-for='constructionType1' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				
+			</div>
+		</div>
+
+		<br>
+		<div class="clearfix">
+			<div class="row">
+				
+					<label class="col-md-2 control-label req" translate>Hạng mục</label>
+					<div class="col-md-4">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openWorkItemType()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text" required 
+							data-required-msg="Hạng mục không được để trống" k-options="caller.patternWorkItemTypeOptions" 
+							kendo-auto-complete name="workItemType1"
+								ng-model="caller.workItemQuota.catWorkItemTypeName" maxlength="200" id="workItemType1" 
+								  />
+								 <span data-for='workItemType1' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="One_icon">
+						<i class="fa fa-times" aria-hidden="true"
+							ng-click="caller.cancelDept()"></i>
+					</div>
+				
+				
+					<label class="col-md-2 control-label req" translate>Giá trị</label>
+					<div class="col-md-4">
+							<input class="form-control" ng-blur="focusOut()" name="price" id="price" maxlength="50" 
+								data-ng-model="caller.workItemQuota.price" required ng-keydown="caller.checkNum()"
+								data-required-msg="Giá trị không được để trống" />
+								 <span data-for='price' class='k-invalid-msg'></span>
+					</div>
+
+			</div>
+		</div>
+		
+		<br>
+		<div class="clearfix">
+			
+			<div class="row">
+				<label class="col-md-2 control-label" translate>Ghi chú</label>
+				<div class="col-md-10">
+					<textarea rows="4" class="form-control" ng-blur="focusOut()" name="price" id="description" maxlength="38"  
+					ng-model="caller.workItemQuota.description" >
+					{{caller.workItemQuota.description}}
+					</textarea>
+				</div>
+			</div>
+			
+		</div>
+
+		</div>		
+		
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+							<button type="button" id="savepopupApp" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+			<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			   document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if(e.keyCode===13&& !$('#cancel:focus').length&& !$('#savepopupApp:focus').length){
+         				$("#savepopupApp").click();
+         				break;
+						}
+         		}
+         	} 
+			
+		
+			
+			  
+	</script>  
+</form>

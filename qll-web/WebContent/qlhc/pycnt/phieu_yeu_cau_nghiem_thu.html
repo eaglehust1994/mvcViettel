@@ -1,0 +1,204 @@
+<form class="form-horizontal row" role="form">
+
+	<div class="form-body" disable-all="vm.disableAll">
+
+		<div id="u3183" class="clearfix">
+			<div class="clearfix">
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase"
+							translate>Nội dung</span>
+					</div>
+				</div>
+
+				<div class="clearfix">
+
+					
+					
+					
+					
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req">Nhà thầu thi công</label>
+							<div class="col-md-8">
+								<input class="form-control width100" id="partnerName" name="partnerName"
+									ng-model="vm.partnerName" required readonly
+									data-required-msg="Nhà thầu thi công không được để trống" />
+									<span data-for='partnerName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					
+					
+					
+					
+					
+					
+					
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Thời gian nghiệm thu</label>
+	
+						
+						
+						
+			<div class="col-md-8">
+				<input kendo-date-picker k-options="vm.dateTimeOptions"
+					name="acceptanceDate" ng-model="vm.pycntObj.acceptanceDate" required data-required-msg="Thời gian nghiệm thu không được để trống" data-date-msg="Nhập đúng định dạng thời gian nghiệm thu"
+					k-format="'dd/MM/yyyy'" k-max="maxTransDate"
+					k-rebind="maxTransDate" k-on-change="dateChangedTransDateFrom()"
+					id="acceptanceDate" />
+					<span data-for="acceptanceDate" class="k-invalid-msg"></span>
+			</div>
+						
+						
+						
+						
+						
+		<script>
+				$(function() {
+					var acceptanceDate = $("#acceptanceDate");
+					acceptanceDate.kendoDateTimePicker({
+								format : "dd/MM/yyyy HH:mm:ss",
+								parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+										"dd/MM/yyyy HH:mm:ss",
+										"yyyy/MM/dd HH:mm:ss" ],
+								footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#",
+								
+							})
+				});
+		</script>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Địa điểm ký</label>
+						<div class="col-md-8">
+							<input class="form-control width100" value="Profit center 16"
+								name="signPlace" ng-model="vm.pycntObj.signPlace" required
+								data-required-msg="Địa điểm ký không được bỏ trống" />
+								<span data-for="signPlace" class="k-invalid-msg" />
+						</div>
+						
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Ngày ký</label>
+
+						
+			<div class="col-md-8">
+				<input kendo-date-picker k-options="vm.datePickerConfig2"
+					name="signDate" ng-model="vm.pycntObj.signDate" required data-required-msg="Ngày ký không được để trống" data-date-msg="Nhập đúng định dạng ngày ký"
+					k-format="'dd/MM/yyyy'" 
+					k-rebind="maxTransDate"
+					id="signDate" />
+				<span data-for="signDate" class="k-invalid-msg"></span>
+			</div>
+						
+						
+						
+			<script>
+				$(function() {
+
+					$(function() {
+						var validTo = $("#signdate");
+						validTo.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+
+						validTo.kendoDatePicker({
+							format : "dd/MM/yyyy"
+						});
+
+						validTo.closest(".k-datepicker").add(
+								validTo).removeClass("k-textbox");
+					});
+					
+				});
+			</script>
+						
+						
+						
+						
+						
+						
+						
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label req">Tại</label>
+							<div class="col-md-10">
+								<input class="form-control width100" name="tai" id="tai" maxlength="1000"
+									ng-model="vm.pycntObj.acceptancePlace" required
+									data-required-msg="Trường Tại không được bỏ trống" /> <span
+									data-for="tai" class="k-invalid-msg"> </span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label req">Kính gửi</label>
+							<div class="col-md-10">
+								<input class="form-control width100" name="dearGroup" id="dearGroup" maxlength="200"
+									ng-model="vm.pycntObj.dearGroup" required
+									data-required-msg="Trường Kính gửi không được bỏ trống" /> <span
+									data-for="dearGroup" class="k-invalid-msg"></span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+		<div ng-show="vm.showPheDuyet">
+			<div class="form-body">
+				<div class="portlet-title">
+					<div class="caption">
+						</i> <span class="caption-subject bold lowercase"
+							 translate>Phê duyệt</span>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Phê duyệt</label>
+
+						<div class="col-md-8">
+						 <select kendo-combo-box style="width: 100%" name="statusCode"
+							id="statusCode" ng-model="vm.approDTO.statusCa" >
+							<option value="1" selected>Phê duyệt</option>
+							<option value="2">Từ chối</option>
+						   </select>
+			   
+					        </div>
+						
+						
+						
+						
+						
+						
+
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Nhận
+								xét/Lý do từ chối duyệt</label>
+							<div class="col-md-10 input-width">
+								<textarea class="form-control width100" name="description"
+									id="description" ng-model="vm.approDTO.comments"> </textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

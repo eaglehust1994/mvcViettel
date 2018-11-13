@@ -1,0 +1,51 @@
+
+<br>
+<br>
+
+<div class="portlet light bordered" style="border: 0.5px white">
+	<div class="portlet-title">
+		<div class="caption">
+			<!-- 				<i class="icon-equalizer font-red-sunglo"></i> -->
+			<span class="caption-subject bold lowercase"
+				translate>Danh Sách</span>
+		</div>
+	</div>
+
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<!--                 <label class="col-md-4 control-label">Danh Sách</label> -->
+
+		</div>
+	</div>
+	<div kendo-grid="vm.inoutGrid" k-options="vm.gridOptions"
+		id="mainGridList"></div>
+		<script>
+                $(document).ready(function() {
+                    var tooltip = $("#mainGridList").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              if ($(target).hasClass('statusColumn')) {//check column status
+          	            	var dataItem = $("#mainGridList").data("kendoGrid").dataItem(e.target.closest("tr"));
+          	              console.log(dataItem);
+          	              	var status = dataItem.statusCa;
+          	              	if(status===3){ // check co pjai tu choi hay ko
+          	              		var content=dataItem.comments;
+          	              	} else {
+          	              	var content=$(target).text();
+          	              	}
+          	              	return content;
+          	              } else {
+          	            	return $(target).text();
+          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#mainGridList").find("td").click(false);
+                });
+            </script>
+
+
+</div>

@@ -1,0 +1,26 @@
+2018-11-02 16:31:48,007 [Worker-11] INFO  o.e.m.c.i.l.LifecycleMappingFactory - Using org.maven.ide.eclipse.wtp.WarLifecycleMapping lifecycle mapping for MavenProject: com.viettel.ktts:qll-service:1.0.1-SNAPSHOT @ G:\New folder (2)\QLL-SourceCode\qll-service\pom.xml.
+2018-11-02 16:31:48,352 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sun.xml.bind:jaxb-impl:jar:2.2.11 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-11-02 16:31:48,359 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sun.xml.bind:jaxb-core:jar:2.2.11 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-11-02 16:31:49,017 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vpclient_sso_update:jar:4.0.2_20170404 is missing, no dependency information available
+2018-11-02 16:31:49,030 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vpclient_ws_sso:jar:4.1 is missing, no dependency information available
+2018-11-02 16:31:49,086 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vptoken:jar:4.0 is missing, no dependency information available
+2018-11-02 16:31:49,143 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.oracle:ojdbc6:jar:11.2.0.2.0 is missing, no dependency information available
+2018-11-02 16:31:49,179 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for espringtran:espringtran.compressor4j:jar:1.0.0 is missing, no dependency information available
+2018-11-02 16:32:11,392 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sun.xml.bind:jaxb-impl:jar:2.2.11 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-11-02 16:32:11,396 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sun.xml.bind:jaxb-core:jar:2.2.11 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-11-02 16:32:11,996 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vpclient_sso_update:jar:4.0.2_20170404 is missing, no dependency information available
+2018-11-02 16:32:12,004 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vpclient_ws_sso:jar:4.1 is missing, no dependency information available
+2018-11-02 16:32:12,046 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vptoken:jar:4.0 is missing, no dependency information available
+2018-11-02 16:32:12,069 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.oracle:ojdbc6:jar:11.2.0.2.0 is missing, no dependency information available
+2018-11-02 16:32:12,087 [Worker-11] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for espringtran:espringtran.compressor4j:jar:1.0.0 is missing, no dependency information available
+2018-11-02 16:32:28,270 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sun.xml.bind:jaxb-impl:jar:2.2.11 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-11-02 16:32:28,278 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.sun.xml.bind:jaxb-core:jar:2.2.11 is invalid, transitive dependencies (if any) will not be available, enable debug logging for more details
+2018-11-02 16:32:28,923 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vpclient_sso_update:jar:4.0.2_20170404 is missing, no dependency information available
+2018-11-02 16:32:28,930 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vpclient_ws_sso:jar:4.1 is missing, no dependency information available
+2018-11-02 16:32:28,962 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.viettel:vptoken:jar:4.0 is missing, no dependency information available
+2018-11-02 16:32:28,987 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for com.oracle:ojdbc6:jar:11.2.0.2.0 is missing, no dependency information available
+2018-11-02 16:32:28,989 [Worker-0] WARN  o.e.m.c.i.embedder.EclipseLogger - The POM for espringtran:espringtran.compressor4j:jar:1.0.0 is missing, no dependency information available
+2018-11-02 16:32:29,771 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-11-02 16:32:29,779 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 39 resources
+2018-11-02 16:32:30,323 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - Using 'UTF-8' encoding to copy filtered resources.
+2018-11-02 16:32:30,323 [Worker-0] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory G:\New folder (2)\QLL-SourceCode\qll-service\src\test\resources

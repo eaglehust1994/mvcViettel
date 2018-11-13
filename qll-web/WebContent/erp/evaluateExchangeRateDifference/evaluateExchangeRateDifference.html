@@ -1,0 +1,19 @@
+<div ng-controller="EvaluateExchangeRateDifferenceCtr as ctrl" ng-init="ctrl.init()">
+    <div>
+        <div class="action-button tim-kiem" ng-click="ctrl.btnSearch()"> </div>
+        <div class="action-button them-moi" ng-click="ctrl.btnAdd()"> </div>
+        <div class="action-button luu" ng-click="ctrl.btnSave()"> </div>
+        <div class="action-button xoa" ng-click="ctrl.btnRemove()"> </div>
+        <div class="action-button hoachToan" ng-click="ctrl.btnHoachToan()"> </div>
+        <div class="action-button huyHoachToan" ng-click="ctrl.btnHuyHoachToan()"> </div>
+        <div class="action-button export" ng-click="ctrl.btnExport()"></div>
+    </div>
+    <br>
+    <div ng-show="ctrl.showSearch">
+        <div data-ng-include="'erp/evaluateExchangeRateDifference/evaluateExchangeRateDifferenceSearch.html'"></div>
+    </div>
+
+    <div ng-show="ctrl.showCreate">
+        <div data-ng-include="'erp/evaluateExchangeRateDifference/evaluateExchangeRateDifferenceForm.html'"></div>
+    </div>
+</div>

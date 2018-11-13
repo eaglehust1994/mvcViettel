@@ -1,0 +1,59 @@
+<div data-ng-include="'qlhc/estimatesAB/General_information.html'"></div>
+
+<div class="portlet light bordered" disable-all = "vm.disableAll">
+	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Thành phần ký</span>
+	  	</div>
+ 	</div>
+		<div class="portlet-body">
+				<form action="#" class="form-horizontal" >
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thủ trưởng chủ đầu tư</label>
+								<div class="col-md-8">
+								 <select id="cbb1" kendo-drop-down-list  ng-disabled="vm.disableCbb"
+							       k-data-text-field="'fullName'"
+							       k-data-value-field="'id'"
+							       k-data-source="vm.technical"
+							       ng-model="vm.estimatesAB2.adirectorId"
+							       required
+									data-required-msg="Thủ trưởng chủ đầu tư không được để trống"
+							       style="width: 100%">
+						   		</select>
+								<span data-for="amonitorId" class="k-invalid-msg"></span>
+							</div>
+							
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giám đốc nhà thầu</label>
+							<div class="col-md-8">
+								 <select id="cbb3" kendo-drop-down-list ng-disabled="vm.disableCbb"
+							       k-data-text-field="'fullName'"
+							       k-data-value-field="'id'"
+							       k-data-source="vm.giamdocnhathau"
+							       ng-model="vm.estimatesAB2.bdirectorId"
+							       required
+									data-required-msg="Giám đốc nhà thầu không được để trống"
+							       style="width: 100%">
+						   		</select>
+								<span data-for="ConstructorId" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>				
+				</form>
+			</div>
+</div>			
+<div class="portlet light bordered" disable-all = "vm.disableAll">	
+	<div class="portlet-title">
+		  	<div class="caption">
+		  	<i class=""></i>
+		    <span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Nội dung</span>
+		  	</div>
+	 	</div>
+		<div kendo-grid="vm.tableAbForm2" k-options="vm.gridOptions2" id="mainGri2" ></div>
+</div>
+				

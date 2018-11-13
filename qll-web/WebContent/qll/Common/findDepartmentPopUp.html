@@ -1,0 +1,54 @@
+<style>
+.wrap {
+	width: 100%;
+	margin-top:10px;
+	overflow: auto;
+}
+
+.fleftDepartMent {
+	float: left;
+	width: 100%;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+
+
+</style>
+<div class="wrap" id="deptP">
+	<div class="fleftDepartMent col-md-12" >
+		<div class="form-group ">
+	       		<div class="input-menu search-tree-sum">
+	                <input id="filterText" type="text"  ng-model="textSearchTree" class="k-textbox input-menu-button form-control search-tree" placeholder="Tìm kiếm tên"/>
+	                <span class="input-menu-btn">
+	                    <a href="javascript:;">
+	                        <i class="icon-magnifier icon-search-tree"></i>
+	                    </a>
+	                </span>
+	            </div>
+	        </div>
+	   		 <div id="treeviewUnits" class="treeView" style="border-left: 0px solid white;">
+		    </div>
+	</div>
+	
+</div>
+<script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#find").click();
+                    				break;
+                    		}
+                    	} 
+                         
+                         $("#gridView").delegate("tbody>tr", "dblclick", function(){
+                        	 $("#submit").click();});
+                         
+                         
+                         /* filterTree */
+						</script> 

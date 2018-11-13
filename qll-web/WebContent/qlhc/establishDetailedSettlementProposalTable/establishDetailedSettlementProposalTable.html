@@ -1,0 +1,183 @@
+
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class=""></i> <span
+				class="caption-subject  bold lowercase" translate>Thông
+				tin chung</span>
+		</div>
+	</div>
+	<br />
+	<div class="portlet-body form">
+		<!-- BEGIN FORM-->
+		<form action="#" class="form-horizontal">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số hợp đồng</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="contractCode"
+							id="contractCode" ng-model="vm.item.contractCode"
+							readonly="readonly">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày ký HĐ</label>
+					<div class="col-md-8">
+						<input class="form-control width100" id="signed_date"
+							name="signed_date" ng-model="vm.item.signed_date"
+							readonly="readonly">
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã công
+						trình</label>
+					<div class="col-md-8">
+						<input class="form-control width100" id="constrtCode"
+							name="constrtCode" ng-model="vm.item.constrtCode"
+							readonly="readonly">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Tên công
+						trình</label>
+					<div class="col-md-8">
+						<input class="form-control width100" id="constrtName"
+							name="constrtName" ng-model="vm.item.constrtName"
+							readonly="readonly">
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ
+							công trình</label>
+						<div class="col-md-10 input-width" style="">
+							<input type="text" class="form-control width100"
+								name="constrtAddress" id="constrtAddress"
+								ng-model="vm.item.constrtAddress" readonly="readonly" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- END FORM-->
+	</div>
+</div>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Thành phần"> <br />
+<div class="portlet-body form">
+	<!-- BEGIN FORM-->
+	<form action="#" class="form-horizontal" disable-all="vm.disableForm">
+		<div class="clearfix">
+			 <Search-Grid-Popup searchtype="codePerSon" model-label="Người lập" req="req"
+							caller="vm" popup-id="establish_detailed_sendPersonId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="establish_detailed_txtSendPersonId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.item.sendPersonId"
+							model-name="vm.item.sendPersonName">
+						</Search-Grid-Popup> 
+			<combo-box-second searchtype="" model-label="Đại diện nhà thầu"
+				caller="vm" popup-id="establish_detailed_brepresentativeId"
+				popup-type="grid" req="req"
+				popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-id="establish_detailed_txtBrepresentativeId"
+				combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-name="fullName" combo-value="id" combo-code="value"
+				combo-search="vm.resultRepresentingContractors"
+				combo-grid="vm.gridCommon" model-id="vm.item.brepresentativeId"
+				model-name="vm.item.brepresentaiveName"> </combo-box-second>
+		</div>
+	</form>
+	<!-- END FORM-->
+</div>
+</uib-tab> </uib-tabset>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Tổng giá trị xây lắp công trình">
+<div style="height: 200px" kendo-grid="vm.gridSumContract"
+	k-options="vm.gridOptionsSumContract" id="sumContract"
+	k-on-change="vm.onGridSumContract(kendoEvent, { selected: selected }, data)"></div>
+</uib-tab> </uib-tabset>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Nội dung công việc trong hợp đồng">
+<div kendo-grid="vm.contentWorkInsideContract"
+	k-options="vm.gridOptionsInsideContract" id="contentWorkInsideContract"
+	k-on-change="vm.onGridContentWorkInsideContract(kendoEvent, { selected: selected }, data)"></div>
+</uib-tab> </uib-tabset>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Nội dung công việc phát sinh ngoài hợp đồng">
+<div kendo-grid="vm.contentWorkOutsideContract"
+	k-options="vm.gridOptionsOutsideContract"
+	id="contentWorkOutsideContract"
+	k-on-change="vm.onGridContentWorkOutsideContract(kendoEvent, { selected: selected }, data)"></div>
+</div>
+</uib-tab> </uib-tabset>
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="File đính kèm">
+<div kendo-grid="vm.calculateFileGrid"
+	k-options="vm.gridCalculateOptions" id="calculateFileGrid"></div>
+</uib-tab></uib-tabset>
+<form action="#" class="form-horizontal">
+
+	<div class="portlet light bordered" ng-show="vm.disabledPheDuyet">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class=""></i> <span
+					class="caption-subject font-red-sunglo  bold uppercase" translate>Phê
+					duyệt</span>
+			</div>
+		</div>
+		<br />
+		<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phê duyệt</label>
+					<div class="col-md-8">
+						<select class="form-control" id="monitoring" style="width: 100%"
+							name="monitoring" kendo-drop-down-list
+							ng-model="vm.approDTO.statusCa">
+							<option value=2 selected="selected">Đã duyệt</option>
+							<option value=3>Từ chối duyệt</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Nhận
+							xét/Lý do từ chối duyệt</label>
+						<div class="col-md-10 input-width" style="">
+							<input type="text" class="form-control width100"
+								name="constrtAddress" id="constrtAddress"
+								ng-model="vm.approDTO.comments" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END FORM-->
+		</div>
+	</div>
+</form>
+<div class="clearfix form-actions" ng-show="true">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button type="button" class="btn green btn-outline padding-search"
+				ng-click="vm.exPortCTTDPopup()" translate>Export chiết tính
+				đề nghị QT</button>
+		</div>
+	</div>
+</div>

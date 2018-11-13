@@ -1,0 +1,116 @@
+<div class="portlet light bordered">
+ 	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i> <span
+	    class="caption-subject bold lowercase" translate>Thông tin chung</span>
+	  	</div>
+ 	</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">
+				<br/>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Số Hợp Đồng</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="contractCode" id="contractCode"
+									ng-model="vm.listcategory.contractCode" readonly="readonly" required
+									data-required-msg="Tên không được để trống" /> <span
+									data-for='contractCode' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tên hợp	đồng</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="contractName" id="contractName"
+									ng-model="vm.listcategory.contractName" readonly="readonly" required
+									data-required-msg="Tên không được để trống" /> <span
+									data-for='contractName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+			
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã công trình</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="constrtCode" id="constrtCode"
+									ng-model="vm.listcategory.constrtCode" required readonly="readonly"
+									data-required-msg="Tên không được để trống" /> <span
+									data-for='constrtCode' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tên công trình</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="constructName" id="constructName"
+									ng-model="vm.listcategory.constructName" required readonly="readonly"
+									data-required-msg="Tên không được để trống" /> <span
+									data-for='constructName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Địa chỉ	công trình</label>
+								<div class="col-md-10 input-width">
+									<input class="form-control width100" name="constructAddress" id="constructAddress"
+										ng-model="vm.listcategory.constructAddress" readonly="readonly" required
+										data-required-msg="Địa chỉ công trình không được để trống" /> <span
+										data-for='constructAddress' class='k-invalid-msg'></span>								
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+</div>
+	
+<div class="portlet light bordered">
+ 	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i> <span
+	    class="caption-subject bold lowercase" translate>Danh sách</span>
+	  	</div>
+ 	</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">	
+					<div class="clearfix">
+						<div kendo-grid="vm.categoryAcceptanceGrid" k-options="vm.gridOptions" id="mainGrid" >
+						</div>
+						<script>
+                $(document).ready(function() {
+                    var tooltip = $("#mainGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#mainGrid").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#mainGrid").find("td").click(false);
+                });
+            </script>
+
+					</div>
+				</form>
+			</div>
+	</div>
+
+
+

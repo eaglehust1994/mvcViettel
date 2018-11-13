@@ -1,0 +1,89 @@
+<form class="form-horizontal row" role="form" name="createOddCablePopup"
+	id="createOddCablePopup" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin chung</span>
+				</div>
+			</div>
+			<p></p>
+			<div class=" clearfix">
+				<div class="col-md-12  form-group" style="margin-top: 10px">
+					<auto-search model-label="Hàng hóa" caller="caller"
+						template-url="views/popup/gridView.html"
+						header-template="caller.headerTemplateOddCable"
+						template-auto="caller.TemplateOddCable" page="1" page-size="20"
+						popup-id="Goods_AutoComplete" popup-type="gridplus"
+						popup-source-link="goodsRsServiceRest/doSearchActiveGoods"
+						combo-id="findGoods"
+						combo-source-link="goodsRsServiceRest/getForAutoCompleteGoods"
+						combo-name="name" combo-value="goodsId" combo-code="name"
+						combo-search="caller.commonSearch"
+						combo-grid="caller.gridCommonOddCable"
+						model-id="caller.SearchOddCable.goodsId"
+						model-name="caller.SearchOddCable.goodsName"> </auto-search>
+
+				</div>
+			</div>
+			<div class="clearfix position-relative">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req" translate required
+							data-required-msg="Chiều dài tối thiểu không được để trống">Chiều
+							dài tối thiểu</label>
+						<div class="col-md-8">
+							<input class=" class=" form-control" type="number"
+								name="amountMinimum" id="amountMinimum"
+								ng-model="data.amountMinimum" /> <span data-for='amountMinimum'
+								class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Đơn vị
+							tính</label>
+						<div class="col-md-8">
+							<input class=" class=" form-control" type="text"
+								name="goodsUnitName" id="goodsUnitName"
+								ng-model="data.goodsUnitName" /> <span data-for='goodsUnitName'
+								class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<!-- <div class="col-md-6 control-label">
+                       			<label class="col-md-4 control-label" translate >Đơn vị tính </label>
+                       			 <div class="col-md-8">
+                       			 <label class="control-label" ng-bind="caller.oddCableManagementGrid.goodsUnitName"></label>
+									<input class=" class="form-control" type="text" name="goodsUnitName" id="goodsUnitName" ng-model="data.goodsUnitName" />
+								</div>
+							</div> -->
+				</div>
+			</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row"></div>
+			</div>
+
+		</div>
+		<div class="col-md-12 text-right">
+			<button type="button" class="btn green btn-outline padding-search"
+				id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button" id="save"
+				class="btn green btn-outline padding-search-right" ng-click="save()"
+				translate>Ghi lại</button>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				$("#save").click();
+				break;
+			}
+		}
+	</script>
+</form>

@@ -1,0 +1,17 @@
+{
+	"Hệ thống kho tàng tài sản":"Hệ thống kho tàng tài sản",
+	"home":{
+		"title":"Hệ thống kho tàng tài sản"
+	},
+	"HCQT":{
+		"XEM_HO_SO":"View Document"
+	},
+	"error.not.has.handoverOfAsset": "Chưa bàn giao tài sản",
+	"TSCD":{
+		"lbl_DVQL":"Đơn vị quản lý"
+	}	
+	,"Tất cả":"Tất cả"
+	,"Đã gửi tài chính":"Đã gửi tài chính"
+	,"Chưa gửi tài chính":"Chưa gửi tài chính"
+	,"Đã duyệt":"Đã duyệt"
+}

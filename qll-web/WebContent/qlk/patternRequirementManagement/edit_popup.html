@@ -1,0 +1,59 @@
+
+<form class="form-horizontal row" role="form" name="editPopup" id="editPopup" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body padding10">
+		<div class="clearfix">			
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label req" translate>Tên Mẫu</label>
+				<div class="col-md-9">
+					<input class="form-control" name="name" id="name" maxlength="200" ng-model="data.name" required
+						data-required-msg="Tên Mẫu không được để trống" /> <span
+						data-for='code' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label req" translate>Người tạo</label>
+				<div class="col-md-9">
+					<input class="form-control" name="createdUserName" id="createdUserName" maxlength="50" ng-model="data.createdUserName" required
+						data-required-msg="Người tạo không được để trống" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+		<div class="form-group col-md-12">
+				<label class="col-md-3 control-label " translate>Ghi chú</label>
+				<div class="col-md-9">
+					<textarea class="form-control" name="description" id="description" maxlength="500" ng-model="data.description" 
+					  ></textarea>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+							<button type="button" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+		</div>
+		<script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#save").click();
+                    				break;
+                    		}
+                    	} 
+		</script> 
+</form>
+<br/>

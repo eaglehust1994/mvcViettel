@@ -1,0 +1,107 @@
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption"><span
+				class="caption-subject bold lowercase" translate>Thông tin chung</span>
+		</div>
+	</div>
+	<div class="portlet-body form">
+		<form class="form-horizontal">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label red">Đối tác</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+						 <input class="form-control width100 ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.doitac" readonly="">
+						<span data-for="value" class="k-invalid-msg"></span>
+					</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+						 <input class="form-control width100 ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.constrtName" readonly="">
+						<span data-for="value" class="k-invalid-msg"></span>
+					</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<div class="input-icon right">
+						 <input class="form-control width100 ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.constrtCode" readonly="">
+					</div>
+					<span data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tỉnh thành</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<div class="input-icon right">
+						 <input class="form-control width100 ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.provinceName" readonly="">
+					</div>
+					<span data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Loại công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+						 <input class="form-control width100 ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.constrTypeName" readonly="">
+						<span data-for="value" class="k-invalid-msg"></span>
+					</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Trạng thái</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list k-options="vm.statusOptions"
+							id="combobox" ng-model="vm.objectsData.status"
+							class="form-control width100" ></select>
+					</div>
+				</div>
+				
+			</div>
+		</form>
+	</div>
+	</div>
+	<p>
+	<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption"><span
+				class="caption-subject bold lowercase" translate>Danh sách công việc xây lắp của công trình</span>
+		</div>
+	</div>
+	<div kendo-grid="vm.constructionListGrid" k-options="vm.gridConstructionListOptions" id="constructionListMainGrid">
+				
+			</div>
+			<script>
+                $(document).ready(function() {
+                    var tooltip = $("#constructionListMainGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#constructionListMainGrid").find("td").click(false);
+                });
+            </script>
+</div>

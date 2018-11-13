@@ -1,0 +1,27 @@
+<div>
+
+	<div class="padding-width18">
+		<div class="clearfix border-gray">
+			<div class="form-group clearfix ex10">
+				<div class="form-group col-md-8">
+					<file-input list-file-type="xls,xlsx" model="caller.dataList"
+						size="104857600" caller="caller" input-id="file"
+						model-label="File import" msg="Không được để trống file"></file-input>
+					<input class="col-md-2" id="upfile" ng-click="caller.submit()" type="submit"
+						value="Tải lên" style="height: 20px;">
+					<div class="col-md-2"  style="height: 20px;display: none;margin-left: 30px;" id="modalLoading"></div>
+
+				</div>
+				<div class="form-group col-md-4" align="right">
+					<a id="templateLink" href=""
+						ng-click="caller.downloadImportTemplate()">Tải file biểu mẫu</a>
+				</div>
+			</div>
+			<div class="form-group col-md-4" align="right"
+				style="margin-left: 0.5px;">
+				<span style="color: gray;">Dung lượng &lt;= 100MB, định dạng
+					xls,xlsx</span>
+			</div>
+		</div>
+	</div>
+</div>

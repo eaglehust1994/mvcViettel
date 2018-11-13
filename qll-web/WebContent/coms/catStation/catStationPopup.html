@@ -1,0 +1,83 @@
+
+<form class="form-horizontal row padding10" role="form"
+	name="catStation" id="catStation" kendo-validator="validator"
+	k-options="validatorOptions" style=" ">
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-2 control-label req" translate>Mã trạm:</label>
+			<div class="col-md-4">
+				<input class="form-control" ng-blur="focusOut()" name="code"
+					id="code" maxlength="50" ng-model="caller.catStation.code"
+					required data-required-msg="Mã trạm không được để trống" />
+				<span data-for='parType' class='k-invalid-msg'></span>
+				<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+			</div>
+			<label class="col-md-2 control-label" translate>Là trạm gốc:</label>
+			<div class="col-md-4">
+			<input type="checkbox" ng-model="caller.catStation.isParent"/>
+			</div>
+			
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-2 control-label req " translate>Loại trạm:</label>
+			<div class="col-md-4" id="">
+				<input id="catStationTypeName" kendo-auto-complete k-options="caller.stationTypeOptions" maxlength="50" tabindex="5"
+												header-template="caller.headerTemplate" name="catStationTypeName" required data-required-msg="Loại trạm không được để trống"
+												 class="form-control width100" id="proj" ng-blur="caller.changeDataAuto('proj')"
+																 ng-model="caller.catStation.catStationTypeName"/>
+			</div>
+			
+			<label class="col-md-2 control-label req" translate>Mã nhà trạm:</label>
+			<div class="col-md-4" id="">
+				<input id="catStationHouseName" kendo-auto-complete k-options="caller.stationHouseOptions" maxlength="50" tabindex="5"
+												header-template="caller.headerTemplate1" name="catStationHouseName"  data-required-msg="Mã nhà trạm không được để trống"
+												 class="form-control width100" id="proj" ng-blur="caller.changeDataAuto('proj')"
+																 ng-model="caller.catStation.catStationHouseCode"/>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-2 control-label " translate>Ghi chú:</label>
+			<div class="col-md-10">
+				<textarea class="form-control" name="description" id="description" rows="3"
+					maxlength="1000" ng-model="caller.catStation.description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="savepopupApp"
+						class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+						translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("input").change(function() {
+			$(this).val($.trim($(this).val()));
+		});
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				if (e.keyCode === 13 && !$('#cancel:focus').length
+						&& !$('#savepopupApp:focus').length) {
+					$("#savepopupApp").click();
+					break;
+				}
+			}
+		}
+	</script>
+</form>

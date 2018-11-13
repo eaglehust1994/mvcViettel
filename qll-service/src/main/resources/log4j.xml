@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration debug="true"
+	xmlns:log4j='http://jakarta.apache.org/log4j/'>
+
+	<!-- Info log appender -->
+	<appender name="COMPRESSOR4J" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/compressor4j.log" />
+		<!-- <param name="File" value="D:\\temp\\logs\\compressor4j.log" /> -->
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d %-5p-%l:%m%n" />
+		</layout>
+	</appender>
+	<appender name="LogHieuNang" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/logHieuNang.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="logDangNhap" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/logDangNhap.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%m%n" />
+		</layout>
+	</appender>
+	<appender name="LogLoi" class="org.apache.log4j.DailyRollingFileAppender">
+		<param name="File" value="${catalina.home}/logs/logLoi.log" />
+		<param name="Append" value="true" />
+		<param name="DatePattern" value="'.'yyyy-MM-dd" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%l:%m%n" />
+		</layout>
+	</appender>
+
+
+	<!-- ============================== -->
+	<!-- Append messages to the console -->
+	<!-- ============================== -->
+	<appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+		<!-- <param name="Target" value="System.out" /> -->
+		<!-- <param name="Threshold" value="INFO" /> -->
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{dd/MM/yyyy HH:mm:ss,SSS} %5p %c: %L - %m%n" />
+		</layout>
+	</appender>
+
+	<!-- ================ -->
+	<!-- Define LOGGER -->
+	<!-- ================ -->
+
+	<!-- <logger name="com.viettel.erp" additivity="false"> <level value="INFO" 
+		/> <appender-ref ref="COMPRESSOR4J" /> </logger> -->
+	<logger name="com.viettel" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="COMPRESSOR4J" />
+		<appender-ref ref="CONSOLE" />
+
+	</logger>
+	<logger name="LogHieuNang" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="LogHieuNang" />
+
+	</logger>
+	<logger name="LogLoi" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="LogLoi" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+	<logger name="LogDangNhap" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="logDangNhap" />
+	</logger>
+
+	<logger name="org.springframework" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+	<logger name="org.hibernate" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+		<logger name="org.apache.cxf" additivity="false">
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+
+
+	<root>
+		<level value="INFO" />
+		<appender-ref ref="CONSOLE" />
+	</root>
+
+</log4j:configuration>

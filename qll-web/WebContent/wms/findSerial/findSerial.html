@@ -1,0 +1,113 @@
+<div data-ng-controller="findSerialController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions" >
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoFindSerial"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					
+					<div id="demoFindSerial" class="collapse in from-search" >
+						<div class="clearfix" id="findSerialId">
+							<auto-search model-label="Kho" caller="vm" focus-e="true"
+							template-url="views/popup/gridView.html"
+							header-template="vm.headerTemplate" template-auto="vm.template"
+							page="1" page-size="20" popup-id="stockSerial"
+							popup-type="gridplus"
+							popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+							combo-id="stockSerial"
+							combo-source-link="stockRsServiceRest/getForAutoCompleteStock"
+							combo-name="name" combo-value="code" combo-code="name"
+							combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+							model-name="vm.findSerialSearch.stockName"/>
+							
+							<auto-search model-label="Hàng hóa" caller="vm"
+								template-url="views/popup/gridViewGoodsPopup.html" 
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="findSerial" popup-type="gridplusGoods"
+								popup-source-link="stockRsServiceRest/doSearchGoodsInPopup"
+								combo-id="findSerial" combo-source-link="orderGoodsServiceRest/orderGoods/getForAutoComplete"
+								combo-name="name" combo-value="code" combo-code="name" 
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommonGoods"
+								model-name="vm.findSerialSearch.name"/>
+						</div>
+
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-label req" translate>Serial</label>
+									<div class="col-md-10">
+										<textarea class="form-control" id="listSerial" name="serial"
+											required data-required-msg="Serial không được để trống"
+											ng-model="vm.findSerialSearch.serialString"
+											onclick="reset_msg();"
+											placeholder="Các serial có thể cách nhau bởi dấu ',', dấu ';', xuống dòng"></textarea>
+										<!-- {{vm.findSerialSearch.listSerial}} -->
+										<span id="msg" data-for='serial' class='k-invalid-msg'></span>
+										
+									</div>
+									<script>
+										function reset_msg() {
+											document.getElementById('msg').innerHTML = '';
+										}
+									</script>
+								</div>
+							</div>
+						</div>
+						
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="doSearchSerial"
+										class="btn btn-qlk padding-search-right searchQLK"
+										ng-click="vm.doSearchFindSerial()" translate>
+										<i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase" id="findSerialCount">{{vm.count}}</label><label class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demoFindSerial1"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+
+		</div>
+		<div id="demoFindSerial1" class="collapse in from-search">
+			<div id="findSerialGrid" kendo-grid="vm.findSerialGrid"
+				k-editable="false" k-options="vm.findSerialGridOptions"></div>
+		</div>
+	</div>
+</div>
+
+<!-- <script type="text/javascript">
+	document.onkeydown = keyDown;
+	function keyDown(e) {
+		switch (e.keyCode) {
+		case 27:
+			$("#cancel").click();
+			break;
+		case 13:
+			$("#doSearchSerial").click();
+			break;
+		}
+	}
+</script> -->

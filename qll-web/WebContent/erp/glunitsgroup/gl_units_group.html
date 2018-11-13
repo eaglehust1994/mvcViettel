@@ -1,0 +1,25 @@
+<div ng-controller="GlUnitsGroupController">
+    <div>
+        <div class="action-button them-moi" ng-click="btnAdd()"></div>
+        <div class="action-button xoa" ng-click="btnRemove()"> </div>
+        <div class="action-button luu" ng-click="btnSave()"> </div>
+        <div class="action-button tim-kiem" ng-click="btnSearch()"> </div>
+        <div class="action-button dang-bang" ng-click="btnShowGrid()"> </div>
+    </div>
+    <br>
+    <div ng-show="showCreate">
+        <div data-ng-include="'erp/glunitsgroup/gl_units_group_form.html'" kendo-validator="validator" k-options="validatorOptions"></div>
+    </div>
+    <div ng-show="!showCreate">
+        <div ng-show="showSearch">
+            <div data-ng-include="'erp/glunitsgroup/gl_units_group_search_form.html'" k-options="validatorOptions"></div>
+        </div>
+        <div ng-show="showTable">
+            <div kendo-grid="gridList" k-options="gridOptions" ng-hide="showDetail">
+                <div k-detail-template grid-detail>
+                    <div data-ng-include="'erp/glunitsgroup/gl_units_group_form.html'" kendo-validator="validator" k-options="validatorOptions"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

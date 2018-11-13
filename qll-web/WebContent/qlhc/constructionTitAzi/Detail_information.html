@@ -1,0 +1,190 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+    margin: 4px 2px;
+}
+</style>
+
+       <div class="portlet light bordered">
+	       <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Thời gian nghiệm thu</span>
+			</div>
+			</div>
+	       <div class="clearfix">
+	       		<div class="form-group col-md-6">
+                     <label class="col-md-4 control-label req" translate=""><span class="ng-scope" req>Ngày bắt đầu</span></label>
+                     <div class="col-md-6 ">
+                          <input class="form-control width100" kendo-date-time-picker ng-disabled="vm.vohieuhoa"  name="acceptFromDate" id="acceptFromDate" required data-required-msg="Trường này không được để trống"
+                          			k-options="vm.datePickerConfig" 
+                          			ng-model="vm.dataItem.acceptFromDate"/>
+							<span data-for="acceptFromDate" class="k-invalid-msg"></span>
+                      </div>
+                      <script>
+						$(function() {
+							var validTo = $("#acceptFromDate");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000 00:00:00"
+							});
+	
+							validTo.kendoDateTimePicker({
+								format : "dd/MM/yyyy HH:mm:ss"
+							});
+	
+							validTo.closest(".k-datetimepicker").add(
+									validTo).removeClass("k-textbox");
+						});
+					</script>
+                 </div>
+                 
+                 <div class="form-group col-md-6">
+                     <label class="col-md-4 control-label req" translate=""><span class="ng-scope">Ngày kết thúc</span></label>
+                     <div class="col-md-6 ">
+                          <input class="form-control width100" kendo-date-time-picker ng-disabled="vm.vohieuhoa" name="acceptToDate" id="acceptToDate" required data-required-msg="Trường này không được để trống"
+                          		k-options="vm.datePickerConfig" 
+                          		ng-model="vm.dataItem.acceptToDate"/>
+							<span data-for="acceptToDate" class="k-invalid-msg"></span>
+							<script>
+						$(function() {
+							var validTo = $("#acceptToDate");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000 00:00:00"
+							});
+	
+							validTo.kendoDateTimePicker({
+								format : "dd/MM/yyyy HH:mm:ss"
+							});
+	
+							validTo.closest(".k-datetimepicker").add(
+									validTo).removeClass("k-textbox");
+						});
+					</script>
+                      </div>
+                 </div>
+	       </div>
+	        <div class="clearfix ">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Tại</label>
+						<div class="col-md-10">
+							<input type="text" maxlength=1000 class="form-control width100" ng-model="vm.dataItem.acceptPlace" id="acceptPlace" name="acceptPlace" ng-disabled="vm.vohieuhoa"
+								required data-required-msg="Trường này không được để trống">
+							<span data-for="acceptPlace" class="k-invalid-msg"></span>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        </div>
+
+
+       <div class="portlet light bordered">
+      <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Đánh giá hạng mục công trình xây dựng</span>
+			</div>
+			</div>
+        <div class="clearfix">
+            <div class=" form-group col-md-6">
+                <label class="col-md-4 control-label req">Quy chuẩn, tiêu chuẩn được áp dụng</label>
+                <div class="col-md-8">
+                        <input ng-model="vm.dataItem.applyBenchmark" class="form-control width100" id="applyBenchmark" name="applyBenchmark" maxlength=500 ng-disabled="vm.vohieuhoa"
+                        	required data-required-msg="Trường này không được để trống!" />
+                        <span data-for='applyBenchmark' class='k-invalid-msg'></span>     
+                </div>
+            </div>
+            <div class=" form-group col-md-6">
+                <label class="col-md-4 control-label">Văn bản, tài liệu khác (nếu có)</label>
+                <div class="col-md-8">            
+                        <input ng-model="vm.dataItem.otherDocuments" class="form-control width100" id="otherDocuments" maxlength=500 name="otherDocuments" ng-disabled="vm.vohieuhoa"/>
+                </div>
+            </div>
+        </div>
+        
+        <div class="clearfix ">
+            <div class=" form-group col-md-6">
+                <label class="col-md-4 control-label req">Chất lượng công việc xây dựng</label>
+                <div class="col-md-8">
+                   <input ng-model="vm.dataItem.constructionQuality" id="constructionQuality" name="constructionQuality" class="form-control width100" maxlength=200 ng-disabled="vm.vohieuhoa"
+                   		required data-required-msg="Trường này không được để trống !" />
+                   	<span data-for='constructionQuality' class='k-invalid-msg'></span>
+                </div>
+            </div>
+            <div class=" form-group col-md-6">
+                <label class="col-md-4 control-label">Các ý kiến khác </label>
+                <div class="col-md-8">
+                        <input ng-model="vm.dataItem.otherComments" id="otherComments" name="otherComments" maxlength=1000 class="form-control width100" ng-disabled="vm.vohieuhoa"/>
+                </div>
+            </div>
+        </div>
+        </div>
+</div>
+       <div class="portlet light bordered">
+	       <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Kết luận</span>
+			</div>
+			</div>
+	       	<div class="clearfix">
+				<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Kết luận</label>
+						<div class="col-md-8">
+							<select kendo-drop-down-list id="conclusion" ng-disabled="vm.vohieuhoa"
+				            k-data-text-field="'value'"
+				            k-data-value-field="'id'"
+				            k-data-source="vm.conclusion"
+				            ng-model="vm.bean.conclusion"
+				            style="width: 100%">
+				        </select>
+						</div>
+				</div>
+			</div>
+	        <div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Yêu cầu sửa chữa, hoàn thiện</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control width100" name="description" id="description" maxlength=1000 ng-model="vm.dataItem.completeRequest" ng-disabled="vm.vohieuhoa">
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+        </div>
+       <div class="portlet light bordered">
+	   <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Bảng diễn giải khối lượng xây lắp hoàn thành</span>
+			</div>
+			</div>
+		<div class="btn-group margin-left-button">
+			<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" ng-disabled="vm.vohieuhoa" ng-click="vm.importKLXLHT()" uib-tooltip="Import File">
+				<div class="action-button import"   translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button  box-shadow" ng-disabled="vm.vohieuhoa"  ng-click="vm.themdong()" uib-tooltip="Bổ sung">
+				<div class="action-button add"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-disabled="vm.vohieuhoa" ng-click="vm.removeRow()" uib-tooltip="Xóa">
+				<div class="action-button del"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			
+		</div>
+			
+		<div id="aaa" class="gridAzimu"  kendo-grid="vm.bangcon" k-options="vm.gridOptions2"></div>
+		<script>
+                $(document).ready(function() {
+                    var tooltip = $("#aaa").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#aaa").find("td").click(false);
+                });
+            </script>
+		</div>
+  	</div>

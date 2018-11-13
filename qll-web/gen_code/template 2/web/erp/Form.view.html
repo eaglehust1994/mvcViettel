@@ -1,0 +1,82 @@
+<!-- @author hailh10 -->
+<h3 class="page-title" translate>
+	<i class="fa fa-line-chart" aria-hidden="true"></i> {{'Chi tiết' | translate}} ${tbl.tableNameJV}
+</h3>
+<div ng-controller="${tbl.tableNameJV}FormController as vm">
+    
+	<hr class="line-Hr">
+    <div  id="${tbl.tableNameVar}">
+		<form class="form-horizontal row" role="form" name ="${tbl.tableNameVar}" >
+			<div class="form-body">
+				<div class="clearfix">
+					
+				</div>
+				
+				<#list  tbl.columnBOs as clm >
+				<#if clm.isKey == false && clm.isKey == false && !clm.columnVar?contains("isActive") && !clm.columnVar?contains("creatorId") && !clm.columnVar?contains("creatorGroupId") && !clm.columnVar?contains("creatorDate") && !clm.columnVar?contains("updatorId") && !clm.columnVar?contains("updatorGroupId") && !clm.columnVar?contains("updatorDate")>				
+					<#if clm.dataTypeJV == "Date">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label ${(!clm.nullable?contains("Y"))?string('req', '')}" translate>${clm.columnName}</label>
+							<div class="col-md-8">
+								<input  kendo-date-picker k-format="'dd/MM/yyyy'" ng-readonly="vm.readonly" class="form-control width100" name="${tbl.tableNameVar}_${clm.columnVar}" id="${tbl.tableNameVar}_${clm.columnVar}" ng-model="vm.data.${clm.columnVar}" />
+							</div>						
+						</div>
+					</div>
+					<#elseif  (clm.dataTypeJV == "Double" || clm.dataTypeJV == "Long" )  >		
+						<#if clm.precision <=2 >
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ${(!clm.nullable?contains("Y"))?string('req', '')}">${clm.columnName}</label>
+						<div class="col-md-8">							
+							<select  kendo-drop-down-list="vm.${clm.columnVar}.dropDownList" class="form-control width100"
+											id="${tbl.tableNameVar}_${clm.columnVar}" 
+											style="width: 100%" name="${tbl.tableNameVar}_${clm.columnVar}"
+											k-data-text-field="'name'" k-data-value-field="'id'"
+											k-data-source="vm.${clm.columnVar}DlDataSource" ng-readonly="vm.readonly"
+											ng-model="vm.data.${clm.columnVar}">
+									</select> 
+						</div>
+					</div>
+				</div>	
+					<#else>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ${(!clm.nullable?contains("Y"))?string('req', '')}">${clm.columnName}</label>
+						<div class="col-md-8">							
+							<input class="form-control width100"  id="${tbl.tableNameVar}_${clm.columnVar}" name="${tbl.tableNameVar}_${clm.columnVar}" ng-readonly="vm.readonly" ng-model="vm.data.${clm.columnVar}" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength = "${clm.precision}">
+						</div>
+					</div>
+				</div>			
+					</#if>
+					<#elseif clm.dataTypeJV == "String">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ${(!clm.nullable?contains("Y"))?string('req', '')}">${clm.columnName}</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="${tbl.tableNameVar}_${clm.columnVar}" name="${tbl.tableNameVar}_${clm.columnVar}" ng-readonly="vm.readonly" ng-model="vm.data.${clm.columnVar}" maxlength = "${clm.stringLength}">
+						</div>
+					</div>
+				</div>
+					<#else>
+						<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ${(!clm.nullable?contains("Y"))?string('req', '')}">${clm.columnName}</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="${tbl.tableNameVar}_${clm.columnVar}" name="${tbl.tableNameVar}_${clm.columnVar}" ng-readonly="vm.readonly" ng-model="vm.data.${clm.columnVar}" maxlength = "${clm.lengthDis}">
+						</div>
+					</div>
+				</div>					
+				</#if>			
+				</#if>
+				</#list>
+					<div class="clearfix">
+						<div class="form-group col-md-12 text-right">
+									<button type="button" class="btn green" ng-disabled="vm.isdisable" ng-click = "vm.save()">Lưu lại</button>
+						</div>
+					</div>				
+			</div>
+		</form>
+	</div>
+</div>
+

@@ -1,0 +1,229 @@
+
+<!-- <div class="portlet light">
+	<input type="button" name="tab1"
+		class="btn green btn-outline padding-search-right"
+		ng-click="caller.gotoTabOnePopUp()" translate value="Thông tin chung" />
+	<input type="button" name="tab2"
+		class="btn green btn-outline padding-search-right"
+		ng-click="caller.gotoTabTwoPopUp()" translate
+		value="Thông tin hàng
+		hóa" />
+</div> -->
+<div class="col-md-12">
+	<div class="col-md-6">
+		<div class="col-md-6 padding-height-15">
+			<button type="button" class="btn button-header-popup"
+				id="detailGoods" ng-click="caller.gotoTabOnePopUp()" translate
+				value="Thông tin chung">Thông tin chung</button>
+			<button type="button" class="btn  button-header-popup"
+				id="detailGoods" ng-click="caller.gotoTabTwoPopUp()"
+				value="Thông tin hàng
+		hóa" translate>Thông tin hàng hóa</button>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<button type="button"
+			class="width-button-header-popup pull-right btn padding-search-right"
+			ng-click="caller.exportpdf()">
+			<div class="docQLK"></div>
+			<div class="text-button" translate>Xuất yêu cầu thay đổi</div>
+		</button>
+	</div>
+</div>
+<div class="col-md-12 border-ccc "></div>
+<div ng-show="caller.showTabOne">
+	<div class="wrap">
+		<div class="">
+			<form class="form-horizontal row" role="form">
+				<div class="form-body">
+					<div class="portlet light borderChangeGoodsed">
+						<div class="row">
+							<div class="caption col-md-6">
+								<span
+									class="text-header-popup bold lowercase lowercase ng-scope"
+									translate="">Thông tin lô hàng</span>
+							</div>
+							<div class="col-md-6 text-right ">
+								<i data-toggle="collapse" data-target="#demoOrderChangeDetail"
+									class="fa fa-chevron-circle-up" aria-expanded="true"></i>
+							</div>
+						</div>
+						<div id="demoOrderChangeDetail"
+							class="collapse in from-search row">
+							<div class="padding-width18">
+								<div class="border-ccc light bordered">
+									<div class="clearfix">
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Mã
+												yêu cầu</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.code"></label>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Kho
+												thay đổi</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.stockName"></label>
+											</div>
+										</div>
+										<div class="clearfix">
+											<div class="form-group col-md-6"></div>
+											<div class="form-group col-md-6">
+												<label class="col-md-4 control-label" translate>Trạng
+													thái</label>
+												<div class="col-md-8">
+													<label class="control-label" ng-bind="caller.list"></label>
+												</div>
+											</div>
+										</div>
+
+										<div class="clearfix">
+											<div class="form-group col-md-12">
+												<div class="form-group col-md-12">
+													<label class="col-md-2 control-label " translate>Ghi
+														chú</label>
+													<div class="col-md-10">
+														<label class="control-label" name="parOder" id="parOder"
+															maxlength="2" ng-model="data.description"></label>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="portlet light borderChangeGoodsed">
+						<div class="row">
+							<div class="caption col-md-6">
+								<span
+									class="text-header-popup bold lowercase lowercase ng-scope"
+									translate="">Thông tin bổ sung</span>
+							</div>
+							<div class="col-md-6 text-right ">
+								<i data-toggle="collapse" data-target="#demoOrderChangeDetail1"
+									class="fa fa-chevron-circle-up" aria-expanded="true"></i>
+							</div>
+						</div>
+						<div id="demoOrderChangeDetail1"
+							class="collapse in from-search row">
+							<div class="padding-width18">
+								<div class="border-ccc light bordered">
+									<div class="clearfix">
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Người
+												tạo</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.fullName"></label>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Ngày
+												tạo</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.createdDate"></label>
+											</div>
+										</div>
+									</div>
+									<div class="clearfix">
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Đơn
+												vị tạo</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.createdDeptedName"></label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet light borderChangeGoodsed">
+						<div class="row">
+							<div class="caption col-md-6">
+								<span
+									class="text-header-popup bold lowercase lowercase ng-scope"
+									translate="">Thông tin hủy/từ chối</span>
+							</div>
+							<div class="col-md-6 text-right ">
+								<i data-toggle="collapse" data-target="#demoOrderChangeDetail2"
+									class="fa fa-chevron-circle-up" aria-expanded="true"></i>
+							</div>
+						</div>
+						<div id="demoOrderChangeDetail2"
+							class="collapse in from-search row">
+							<div class="padding-width18">
+								<div class="border-ccc light bordered">
+									<div class="clearfix">
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Người
+												thực hiện</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.cancelUserId"></label>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Lý do</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.cancelReasonName"></label>
+											</div>
+										</div>
+									</div>
+									<div class="clearfix">
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Ngày
+												thực hiện</label>
+											<div class="col-md-8">
+												<label class="control-label"
+													ng-bind="caller.orderChangeGoods.cancelDate"></label>
+											</div>
+										</div>
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label" translate>Ghi
+												chú</label>
+											<div class="col-md-8">
+												<!-- <textarea class="form-control width100" type="text" readonly="readonly"
+												ng-model="caller.orderChangeGoods.cancelDescription"></textarea> -->
+												<label style="word-wrap: break-word; text-align: left;"
+													ng-bind="caller.orderChangeGoods.cancelDescription"></label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</div>
+<div ng-show="caller.showTabTwo">
+	<div class="wrap">
+		<div class="">
+			<div class="portlet light">
+				<div id="detailListGrid" kendo-grid="caller.detailListGrid"
+					k-editable="false" k-options="caller.detailListGridOptions"></div>
+			</div>
+
+		</div>
+	</div>
+
+</div>
+<div class="portlet light" align="right">
+
+	<button type="button" class="btn btn-qlk padding-search-right closeQLK"
+		id="cancel" ng-click="caller.cancel()" translate>Đóng</button>
+</div>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+	<jaxrs:server id="ConstrCompleteRecordsMapRsService"
+		address="/ConstrCompleteRecordsMapRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrCompleteRecordsMapRsServiceRestClass"
+				class="com.viettel.erp.rest.ConstrCompleteRecordsMapRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="CatFileInvoiceRsService" address="/CatFileInvoiceRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="CatFileInvoiceRsServiceRestClass" class="com.viettel.erp.rest.CatFileInvoiceRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="AbComplementWorkRsServiceRest" address="/AbComplementWorkRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AbComplementWorkRsServiceRestClass" class="com.viettel.erp.rest.AbComplementWorkRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="AbDetailPriceRsServiceRest" address="/AbDetailPriceRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AbDetailPriceRsServiceRestClass" class="com.viettel.erp.rest.AbDetailPriceRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="AbSettlementWorkRsServiceRest" address="/AbSettlementWorkRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AbSettlementWorkRsServiceRestClass" class="com.viettel.erp.rest.AbSettlementWorkRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+</beans>

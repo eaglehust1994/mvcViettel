@@ -1,0 +1,126 @@
+<style>
+#pdf {
+    background-image: url(style/img/pdf_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+#excel {
+    background-image: url(style/img/excel_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+#note {
+    background-image: url(style/img/note_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+</style>
+
+<div data-ng-controller="stockDailyImportExportController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate></span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo26" class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo26" class="collapse in from-search">
+						<div class="clearfix">
+								<auto-search model-label="Kho" caller="vm" 
+									template-url="views/popup/gridView.html" header-template="vm.headerTemplate"
+									template-auto="vm.template" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+									popup-source-link="stockRsServiceRest/doSearch"
+									combo-id="ar_deposit_browser_txtAdOrgId"
+									combo-source-link="stockRsServiceRest/getForAutoComplete"
+									combo-name="name" combo-value="code" combo-code="name"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-id="vm.stockDailyImportExportSearch.keySearch"
+									model-name="vm.stockDailyImportExportSearch.keySearch"> </auto-search>
+						
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Ngày tạo:
+									từ ngày </label>
+								<div class="col-md-3">
+									<input name="createDateFrom" id="createDateFrom"
+										ng-model="vm.stockDailyImportExportSearch.startDate" style="width: 100%;"/>
+								</div>
+								
+								<label class="col-md-2 control-label" translate>đến</label>
+								<div class="col-md-3 position-relative">
+									<input name="createDateTo" id="createDateTo"
+										ng-model="vm.stockDailyImportExportSearch.endDate" style="width: 100%;"/>
+										
+								</div>
+								<div class="One_icon" ng-click="vm.cancelStock('clearDate')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+							<script type="text/javascript">
+								// set DateTime
+								var newDate = new Date();
+								var dd = newDate.getDate();
+								var MM = newDate.getMonth();
+								var yyyy = newDate.getFullYear();
+								  
+								$("#createDateFrom").kendoDatePicker({
+									value : dd +"/"+ MM +"/"+ yyyy,
+									format : "dd/MM/yyyy",
+									animation : {
+										close : {effects : "zoom:out",duration : 300}
+									}
+								});
+								
+								$("#createDateTo").kendoDatePicker({
+									format : "dd/MM/yyyy",
+									animation : {
+										close : {effects : "zoom:out",duration : 300}
+									}
+								});
+								</script>
+						</div>
+	
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button"  ng-click="vm.doSearch()"
+										class="btn btn-qlk padding-search-right  noteQLK" translate>Xem trước</button>
+									<button type="button" id="excel"
+										class="btn green btn-outline padding-search"
+										 translate>Xuất excel</button>
+									<button type="button" id="pdf"
+										class="btn green btn-outline padding-search"
+										 translate>Xuất pdf</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate></span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo18" class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		
+		<div id="demo18" class="collapse in from-search">
+			<div id="stockDailyImportExportGrid" kendo-grid="vm.stockDailyImportExportGrid" 
+			k-editable="false" k-options="vm.stockDailyImportExportGridOptions" 
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>	
+		</div>
+	</div>
+</div>

@@ -1,0 +1,186 @@
+<div data-ng-controller="impNoteManaController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã phiếu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.stockTransSearch.code" />
+								</div>
+							</div>
+							<auto-search model-label="Kho nhập" caller="vm"
+								template-url="views/popup/gridView.html"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplus"
+								popup-source-link="stockRsServiceRest/getStocksForAutocomplete"
+								combo-id="stockTransStock"
+								combo-source-link="stockRsServiceRest/getStocksForAutocompleteDropDown"
+								combo-name="name" combo-value="code" combo-code="code"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.stockTransSearch.stockId" model-name="vm.stockTransSearch.stockName"
+								ng-model="vm.stockTransSearch.stockName"> </auto-search>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.stockTransSearch.orderCode" />
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click ="vm.clearOrderCode()"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Trạng
+									thái phiếu</label>
+								<div class="col-md-8">
+										<select  kendo-multi-select class="form-control"
+											id="importNoteState" style="width: 100%" name="importNoteState"
+											ng-model="vm.stockTransSearch.listStatus">
+											<option value="1">1.Chưa nhập/xuất</option>
+											<option value="2">2.Đã nhập/xuất</option>
+											<option value="3">3.Đã hủy</option>
+										</select>
+									</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchStatus"></i>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Ngày
+									tạo: Từ ngày</label>
+								<div class="col-md-4">
+									<input name="createFrom" id="createFrom"
+										ng-model="vm.stockTransSearch.fromDate" style="width: 100%;"
+										required data-required-msg="Ngày tạo từ không được để trống"
+										data-date-msg="Ngày tạo từ không hợp lệ" />
+								</div>
+								<script>
+									$("#createFrom").kendoDatePicker({
+										animation : {
+											close : {
+												effects : "zoom:out",
+												duration : 300
+											}
+										}
+									});
+								</script>
+								<label class="col-md-1 control-label" translate>đến</label>
+								<div class="col-md-3">
+									<input name="createTo" id="createTo"
+										ng-model="vm.stockTransSearch.toDate" style="width: 100%;"
+										required data-required-msg="Ngày tạo đến không được để trống"
+										data-date-msg="Ngày tạo đến không hợp lệ" />
+								</div>
+								<script>
+									$("#createTo").kendoDatePicker({
+										animation : {
+											close : {
+												effects : "zoom:out",
+												duration : 300
+											}
+										}
+									});
+								</script>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchDate()"></i>
+								</div>
+							</div>
+							<auto-search model-label="Người tạo" caller="vm"
+								template-url="views/popup/gridView.html"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplus"
+								popup-source-link="sysUserServiceRest/user/sysAllUsersQLK"
+								combo-id="stockTransCreator"
+								combo-source-link="sysUserServiceRest/user/sysAllUsersQLKDropdown"
+								combo-name="fullName" combo-value="employeeCode" combo-code="employeeCode"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCreator"
+								model-id="vm.stockTransSearch.createdBy" model-name="vm.stockTransSearch.createdByName"
+								ng-model="vm.stockTransSearch.createdByName"> </auto-search>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng ký CA</label>
+								<div class="col-md-8">
+									<select kendo-multi-select class="form-control"
+											id="signStateCAImportNoteMana" style="width: 100%" name="signStateCAImportNoteMana"
+											ng-model="vm.stockTransSearch.listSignState">
+										<option value="1">1.Chưa trình ký</option>
+										<option value="2">2.Đã trình ký</option>
+										<option value="3">3.Đã ký</option>
+										<option value="4">4.Đã từ chối</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.orderSearch.listSignState"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị
+										tạo</label>
+									<div class="col-md-8">
+										<!-- 		<input class=" form-control width100" type="text" ng-model="vm.orderSearch.createdDeptedId"/>-->
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+											<input class=" form-control width100" type="text"
+												ng-model="vm.stockTransSearch.createdDeptName" />
+										</div>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</div>
+								</div>
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findExt"
+										class="btn btn-qlk padding-search-right searchQLK" translate
+										ng-click="vm.doSearch()">Tìm kiếm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	</form>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase"  ng-bind="vm.count"></label><label class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo1"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo1" class="collapse in ">
+			<div id="impNoteManaGrid" kendo-grid="vm.impNoteManaGrid"
+				k-editable="false" k-options="vm.impNoteManaGridOptions"></div>
+		</div>	
+	</div>
+</div>

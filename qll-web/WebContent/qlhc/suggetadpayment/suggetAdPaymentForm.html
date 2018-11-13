@@ -1,0 +1,248 @@
+<form class="form-horizontal row" role="form">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					translate>Thông Tin Chung</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<!-- phần này code phụ thuộc code của dodt -->
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Số hợp
+						đồng</label>
+					<div class="col-md-8">
+						<input class="form-control" name="contractCode" id="contractCode"
+							ng-model="vm.adPayment.contractCode" required
+							data-required-msg="Nội dung không được để trống" disabled /> <span
+							data-for='contractCode' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Ngày kí
+						hợp đồng</label>
+					<div class="col-md-8">
+						<input class="form-control" style="width: 100%;"
+							name="signed_date" required data-for='signed_date'
+							id="signed_date" ng-model="vm.adPayment.signed_date"
+							data-req-msg="Nội dung không được để trống" readonly disabled />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Đại
+						diện chủ đầu tư</label>
+					<div class="col-md-8">
+						<input class="form-control" name="investorRepresentive"
+							id="investorRepresentive"
+							ng-model="vm.adPayment.investorRepresentive" required
+							data-required-msg="Nội dung không được để trống" disabled /> <span
+							data-for='investorRepresentive' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Đối tác</label>
+					<div class="col-md-8">
+						<input class="form-control" name="investProjectName"
+							id="investProjectName" ng-model="vm.adPayment.investProjectName"
+							required data-required-msg="Nội dung không được để trống"
+							disabled /> <span data-for='investProjectName'
+							class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Về
+							việc</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="contractName" id="contractName"
+								required data-required-msg="Nội dung không được để trống"
+								data-for='contractName' ng-model="vm.adPayment.contractName"
+								disabled />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Kính
+							gửi</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="receiveDepartment"
+								id="receiveDepartment" required
+								data-required-msg="Nội dung không được để trống"
+								data-for='receiveDepartment'
+								ng-model="vm.adPayment.receiveDepartment">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- hết phần phụ thuộc code của dodt -->
+
+	<!-- -----------thông tin tạm ứng-------------- -->
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					translate>Thông tin tạm ứng</span>
+			</div>
+		</div>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Số lần
+						tạm ứng</label>
+					<div class="col-md-8">
+						<input class="form-control" name="advancePaymentNumber"
+							id="advancePaymentNumber" type="number"
+							ng-model="vm.adPayment.advancePaymentNumber" required
+							data-required-msg="Tên không được để trống"
+							onkeypress="return event.charCode >= 48 && event.charCode <= 57 && event.charCode != 45||event.charCode == 46" />
+						<span data-for='advancePaymentNumber' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>% tạm
+						ứng</label>
+					<div class="col-md-8">
+						<input class="form-control" name="advancePaymentPercent"
+							id="advancePaymentPercent"
+							ng-model="vm.adPayment.advancePaymentPercent" required
+							onkeypress="return event.charCode >= 48 && event.charCode <= 57 && event.charCode != 45||event.charCode == 46"
+							data-required-msg="Nội dung không được để trống" type="number"
+							ng-change="vm.checkPercent()"
+							oninvalid="setCustomValidity('Phải nhập số không lớm hơn 100')" />
+						<span data-for='advancePaymentPercent' class='k-invalid-msg'></span>
+						<span
+							class="k-widget k-tooltip k-tooltip-validation k-invalid-msg"
+							data-for="advancePaymentPercent2" style="display: none;">
+							<span class="k-icon k-warning"> </span>Phải nhập số không lớn hơn
+							100
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Giá trị
+					hợp đồng</label>
+				<div class="col-md-8">
+					<input class="form-control" name="contract_total_value"
+						id="contract_total_value" type="contract_total_value"
+						ng-model="vm.adPayment.contract_total_value" required
+						data-required-msg="Nội dung không được để trống" disabled /> <span
+						data-for='contract_total_value' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Số tiền
+					tạm ứng</label>
+				<div class="col-md-8">
+					<input class="form-control" name="advancePaymentAmount" id="name"
+						type="number" ng-model="vm.adPayment.advancePaymentAmount"
+						required data-required-msg="Nội dung không được để trống"
+						onkeypress="return event.charCode >= 48 && event.charCode <= 57 && event.charCode != 45||event.charCode == 46" />
+					<span data-for='advancePaymentAmount' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label req" translate>Bằng
+						chữ</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control" name="tranferToText"
+							id="tranferToText" ng-model="vm.adPayment.tranferToText" required
+							onkeypress="return event.charCode <= 48 || event.charCode >= 57"
+							data-required-msg="Nội dung không được để trống">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- thông tin thanh toán-->
+
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					translate>Thông Tin Thanh Toán</span>
+			</div>
+		</div>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Công ty</label>
+					<div class="col-md-8">
+						<input class="form-control" name="companyName" id="companyName"
+							ng-model="vm.adPayment.companyName"
+							data-required-msg="Nội dung không được để trống" /> <span
+							data-for='companyName' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số tài
+						khoản</label>
+					<div class="col-md-8">
+						<input class="form-control" name="accountNo" id="accountNo"
+							ng-model="vm.adPayment.accountNo" data-required-msg="" /> <span
+							data-for='accountNo' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Tại ngân
+					hàng</label>
+				<div class="col-md-8">
+					<input class="form-control" name="bankName" id="bankName"
+						type="text" ng-model="vm.adPayment.bankName" data-required-msg="" />
+					<span data-for='bankName' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Ngày yêu cầu</label>
+				<div class="col-md-8">
+					<input style="width: 100%;" kendo-date-picker name="requestDate"
+						id="requestDate" ng-model="vm.adPayment.requestDate"
+						k-format="'dd/MM/yyyy'" data-required-msg="Nội dung không hợp lệ" />
+				</div>
+				<script>
+					$(function() {
+						var validTo = $("#requestDate");
+						validTo.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+
+						validTo.kendoDatePicker({
+							format : "dd/MM/yyyy"
+						});
+
+						validTo.closest(".k-datepicker").add(validTo)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+		</div>
+	</div>
+	<!-- button save -->
+	<!-- 	<p></p>
+		<div class="col-md-12" style="text-align:center; margin-bottom: 10px">
+			<button type="button" class="btn green" translate ng-click="vm.saveContent()">Ghi Lại</button>
+			<button type="button" class="btn default" translate ng-click="vm.exportContent()">Export</button> 
+		</div> -->
+</form>
+
+

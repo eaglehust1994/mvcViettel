@@ -1,0 +1,68 @@
+<div ng-controller="reportSceneGenerateController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div class="btn-group margin-left-button">
+			<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" ng-click="vm.add()" uib-tooltip="Thêm mới" >
+				<div class="action-button add"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.showGrid()" uib-tooltip="Xem bảng/Chi tiết">
+				<div class="action-button view"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.save()" uib-tooltip="Lưu" 
+					ng-hide="vm.hideSave">
+				<div class="action-button save"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.approvalSave()" 
+					ng-hide="vm.hideSaveAppro" uib-tooltip="Lưu phê duyệt" >
+				<div class="action-button save"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.multiDelete()"
+					ng-hide="vm.hideDel" uib-tooltip="Xóa">
+				<div class="action-button del"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<!-- <button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.multiDelete()" >
+				<div class="action-button deletes"  uib-tooltip="Xóa nhiều" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button> -->
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" ng-click="vm.exportFileDOC()" uib-tooltip="Export DOC">
+				<div class="action-button doc"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.exportFilePDF()" uib-tooltip="Export PDF">
+				<div class="action-button pdf"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" ng-click="vm.sendToApproval()" uib-tooltip="Trình duyệt" >
+				<div class="action-button approval"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.approval()" uib-tooltip="Phê duyệt">
+				<div class="action-button approve"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+					class="btn btn-default padding-button box-shadow border-radius-right"
+					ng-click="vm.cancelApprovalBtn()" uib-tooltip="Hủy trình duyệt">
+					<div class="action-button cancelAproval"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<!-- <div class="btn-group">
+				<button class=" btn green btn-outline padding-btn" ng-click="vm.sendToApproval()" >Trình duyệt</button>	
+			</div>
+			<div class="btn-group">
+				<button class=" btn green btn-outline padding-btn" ng-click="vm.approval()" >Phê duyệt</button>	
+			</div> -->
+		</div>
+	</div>
+	<div ng-show="!vm.showDetail">
+		<div data-ng-include="'qlhc/reportscenegenerate/reportSceneGenerateList.html'"
+				kendo-validator="vm.validator" k-options="vm.validatorOptions">
+		</div>
+	</div>
+	<div ng-show="vm.showDetail">
+		<div data-ng-include="'qlhc/reportscenegenerate/reportSceneGenerateForm.html'"
+				kendo-validator="vm.validator" k-options="vm.validatorOptions">
+		</div>
+		<div ng-show="vm.showApproval">
+			<div data-ng-include="'qlhc/reportSceneAriseWeigh/approvalForm.html'">
+			</div>
+		</div>
+	</div>
+</div>

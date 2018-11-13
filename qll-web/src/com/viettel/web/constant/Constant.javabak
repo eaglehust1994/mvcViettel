@@ -1,0 +1,6 @@
+package com.viettel.web.constant;
+
+public interface Constant {
+	public static final String VSA_USER_TOKEN = "vsaUserToken";
+	public static final String APP_USER_TOKEN = "appUserToken";
+}

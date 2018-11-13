@@ -1,0 +1,54 @@
+/**
+ * 
+ */
+package com.viettel.web.servlet;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
+import com.viettel.web.constant.Constant;
+import com.viettel.web.domain.SysUserDTO;
+
+import viettel.passport.client.UserToken;
+
+/**
+ * @author Huy
+ *
+ */
+public class UserInfoServlet extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1408235886353339209L;
+	
+	private Logger LOGGER = LoggerFactory.getLogger(getClass());
+
+	@Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		UserToken userToken = (UserToken) request.getSession().getAttribute(Constant.VSA_USER_TOKEN);
+		SysUserDTO dto = (SysUserDTO) request.getSession().getAttribute(Constant.APP_USER_TOKEN);
+		
+		Map<String, Object> map = new HashMap<>();
+		map.put("casUser", userToken);
+		map.put("srvUser", dto);
+		String json = new Gson().toJson(map);
+		
+		LOGGER.info("User token and App user: {}", json);
+		
+	    response.setContentType("application/json");
+	    response.setCharacterEncoding("UTF-8");
+	    response.getWriter().write(json);
+	}
+
+}

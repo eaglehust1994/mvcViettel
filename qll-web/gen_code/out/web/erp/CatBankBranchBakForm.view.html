@@ -1,0 +1,88 @@
+<!-- @author hailh10 -->
+<h3 class="page-title" translate>
+	<i class="fa fa-line-chart" aria-hidden="true"></i> {{'Chi tiết' | translate}} CatBankBranchBak
+</h3>
+<div ng-controller="CatBankBranchBakFormController as vm">
+    
+	<hr class="line-Hr">
+    <div  id="catBankBranchBak">
+		<form class="form-horizontal row" role="form" name ="catBankBranchBak" >
+			<div class="form-body">
+				<div class="clearfix">
+					
+				</div>
+				
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">CITAD_CODE</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_citadCode" name="catBankBranchBak_citadCode" ng-readonly="vm.readonly" ng-model="vm.data.citadCode" maxlength = "200">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">BANK_CODE</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_bankCode" name="catBankBranchBak_bankCode" ng-readonly="vm.readonly" ng-model="vm.data.bankCode" maxlength = "200">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">PROVINCE_CODE_IM</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_provinceCodeIm" name="catBankBranchBak_provinceCodeIm" ng-readonly="vm.readonly" ng-model="vm.data.provinceCodeIm" maxlength = "200">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">BRANCH_NAME</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_branchName" name="catBankBranchBak_branchName" ng-readonly="vm.readonly" ng-model="vm.data.branchName" maxlength = "500">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">PROVINCE_NAME</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_provinceName" name="catBankBranchBak_provinceName" ng-readonly="vm.readonly" ng-model="vm.data.provinceName" maxlength = "500">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">LEVEL_GROUP</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_levelGroup" name="catBankBranchBak_levelGroup" ng-readonly="vm.readonly" ng-model="vm.data.levelGroup" maxlength = "300">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">ADDRESS</label>
+						<div class="col-md-8">
+							<input class="form-control width100"  id="catBankBranchBak_address" name="catBankBranchBak_address" ng-readonly="vm.readonly" ng-model="vm.data.address" maxlength = "500">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label ">CREATED_GROUP_ID</label>
+						<div class="col-md-8">							
+							<input class="form-control width100"  id="catBankBranchBak_createdGroupId" name="catBankBranchBak_createdGroupId" ng-readonly="vm.readonly" ng-model="vm.data.createdGroupId" onkeypress="return event.charCode >= 48 && event.charCode <= 57" maxlength = "11">
+						</div>
+					</div>
+				</div>			
+					<div class="clearfix">
+						<div class="form-group col-md-12 text-right">
+									<button type="button" class="btn green" ng-disabled="vm.isdisable" ng-click = "vm.save()">Lưu lại</button>
+						</div>
+					</div>				
+			</div>
+		</form>
+	</div>
+</div>
+

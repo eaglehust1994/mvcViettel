@@ -1,0 +1,112 @@
+
+<form class="form-horizontal row" role="form" name="shipment"
+	id="shipment" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin chung</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Mã
+								yêu cầu</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" id="mayc" type="text"
+									required data-required-msg="Mã yêu cầu không được để trống"
+									ng-model="data.code" disabled="disabled" />
+							</div>
+						</div>
+						<auto-search model-label="Kho thay đổi" caller="caller"
+							template-url="views/popup/gridView.html"
+							header-template="caller.headerTemplate"
+							template-auto="caller.templateStock" page="1" page-size="20"
+							popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+							popup-source-link="appParamServiceRest/doSearch"
+							combo-id="stockExt"
+							combo-source-link="appParamServiceRest/getForAutoComplete"
+							combo-name="name" combo-value="code" combo-code="stockId"
+							combo-search="caller.commonSearch" combo-grid="caller.gridCommon"
+							model-id="data.stockId"
+							model-name="data.stockId"
+							ng-model="data.stockId"> </auto-search>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Ghi chú</label>
+								<div class="col-md-10">
+									<div class="input-icon right">
+										<textarea class="form-control width100" 
+											type="text" ng-model="data.cancelDescription"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="">
+				<div class="caption margin-top10">
+					<span class="caption-subject bold lowercase" translate>Import
+						danh sách hàng hóa</span>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray row">
+						<div class="form-group col-md-8">
+							<div>
+								<label class="col-md-2 control-label" translate>File
+									Import</label>
+
+							</div>
+							<div class="col-md-6">
+								<input class=" form-control width100" type="file"
+									ng-model="vm.stockSearch.keySearch" />
+								<h5 style="color: gray; size: 15px;">
+									<i>Dung lượng <=100MB, định dạng xls,xlsx</i>
+								</h5>
+							</div>
+
+							<div class="col-md-4">
+								<button type="button"
+									class="btn green btn-outline padding-search-right"
+									ng-click="vm.UpFile()" translate>Tải file lên</button>
+							</div>
+						</div>
+
+						<div class="form-group col-md-4">
+							<a><label class="col-md-12 control-label" translate>Tải
+									file biểu mẫu </label></a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="caption margin-top10">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin hàng hóa thay đổi</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div id="detailGrid" kendo-grid="caller.kendoGrid"
+							k-editable="false" k-options="caller.detailGridOptions"
+							k-on-change="onGridChange(kendoEvent, { selected: selected }, data)"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<hr>
+	<div class="clearfix">
+		<div class="col-md-12 text-right margin_bottom30">
+			<button type="button"
+				class="btn green btn-outline padding-search" id="cancel"
+				ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button"
+				class="btn green btn-outline padding-search-right" ng-click="save()"
+				translate>Ghi lại</button>
+		</div>
+	</div>
+</form>

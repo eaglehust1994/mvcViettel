@@ -1,0 +1,55 @@
+<div data-ng-controller="establishPopupController as vm" >
+<div class="portlet light bordered">
+		<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal" >
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Mã ĐNQT chi tiết</label>
+								<div class="col-md-10">
+									<input class="form-control width100" id="popup_establishDetailecode" name="code"
+											ng-model="vm.itemPopup.code">
+								</div>
+						</div>
+					</div>
+				
+					<div class="clearfix">
+
+				<Search-Grid-Popup
+					searchtype="codePerSon" 
+					model-label="Cá nhân thẩm định" 
+					caller="vm" popup-id="codePerSon" 
+					popup-type="gridplus" 
+					template = "views/popup/PersonalEvaluation.html"
+					popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+					combo-id="pa_ProjInvestProject_userId" 
+					combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee" 
+					combo-name="fullName" 
+					combo-value="id"  
+					combo-grid="vm.gridCustom"
+					model-id="vm.itemPopup.codePerSon" 
+					model-name="vm.itemPopup.fullName" >
+				</Search-Grid-Popup>
+	
+					</div>
+					
+					<div class="clearfix">
+						<div  class="form-group col-md-12">  
+							<label class="col-md-2 control-label" translate>Ghi chú</label>
+								<div class="col-md-10">
+									<textarea class="form-control width100" id="evaluateComments" name="evaluateComments"
+										ng-model="vm.itemPopup.evaluateCommentss">
+									</textarea>
+							</div>
+						</div>
+				 	</div>
+				</form>
+		</div>
+		</div>
+		<div class="modal-footer row">
+		    <div class="col-md-12 text-right">
+				<button type="submit" class="btn green btn-outline border-find-footer" ng-click="vm.save()">Ghi lại</button>
+			    <button type="button" class="btn green btn-outline border-find-footer" ng-click="vm.cancel()">Hủy</button>
+			</div>
+		</div>
+</div>

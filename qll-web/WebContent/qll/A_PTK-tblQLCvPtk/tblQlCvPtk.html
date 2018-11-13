@@ -1,0 +1,229 @@
+<style>
+#qlCvPtkGrid>.k-grid-content {
+	overflow-y: hidden !important;
+}
+</style>
+<style>
+#qlCvPtkGrid>.k-grid-header {
+	padding-right: 0px !important;
+}
+</style>
+
+
+<div data-ng-controller="tblQlCvPtkController as vm" id="tblQlCvPtkControl">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div id="demoOrderChange1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="search_plus" ng-click="vm.advancedSearch()" >
+								<i class="fa fa-search-plus" aria-hidden="true"
+									id="impReqAdvancedSearch" ng-hide="vm.showAdvancedSearch"
+									uib-tooltip="Mở rộng">
+								</i>
+								<i
+									class="fa fa-search-minus" aria-hidden="true"
+									id="impReqAdvancedSearch" ng-hide="!vm.showAdvancedSearch"
+									 uib-tooltip="Thu gọn">
+								</i>
+							</div>
+							
+							<div class="clearfix">
+							
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.qlCvPtkSearch.keySearch" />
+											</div>
+
+										</div>
+									
+									</div>
+								</div>
+							</div>
+							
+							
+							
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Số hợp
+										đồng CDT:</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											k-options="vm.patternOptionsSHDCdt" kendo-auto-complete
+											name="tenShdCdtAuto" ng-model="vm.qlCvPtkSearch.soHdCdt"
+											maxlength="200" id="tenShdCdtAuto" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Chi nhánh khu vực :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											k-options="vm.patternOptionsCnkv" kendo-auto-complete
+											name="chiNhanhCvAuto"
+											ng-model="vm.qlCvPtkSearch.tenDanhMuc" maxlength="200"
+											id="chiNhanhCvAuto" />
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Số Bill :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="sobill" ng-model="vm.qlCvPtkSearch.soBill" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Tỉnh :</label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<!-- <i class="fa fa-search directive"
+											ng-click="vm.openDepartment()" style="cursor: pointer;"></i> -->
+											<input class=" form-control width100" type="text"
+												k-options="vm.patternOptionsTinh" kendo-auto-complete
+												name="qlcvTinhAuto" ng-model="vm.qlCvPtkSearch.tenTinh"
+												maxlength="200" id="qlcvTinhAuto" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+									<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Loại
+										công trình :</label>
+									<div class="col-md-8">
+										<select ng-model="vm.qlCvPtkSearch.loaiCt"
+											class=" form-control width100">
+											<option value="" selected="selected">~~Chọn~~</option>
+											<option value="BTS">BTS</option>
+											<option value="Ngầm">Ngầm</option>
+											<option value="Công văn lẻ">Công văn lẻ</option>
+											<option value="Chi nhánh tỉnh">Chi nhánh tỉnh</option>
+											<option value="Cột bao">Cột bao</option>
+											<option value="Khác">Khác</option>
+										</select>
+									</div>
+								</div>
+									<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Trạng thái :</label>
+									<div class="col-md-8">
+										<select ng-model="vm.qlCvPtkSearch.trangThai"
+											class=" form-control width100">
+											<option value="" selected="selected">~~Chọn~~</option>
+											<option value="Mới tạo">Mới tạo</option>
+											<option value="Đã gán nhân viên">Đã gán nhân viên</option>
+											<option value="Hoàn thành">Hoàn thành</option>
+											
+										</select>
+									</div>
+								</div>
+							</div>
+							<div ng-show="vm.showAdvancedSearch">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										2G(MTT) :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="ma2G" ng-model="vm.qlCvPtkSearch.mttMa2g" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										3G(MTT) :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="ma3G" ng-model="vm.qlCvPtkSearch.mttMa3g" />
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										xuất kho(MTT) :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maXuatKho" ng-model="vm.qlCvPtkSearch.mttMaXuatKho" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										vị trí(MTT) :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maVitri" ng-model="vm.qlCvPtkSearch.mttMaViTri" />
+									</div>
+								</div>
+								
+
+							</div>
+							</div>
+							
+							<div class="clearfix form-actions margin-top">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<button type="button" id="timqlCvPtk"
+											class="btn  btn-qlk padding-search-right searchQLK" translate
+											ng-click="vm.doSearch()">Tìm kiếm</button>
+											<button
+											class="btn btn-qlk padding-search-right TkQLK"
+											ng-click="vm.importFile()" uib-tooltip="Thêm mới File công việc" translate="">Import</button>
+											
+											<button
+											class="btn btn-qlk padding-search-right TkQLK"
+											ng-click="vm.importFileCV()" uib-tooltip="Cập nhật File công việc" translate="">Update</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>		
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="qlCvPtkCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#qlCvPtkCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="qlCvPtkCollapse" class="collapse in ">
+			<div id="qlCvPtkGrid" kendo-grid="vm.qlCvPtkGrid" k-editable="false"
+				k-options="vm.gridOptions" stype=" height: 500px;"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("input").change(function() {
+		$(this).val($.trim($(this).val()));
+	});
+</script>

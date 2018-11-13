@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="BaocaoKPISoluong" pageWidth="1030" pageHeight="842" columnWidth="990" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a954d0ad-350b-4155-b8cd-2c98d83093c2">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="221"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT s.NAME stockName,
+                           s.STOCK_ID stockId,
+                           s.CODE stockCode,
+				g.NAME goodsTypeName,
+				ksa.GOODS_CODE goodsCode,
+				ksa.GOODS_NAME goodsName,
+				ksa.GOODS_STATE_NAME goodsStateName,
+				ksa.GOODS_UNIT_NAME goodsUnitName,
+				ksa.AMOUNT_QUATO amountQuato,
+				ksa.AMOUNT_REMAIN amountRemain,
+				ksa.AMOUNT_KPI amountKpi
+				FROM WMS_OWNER.KPI_STORAGE_AMOUNT ksa
+				INNER JOIN CAT_OWNER.STOCK s ON ksa.STOCK_ID=s.STOCK_ID
+				INNER JOIN CAT_OWNER.GOODS_TYPE g ON ksa.GOODS_TYPE=g.GOODS_TYPE_ID WHERE s.STATUS=1]]>
+	</queryString>
+	<field name="goodsTypeName" class="java.lang.String"/>
+	<field name="goodsCode" class="java.lang.String"/>
+	<field name="goodsName" class="java.lang.String"/>
+	<field name="goodsStateName" class="java.lang.String"/>
+	<field name="stockName" class="java.lang.String"/>
+	<field name="goodsUnitName" class="java.lang.String"/>
+	<field name="amountQuato" class="java.math.BigDecimal"/>
+	<field name="amountRemain" class="java.math.BigDecimal"/>
+	<field name="amountKpi" class="java.math.BigDecimal"/>
+	<field name="stockId" class="java.lang.Integer"/>
+	<field name="stockCode" class="java.lang.String"/>
+	<variable name="sumAmountQuato" class="java.math.BigDecimal" resetType="Group" resetGroup="stockId" calculation="Sum">
+		<variableExpression><![CDATA[$F{amountQuato}]]></variableExpression>
+	</variable>
+	<variable name="sumAmountRemain" class="java.math.BigDecimal" resetType="Group" resetGroup="stockId" calculation="Sum">
+		<variableExpression><![CDATA[$F{amountRemain}]]></variableExpression>
+	</variable>
+	<variable name="sumAmountKpi" class="java.math.BigDecimal" resetType="Group" resetGroup="stockId" calculation="Sum">
+		<variableExpression><![CDATA[$F{amountKpi}]]></variableExpression>
+	</variable>
+	<group name="stockId">
+		<groupExpression><![CDATA[$F{stockId}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="70" height="50" forecolor="#0000FF" backcolor="#80FFFF" uuid="e9c108b7-fef6-485f-93db-8fd76ccfda48"/>
+					<box leftPadding="1" rightPadding="1">
+						<pen lineWidth="1.0" lineColor="#000000"/>
+						<topPen lineWidth="1.0" lineColor="#000000"/>
+						<leftPen lineWidth="1.0" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineColor="#000000"/>
+					</box>
+					<textElement>
+						<font fontName="Times New Roman" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{stockName}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement mode="Opaque" x="87" y="0" width="65" height="50" forecolor="#0000FF" backcolor="#80FFFF" uuid="9e74232d-52f3-496a-96c2-f1884bac7cee"/>
+					<box leftPadding="0" bottomPadding="1" rightPadding="0">
+						<pen lineWidth="1.0" lineColor="#000000"/>
+						<topPen lineWidth="1.0" lineColor="#000000"/>
+						<leftPen lineWidth="0.0" lineColor="#000000"/>
+						<bottomPen lineWidth="1.0" lineColor="#000000"/>
+						<rightPen lineWidth="0.0" lineColor="#000000"/>
+					</box>
+					<textElement textAlignment="Center">
+						<font fontName="Times New Roman" size="9"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{stockCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="70" y="0" width="17" height="50" backcolor="#80FFFF" uuid="73c4e2ba-fff8-4704-8a67-dc3fd5f567df"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0">
+						<pen lineWidth="0.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="0.0"/>
+						<rightPen lineWidth="0.0"/>
+					</box>
+					<textElement textAlignment="Right" verticalAlignment="Top">
+						<font fontName="Times New Roman" size="11" isBold="true" isPdfEmbedded="false"/>
+					</textElement>
+					<text><![CDATA[(]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="152" y="0" width="838" height="50" backcolor="#80FFFF" uuid="bc359160-376d-4c2d-99b7-6ff63713411e"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="1">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="0.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement verticalAlignment="Top">
+						<font fontName="Times New Roman" size="11" isBold="true" isPdfEmbedded="false"/>
+					</textElement>
+					<text><![CDATA[)]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+			<band height="20">
+				<textField>
+					<reportElement x="552" y="0" width="138" height="20" uuid="f6dd6463-690e-457f-877f-94c12ff11f2f"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumAmountQuato}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="690" y="0" width="151" height="20" uuid="de4de09b-14c4-4f84-8d5d-1ccc9183ef98"/>
+					<box>
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumAmountRemain}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="841" y="0" width="149" height="20" uuid="83145ee5-e92a-4394-91c8-56b94eaa1c92"/>
+					<box>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$V{sumAmountKpi}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="552" height="20" backcolor="#FFFFFF" uuid="af7e8672-b161-46a4-b09a-aea9b712dae3"/>
+					<box topPadding="0" leftPadding="0" bottomPadding="0">
+						<pen lineWidth="1.0"/>
+						<topPen lineWidth="1.0"/>
+						<leftPen lineWidth="1.0"/>
+						<bottomPen lineWidth="1.0"/>
+						<rightPen lineWidth="1.0"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Times New Roman" size="11" isBold="true"/>
+					</textElement>
+					<text><![CDATA[]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="96" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="24" width="377" height="21" forecolor="#FF0000" uuid="d1a996a5-5d29-42f8-8c49-caeadbe39a8a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[TỔNG CÔNG TY MẠNG LƯỚI VIETTEL]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="648" y="24" width="103" height="21" forecolor="#FF0000" uuid="7e9323b4-8acc-46a6-ae02-674f6b622f9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[Ngày xuất báo cáo:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy h.mm a">
+				<reportElement mode="Opaque" x="740" y="25" width="111" height="20" forecolor="#FF0000" uuid="955d1f91-21e2-42d0-8ef5-accbb4f2a4fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Transparent" x="0" y="13" width="990" height="23" backcolor="#FFFFFF" uuid="534e0bd0-b9ce-421a-aef1-283d840b2e1c"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font fontName="Times New Roman" size="15" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[BÁO CÁO CÁC MÃ HÀNG VI PHẠM KPI SỐ LƯỢNG LƯU KHO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="36" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="52" height="36" backcolor="#FF8040" uuid="9c8e0e45-50d5-4214-b2ca-2cee9cd58655"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true" isPdfEmbedded="false"/>
+				</textElement>
+				<text><![CDATA[STT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="52" y="0" width="100" height="36" backcolor="#FF8040" uuid="2e6c5afe-7d5d-43d8-ac9a-61ab47973b55"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Loại hàng hóa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="152" y="0" width="100" height="36" backcolor="#FF8040" uuid="c2975730-1824-40a5-8f1d-363207d31417"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mã hàng hóa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="252" y="0" width="100" height="36" backcolor="#FF8040" uuid="e235bcd4-363b-4560-ae38-7b5609e61c93"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên hàng hóa]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="352" y="0" width="100" height="36" backcolor="#FF8040" uuid="1c16cd12-a5a4-403e-b3b9-31743b26c920"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Trạng thái]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="452" y="0" width="100" height="36" backcolor="#FF8040" uuid="6810396d-d80f-4d77-ba5c-4c0c76f8ff37"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Đơn vị tính]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="552" y="0" width="138" height="36" backcolor="#FF8040" uuid="32bf0bc0-c3bb-4a58-a589-32d6a15c4808"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng tồn kho]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="690" y="0" width="151" height="36" backcolor="#FF8040" uuid="84505de1-2e69-4360-9ef3-1de9f291ee2e"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng định mức]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="841" y="0" width="149" height="36" backcolor="#FF8040" uuid="b2844f7e-02da-497b-8bf4-e6021ffa3fa6"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Số lượng lệch]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="33" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="52" height="33" uuid="c4ea5d04-5739-4ae7-b087-40615d77b916"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+			</textField>
+			<textField>
+				<reportElement x="52" y="0" width="100" height="33" uuid="af705fb3-4f03-4213-8e0b-9bece2be507f"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsTypeName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="0" width="100" height="33" uuid="28013387-e30b-4278-931f-8da598c179bd"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsCode}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="0" width="100" height="33" uuid="664baa4e-2108-43bb-8992-de3f709b99bf"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsStateName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="452" y="0" width="100" height="33" uuid="3f8f0958-5034-4718-9f32-7ca92512c7c4"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsUnitName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="252" y="0" width="100" height="33" uuid="eeb1e2a7-033b-4cfc-ab3d-71b8461d22c0"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{goodsName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="552" y="0" width="138" height="33" uuid="89998c59-7356-4068-833a-cab8d9e2e4b3"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountQuato}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="690" y="0" width="151" height="33" uuid="12f62473-199e-4590-9c90-76fffaf244d0"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountRemain}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="841" y="0" width="149" height="33" uuid="ba7a9730-4752-40f1-a061-879c4301d6d8"/>
+				<box topPadding="1" leftPadding="1" bottomPadding="1" rightPadding="1">
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amountKpi}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

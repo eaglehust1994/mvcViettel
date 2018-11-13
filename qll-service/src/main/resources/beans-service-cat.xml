@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<!-- Beans definition for module webservice -->
+
+	
+		<!-- thamso -->
+	<jaxrs:server id="appParamServiceRest" address="/appParamServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="appParamServiceClass" class="com.viettel.cat.rest.AppParamRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="catProvinceServiceRest" address="/catProvinceServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catProvinceServiceClass" class="com.viettel.cat.rest.CatProvinceRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="catProducingCountryServiceRest" address="/catProducingCountryServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catProducingCountryServiceClass" class="com.viettel.cat.rest.CatProducingCountryRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="catManufacturerServiceRest" address="/catManufacturerServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catManufacturerServiceClass" class="com.viettel.cat.rest.CatManufacturerRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		
+		<jaxrs:server id="catPartnerServiceRest" address="/catPartnerServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catPartnerServiceClass" class="com.viettel.cat.rest.CatPartnerRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<!-- donvitinh -->
+	<!-- <jaxrs:server id="catUnitServiceRest" address="/catUnitServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catUnitServiceClass" class="com.viettel.cat.rest.CatUnitRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="goodsServiceRest" address="/goodsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="goodsServiceClass" class="com.viettel.cat.rest.GoodsRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server> -->
+</beans>
+

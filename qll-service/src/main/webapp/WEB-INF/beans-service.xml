@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs" xmlns:context="http://www.springframework.org/schema/context"
+
+	xsi:schemaLocation="http://cxf.apache.org/jaxws http://cxf.apache.org/schemas/jaxws.xsd 
+		
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd">
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+
+	<import resource="classpath:beans-service-upload-download.xml" />
+<!-- 	 <import resource="classpath:beans-service-user.xml" /> -->
+	 <import resource="classpath:beans-service-ktts2.xml" />
+	 <!-- <import resource="classpath:beans-service-cat.xml" /> -->
+	 <!-- <import resource="classpath:beans-service-coms.xml" /> -->
+	<!--  <import resource="classpath:beans-service-bid-package.xml" /> -->
+	<!-- <import resource="classpath:beans-service-azimu.xml" />
+	<import resource="classpath:beans-service-work.xml" />
+	<import resource="classpath:beans-service-curst.xml" />
+	<import resource="classpath:beans-service-cat.xml" />
+	<import resource="classpath:beans-service-bmaterial.xml" />
+	<import resource="classpath:beans-service-scene-generate-work.xml" />
+
+	<import resource="classpath:beans-service-ntgdbpct.xml" />
+
+	ChuongNV
+	<import resource="classpath:beans-service-constr-work-logs.xml" />
+
+	NgocCX
+	<import resource="classpath:beans-service-com.xml" />
+	<import resource="classpath:beans-service-est.xml" />
+
+	<import resource="classpath:beans-service-bgtbac.xml" />
+	TruongTX
+	<import resource="classpath:beans-service-report.xml" />
+
+	<import resource="classpath:beans-service-constructionacceptance.xml" />
+
+	VietNH
+	<import resource="classpath:beans-service-record.xml" />
+	Toan
+	<import resource="classpath:beans-service-ground.xml" />  -->
+
+
+	 <!-- <import resource="classpath:beans-service-qlk.xml" /> -->
+	 
+	 <!-- quan ly luong - ctct - qll -->
+	 <import resource="classpath:beans-service-qll.xml" /> 
+	<!-- PhuongH1 -->
+<!-- 	 <import resource="classpath:beans-service-asset.xml" /> -->
+	<!-- khong cmt lai link ben tscd dung PhongPV hom truoc cmt lai ben anh 
+		khong dung duoc -->
+
+	<!-- rest -->
+	<bean id="jsonProvider" class="org.codehaus.jackson.jaxrs.JacksonJsonProvider">
+		<constructor-arg>
+			<bean factory-bean="objMapper" factory-method="getMapper" />
+		</constructor-arg>
+	</bean>
+
+	 <bean id="objMapper" class="com.viettel.erp.utils.ObjectMapperProvider" /> 
+	<bean id="exceptionMapper" class="com.viettel.asset.exception.BusinessExceptionMapper" /> 
+	
+
+
+
+	<!-- Filter session -->
+	<!-- <jaxrs:server address="/"> <jaxrs:invoker> <bean class="org.apache.cxf.systest.jaxrs.CustomJAXRSInvoker"/> 
+		</jaxrs:invoker> </jaxrs:server> -->
+
+	<!-- <cxf:bus> <cxf:inInterceptors> <ref bean="logInbound"/> </cxf:inInterceptors> 
+		<cxf:outInterceptors> <ref bean="logOutbound"/> </cxf:outInterceptors> </cxf:bus> 
+		<bean id="logOutbound" class="filter.LogOutInterceptor"/> <bean id="logInbound" 
+		class="filter.LogInInterceptor"/> -->
+</beans>

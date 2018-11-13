@@ -1,0 +1,85 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:cxf="http://cxf.apache.org/core"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+                        http://cxf.apache.org/core 
+                        http://cxf.apache.org/schemas/core.xsd
+                        http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+                        http://www.springframework.org/schema/context 
+                        http://www.springframework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/aop 
+                        http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+                        http://www.springframework.org/schema/task
+                        http://www.springframework.org/schema/task/spring-task-4.1.xsd">
+
+	<context:annotation-config />
+	<!-- For building task schedule -->
+	<context:component-scan base-package="com.viettel.ktts2.schedule" />
+	<context:component-scan base-package="com.viettel.ktts2" />
+	<context:component-scan base-package="com.viettel.asset.exception" />
+	<context:component-scan base-package="com.viettel.asset.filter.session" />
+	<!-- <context:component-scan base-package="com.viettel.ims" />  -->
+	<context:component-scan base-package="com.viettel.wms" />
+	<context:component-scan base-package="com.viettel.cat" />
+	<context:component-scan base-package="com.viettel.coms" />
+	<context:component-scan base-package="com.viettel.Common" />
+	<context:component-scan base-package="com.viettel.qll" />
+	<task:annotation-driven />
+
+
+	<!-- hibernate integrate -->
+	<import resource="classpath:hibernate-config.xml" />
+	<bean id="configSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename">
+			<value>config</value>
+		</property>
+		<property name="defaultEncoding" value="UTF-8" />
+	</bean>
+	<!-- <bean id="systemConfigSource" class="org.springframework.context.support.ResourceBundleMessageSource"> 
+		<property name="basename"> <value>sysConfig</value> </property> <property 
+		name="defaultEncoding" value="UTF-8" /> </bean> -->
+
+
+	<bean id="logInbound" class="com.viettel.logger.filter.LogInInterceptor" />
+	<bean id="logOutbound" class="com.viettel.logger.filter.LogOutInterceptor" />
+
+	<cxf:bus>
+		<cxf:properties>
+			<entry key="org.apache.cxf.stax.maxChildElements" value="${xml.maxChildElements:500000000}" />
+		</cxf:properties>
+		<cxf:inInterceptors>
+			<ref bean="logInbound" />
+		</cxf:inInterceptors>
+		<cxf:outInterceptors>
+			<ref bean="logOutbound" />
+		</cxf:outInterceptors>
+	</cxf:bus>
+	<!-- <aop:aspectj-autoproxy /> -->
+	<!-- <bean name="employeeAspect" class="com.viettel.asset.exception.LoggingInterceptor" 
+		/> -->
+	<!-- <bean id="logAspect" class="com.viettel.asset.exception.LoggingInterceptor" 
+		/> <aop:config> <aop:aspect id="aspectLoggging" ref="logAspect"> @Around 
+		<aop:pointcut id="pointCutAround" expression="execution(* com.viettel.asset.rest.*(..))" 
+		/> <aop:around method="logAround" pointcut-ref="pointCutAround" /> </aop:aspect> 
+		</aop:config> -->
+
+
+	<bean id="propertyConfigurer"
+		class="org.jasypt.spring31.properties.EncryptablePropertyPlaceholderConfigurer">
+		<constructor-arg ref="configurationEncryptor" />
+		<property name="locations">
+			<list>
+				<value>classpath:datasources.properties</value>
+				<value>classpath:config.properties</value>
+				<value>classpath:sysConfig.properties</value>
+				<value>classpath:ktts_common.properties</value>
+				<value>classpath:vps_permissionCode.properties</value>
+
+</list>
+</property>
+</bean>
+
+</beans>

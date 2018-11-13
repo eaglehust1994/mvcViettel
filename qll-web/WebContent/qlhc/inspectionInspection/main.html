@@ -1,0 +1,123 @@
+<div ng-controller="ConstructionAcceptanceController as vm">
+     <div class="btn-toolbar margin-bottom-10 margin-top">
+			<div data-ng-include="'erp/apcommon/ap_action_header.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>	
+	</div>
+	<hr class="line-Hr"> 
+	
+	<form class="form-horizontal row" role="form">
+	<div class="portlet-title">
+		<div class="caption">
+			 <span
+				class="caption-subject bold lowercase" translate>Thông tin chung</span>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Số Hợp đồng</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.contractCode" readonly="" />
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên hợp đồng</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.contractName" readonly="">
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Mã Công
+				Trình</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.constrtCode" readonly="">
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên công
+				trình</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.constrtName" readonly="">
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label " translate>Địa chỉ
+					công trình</label>
+				<div class="col-md-10">
+					<div class="input-icon right">
+						<input class="form-control ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.constrtAddress" readonly="" />
+					</div>
+					<span data-for="value" class="k-invalid-msg"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p></p>
+	
+    <div ng-show="!vm.showDetail">
+	    <div ng-show="vm.showSearch">
+	    	<div data-ng-include="'qlhc/inspectionInspection/searchForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	    </div>
+        <div kendo-grid="vm.MainGrid" k-options="vm.MainGridOptions" id="mainGrid">
+            <div k-detail-template grid-detail>
+                <div data-ng-include="'qlhc/inspection/mainform.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+            </div>
+        </div>
+    </div>
+    <div ng-show="vm.showDetail">
+        <div data-ng-include="'qlhc/inspectionInspection/mainform.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+    </div>
+    <script>
+                $(document).ready(function() {
+                    var tooltip = $("#mainGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#mainGrid").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#mainGrid").find("td").click(false);
+                });
+            </script>
+    </form>
+</div>
+

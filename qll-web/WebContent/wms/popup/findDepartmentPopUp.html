@@ -1,0 +1,124 @@
+<style>
+.wrap {
+	width: 100%;
+	margin-top:10px;
+	overflow: auto;
+}
+
+.fleftDepartMent {
+	float: left;
+	width: 30%;
+	height: 700px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.frightDepartMent {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	padding-top: 10px;
+	height: 700px;
+	width: 70%;
+	background: #FFFFFF;
+}
+
+
+</style>
+<div class="wrap" id="deptP">
+	<div class="fleftDepartMent col-md-8">
+		<div class="form-group ">
+	       		<div class="input-menu search-tree-sum">
+	                <input id="filterText" type="text"  ng-model="textSearchTree" class="k-textbox input-menu-button form-control search-tree" placeholder="Tìm kiếm tên"/>
+	                <span class="input-menu-btn">
+	                    <a href="javascript:;">
+	                        <i class="icon-magnifier icon-search-tree"></i>
+	                    </a>
+	                </span>
+	            </div>
+	        </div>
+	   		 <div id="treeviewUnits" class="treeView">
+		    </div>
+	</div>
+	<div class="frightDepartMent col-md-8">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Mã phòng ban</label>
+				<div class="col-md-8">
+					<input id="deptCode" class=" form-control width100"  type="text" maxlength="100" 
+						ng-model="searchGrid.code" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Tên phòng
+					ban</label>
+				<div class="col-md-8">
+					<input id="deptName" class=" form-control width100"  type="text" maxlength="100"
+						ng-model="searchGrid.name" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="col-md-12 text-center">
+				<button type="button" id="find"
+					class="btn btn-qlk btn-outline padding-search-right searchQLK"
+					ng-click="doSearch()" translate>
+					Tìm kiếm
+				</button>
+				<button type="button"
+					class="btn btn-qlk btn-outline padding-search-right closeQLK"
+					ng-click="cancel()" translate>Đóng
+				</button>
+			</div>
+		</div>
+		<div class="portlet light bordered">
+			<div class="portlet-title ">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Danh
+						sách đơn vị</span>
+				</div>
+				
+				<div class="text-right margin-row-title">
+					<i data-toggle="collapse" data-target="#demo3"
+						class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+				</div>
+			</div>
+			
+			<div id="demo3" class="collapse in from-search">
+			 	<div id="gridView"  kendo-grid="gridView" k-options="gridOptions" k-ng-delay="gridOptions" 
+	            	 k-on-change="onRowChange(dataItem)"
+	            	 k-editable="false" k-cache="false"
+	            	 >
+		        </div>
+	        </div>
+	    </div>
+	</div>
+
+</div>
+<!-- <div class="modal-footer row">
+    <div class="col-md-12 text-right">
+		<button type="submit" id="submit" class="btn btn-qlk btn-outline border-find-footer saveQLK" ng-click="save()">Ghi </button>
+	    <button ng-hide="true" type="button" id="cancel" class="btn red btn-outline border-find-footer" ng-click="cancel()">Cancel</button>
+	</div>
+</div> -->
+			 <script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#find").click();
+                    				break;
+                    		}
+                    	} 
+                         
+                         $("#gridView").delegate("tbody>tr", "dblclick", function(){
+                        	 $("#submit").click();});
+                         
+                         
+                         /* filterTree */
+						</script> 

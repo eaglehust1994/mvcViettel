@@ -1,0 +1,30 @@
+<div data-ng-controller="workSheetController as vm" >
+<div class="portlet light bordered">
+		<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+						<div class="form-group col-md-8">
+										<label class="col-md-4 control-label" translate>File chiết tính thẩm định</label>
+										<div class="col-md-8">
+											<input  name="xlfile" id="xlf" type="file" placeholder="Choose File" >
+										</div>
+										</div>
+										<img src="/ims-web/assets/layouts/layout/img/u26.png" alt="no image icon"/>
+					<a href="" ng-click="vm.exPortCTTDPopup()"> Biểu mẫu</a> 
+							</div>
+					</div>
+				</form>
+		</div>
+		
+		<div class="clearfix form-actions">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button type="button" class="btn green btn-outline padding-search-right"  ng-click="vm.imPortCTTD()" translate>Import</button>
+					<button type="button" class="btn green btn-outline padding-search" ng-click="vm.cancelImport()" translate>Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

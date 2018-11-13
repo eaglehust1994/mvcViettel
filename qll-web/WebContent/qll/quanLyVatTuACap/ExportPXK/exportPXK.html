@@ -1,0 +1,199 @@
+<style>
+	#exportPXKGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#exportPXKGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="exportPXKController as vm"
+	id="exportPXKControl">
+	<div ng-show="vm.showSearch">
+		<!-- 			<p class="text-brecum">{{vm.String}}</p>
+ -->
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demoOrderChange" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.exportPXKSearch.keySearch" />
+											</div>
+
+										</div>
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										phiếu xuất</label>
+									<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												ng-model="vm.exportPXKSearch.maPhieuXuat" maxlength="200"
+												id="exportPXKAuto" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										lệnh xuất</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maLenhXuatId" ng-model="vm.exportPXKSearch.maLenhXuat" />
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã yêu
+										cầu xuất </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="maycxId"
+											ng-model="vm.exportPXKSearch.maYcXuat" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Người
+										tạo yêu cầu</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="nguoiYeuCauId"
+											ng-model="vm.exportPXKSearch.nguoiTaoYc" />
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Ngày
+										tạo : Từ ngày </label>
+									<div class="col-md-4">
+										<input name="createdDateFromChange" id="createdDateFromChange"
+											ng-model="vm.exportPXKSearch.ngayTaoFrom"
+											class="form-control width100" k-format="'dd/MM/yyyy'"
+											required data-required-msg="Ngày tạo không được để trống"
+											min-year="1000" data-minyear-msg="Ngày tạo không hợp lệ"
+											data-date-msg="Ngày tạo không hợp lệ"
+											ng-change="vm.checkErr()" date-time /> <span
+											data-for="createdDateFromChange" id='err1'
+											class="k-invalid-msg"></span>
+										<!--  <span style="color: red">{{vm.listMess.errMessage1}}</span>
+										<span style="color: red">{{vm.errMessage2}}</span> -->
+										<!--  <span id="errorcreatedDateFromChange" class="k-invalid-msg" style="color: red" >Ngày không hợp lệ</span>  -->
+									</div>
+
+									<label class="col-md-1 control-label" translate>đến</label>
+									<div class="col-md-3 position-relative">
+										<input name="createdDateToChange" id="createdDateToChange"
+											ng-model="vm.exportPXKSearch.ngayTaoTo" date-time
+											style="width: 100%;" data-date-msg="Ngày đến không hợp lệ"
+											k-format="'dd/MM/yyyy'" min-year="1000"
+											data-minyear-msg="Ngày đến không hợp lệ"
+											ng-change="vm.checkErr()" /> <span
+											data-for="createdDateToChange" id='err2'
+											class="k-invalid-msg"></span>
+										<!-- <span style="color: red">{{vm.listMess.errMessage}}</span> -->
+										<!-- <span id="errorcreatedDateToChange" class="k-invalid-msg" style="color: red" >Ngày không hợp lệ</span> -->
+									</div>
+
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Ngày
+										thực xuất: từ ngày</label>
+									<div class="col-md-4">
+										<input name="ngayThucXuat" id="ngayThucXuat"
+											ng-model="vm.exportPXKSearch.ngayThucXuatFrom"
+											class="form-control width100" k-format="'dd/MM/yyyy'"
+											required data-required-msg="Ngày tạo không được để trống"
+											min-year="1000" data-minyear-msg="Ngày tạo không hợp lệ"
+											data-date-msg="Ngày tạo không hợp lệ"
+											ng-change="vm.checkErr()" date-time /> <span
+											data-for="ngayThucXuat" id='err11'
+											class="k-invalid-msg"></span>
+									</div>
+									
+									<label class="col-md-1 control-label" translate>đến</label>
+									<div class="col-md-3 position-relative">
+										<input name="ngayThucXuatTo" id="ngayThucXuatTo"
+											ng-model="vm.exportPXKSearch.ngayThucXuatTo" date-time
+											style="width: 100%;" data-date-msg="Ngày đến không hợp lệ"
+											k-format="'dd/MM/yyyy'" min-year="1000"
+											data-minyear-msg="Ngày đến không hợp lệ"
+											ng-change="vm.checkErr()" /> <span
+											data-for="ngayThucXuatTo" id='err2'
+											class="k-invalid-msg"></span>
+										<!-- <span style="color: red">{{vm.listMess.errMessage}}</span> -->
+										<!-- <span id="errorcreatedDateToChange" class="k-invalid-msg" style="color: red" >Ngày không hợp lệ</span> -->
+									</div>
+
+								</div>
+
+							</div>
+							<div class="clearfix"></div>
+
+						</div>
+					</div>
+					<div class="clearfix form-actions margin-top">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button type="button" id="timexportPXK"
+									class="btn  btn-qlk padding-search-right searchQLK" translate
+									ng-click="vm.doSearch()">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="exportPXKCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#exportPXKCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="exportPXKCollapse" class="collapse in ">
+			<div id="exportPXKGrid" kendo-grid="vm.exportPXKGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+</script>

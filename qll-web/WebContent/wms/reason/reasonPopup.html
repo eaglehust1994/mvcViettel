@@ -1,0 +1,71 @@
+<form class="form-horizontal row" role="form" name="reason" id="reason" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body padding10">
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-4 control-label req" translate>Mã lý do</label>
+				<div class="col-md-8">
+					<input class="form-control" ng-blur="focusOut()" name="code" id="code" maxlength="50" 
+						ng-model="data.code" required
+						data-required-msg="Mã lý do không được để trống" /> <span
+						data-for='code' class='k-invalid-msg'></span>
+						<!-- <span style="color:red">{{caller.listReason.mess}}</span> -->
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-4 control-label req" translate>Tên lý
+					do</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name" maxlength="200"
+						ng-model="data.name" required ng-blur="focusOut($event)"
+						data-required-msg="Tên lý do không được để trống" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+						<!-- <span style="color:red">{{caller.listReason.mess1}}</span> -->
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-4 control-label req" translate>Tình huống sử dụng</label>
+				<div class="col-md-8">
+					<select kendo-drop-down-list class="form-control"
+						id="apply" style="width: 100%" name="apply" ng-model="data.apply"
+						k-data-source="caller.dataAppParamType " k-option-label="'--Chọn--'"
+						k-data-value-field="'code'" k-data-text-field="'name'" required
+						data-required-msg="Tình huống sử dụng không được để trống">
+					</select> <span data-for='apply' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+							<button type="button" id="savepopupReason" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	   <script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			  document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if (e.keyCode == 13&& !$('#cancel:focus').length&& !$('#savepopupReason:focus').length) {
+         				
+						$("#savepopupReason").click();
+						
+         				break;
+					}
+         		}
+         	} 
+
+	</script>  
+</form>

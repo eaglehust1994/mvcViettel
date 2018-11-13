@@ -1,0 +1,456 @@
+<div id="formDetail" data-ng-controller="catAssetDetailController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="light">
+		<div class="portlet-body form">
+			<form class="form-horizontal row" role="form" id="detailAssetForm">
+				<div class="form-body margin-top">
+					<div class="clearfix">
+						<search-box-asset 
+							req="req"
+							msg="Mã trạm không được để trống"
+							model-label="Mã trạm" 
+							caller="vm" 
+							popup-id="cat_asset_detail_stationId" 
+							popup-type="grid" 
+							popup-source-link="longTermAssetServiceRest/getStationForAutoComplete" 
+							combo-id="cat_asset_detail_txtStationId" 
+							combo-source-link="longTermAssetServiceRest/getStationForAutoComplete" 
+							combo-name="stationCode" 
+							combo-value="id" 
+							combo-code="stationCode" 
+							combo-search="vm.commonSearch" 
+							combo-grid="vm.gridCommon" 
+							model-id="vm.detail.stationId" 
+							model-name="vm.detail.stationCode">
+						</search-box-asset>
+						
+						<search-box-asset 
+							req="req"
+							msg="Công trình không được để trống"
+							model-label="Công trình" 
+							caller="vm" 
+							popup-id="cat_asset_detail_constructionId" 
+							popup-type="grid" 
+							popup-source-link="longTermAssetServiceRest/getConstrConstructionsForAutoComplete" 
+							combo-id="cat_asset_detail_txtConstructionId" 
+							combo-source-link="longTermAssetServiceRest/getConstrConstructionsForAutoComplete" 
+							combo-name="constrtName" 
+							combo-value="constructId" 
+							combo-code="constrtCode" 
+							combo-search="vm.searchConstruct" 
+							combo-grid="vm.gridCommon" 
+							model-id="vm.detail.constructId" 
+							model-name="vm.detail.constructName">
+						</search-box-asset>
+					</div>
+					<div class="clearfix">
+						<!-- <combo-box-asset
+							searchtype="adOrg" 
+							req="req"
+							msg="Đơn vị hạch toán không được để trống"
+							model-label="Đơn vị hạch toán" 
+							caller="vm" 
+							popup-id="cat_asset_detail_acctAdOrgId" 
+							popup-type="tree" 
+							popup-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+							combo-id="cat_asset_detail_txtAcctAdOrgId" 
+							combo-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+							combo-name="name" 
+							combo-value="groupId" 
+							combo-code="value" 
+							combo-search="vm.commonSearch" 
+							combo-grid="vm.gridCommon" 
+							model-id="vm.detail.groupId" 
+							model-name="vm.detail.groupName">
+						</combo-box-asset> -->
+						 <div class="margin-bottom-asset col-md-6">
+                        <label class="col-md-4 control-label req" translate>Đơn vị hạch toán</label>
+                        <div class="col-md-8">
+                            <input kendo-auto-complete k-options="vm.sysGroupOptions"
+                                   ng-model="vm.detail.groupName" required data-required-msg="Đơn vị hạch toán không được để trống"
+                                   class="form-control width100" name="groupCode" id="groupCode" />
+                                   	<span data-for="groupCode" class="k-invalid-msg"></span>
+                        </div>
+                        </div>
+						<!-- <combo-box-asset
+							searchtype="adOrg" 
+							req="req"
+							msg="Đơn vị sử dụng không được để trống"
+							model-label="Đơn vị sử dụng" 
+							caller="vm" 
+							popup-id="cat_asset_detail_usingAdOrgId" 
+							popup-type="tree" 
+							popup-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+							combo-id="cat_asset_detail_txtUsingAdOrgId" 
+							combo-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+							combo-name="name" 
+							combo-value="groupId" 
+							combo-code="value" 
+							combo-search="vm.useGroupSearch" 
+							combo-grid="vm.gridCommon" 
+							model-id="vm.detail.useGroupId" 
+							model-name="vm.detail.useGroupName">
+						</combo-box-asset> -->
+						 <div class="margin-bottom-asset col-md-6">
+                        <label class="col-md-4 control-label req" translate>Đơn vị sử dụng</label>
+                        <div class="col-md-8">
+                            <input kendo-auto-complete k-options="vm.sysUserGroupOptions"
+                                   ng-model="vm.detail.useGroupName" required data-required-msg="Đơn vị sử dụng không được để trống"
+                                   class="form-control width100" name="groupUserCode"  />
+                                   	<span data-for="groupUserCode" class="k-invalid-msg"></span>
+                        </div>
+                    </div>
+					</div>
+					<div class="clearfix">
+						<combo-box-asset 
+							searchtype="assetCode" 
+							req="req"
+							msg="Nhóm tài sản không được để trống"
+							model-label="Nhóm tài sản" 
+							caller="vm" 
+							popup-id="cat_asset_detail_assetGroup" 
+							popup-type="grid" 
+							popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-id="cat_asset_detail_txtAssetGroup" 
+							combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-name="caacName" 
+							combo-value="catAssetCodeId" 
+							combo-code="caacCode" 
+							combo-search="vm.assetGroupSearch" 
+							combo-grid="vm.gridCommon" 
+							model-code="vm.detail.assetGroupCode"
+							model-id="vm.detail.assetGroupId" 
+							model-name="vm.detail.assetGroupName">
+						</combo-box-asset>
+						
+						<combo-box-asset 
+							searchtype="assetCode" 
+							req="req"
+							msg="Loại tài sản không được để trống"
+							model-label="Loại tài sản" 
+							caller="vm" 
+							popup-id="cat_asset_detail_lotaType" 
+							popup-type="grid" 
+							popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-id="cat_asset_detail_txtLotaType" 
+							combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-name="caacName" 
+							combo-value="catAssetCodeId" 
+							combo-code="caacCode" 
+							combo-search="vm.assetTypeSearch" 
+							combo-grid="vm.gridCommon" 
+							model-code="vm.detail.assetTypeCode"
+							model-id="vm.detail.assetTypeId" 
+							model-name="vm.detail.assetTypeName">
+						</combo-box-asset>
+					</div>
+					<div class="clearfix">
+						<combo-box-asset 
+							searchtype="assetSource" 
+							req="req"
+							msg="Dòng tài sản không được để trống"
+							model-label="Dòng tài sản" 
+							caller="vm" 
+							popup-id="cat_asset_detail_assetSource" 
+							popup-type="grid" 
+							popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-id="cat_asset_detail_txtAssetSource" 
+							combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-name="caacName" 
+							combo-value="catAssetCodeId" 
+							combo-code="caacCode" 
+							combo-search="vm.catAssetSourceSearch" 
+							combo-grid="vm.gridCommon" 
+							model-code="vm.detail.assetSourceCode"
+							model-id="vm.detail.assetSourceId" 
+							model-name="vm.detail.assetSourceName">
+						</combo-box-asset>
+						
+						<combo-box-asset 
+							searchtype="catAsset" 
+							req="req"
+							msg="Tên tài sản không được để trống"
+							model-label="Tên tài sản" 
+							caller="vm" 
+							popup-id="cat_asset_detail_assetName" 
+							popup-type="grid" 
+							popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-id="cat_asset_detail_txtAssetName" 
+							combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+							combo-name="caacName" 
+							combo-value="catAssetCodeId" 
+							combo-code="caacCode" 
+							combo-search="vm.catAssetCodeSearch" 
+							combo-grid="vm.gridCommon" 
+							model-code="vm.detail.assetNameCode"
+							model-id="vm.detail.catAssetCodeId" 
+							model-name="vm.detail.assetNameName">
+						</combo-box-asset>
+					</div>
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Mã tài sản</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" name="lotaCode" id="lotaCode" maxlength="15" ng-model="vm.detail.lotaCode" readonly />
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Nguyên giá Tài Sản (VNĐ)</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" name="originalPrice" id="originalPrice" ng-model="vm.detail.originalPrice" readonly />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Số biên bản bàn giao</label>
+							<div class="col-md-8">
+								<input type="text" class="form-control" name="handoverCode" id="handoverCode" maxlength="30" ng-model="vm.detail.handoverCode" required data-required-msg="Số biên bản bàn giao không được để trống" />
+								<span data-for="handoverCode" class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Ngày bàn giao đưa vào SD</label>
+							<div class="col-md-8">
+								<input class="form-control date" kendo-date-picker name="depreciationStartDate" id="depreciationStartDate" ng-model="vm.detail.depreciationStartDate" k-format="'dd/MM/yyyy'" required data-date-msg="Ngày không đúng định dạng!" data-required-msg="Ngày bàn giao đưa vào SD không được để trống" />
+								<span data-for="depreciationStartDate" class="k-invalid-msg"></span>
+								<script>
+									$(function() {
+										var depreciationStartDate = $("input[name='depreciationStartDate']");
+										depreciationStartDate.kendoMaskedTextBox({
+											mask : "00/00/0000"
+										});
+
+										depreciationStartDate.kendoDatePicker({
+											format : "dd/MM/yyyy"
+										});
+
+										depreciationStartDate.closest(".k-datepicker").add(depreciationStartDate).removeClass("k-textbox");
+									});
+								</script>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<!-- Chưa có thông tin -->
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>File đình kèm BBBG</label>
+							<div class="col-md-8">
+								<div class="input-group">
+									<input id="fileBBBG" name="fileBBBG" type="file" accept=".doc, .xls, .pdf" style="display: none;" onchange="angular.element(this).scope().changeFile()" />
+									<input id="filePath" name="filePath" type="text" class="form-control" ng-model="vm.detail.attachName" placeholder="Chọn file..." ng-click="vm.choseFile();" readonly required data-required-msg="File đình kèm BBBG không được để trống" />
+									<span data-for="filePath" class="k-invalid-msg"></span>
+									<span for="fileBBBG" class="input-group-btn">
+										<button class="btn btn-default btn-sm" type="button" style="padding-bottom: 3px; padding-top: 2px;" ng-click="vm.choseFile();">Browser</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Nguồn vốn</label>
+							<div class="col-md-8">
+								<select class="form-control" id="createdSource" name="createdSource" style="width: 100%" 
+									kendo-drop-down-list 
+									k-data-text-field="'name'"
+									k-data-value-field="'id'"
+									k-data-source="vm.createdSource"
+									ng-model="vm.detail.createdSource" 
+									required 
+									data-required-msg="Nguồn vốn không được để trống">
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Nguồn hình thành</label>
+							<div class="col-md-8">
+								<select class="form-control" id="voucherType" name="voucherType" style="width: 100%" 
+									kendo-drop-down-list 
+									k-data-text-field="'name'"
+									k-data-value-field="'id'"
+									k-data-source="vm.voucherType"
+									ng-model="vm.detail.voucherType" 
+									required 
+									data-required-msg="Nguồn hình thành không được để trống">
+								</select>
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Trạng thái hình thành TS</label>
+							<div class="col-md-8">
+								<label><input type="radio" id="lotaStatus" name="lotaStatus" ng-checked="vm.detail.lotaStatus == 0" value="0"> Tạm tăng</label>
+								<label><input type="radio" id="lotaStatus" name="lotaStatus" ng-checked="vm.detail.lotaStatus == 1" value="1"> Đã quyết toán</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+			<uib-tabset class="tabbable-custom">
+				<uib-tab active="vm.tabs[0].active" heading="Danh sách chi phí hình thành tài sản">
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<table class="table table-bordered margin-top" style="margin-bottom: 0px;">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th>Hạng mục chi phí</th>
+										<th>Giá trị (VNĐ)</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-center">1</td>
+										<td>Chi phí vật tư thiết bị</td>
+										<td class="text-right">{{vm.merEntityValue}}</td>
+										<td class="text-center">
+											<button type="button" class="btn btn-link" ng-click="vm.showPopup('merEntity')">Chi tiết</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="text-center">2</td>
+										<td>Chi phí xây lắp</td>
+										<td class="text-right">{{vm.constructionAcceptanceValue}}</td>
+										<td class="text-center">
+											<button type="button" class="btn btn-link" ng-click="vm.showPopup('constructionAcceptance')">Chi tiết</button>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td></td>
+										<td class="text-center">TỔNG</td>
+										<td class="text-right">{{vm.totalCost}}</td>
+										<td></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</uib-tab>
+				<uib-tab active="vm.tabs[1].active" heading="Danh sách chi phí phân bổ">
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<table id="tblDistribution" class="table table-bordered margin-top" style="margin-bottom: 0px;">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th>Hạng mục chi phí</th>
+										<th>Giá trị (VNĐ)</th>
+										<th>Số chứng từ</th>
+										<th>Ngày chứng từ</th>
+										<th>File đính kèm</th>
+										<th></th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td class="text-center">{{vm.countRow}}<input type="hidden" class="id" /></td>
+										<td>
+											<select class="type" style="padding: 2.6px 5px; border: 1px solid #c2cad8; with: 100%;">
+												<option value="3">Chi phí tư vấn đầu tư xây dựng</option>
+												<option value="4">Chi phí QLDA</option>
+												<option value="5">Chi phí bồi thường, hỗ trợ, tái định cư</option>
+												<option value="6">Chi phí khác</option>
+											</select>
+										</td>
+										<td>
+											<input type="text" class="form-control value text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57" onchange="changeCurrency(this)" />
+										</td>
+										<td>
+											<input type="text" class="form-control code" maxlength="50" />
+										</td>
+										<td>
+											<input class="form-control date" kendo-date-picker data-date-msg="Ngày không đúng định dạng!" id="firstItem" name="inputDate" k-format="'dd/MM/yyyy'" />
+											<span data-for="inputDate" class="k-invalid-msg"></span>
+											<script>
+												$(function() {
+													var inputDate = $("input[name='inputDate']");
+													inputDate.kendoMaskedTextBox({
+														mask : "00/00/0000"
+													});
+
+													inputDate.kendoDatePicker({
+														format : "dd/MM/yyyy"
+													});
+
+													inputDate.closest(".k-datepicker").add(inputDate).removeClass("k-textbox");
+												});
+											</script>
+											<!--<input type="date" class="form-control date" />-->
+										</td>
+										<td>
+											<div class="input-group">
+												<input type="file" accept=".doc, .xls, .pdf" class="file" style="display: none;" onchange="angular.element(this).scope().changeDisFile(this)" />
+												<input type="text" class="form-control att" placeholder="Chọn file..." readonly onclick="angular.element(this).scope().txtChoseDisFile(this)" />
+												<span class="input-group-btn">
+													<button class="btn btn-default btn-sm" type="button" style="padding-bottom: 3px; padding-top: 2px;" onclick="angular.element(this).scope().choseDisFile(this)">Browser</button>
+												</span>
+											</div>
+										</td>
+										<td class="text-center" style="width: 80px;">
+											<div class="btn-group">
+												<button type="button" class="btn btn-link btn-xs" onclick="addDisRow(this);">
+													<span class="glyphicon glyphicon-plus"></span>
+												</button>
+												<button type="button" class="btn btn-link btn-xs" onclick="removeDisRow(this);">
+													<span class="glyphicon glyphicon-remove"></span>
+												</button>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td></td>
+										<td class="text-center">TỔNG</td>
+										<td class="text-right">{{vm.totalDis}}</td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</uib-tab>
+			</uib-tabset>
+			<form class="form-horizontal row" role="form">
+				<div class="form-body">
+					<div class="clearfix">
+						<div class="row pull-right">
+							<div class="col-md-12">
+								<button type="button" class="btn default" translate ng-click="vm.cancel()">Hủy bỏ</button>
+								<button id="btnSave" type="button" class="btn green" translate ng-click="vm.save()">Ghi lại</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="loading-effect">
+	<img src="assets/layouts/layout/img/loading-img.gif" />
+</div>
+<style>
+	.loading-effect {
+		display: none;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		background-color: rgba(216, 216, 224, 0.35);
+		z-index: +99;
+	}
+	.loading-effect img{
+		top: 50%;
+		left: 50%;
+		position: absolute;
+	}
+	.input-icon.right>.form-control {
+		padding-left: inherit;
+	}
+</style>

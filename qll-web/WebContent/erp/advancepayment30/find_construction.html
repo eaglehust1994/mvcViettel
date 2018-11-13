@@ -1,0 +1,8 @@
+<div ng-controller="findConstruction30Controller as vm">
+<div class="btn-toolbar margin-bottom-10 margin-top" >
+		<div data-ng-include="'erp/apcommon/ap_action_header.html'" id="topBarContract" onload="vm.hideAButton()"></div>	
+</div>
+	<div data-ng-include="'erp/advancepayment30/searchForm.html'" k-options="vm.validatorOptions"></div>
+		<div kendo-grid="vm.findConstruction30Service" k-options="vm.gridOptions" id="contractGrid"></div>
+</div>
+

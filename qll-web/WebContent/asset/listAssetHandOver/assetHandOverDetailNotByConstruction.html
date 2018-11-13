@@ -1,0 +1,226 @@
+<div
+	ng-controller="assetHandOverDetailNotByConstructionController as vm">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class=""></i> <span class="caption-subject  bold uppercase"
+					translate>Thông tin bàn giao</span>
+			</div>
+		</div>
+		<div class="portlet-body form" kendo-validator="vm.validator"
+			k-options="vm.validatorOptions">
+			<!-- BEGIN FORM-->
+			<form class="form-horizontal" id="infoAssetEntityForm">
+				<div class="form-body">
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Đơn vị
+								nhận bàn giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.receiverGroupName" readonly />
+							</div>
+						</div>
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Mã biên
+								bản bàn giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="handoverCode"
+									id="handoverCode" ng-model="vm.detail.handoverCode" readonly />
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày bàn
+								giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.handoverDate" readonly />
+							</div>
+						</div>
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Lý do bàn
+								giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100" ng-model="vm.detail.reason"
+									readonly />
+							</div>
+						</div>
+					</div>
+
+
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Đại diện
+								bên nhận</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.receiverName" readonly />
+							</div>
+						</div>
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Chức vụ</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.receiverPosition" readonly />
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Đại diện
+								bên giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.deliveryName" readonly />
+							</div>
+						</div>
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Chức vụ</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.deliveryPosition" readonly />
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Căn cứ</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-model="vm.detail.foundation" readonly />
+							</div>
+						</div>
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Trạng
+								thái xác nhận</label>
+							<div class="col-md-8">
+								<input class="form-control width100" value="Đã xác nhận" readonly/></input>
+							</div>
+						</div>
+					</div>
+
+
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Mã phiếu
+								xuất</label>
+							<div class="col-md-8">
+								<input class="form-control width100"
+									ng-value="vm.detail.deliveryNoteCode" readonly />
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6"></div>
+
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class=""></i> <span
+						class="caption-subject  bold uppercase" translate>Danh sách hàng hóa</span>
+				</div>
+			</div>
+			<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form class="form-horizontal">
+				<!-- 	<div kendo-grid="vm.merHandOverEntityGrid" k-options="vm.gridOptions" id= "merHandOverEntityGrid"></div> -->
+					<div class="form-group col-md-12">
+						<table class="table table-bordered margin-top" style="margin-bottom: 0px;" id = "merHandOverEntityGrid">
+							<thead>
+							 <tr>
+							 <th>STT</th>
+							 <th>Tên hàng hóa</th>
+							 <th>Mã số</th>
+							 
+							 <th>Serial Number</th>
+							  <th>Part number</th>
+							  <th>Đơn vị</th>
+							 <th>Số lượng</th>
+							
+							
+							 
+							 </tr>
+							</thead>
+							<tbody>
+							<tr ng-repeat = "item in vm.lstMerEntityData">
+							<td class="text-center"><span class = "hide">{{item}}</span>{{$index + 1}}</td>
+							<td class="text-left">{{item.name}}</td>
+							<td class="text-left">{{item.code}}</td>
+							
+							<td class="text-left">
+								<div ng-switch ="item.isDevice">
+									<span ng-switch-when = "1">{{item.serialNumber}}</span>
+									<span ng-switch-when = "0"></span>
+								
+								</div>
+							</td>
+							<td class="text-left" >
+								{{item.partNumber}}
+							</td>	
+							<td class="text-left" >
+								{{item.unitName}}
+							</td>	
+							<td class="text-right">{{item.count}}</td>
+												
+							<td class="hide">{{item.handOverId}}</td>
+							<td class="hide">{{item.merEntityId}}</td>
+							
+							</tr>
+							</tbody>
+						</table>					
+					</div>
+					
+					<div class="clearfix">
+						<div class="form-group col-md-12 text-right">												
+							 <button type="button" class="btn green" ng-click = "vm.exportFile()">Export doc</button>
+							  <button type="button" class="btn green" ng-click = "vm.exportFilePdf()">Export Pdf</button>
+							<!--<button type="button" class="btn green" ng-click = "vm.joinAll()">Ghép toàn bộ</button>
+							<button type="button" class="btn green" ng-click = "vm.joinMultiSelect()">Ghép bộ</button> -->
+							
+						</div>
+					</div>
+				</form>
+			</div>
+	</div>
+	
+</div>
+<div class="loading-effect">
+	<img src="assets/layouts/layout/img/loading-img.gif" />
+</div>
+<style>
+.loading-effect {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(216, 216, 224, 0.35);
+	z-index: +99;
+}
+
+.loading-effect img {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+}
+
+.input-icon.right>.form-control {
+	padding-left: inherit;
+}
+</style>
+

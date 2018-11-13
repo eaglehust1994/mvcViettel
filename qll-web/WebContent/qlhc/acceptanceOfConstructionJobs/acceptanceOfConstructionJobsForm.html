@@ -1,0 +1,397 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+    margin: 4px 2px;
+}
+</style>
+<form class="form-horizontal row" role="form" id="formIdFormAccept" >
+	<div class="form-body">
+	<div class="portlet light bordered" disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông tin chung</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số hợp đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="contractCode"
+								id="contractCode" ng-model="vm.item.contractCode" readonly="" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày ký hợp
+						đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="signed_date" id="signed_date"
+								ng-model="vm.item.signed_date" readonly="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã công
+						trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constrtCode"
+								id="constrtCode" ng-model="vm.item.constrtCode" readonly="" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Tên công
+						trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constrtName"
+								id="constrtName" ng-model="vm.item.constrtName" readonly="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ
+							công trình</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="constrtAddress"
+									id="constrtAddress" ng-model="vm.item.constrtAddress"
+									readonly="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Ngày ký</label>
+					<div class="col-md-8">
+						<input kendo-date-picker name="signDateAcc" id="signDateAcc"
+							ng-model="vm.mWorkItemsAcceptance.signDate" k-options="vm.dateTimePickerConfig1" 
+							required data-required-msg="Ngày không được để trống" />
+						<span data-for="signDateAcc" class="k-invalid-msg"></span>
+					</div>
+					<script>
+						/* $(function() {
+		
+							var signDateAcc = $("#signDateAcc");
+							signDateAcc.kendoDateTimePicker({
+										format : "dd/MM/yyyy HH:mm:ss",
+										parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+												"dd/MM/yyyy HH:mm:ss",
+												"yyyy/MM/dd HH:mm:ss" ],
+										footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+									})
+						}); */
+						$(function() {
+							var validTo = $("#signDateAcc");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000"
+							});
+
+							validTo.kendoDatePicker({
+								format : "dd/MM/yyyy"
+							});
+
+							validTo.closest(".k-datepicker").add(validTo)
+									.removeClass("k-textbox");
+						});
+					</script>
+				</div>
+				<div class="form-group col-md-6">
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Địa điểm ký</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="signPlace" maxlength="200"
+									id="signPlace" ng-model="vm.mWorkItemsAcceptance.signPlace" required data-required-msg="Tại không được để trống"/>
+								<span data-for="signPlace" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered" disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thành phần tham gia</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Giám sát
+						thi công</label>
+					<div class="col-md-8">
+						<select class="form-control" id="monitorId" style="width: 100%"
+							name="monitorId" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.monitorId" ng-model="vm.mWorkItemsAcceptance.monitorId" required
+							data-required-msg="Thành phần tham gia không được để trống">
+						</select>
+						<span data-for="monitorId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Kỹ thuật nhà thầu</label>
+					<div class="col-md-8">
+						<select class="form-control" id="inChargeConstructId" style="width: 100%"
+							name="inChargeConstructId" kendo-drop-down-list
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.inChargeConstructId" ng-model="vm.mWorkItemsAcceptance.inChargeConstructId" required
+							data-required-msg="Thành phần tham gia không được để trống">
+						</select>
+						<span data-for="inChargeConstructId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered" disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thời gian tiến hành bàn giao</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Ngày
+						bắt đầu</label>
+					<div class="col-md-8">
+						<input kendo-date-time-picker name="acceptFromDateAcc"
+							id="acceptFromDateAcc" k-options="vm.dateTimePickerConfig"
+							ng-model="vm.mWorkItemsAcceptance.acceptFromDate" required
+							data-required-msg="Ngày bắt đầu không được để trống"/> 
+							<span data-for="acceptFromDateAcc" class="k-invalid-msg"></span>
+					</div>
+					<script>
+						$(function() {
+		
+							var acceptFromDateAcc = $("#acceptFromDateAcc");
+							acceptFromDateAcc.kendoDateTimePicker({
+										format : "dd/MM/yyyy HH:mm:ss",
+										parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+												"dd/MM/yyyy HH:mm:ss",
+												"yyyy/MM/dd HH:mm:ss" ],
+										footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+									})
+						});
+					</script>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Ngày
+						kết thúc</label>
+					<div class="col-md-8">
+						<input kendo-date-time-picker name="acceptToDateAcc"
+							id="acceptToDateAcc" k-options="vm.dateTimePickerConfig" 
+							ng-model="vm.mWorkItemsAcceptance.acceptToDate" required
+							data-required-msg="Ngày kết thúc không được để trống"/> 
+							<span data-for="acceptToDateAcc" class="k-invalid-msg"></span>
+					</div>
+					<script>
+						$(function() {
+		
+							var acceptToDateAcc = $("#acceptToDateAcc");
+							acceptToDateAcc.kendoDateTimePicker({
+										format : "dd/MM/yyyy HH:mm:ss",
+										parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+												"dd/MM/yyyy HH:mm:ss",
+												"yyyy/MM/dd HH:mm:ss" ],
+										footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+									})
+						});
+					</script>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Tại</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="acceptPlace"
+									id="acceptPlace" ng-model="vm.mWorkItemsAcceptance.acceptPlace" maxlength="1000"
+									required data-required-msg="Tại không được để trống" />
+							</div>
+							<span data-for="acceptPlace" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered" disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Đánh giá công việc xây dựng</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Quy
+						chuẩn, tiêu chuẩn được áp dụng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="applyBenchmark" maxlength="500"
+								id="applyBenchmark" 
+								ng-model="vm.mWorkItemsAcceptance.applyBenchmark" required
+								data-required-msg="Quy chuẩn, tiêu chuẩn được áp dụng không được để trống" />
+						</div>
+						<span data-for="applyBenchmark" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Các văn
+						bản, tài liệu khác nếu có</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="otherDocuments" maxlength="500"
+								id="otherDocuments" 
+								ng-model="vm.mWorkItemsAcceptance.otherDocuments" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Chất
+						lượng công việc xây dựng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constructionQuality" maxlength="200"
+								id="constructionQuality" 
+								ng-model="vm.mWorkItemsAcceptance.constructionQuality" required
+								data-required-msg="Chất lượng công việc xây dựng không được để trống" />
+						</div>
+						<span data-for="constructionQuality" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Các ý kiến
+						khác</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="otherComments" maxlength="1000"
+								id="otherComments" 
+								ng-model="vm.mWorkItemsAcceptance.otherComments" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered" disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết luận</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Kết
+							luận</label>
+						<div class="col-md-4">
+							<select kendo-drop-down-list id="conclusionWork" name="conclusionWork"
+								ng-model="vm.mWorkItemsAcceptance.conclusion" class="form-control width100" maxlength="11">
+								<option value="1">Chấp nhận nghiệm thu và đồng ý cho triển khai công việc tiếp theo</option>
+								<option value="0">Không chấp nhận nghiệm thu</option>
+							</select>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Yêu cầu
+							sửa chữa, hoàn thiện các công việc đã thực hiện và các yêu cầu
+							khác</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<textarea class="form-control width100" name="completeRequest" maxlength="1000"
+									id="completeRequest" 
+									ng-model="vm.mWorkItemsAcceptance.completeRequest" ></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered">
+		<div class="portlet-title" disable-all="vm.viewDisable">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Danh sách công việc nghiệm thu</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="btn-toolbar margin-bottom-10 margin-top" disable-all="vm.viewDisable">
+				<div class="btn-group margin-left-button">
+					<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" 
+						ng-click="vm.showPopupWorkForm()" uib-tooltip="Thêm mới">
+						<div class="action-button add"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</button>
+					<button type="button" ng-click="vm.multiDeleteList()" 
+						class="btn btn-default padding-button box-shadow  border-radius-right" uib-tooltip="Xóa">
+						<div class="action-button del" 
+							 translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</button>
+				</div>
+			</div>
+			<div kendo-grid="vm.shareEstimatesWorkItemsGrid"
+				k-options="vm.gridOptions" id="shareEstimatesWorkItemsGrid">
+			</div>
+			<script>
+                $(document).ready(function() {
+                    var tooltip = $("#shareEstimatesWorkItemsGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#shareEstimatesWorkItemsGrid").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#shareEstimatesWorkItemsGrid").find("td").click(false);
+                });
+            </script>
+		</div>
+		</div>
+	</div>
+</form>

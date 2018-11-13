@@ -1,0 +1,483 @@
+<div class="page-sidebar navbar-collapse collapse"
+	ng-controller="MenuController as vm">
+	<!-- BEGIN SIDEBAR MENU -->
+	<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+	<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+	<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+	<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+	<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+	<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+	<ul class="page-sidebar-menu" data-keep-expanded="false"
+		data-auto-scroll="true" data-slide-speed="200"
+		ng-class="{'page-sidebar-menu-closed': settings.layout.pageSidebarClosed}">
+		<!-- DOC: To remove the search box from the sidebar you just need to completely remove the below "sidebar-search-wrapper" LI element -->
+		<li class="sidebar-search-wrapper">
+			<!-- BEGIN RESPONSIVE QUICK SEARCH FORM --> <!-- DOC: Apply "sidebar-search-bordered" class the below search form to have bordered search box -->
+			<!-- DOC: Apply "sidebar-search-bordered sidebar-search-solid" class the below search form to have bordered & solid search box -->
+			<form class="sidebar-search" action="#" method="POST">
+				<a href="javascript:;" class="remove"> <i class="icon-close"></i>
+				</a>
+				<div class="input-group">
+					<input type="text" ng-model="vm.searchText" class="form-control"
+						placeholder="Search..." /> <span class="input-group-btn">
+						<a href="javascript:;"> <i class="icon-magnifier"></i>
+					</a>
+					</span>
+				</div>
+			</form> <!-- END RESPONSIVE QUICK SEARCH FORM -->
+		</li>
+		<!-- <li class="start nav-item"><a href="javascript:;"
+			ng-click="vm.goTo('DASH_BOARD')"> ng-click="vm.goTo('DASH_BOARD')"
+				<i class="icon-home"></i> <span class="title" translate>Trang
+					chủ</span> <span class="selected"></span>
+		</a></li> -->
+		<!-- <li class="nav-item"><a href="javascript:;"
+			ng-click="vm.goTo('CAT_PARTSList')"> <i class="fa fa-circle"
+				aria-hidden="true"></i> <span class="title" translate>Danh
+					sách CAT_PARTS </span>
+		</a></li>
+		<li class="nav-item"><a href="javascript:;"
+			ng-click="vm.goTo('CAT_BANK_BRANCH_BAKList')"> <i
+				class="fa fa-circle" aria-hidden="true"></i> <span class="title"
+				translate>Danh sách CAT_BANK_BRANCH_BAK </span>
+		</a></li>
+		<li class="nav-item"><a href="javascript:;"
+			ng-click="vm.goTo('Asset_HinhThanhTS_TuPhieuDeNghi')"> <i
+				class="fa fa-circle" aria-hidden="true"></i> <span class="title"
+				translate>Hình thành tài sản từ phiếu đề nghi</span>
+		</a></li> -->
+		<li class="nav-item" ng-repeat="parentMenu in vm.menuObjects"
+			ng-show="parentMenu.objectUrl=='HCQT_MENU'"><a
+			href="javascript:;" class="nav-link nav-toggle">
+				<div class="gl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span class="title"
+				translate>Hoàn công quyết toán</span> <span class="arrow "></span>
+		</a>
+			<ul class="sub-menu">
+				<li class="nav-item"
+					ng-show="Constant.isAuthorizedForProposalEvaluation">
+					<div class="can"></div> <a href="javascript:;"
+					ng-click="vm.goTo('ProposalEvaluation')"> <i
+						class="fa fa-circle" aria-hidden="true"></i> <span class="title"
+						translate>Quản lý đề nghị và thẩm định QT</span>
+				</a>
+				</li>
+
+				<!-- Quản lý bộ HSHC -->
+				<li class="nav-item"
+					ng-show="Constant.isAuthorizedForListingConstruction"><a
+					href="javascript:;" ng-click="vm.goTo('LISTING_CONSTRUCTION')">
+						<i class="fa fa-circle" aria-hidden="true"></i> <span
+						class="title" translate>Quản lý bộ HSHC</span>
+				</a></li>
+
+				<!-- Danh mục nhân sự đối tác -->
+				<li class="nav-item"><a href="javascript:;"
+					class="nav-link nav-toggle">
+						<div class="gl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span class="title"
+						translate>Danh mục</span> <span class="arrow "></span>
+				</a>
+					<ul class="sub-menu">
+						<li class="arrow" ng-show="Constant.isAuthorizedForListPartnerHR">
+							<a href="javascript:;" ng-click="vm.goTo('LIST_PARTNER_HR')">
+								<i class="fa fa-circle" aria-hidden="true"></i> <span
+								class="title" translate>Danh mục nhân sự đối tác</span>
+						</a>
+						</li>
+
+
+					</ul></li>
+			</ul></li>
+
+
+
+		<!-- Vsa -->
+		<li class="nav-item" ng-repeat="parentMenu in vm.menuObjects"
+			ng-show="parentMenu.objectUrl=='ASSET_TSCD'"><a
+			href="javascript:;" ng-show="parentMenu.childObjects.length>0"
+			class="nav-link nav-toggle">
+				<div class="gl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span class="title"
+				ng-bind="vm.getMenuText(parentMenu.objectUrl)"></span> <span
+				class="arrow"></span>
+		</a> <a href="javascript:;" ng-show="parentMenu.childObjects.length==0"
+			ng-click="vm.goTo(parentMenu.objectUrl)" class="nav-link nav-toggle">
+				<i class="fa fa-circle" aria-hidden="true"></i>
+				<p class="title">
+					<span ng-bind="vm.getMenuText(parentMenu.objectUrl)"></span>
+				</p>
+		</a>
+			<ul class="sub-menu" ng-if="parentMenu.childObjects.length>0">
+				<li ng-repeat="childObject in parentMenu.childObjects"
+					ng-class="childObject.childObjects.length>0?'nav-item':''">
+					<!--   Nếu không có con hiển thị menu --> <a href="javascript:;"
+					ng-if="childObject.childObjects.length==0"
+					ng-click="vm.goTo(childObject.objectUrl)"> <i
+						class="fa fa-circle" aria-hidden="true"></i>
+						<p class="title">
+							<span ng-bind="vm.getMenuText(childObject.objectUrl)"></span>
+						</p>
+				</a> <!-- Nếu có menu con	
+                   Nếu  có con cấp 2 hiển thị menu link     --> <a
+					href="javascript:;" ng-if="childObject.childObjects.length>0"
+					class="nav-link nav-toggle">
+						<div class="gl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span class="title"
+						ng-bind="vm.getMenuText(childObject.objectUrl)"></span> <span
+						class="arrow"></span>
+				</a> <!-- Nếu có cây con cấp 2  -->
+					<ul class="sub-menu" ng-if="childObject.childObjects.length>0">
+						<li ng-repeat="childO2 in childObject.childObjects"><a
+							href="javascript:;" ng-if="childO2.childObjects.length==0"
+							ng-click="vm.goTo(childO2.objectUrl)"> <i
+								class="fa fa-circle" aria-hidden="true"></i>
+								<p class="title">
+									<span ng-bind="vm.getMenuText(childO2.objectUrl)"></span>
+								</p>
+						</a></li>
+					</ul>
+
+				</li>
+			</ul></li>
+
+		<li class="nav-item" id="phanQuyenID" ng-show="checkUser&&(RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkTPPTP)" aria-hidden="true"  hidden="true">
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Phân quyền chức năng</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('PHAN_QUYEN_MENU')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Phân quyền cho đơn vị hoặc cá nhân</span>
+				</a></li>
+			</ul>
+		</li>
+		
+		<li class="nav-item" id="viewHistoryID" ng-show="RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkRoleFullQuyenQLTS" aria-hidden="true"  hidden="true">
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Tổng hợp lịch sử</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('VIEW_HISTORY_ACTION')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Kiểm tra lịch sử thao tác</span>
+				</a></li>
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('VIEW_HISTORY_DN_ACTION')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Kiểm tra lịch sử đăng nhập</span>
+				</a></li>
+			</ul>
+		</li>
+		
+		<li class="nav-item" id="reportPTKID" ng-show="RoleMenu.checkRole.checkBCPTK" aria-hidden="true"  hidden="true" >
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Báo cáo phòng thanh khoản</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('QLHDTK')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Quản lý hợp đồng ngoài OS P.TK</span>
+				</a></li>
+				<!-- <li><a href="javascript:;"
+					ng-click="vm.goTo('QLCVPTK')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Quản lý công việc P.TK 2</span>
+				</a></li>  -->
+				<li ng-show="RoleMenu.checkRole.checkPTK"><a href="javascript:;"
+					ng-click="vm.goTo('TBLQLCVPTK')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Quản lý công việc P.TK </span>
+				</a></li>
+			</ul>
+			
+		</li>
+		
+		
+		<li class="nav-item" id="reportPKHID"   aria-hidden="true"  hidden="true" >
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate> Phòng kế hoạch</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li ng-show="RoleMenu.checkRole.checkPKH"><a href="javascript:;"
+					ng-click="vm.goTo('TBL_KH_QLVC')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Thống kê Kết Quả Nhiệm Vụ</span>
+				</a></li>
+				<li ng-show="RoleMenu.checkRole.checkPKH" ><a href="javascript:;"
+					ng-click="vm.goTo('TBL_KH_BCKQCV')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Thống kê Kết Quả Kinh Doanh</span>
+				</a></li>
+				<li >
+					<a href="javascript:;"
+						ng-click="vm.goTo('GENERAL_KPI_SCORE')"> <i class="fa fa-circle"
+							aria-hidden="true"></i><span class="title" translate>Tổng hợp điểm các Phòng/Ban</span>
+					</a>
+				</li>
+				<li>
+					<a href="javascript:;"
+						ng-click="vm.goTo('TASK')"> <i class="fa fa-circle"
+							aria-hidden="true"></i><span class="title" translate>Quản lý công việc nề nếp</span>
+					</a>
+				</li>
+			</ul>
+			
+		</li>
+		
+		<li class="nav-item" id="checkTimelate"  ng-show="RoleMenu.checkRole.checkPTCLD" aria-hidden="true"  hidden="true" >
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate> Phòng Tổ Chức Lao Động</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('TBL_TIME_WORK')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Lịch sử ra vào đơn vị</span>
+				</a></li>
+				
+				
+			</ul>
+			
+		</li>
+		
+
+		<!-- 		danh mục dùng chung
+ -->
+		<!-- <li class="nav-item" id="danhMucDC" ng-show="(checkUser&&RoleMenu.checkRole.checkRoleQLL)||RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkRoleFullQuyenQLL" aria-hidden="true">
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Danh mục dùng chung</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;" ng-click="vm.goTo('KDC_LUONG_CD')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>KDC lương cơ động</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('KDC_QUY_LUONG')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>KDC quỹ lương</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('K_HUYEN_KHO')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>K huyện khó</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('KI_CA_NHAN')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Ki cá nhân</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('KI_DON_VI')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Ki đơn vị</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHI_BAN_HANG')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phí bán hàng</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('QL_NHAN_VIEN')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Quản lý nhân viên</span>
+				</a></li>
+
+			</ul>
+		</li>
+		
+		
+		
+		
+		
+		
+		sidebar Nv day may
+		<li class="nav-item" id="dayMayID" ng-show="(checkUser&&RoleMenu.checkRole.checkRoleQLL)||RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkRoleFullQuyenQLL" aria-hidden="true"   hidden="true">
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Dây máy</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('Don_Gia_Thue_Bao')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Đơn
+							Giá Thuê Bao</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_LOI_CDT')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt lỗi CĐT</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_FC')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt FC</span>
+				</a></li>
+					<li><a href="javascript:;" ng-click="vm.goTo('PHAT_NGAY_CONG')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Ngày Công</span>
+				</a></li>
+					<li><a href="javascript:;" ng-click="vm.goTo('DU_LIEU_DUY_TRI')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Dữ liệu duy trì</span>
+				</a></li>
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('PHAT_KHAC_DAY_MAY')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt khác</span>
+				</a></li>
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('PHAT_LOI_DONG_AO')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Phạt
+							lỗi đóng ảo</span>
+				</a></li>
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('PHAT_LOI_LAP_LAI')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Phạt
+							lỗi lặp lại</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_PAKH')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt phản ánh khách hàng</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_ROI_MANG')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt lỗi rời mạng</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('KI_DON_VI')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Ki đơn vị</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_XLSC')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt XLSC</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('TINH_LUONG_DAY_MAY')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Tính lương dây máy</span>
+				</a></li>
+			</ul>
+		</li>
+
+		sidebar Nv tram
+		<li class="nav-item" id="nhaTramID" ng-show="(checkUser&&RoleMenu.checkRole.checkRoleQLL)||RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkRoleFullQuyenQLL" aria-hidden="true"   hidden="true" >
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Nhà trạm</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('DL_HA_TANG_TRAM')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Dữ
+							liệu hạ tầng trạm</span>
+				</a></li>
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('DL_DON_GIA_TRAM')"> <i class="fa fa-circle"
+						aria-hidden="true"></i><span class="title" translate>Dữ
+							liệu đơn giá trạm</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('DUT_CAP')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt đứt cáp do lỗi chủ quan</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_KHAC')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt khác</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('PHAT_KPI')">
+						<i class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Phạt KPI</span>
+				</a></li>
+				<li><a href="javascript:;" ng-click="vm.goTo('QTTL')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Quá trình tính lương</span>
+				</a></li>
+
+				<li><a href="javascript:;" ng-click="vm.goTo('TLNT')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Tính lương nhà Trạm </span>
+				</a></li>
+
+			</ul>
+		</li> -->
+
+		<!-- bao cao  -->
+		<!-- <li class="nav-item" id="vatTuCapA" ng-show="(checkUser&&RoleMenu.checkRole.checkRoleQLTS)||RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkRoleFullQuyenQLTS" aria-hidden="true"   hidden="true" >
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate>Quản lý vật tư cấp A</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				aria-hidden="true"  ng-hide="RoleMenu.roleCode!=5"
+				<li  aria-hidden="true"  ><a  href="javascript:;" ng-click="vm.goTo('IMP_PXK_A_CAP')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Import dữ liệu đầu vào PXK</span>
+				</a></li>
+				<li  ><a href="javascript:;" ng-click="vm.goTo('BC_THUC_XUAT_THEO_KY')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Import dữ liệu đầu vào thực xuất theo kỳ</span>
+				</a></li>
+				<li aria-hidden="true" ng-show="RoleMenu.checkRole.checkRoleXacNhanThongTinftXuatBC" ><a href="javascript:;" ng-click="vm.goTo('EXP_TX_PXK_A_CAP')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Xuất báo cáo đối soát vật tư</span>
+				</a></li>
+				<li aria-hidden="true" ng-show="RoleMenu.checkRole.checkRoleXacNhanThongTinftXuatBC" ><a href="javascript:;" ng-click="vm.goTo('EXP_TH_A_CAP')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Xuất báo cáo tổng hợp toàn kỳ</span>
+				</a></li>
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('BC_THUC_XUAT_THEO_KY')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Báo cáo thực xuất theo kỳ</span>
+				</a></li>
+
+			</ul>
+		</li> -->
+		<!-- <li class="nav-item" id="baoCaoID" ng-show="(checkUser&&RoleMenu.checkRole.checkRoleQLTS)||RoleMenu.checkRole.checkRoLeFullQuyenAll||RoleMenu.checkRole.checkRoleFullQuyenQLTS" aria-hidden="true"   hidden="true" >
+			<div class="can"></div> <a href="javascript:;"
+			class="nav-link nav-toggle">
+				<div class="dmgl">&nbsp;&nbsp;&nbsp;&nbsp;</div> <span
+				class="plus spanPlus"></span> <span class="title font-weight-menu"
+				translate> Quản lý vật tư cấp B</span> <span class="arrow"></span>
+		</a>
+			<ul id="draggableId" class="sub-menu">
+				<li><a href="javascript:;"
+					ng-click="vm.goTo('BC_THUC_XUAT_THEO_KY')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Báo cáo thực xuất theo kỳ</span>
+				</a></li>
+
+
+				<li ><a href="javascript:;"
+					ng-click="vm.goTo('BC_CHI_TIET_CONG_NO2')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Import đầu vào theo PXK</span>
+				</a></li>
+				<li ><a href="javascript:;"
+					ng-click="vm.goTo('BC_CHI_TIET_CONG_NO')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						uib-tooltip="chưa thực hiện" translate>Import thi công nghiệm thu đối soát</span>
+				</a></li>
+				<li aria-hidden="true"  ng-show="RoleMenu.checkRole.checkRoleXacNhanThongTinftXuatBC" ><a href="javascript:;"
+					ng-click="vm.goTo('BC_CHI_TIET_CONG_NO1')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Xuất báo cáo chi tiết đối soát VTTB B cấp</span>
+				</a></li>
+				<li aria-hidden="true" ng-show="RoleMenu.checkRole.checkRoleXacNhanThongTinftXuatBC" ><a href="javascript:;"
+					ng-click="vm.goTo('BC_CHI_TIET_CONG_NO3')"> <i
+						class="fa fa-circle" aria-hidden="true"></i><span class="title"
+						translate>Xuất báo cáo tổng hợp đối soát theo đơn vị</span>
+				</a></li>
+			</ul>
+		</li> -->
+
+	</ul>
+	<!-- END SIDEBAR MENU -->
+</div>

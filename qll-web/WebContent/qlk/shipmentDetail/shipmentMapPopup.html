@@ -1,0 +1,21 @@
+	<form class="form-horizontal row" role="form">
+		<div class="form-body">
+			<div class="portlet light bordered">
+				<div class="portlet-title background-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Danh sách hàng hóa của lô hàng</span>
+					</div>
+				</div>
+				<div id="shipmentMapGrid" kendo-grid="vm.shipmentMapGrid"
+				k-editable="false" k-options="vm.gridMapOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+		</div>
+		<div class="clearfix">
+		<div class="col-md-12 text-right margin_bottom30">
+			<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Đóng</button>
+		</div>
+	</div>
+	</form>

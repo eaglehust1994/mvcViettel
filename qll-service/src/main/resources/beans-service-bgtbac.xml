@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<jaxrs:server id="SettlementRightRsService" address="/SettlementRightRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="SettlementRightRsServiceImpl" class="com.viettel.erp.rest.SettlementRightRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="RoleCaRsService" address="/RoleCaRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="RoleCaRsServiceImpl" class="com.viettel.erp.rest.RoleCaRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+
+
+	<jaxrs:server id="IntergratedContractRsServiceRest"
+		address="/IntergratedContractRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="IntergratedContractRsServiceImpl" class="com.viettel.erp.rest.IntergratedContractRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="AMaterialHandoverRsService" address="/AMaterialHandoverRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AMaterialHandoverRsServiceImpl" class="com.viettel.erp.rest.AMaterialHandoverRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="WareExpCmdRsService" address="/WareExpCmdRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="WareExpCmdRsServiceImpl" class="com.viettel.erp.rest.WareExpCmdRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="ConstrAcceptanceRequestRsService"
+		address="/ConstrAcceptanceRequestRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrAcceptanceRequestRsServiceImpl"
+				class="com.viettel.erp.rest.ConstrAcceptanceRequestRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="ConstrConstructionsRsService" address="/ConstrConstructionsRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrConstructionsRsServiceImpl" class="com.viettel.erp.rest.ConstrConstructionsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="AMaterialHandoverMerListRsService"
+		address="/AMaterialHandoverMerListRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AMaterialHandoverMerListRsServiceImpl"
+				class="com.viettel.erp.rest.AMaterialHandoverMerListRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="MonitorMissionAssignRsService" address="/MonitorMissionAssignRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="MonitorMissionAssignRsServiceImpl"
+				class="com.viettel.erp.rest.MonitorMissionAssignRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+</beans>

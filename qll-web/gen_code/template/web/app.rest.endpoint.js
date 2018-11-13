@@ -1,0 +1,1 @@
+${tbl.tableName}_SERVICE_URL : "${tbl.tableNameVar}ServiceRest/${tbl.tableNameVar}",

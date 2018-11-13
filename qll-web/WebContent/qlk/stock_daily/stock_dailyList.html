@@ -1,0 +1,183 @@
+<style>
+#pdf {
+    background-image: url(style/img/pdf_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+#excel {
+    background-image: url(style/img/excel_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+#note {
+    background-image: url(style/img/note_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+</style>
+
+<div data-ng-controller="stock_dailyController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate></span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo25"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo25" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<auto-search model-label="Kho" caller="vm"
+									template-url="views/popup/gridView.html" header-template="vm.headerTemplate"
+									template-auto="vm.template" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+									popup-source-link="appParamServiceRest/doSearch"
+									combo-id="ar_deposit_browser_txtAdOrgId"
+									combo-source-link="appParamServiceRest/getForAutoComplete"
+									combo-name="name" combo-value="code" combo-code="name"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-id="vm.stock_dailySearch.keySearch04"
+									model-name="vm.stock_dailySearch.keySearch04"> </auto-search>
+									
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label " translate>Loại
+									yêu cầu xuất</label>
+								<div class="col-md-8">
+									<select id="type1" multiple="multiple">
+										<option value="01">1. Xuất cho đơn vị sử dụng</option>
+										<option value="02">2. Xuất tặng đối tác</option>
+										<option value="03">3. Xuất cho đối tác mượn</option>
+										<option value="04">4. Xuất trả đối tác</option>
+										<option value="05">1. Xuất ra công trình</option>
+										<option value="06">2. Xuất đi BHSC</option>
+										<option value="07">3. Xuất luân chuyển kho</option>
+										<option value="08">4. Xuất thanh lý</option>
+										<option value="09">3. Xuất cho đề tài/dự án</option>
+										<option value="10">4. Xuất bán</option>
+									</select>
+								</div>
+								<div class="One_icon" ng-click="vm.cancelStock('clearType')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label " translate>Loại
+									hàng hoá</label>
+								<div class="col-md-8">
+									<select id="goodsType" multiple="multiple" name="goodsType"
+										ng-model="vm.stock_good_kpiSearch.goodsType">
+										<option value="01">1. Công cụ, dụng cụ</option>
+										<option value="02">2. Vật tư</option>
+										<option value="03">3. Thiết bị</option>
+										<option value="04">4. Linh kiện</option>
+									</select>
+								</div>
+								<div class="One_icon" ng-click="vm.cancelStock('clearGoodsType')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng hàng hóa</label>
+								<div class="col-md-8">
+									<input style=" float: left;" type="radio" id="status" name="status"
+											ng-model="vm.stock_dailySearch.status"
+											ng-checked="vm.stock_dailySearch.status == 2" value="2">
+   										 <span class="padding_radio">Tất cả</span>
+   										 
+									<input style=" float: left;" type="radio" id="status" name="status"
+											ng-model="vm.stock_dailySearch.status"
+											ng-checked="vm.stock_dailySearch.status == 1" value="1" >
+   										 <span class="padding_radio">Chưa nhập/xuất</span>
+   										 
+									<input style=" float: left;" type="radio" id="status" name="status"
+											ng-model="vm.stock_dailySearch.status"
+											ng-checked="vm.stock_dailySearch.status == 0" value="0">
+   										 <span class="padding_radio"> Đã nhập/xuất</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<auto-search model-label="Hàng hoá" caller="vm"
+									template-url="views/popup/gridView.html" header-template="vm.headerTemplate"
+									template-auto="vm.template" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+									popup-source-link="appParamServiceRest/doSearch"
+									combo-id="ar_deposit_browser_txtAdOrgId"
+									combo-source-link="appParamServiceRest/getForAutoComplete"
+									combo-name="name" combo-value="code" combo-code="name"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-id="vm.stock_dailySearch.keySearch03"
+									model-name="vm.stock_dailySearch.keySearch03"> </auto-search>
+
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Khả năng
+									đáp ứng</label>
+								<div class="col-md-8">
+									<input style=" float: left;" type="radio" id="status1" name="status1"
+											ng-model="vm.stock_dailySearch.status1"
+											ng-checked="vm.stock_dailySearch.status1 == 2" value="2">
+   										 <span class="padding_radio">Tất cả</span>
+   										 
+									<input style=" float: left;"type="radio" id="status1" name="status1"
+											ng-model="vm.stock_dailySearch.status1"
+											ng-checked="vm.stock_dailySearch.status1 == 1" value="1" >
+   										 <span class="padding_radio">Chưa nhập/xuất</span>
+   										 
+									<input style=" float: left;"  type="radio" id="status1" name="status1"
+											ng-model="vm.stock_dailySearch.status1"
+											ng-checked="vm.stock_dailySearch.status1 == 0" value="0">
+   										 <span class="padding_radio"> Đã nhập/xuất</span>
+								</div>
+							</div>
+							
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="note"
+										class="btn green btn-outline padding-search"
+										translate>Xem trước</button>
+									<button type="button" id="excel"
+										class="btn green btn-outline padding-search"
+										translate>Xuất excel</button>
+									<button type="button" id="pdf"
+										class="btn green btn-outline padding-search"
+										translate>Xuất pdf</button>
+									<!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate></span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo24"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo24" class="collapse in from-search">
+			<div id="stock_dailyGrid" kendo-grid="vm.stock_dailyGrid"
+				k-editable="false" k-options="vm.gridOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</div>

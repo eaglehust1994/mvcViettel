@@ -1,0 +1,85 @@
+
+<div>
+	<!-- <div id="detailErrGrid"
+	kendo-grid="caller.detailErrGrid" k-editable="false"
+	k-options="caller.errGridOptions" ></div> -->
+
+	<form class="form-horizontal row" role="form"
+		kendo-validator="caller.validator" k-options="caller.validatorOptions">
+		<div class="padding-width18">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Công trình
+						nhận :</label>
+					<div class="col-md-8">
+
+						<label style="margin-top: 5px;">{{caller.updateSLNV113.congTrinhNhan}}</label>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã trạm
+						nhận :</label>
+					<div class="col-md-8">
+						<label style="margin-top: 5px;">{{caller.updateSLNV113.maTramNhan}}</label>
+					</div>
+				</div>
+
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số phiếu xuất :</label>
+					<div class="col-md-8">
+						<label style="margin-top: 5px;">{{caller.updateSLNV113.maPhieuXuat}}</label>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày xuất :</label>
+					<div class="col-md-8">
+						<label style="margin-top: 5px;">{{caller.updateSLNV113.ngayThucXuat}}</label>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã HĐXL :</label>
+					<div class="col-md-8">
+						<label style="margin-top: 5px;">{{caller.updateSLNV113.maHdxl}}</label>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</form>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#updateNVSL"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="updateNVSL" class="collapse in ">
+			<div id="updateSlGrid" kendo-grid="caller.updateSlGrid"
+				k-editable="true" k-options="caller.grid1Options"></div>
+		</div>
+	</div>
+
+	<div class="portlet light text-right">
+		<button type="button"
+			class="btn btn-qlk padding-search-right margin_right10 closeQLK"
+			id="idTuChoi" ng-hide="!caller.checkkk"
+			ng-click="caller.nvUpdateSL1()" translate>Từ chối</button>
+		<button type="button"
+			class="btn btn-qlk padding-search-right margin_right10 saveQLK btn pull-right"
+			id="idXacNhan" ng-click="caller.nvUpdateSL()" translate>Ghi
+			lại</button>
+		<button type="button"
+			class="btn btn-qlk padding-search-right margin_right10 closeQLK"
+			id="idHuyBo" ng-hide="caller.checkkk" ng-click="caller.cancel11()" translate>Đóng</button>
+	</div>
+</div>
+<script>
+$("input").change(function(){
+    $(this).val($.trim($(this).val()));
+   });
+</script>

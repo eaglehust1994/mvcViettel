@@ -1,0 +1,117 @@
+
+	<form class="form-horizontal row" role="form" kendo-validator="caller.validator" k-options="caller.validatorOptions">
+		<div class="form-body">
+			<div class="portlet">
+				<div class="margin-top">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin phiếu nhập kho</span>
+					</div>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.stockTrans.orderCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị tạo
+									yêu cầu</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.stockTrans.createdDeptName"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req"  translate>Mã phiếu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="caller.stockTrans.code" readonly/>
+								</div>
+							</div>
+							<auto-search model-label="Người giao hàng" caller="caller"
+										template-url="views/popup/gridViewCreateUser.html"
+										header-template="caller.userHeaderTemplate" template-auto="caller.userTemplate"
+										page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId"
+										popup-type="gridplusUser" req="req"
+										popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+										combo-id="editNoteShipper"
+										combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+										combo-name="fullName" combo-value="employeeCode" combo-code="employeeCode"
+										combo-search="caller.commonSearch" combo-grid="caller.gridCreator"
+										model-id="caller.stockTrans.shipperId" model-name="caller.stockTrans.shipperName"
+										ng-model="caller.stockTrans.shipperName"> </auto-search>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-label " translate>Ghi chú</label>
+									<div class="col-md-10">
+									<textarea class=" form-control width100" type="text"
+										ng-model="caller.stockTrans.description" ></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+			<div class="portlet">
+				<div class="margin-top">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Danh
+										sách hàng hóa</span>
+					</div>
+				</div>
+				<div class="padding-width18">
+					<div class="border-ccc-popup row">
+						<div class="col-md-6">
+							<div id="goodsListForNoteGrid" kendo-grid="caller.goodsListForNoteGrid"
+								k-editable="false" k-options="caller.goodsListForNoteGridOptions"></div>
+						</div>
+						<div class="col-md-6 border-left-popup">
+								<div  class="form-group col-md-12" >
+									<span class="caption-subject bold lowercase" translate>Thông
+									tin chi tiết hàng hóa</span>
+								</div>
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>Hàng hóa</label>
+									<div class="col-md-8">
+										<label class="control-label" ng-bind="caller.stockTransDetailSerialSearch.goodsCode"></label>
+										<label class="control-label"></label>
+										<label class="control-label" ng-bind="caller.stockTransDetailSerialSearch.goodsName"></label>
+										
+									</div>
+								</div>
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>Tình
+										trạng</label>
+									<div class="col-md-8">
+										<label class="control-label" ng-bind="caller.stockTransDetailSerialSearch.goodsStateName"></label>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div id="goodsDetailForNoteGrid" kendo-grid="caller.goodsDetailForNoteGrid"
+						k-editable="false" k-options="caller.goodsDetailForNoteGridOptions"></div>
+								</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="portlet light">
+				<button type="button"
+					class="btn btn-qlk padding-search-right saveQLK margin_right10 btn pull-right" id="saveEditNote"
+					ng-click="caller.save()" translate>Ghi lại</button>
+				<button type="button"
+					class="btn btn-qlk padding-search-right margin_right10  closeQLK btn pull-right" id="closeEditNote" 
+					ng-click="caller.close()" translate>Hủy bỏ</button>
+			</div>
+		</div>
+
+	</form>
+

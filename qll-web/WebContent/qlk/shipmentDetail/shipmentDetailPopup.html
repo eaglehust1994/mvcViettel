@@ -1,0 +1,170 @@
+<form class="form-horizontal row" role="form">
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin chung</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã lô hàng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" name="code"
+							id="code" readonly ng-model="vm.shipmentDetail.code" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã hợp đồng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly
+							id="contractCode" name="contractCode"
+							ng-model="vm.shipmentDetail.contractCode" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Loại lô
+						hàng</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list="applySelect" class="form-control"
+							id="type" style="width: 100%" name="type" readonly
+							data-required-msg="Loại lô hàng không được để trống"
+							ng-model="vm.shipmentDetail.type">
+							<option value="1">Lô hàng nội</option>
+							<option value="2">Lô hàng ngoại</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người giao
+						hàng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" name="shiper" readonly
+							id="shiper" ng-model="vm.shipmentDetail.shiper" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Địa điểm
+						giao hàng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" name="shipPlace" id="shipPlace" readonly
+							ng-model="vm.shipmentDetail.shipPlace" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày
+						giao hàng</label>
+					<div class="col-md-8">
+						<input kendo-date-picker class="form-control width100"
+							name="shiperDate" ng-model="vm.shipmentDetail.shiperDate" readonly
+							k-format="'dd/MM/yyyy'" id="shiperDate"
+						/> <span data-for='shiperDate' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<script>
+					$(function() {
+						var transDate = $("#shiperDate");
+						transDate.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+						transDate.closest(".k-datepicker").add(transDate)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ghi chú</label>
+					<div class="col-md-8">
+						<textarea class=" form-control width100" type="text" readonly id="description" name="description"
+							ng-model="vm.shipmentDetail.description"></textarea>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số tờ khai</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" id="customsProcedure" name="customsProcedure" readonly
+							ng-model="vm.shipmentDetail.customsProcedure" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Danh
+						sách file đính kèm</span>
+				</div>
+			</div>
+			<div id="shipmentFileGrid" kendo-grid="vm.shipmentFileGrid"
+				k-editable="false" k-options="vm.gridFileOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin bổ sung</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người tạo</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" id="createdBy" name="createdBy" readonly="readonly"
+							ng-model="vm.shipmentDetail.createdBy" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Ngày tạo</label>
+					<div class="col-md-8">
+						<input kendo-date-picker class="form-control width100" id="createdDate" 
+							name="createdDate" ng-model="vm.shipmentDetail.createdDate" readonly
+							k-format="'dd/MM/yyyy'"
+						/> <span data-for='createdDate' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<script>
+					$(function() {
+						var transDate = $("#createdDate");
+						transDate.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+						transDate.closest(".k-datepicker").add(transDate)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Đơn vị tạo</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly="readonly"
+							ng-model="vm.shipmentDetail.projInvestProjectId" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin hủy</span>
+				</div>
+			</div>
+		</div>
+		<hr>
+	<div class="clearfix">
+		<div class="col-md-12 text-right margin_bottom30">
+			<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+		</div>
+	</div>
+	</div>
+</form>

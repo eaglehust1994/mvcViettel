@@ -1,0 +1,35 @@
+<div>
+<div id="importGoodResultGrid"
+	kendo-grid="caller.importGoodResultGrid" k-editable="false"
+	k-options="caller.importGoodResultGridOptions" ></div>
+			<div class="portlet light">
+				<div class="col-md-12 text-right">
+					<button type="button" 
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.closeErrImportPopUp()" translate>Đóng</button>
+					<button type="button"  
+						class="btn btn-qlk padding-search-right excelQLK" ng-click="caller.exportExcelErr()" id="errFile"
+						translate>Xuất file lỗi</button>
+				</div>
+			</div>
+<script type="text/javascript">
+var grid = $("#importGoodResultGrid").data("kendoGrid");
+if(grid){
+	grid.dataSource.data();
+	grid.refresh();
+}
+  document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+         				if (e.keyCode == 13&& !$('#errFile:focus').length&& !$('#cancel:focus').length&&!$('#confirmPopup_btnConfirm:focus').length&&!$('#confirmPopup_btnCancel:focus').length) {
+         				$("#errFile").click();
+         				break;
+						}
+         		}
+         	} 
+</script>
+</div>

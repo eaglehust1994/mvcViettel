@@ -1,0 +1,118 @@
+
+<form class="form-horizontal row" role="form">
+	<div class="form-body">
+		<div class="portlet ">
+			<div class="margin-top">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin phiếu nhập kho</span>
+				</div>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Mã yêu cầu</label>
+							<div class="col-md-8">
+								<label class="control-label" ng-bind="caller.stockTrans.orderCode"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Đơn vị tạo
+								yêu cầu</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.createdDeptName"></label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Mã
+								phiếu</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.stockTrans.code" readonly />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Người giao hàng</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.stockTrans.shipperName" readonly />
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label " translate>Ghi chú</label>
+								<div class="col-md-10">
+									<input class=" form-control width100" type="text"
+										ng-model="caller.stockTrans.description" readonly />
+								</div>
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>			
+		
+		</div>
+		<div class="portlet">
+			<div class="margin-top">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Danh
+									sách hàng hóa</span>
+				</div>
+			</div>
+			<div class="padding-width18">
+					<div class="border-ccc-popup row">
+						<div class="col-md-6">
+							<div id="goodsListForNoteGrid"
+							kendo-grid="caller.goodsListForNoteGrid" k-editable="false"
+							k-options="caller.goodsListForNoteGridOptions"></div>
+						</div>
+						<div class="col-md-6 border-left-popup">
+								<div  class="form-group col-md-12" >
+									<span class="caption-subject bold lowercase" translate>Thông
+									tin chi tiết hàng hóa</span>
+								</div>
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>Hàng hóa</label>
+									<div class="col-md-8">
+										<label class="control-label" id="goodsCodeAndNameForNote"></label>
+									</div>
+								</div>
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>Tình
+										trạng</label>
+									<div class="col-md-8">
+										<label class="control-label"
+											ng-bind="caller.stockTransDetailSerialSearch.goodsStateName"></label>
+									</div>
+								</div>
+								<div class="col-md-12">
+									<div id="goodsDetailForNoteGrid"
+										kendo-grid="caller.goodsDetailForNoteGrid" k-editable="false"
+										k-options="caller.goodsDetailForNoteGridOptions"></div>
+								</div>
+						</div>
+					</div>
+			</div>
+		</div>
+		<div class="portlet light">
+			<button type="button"
+				class="btn btn-qlk padding-search-right margin_right10 saveQLK pull-right"
+				ng-click="caller.saveRealImport()" translate>Thực nhập</button>
+			<button type="button"
+				class="btn btn-qlk padding-search-right margin_right10  closeQLK pull-right"
+				ng-click="caller.close()" translate>Hủy bỏ</button>
+		</div>
+	</div>
+
+</form>
+
+

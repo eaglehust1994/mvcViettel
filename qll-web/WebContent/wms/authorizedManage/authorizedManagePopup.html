@@ -1,0 +1,59 @@
+	<div class="portlet light">
+			<div class="row margin-bottom">
+				<div class="caption col-md-12">
+				<span class="text-header-popup bold lowercase lowercase ng-scope" translate="">Thông tin chung người dùng</span>
+				</div>
+			</div>	
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 margin-top control-label" translate>Tên đăng nhập</label>
+					<div class="col-md-8 margin-top">
+						<label ng-bind="caller.roleSearch.loginName"></label>
+					</div>
+			
+				</div>
+			</div>
+	</div>
+	
+	<div class="portlet light clearfix">
+		<div class="row margin-bottom">
+				<div class="caption col-md-6">
+					<span class="text-header-popup bold lowercase lowercase ng-scope" translat>Danh
+						sách vai trò chưa được gán</span>
+				</div>
+				<div class="col-md-6 input-menu search-tree-sum">
+		                <input id="filterText" ng-keyup="caller.doSearchRole()" type="text" ng-model="caller.roleSearch.keySearch" class="k-textbox input-menu-button form-control search-tree" placeholder="Nhập mã,tên vai trò tìm kiếm"/>
+		                <span class="input-menu-btn">
+		                    <a href="javascript:;">
+		                        <i class="icon-magnifier icon-search-tree" ng-click="caller.doSearchRole()"></i>
+		                    </a>
+		                </span>
+	            </div>
+		</div>	
+	</div>
+	<div class="padding-width18">
+			<div class="border-gray">
+				<div id="addPopupGrid" kendo-grid="caller.addPopupGrid" k-editable="false"
+		k-options="caller.addPopupGridOptions"></div>
+			</div>
+	</div>
+	<div class="portlet light" align="right">
+		<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+		<button type="button" class="btn btn-qlk margin_right10 padding-search-right saveQLK" id="savAu" ng-click="caller.addRole()" translate>Ghi lại</button>
+		<script type="text/javascript">
+			  document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel11").click();
+         				break;
+         			case 13:
+					 if (e.keyCode == 13&& !$('#savAu:focus').length&& !$('#cancel:focus').length&&!$('#confirmPopup_btnConfirm:focus').length&&!$('#confirmPopup_btnCancel:focus').length) {
+         				$("#savAu").click();
+         				break;
+						}
+         		}
+         	} 
+
+	</script>  
+	</div>

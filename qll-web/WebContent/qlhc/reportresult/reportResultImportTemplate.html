@@ -1,0 +1,32 @@
+<div ng-controller="listreportresultController as vm" style="border-radius:9px" >
+<div class="portlet light bordered">
+		<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-8">
+								<label class="col-md-4 control-label" translate>File Import</label>
+								<div class="col-md-8">
+									<input  name="xlfile" id="xlf" type="file" accept=".xls,.xlsx" placeholder="Choose File" >
+								</div>
+							</div>
+							<div class="form-group col-md-4">
+								<img src="/ims-web/assets/layouts/layout/img/u26.png" alt="no image icon"/>
+								<a href="" ng-click="vm.exportExcel()"> Biểu mẫu</a> 
+							</div>
+						</div>
+					</div>
+				</form>
+		</div>
+		
+		<div class="clearfix form-actions">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button type="button" class="btn green btn-outline border-radius-all padding-search-right" id="importExcel" ng-click="vm.Import()" translate>Import</button>
+					<button type="button" class="btn green btn-outline border-radius-all padding-search" ng-click="vm.cancelImport()" translate>Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

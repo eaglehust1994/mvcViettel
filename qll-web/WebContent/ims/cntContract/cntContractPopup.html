@@ -1,0 +1,333 @@
+
+<form class="form-horizontal row padding10"  role="form" name="appParam" id="appParam" kendo-validator="validator" k-options="validatorOptions">
+		<div class = "border-gray portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase ng-scope" translate="">Thông
+						tin chung</span>
+	
+				</div>
+				<div class="text-right margin-row-title">
+					<i data-toggle="collapse" data-target="#incInf"
+						class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div id ="incInf" class="portlet light bordered collapse in from-search">
+				
+				<div class="clearfix">
+					<div class="form-group row">
+						
+							<label class="col-md-2 control-label req" translate>Mã hợp đồng</label>
+							<div class="col-md-4">
+								<input class="form-control" ng-blur="focusOut()" name="code" id="code" maxlength="200"  
+								ng-model="caller.cntContract.code"   
+								required data-required-msg="Giá trị không được bỏ trống"   />
+								<span data-for='code' class='k-invalid-msg'></span>
+							</div>
+						
+						
+						
+							<label class="col-md-2 control-label req" translate>Tên hợp đồng</label>
+							<div class="col-md-4">
+								<input class="form-control" ng-blur="focusOut()" name="name" id="name" maxlength="1000"  
+								ng-model="caller.cntContract.name"   
+								required data-required-msg="Giá trị không được bỏ trống"   />
+								<span data-for='name' class='k-invalid-msg'></span>
+							</div>
+						
+					</div>
+				</div>
+				
+				<div class="clearfix">
+					<div class="form-group row">
+						
+							<label class="col-md-2 control-label req" translate>Nội dung hợp đồng</label>
+							<div class="col-md-10">
+								
+								<textarea rows="4" class="form-control" ng-blur="focusOut()" name="content" id="content" maxlength="3000"  
+								ng-model="caller.cntContract.content" required data-required-msg="Giá trị không được bỏ trống">
+								{{caller.cntContract.content}}
+								</textarea>
+								<span data-for='content' class='k-invalid-msg'></span>
+							</div>
+						
+					</div>
+				</div>
+				
+				<div class="clearfix">
+					<div class="form-group row">
+						
+							<label class="col-md-2 control-label req" translate>Ngày ký</label>
+							<div class="col-md-4" >
+								<input class="form-control" name="signDate" ng-blur="focusOut()" id="signDate"
+								ng-model="caller.cntContract.signDate" type="text"  kendo-date-picker date-time k-format="'dd/MM/yyyy'"
+								min-year="1000" data-minyear-msg="Ngày ký không hợp lệ"  date-time
+								required data-required-msg="Ngày ký không được để trống"  />
+								<span data-for='signDate' class='k-invalid-msg'></span> 
+							</div>
+						
+							<label class="col-md-2 control-label req" translate>Thời gian bắt đầu</label>
+							<div class="col-md-4">
+								<input class="form-control" name="startTime" ng-blur="focusOut()" id="startTime"
+								ng-model="caller.cntContract.startTime" type="text"  kendo-date-picker date-time k-format="'dd/MM/yyyy'"
+								min-year="1000" data-minyear-msg="Ngày bắt đầu không hợp lệ"  date-time
+								required data-required-msg="Ngày bắt đầu không được để trống"  />
+								<span data-for='startTime' class='k-invalid-msg'></span>
+							</div>
+					</div>
+				</div>
+				
+				<div class="clearfix">
+					<div class="form-group row">
+						
+							<label class="col-md-2 control-label req" translate>Thời gian kết thúc</label>
+							<div class="col-md-4" >
+								<input class="form-control" name="endTime" ng-blur="focusOut()" id="endTime"
+								ng-model="caller.cntContract.endTime" type="text"  kendo-date-picker date-time k-format="'dd/MM/yyyy'"
+								min-year="1000" data-minyear-msg="Ngày kết thúc không hợp lệ"  date-time
+								required data-required-msg="Ngày kết thúc không được để trống"  />
+								<span data-for='endTime' class='k-invalid-msg'></span> 
+							</div>
+						
+							<label class="col-md-2 control-label req" translate>Giá trị hợp đồng</label>
+							<div class="col-md-4">
+								<input class="form-control" ng-blur="focusOut()" name="price" id="price" maxlength="22"  
+								ng-model="caller.cntContract.price" required  data-required-msg="Giá trị không được bỏ trống"  />
+								<span data-for='price' class='k-invalid-msg'></span>
+							</div>
+					</div>
+				</div>
+	
+				<div class="clearfix">
+					<div class="form-group row">
+						
+							<label class="col-md-2 control-label" translate>Phụ lục hợp đồng</label>
+							<div class="col-md-4">
+								<input class="form-control" ng-blur="focusOut()" name="appendixContract" id="appendixContract" 
+								maxlength="22"  ng-model="caller.cntContract.appendixContract" />
+								<span data-for='appendixContract' class='k-invalid-msg'></span>
+							</div>
+						
+							<label class="col-md-2 control-label req" translate>Số trạm</label>
+							<div class="col-md-4">
+								<input class="form-control" ng-blur="focusOut()" name="numStation" id="numStation"   
+								 maxlength="22" ng-model="caller.cntContract.numStation"  />
+								<span data-for='numStation' class='k-invalid-msg'></span>
+							</div>
+						
+					</div>
+				</div>
+				
+				<div class="clearfix" >
+					<div class="row">
+						<label class="col-md-2 control-label req" translate>Gói thầu</label>
+						<div class="col-md-4">
+							<div class="input-icon right ">
+								<i class="fa fa-search directive"
+									ng-click="caller.openBiddingpackage()" style="cursor: pointer;"></i>
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternBidPackOptions" kendo-auto-complete
+									name="biddingPackageName1" required
+									data-required-msg="Giá trị không được bỏ trống"
+									ng-model="caller.cntContract.biddingPackageName"
+									maxlength="200" id="biddingPackageName1" /> <span
+									data-for='biddingPackageName1' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+			</div>
+		
+		</div>
+		<br>
+		<div class = "border-gray portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase ng-scope" translate="">Thông
+						tin đối tác</span>
+	
+				</div>
+				<div class="text-right margin-row-title">
+					<i data-toggle="collapse" data-target="#partnerInf"
+						class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div id ="partnerInf" class="portlet light bordered collapse in from-search">
+				<div class="clearfix">
+					<div class="form-group row">
+						
+						<label class="col-md-2 control-label req" translate>Đơn vị ký</label>
+						<div class="col-md-4">
+							<div class="input-icon right ">
+								<i class="fa fa-search directive"
+									ng-click="caller.openGroup()" style="cursor: pointer;"></i>
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternGroupOptions" kendo-auto-complete
+									name="sysGroup1" required data-required-msg="Giá trị không được bỏ trống" 
+									ng-model="caller.cntContract.sysGroupName" maxlength="200"
+									id="sysGroup1" />
+							</div>
+							<span data-for='sysGroup1' class='k-invalid-msg'></span>
+						</div>
+						
+						<label class="col-md-2 control-label req" translate>Đối tác</label>
+						<div class="col-md-4">
+							<div class="input-icon right ">
+								<i class="fa fa-search directive"
+									ng-click="caller.openPartner()" style="cursor: pointer;"></i>
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternPartnerOptions" kendo-auto-complete
+									name="catPartnerName1" required data-required-msg="Giá trị không được bỏ trống" 
+									ng-model="caller.cntContract.catPartnerName" maxlength="200"
+									id="catPartnerName1" />
+							</div>
+							<span data-for='catPartnerName1' class='k-invalid-msg'></span>
+						</div>
+						
+					</div>
+				</div>
+
+				<div class="clearfix">
+			<div class="form-group row">
+				<label class="col-md-2 control-label" translate>Đại diện đơn vị ký</label>
+				<div class="col-md-4">
+					<div class="input-icon right ">
+						<i class="fa fa-search directive"
+							ng-click="caller.openUser()" style="cursor: pointer;"></i>
+						<input class=" form-control width100" type="text"
+							k-options="caller.patternSignerOptions" kendo-auto-complete
+							name="signerGroup1" required data-required-msg="Giá trị không được bỏ trống" 
+							ng-model="caller.cntContract.signerGroupName" maxlength="200"
+							id="signerGroup1" />
+					</div>
+					<span data-for='signerGroup1' class='k-invalid-msg'></span>
+				</div>
+				
+				<label class="col-md-2 control-label" translate>Đại diện đối tác</label>
+				<div class="col-md-4">
+					<input class="form-control" ng-blur="focusOut()" name="signerPartner" id="signerPartner" maxlength="200"  
+					ng-model="caller.cntContract.signerPartner"   
+					required data-required-msg="Giá trị không được bỏ trống"   />
+					<span data-for='signerPartner' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-md-2 control-label" translate>Người theo dõi hợp đồng</label>
+				<div class="col-md-4">
+					<input class="form-control" ng-blur="focusOut()" name="supervisor" id="supervisor" maxlength="200"  
+					ng-model="caller.cntContract.supervisor"   
+					required data-required-msg="Giá trị không được bỏ trống"   />
+					<span data-for='supervisor' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			</div>
+			</div>
+		</div>
+		
+		<div class = "border-gray portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase ng-scope" translate="">Danh sách file đính kèm</span>
+				</div>
+				<div class="text-right margin-row-title">
+					<i data-toggle="collapse" data-target="#upload"
+						class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div id ="upload" class="portlet light bordered collapse in from-search">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div>
+								<file-input list-file-type="xls,xlsx" model="caller.dataList" size="100000" caller="caller" input-id="fileStock" model-label="File import" msg="Không được để trống file" class="ng-isolate-scope"><div class="form-group col-md-6" id=""><label id="" class="col-md-4 control-label ">File import</label><div class="col-md-8"><input type="file" id="fileStock" name="fileStock" ng-model="model" data-required-msg="Không được để trống file" class="ng-pristine ng-untouched ng-valid"><span data-for="fileStock" class="k-invalid-msg"></span><span id="type" class="k-invalid-msg" style="color: red; display: none;">File không đúng định dạng</span><span id="size" class="k-invalid-msg" style="color: red; display: none;">File tải vượt quá dung lượng cho phép</span><span id="size0" class="k-invalid-msg" style="color: red; display: none;">File tải lên không có dữ liệu</span></div></div></file-input>
+
+							</div>
+							<input class="col-md-2" ng-click="caller.submit()" type="submit" value="Tải lên">
+						</div>
+						<div class="form-group col-md-7" align="right">
+							<i style="color: gray;margin-right: 50px;">Dung lượng &lt;= 100MB, định dạng
+								xls,xlsx</i>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		<div class = "border-gray portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase ng-scope" translate="">Danh sách đơn hàng</span>
+	
+				</div>
+				<div class="text-right margin-row-title">
+					<i data-toggle="collapse" data-target="#pOrder"
+						class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+				</div>
+			</div>
+			<div id ="pOrder" class="portlet light bordered collapse in from-search">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="col-md-4 position-relative pull-right">
+							<span tabindex="-1" role="presentation"
+								class="k-widget k-autocomplete k-header form-control width100 ng-pristine ng-untouched ng-valid k-state-default"
+								style="">
+								
+								<input class=" form-control width100" type="text"
+								k-options="caller.patternOrderOptions" kendo-auto-complete
+								name="purchaseOrder" data-required-msg="Giá trị không được bỏ trống" 
+								ng-model="caller.cntContract.purchaseOrder" maxlength="200"
+								id="purchaseOrder" />
+								
+								<span class="k-icon k-loading" style="display: none"></span>
+							</span>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div id="demoapp2" class="collapse in from-search">
+							<div class="clearfix position-relative">
+								<div id="purchaseOrderGrid" kendo-grid="caller.purchaseOrderGrid" k-editable="true"
+								k-options="caller.purchaseOrderOptions" k-rebind="caller.purchaseOrderOptions"
+								k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+		
+		
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+							<button type="button" id="savepopupApp" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+			<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			   document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if(e.keyCode===13&& !$('#cancel:focus').length&& !$('#savepopupApp:focus').length){
+         				$("#savepopupApp").click();
+         				break;
+						}
+         		}
+         	} 
+			
+		
+			
+			  
+	</script>  
+</form>

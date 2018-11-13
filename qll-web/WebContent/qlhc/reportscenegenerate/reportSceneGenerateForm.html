@@ -1,0 +1,334 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+    margin: 4px 2px;
+}
+.k-select .k-link{
+margin-top: -3px; 
+}
+
+.k-list-filter>.k-icon{
+top: -5px;
+}
+</style>
+<form class="form-horizontal row" role="form" id="formIDForm" >
+	<div class="form-body">
+	<div class="portlet light bordered"disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông tin chung</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số hợp đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="contractCode"
+								id="contractCode" ng-model="vm.item.contractCode" readonly="" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày ký hợp
+						đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="signed_date" id="signed_date"
+								ng-model="vm.item.signed_date" readonly="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã công
+						trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constrtCode"
+								id="constrtCode" ng-model="vm.item.constrtCode" readonly="" />
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Tên công
+						trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constrtName"
+								id="constrtName" ng-model="vm.item.constrtName" readonly="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ
+							công trình</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="constrtAddress"
+									id="constrtAddress" ng-model="vm.item.constrtAddress"
+									readonly="" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Ngày ký</label>
+					<div class="col-md-8">
+						<input kendo-date-picker name="signDateRep1" id="signDateRep1" 
+							ng-model="vm.mSceneGenerateWork.signDate" k-options="vm.dateTimePickerConfig1" 
+							required data-required-msg="Ngày thực hiện không được để trống" />
+						<span data-for="signDateRep1" class="k-invalid-msg"></span>
+					</div>
+					<script>
+						/* $(function() {
+		
+							var signDateRep = $("#signDateRep");
+							signDateRep.kendoDateTimePicker({
+										format : "dd/MM/yyyy HH:mm:ss",
+										parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+												"dd/MM/yyyy HH:mm:ss",
+												"yyyy/MM/dd HH:mm:ss" ],
+										footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+									})
+						}); */
+						$(function() {
+							var validTo = $("#signDateRep1");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000"
+							});
+
+							validTo.kendoDatePicker({
+								format : "dd/MM/yyyy"
+							});
+
+							validTo.closest(".k-datepicker").add(validTo)
+									.removeClass("k-textbox");
+						});
+					</script>
+				</div>
+				<div class="form-group col-md-6">
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Địa điểm ký</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="signPlace" maxlength="1000" 
+									id="signPlace" ng-model="vm.mSceneGenerateWork.signPlace" required data-required-msg="Tại không được để trống"/>
+								<span data-for="signPlace" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered"disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Chủ đầu tư</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Thủ trưởng đơn vị</label>
+					<div class="col-md-8">
+						<select class="form-control" id="adirectorId" style="width: 100%"
+							name="adirectorId" kendo-drop-down-list
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.adirectorId" ng-model="vm.mSceneGenerateWork.adirectorId" required
+							data-required-msg="Chủ đầu tư không được để trống">
+						</select>
+						<span data-for="adirectorId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phụ trách giám sát thi công</label>
+					<div class="col-md-8">
+						<select class="form-control" id="ainChargeMonitorId" style="width: 100%"
+							name="ainChargeMonitorId" kendo-drop-down-list
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.ainChargeMonitorId" ng-model="vm.mSceneGenerateWork.ainChargeMonitorId" required
+							data-required-msg="Chủ đầu tư không được để trống">
+						</select>
+						<span data-for="ainChargeMonitorId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered"disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Nhà thầu thi công</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Giám đốc</label>
+					<div class="col-md-8">
+						<select class="form-control" id="bdirectorId" style="width: 100%"
+							name="bdirectorId" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.bdirectorId" ng-model="vm.mSceneGenerateWork.bdirectorId" required
+							data-required-msg="Nhà thầu thi công không được để trống">
+						</select>
+						<span data-for="bdirectorId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phụ trách thi công trực tiếp</label>
+					<div class="col-md-8">
+						<select class="form-control" id="binChargeConstructId" style="width: 100%"
+							name="binChargeConstructId" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.binChargeConstructId" ng-model="vm.mSceneGenerateWork.binChargeConstructId" required
+							data-required-msg="Nhà thầu thi công không được để trống">
+						</select>
+						<span data-for="binChargeConstructId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered"disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Đơn vị tư vấn thiết kế</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Giám đốc</label>
+					<div class="col-md-8">
+						<select class="form-control" id="cdesignDirectionId" style="width: 100%"
+							name="cdesignDirectionId" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.cdesignDirectionId" ng-model="vm.mSceneGenerateWork.cdesignDirectionId" required
+							data-required-msg="Đơn vị tư vấn thiết kế không được để trống">
+						</select>
+						<span data-for="cdesignDirectionId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Chủ nhiệm thiết kế</label>
+					<div class="col-md-8">
+						<select class="form-control" id="cdesignManagerId" style="width: 100%"
+							name="cdesignManagerId" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.cdesignManagerId" ng-model="vm.mSceneGenerateWork.cdesignManagerId" required
+							data-required-msg="Đơn vị tư vấn thiết kế không được để trống">
+						</select>
+						<span data-for="cdesignManagerId" class="k-invalid-msg"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered"disable-all="vm.viewDisable">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Nội dung</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Nội dung phát sinh</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="incidentConfirm" maxlength="500" 
+									id="incidentConfirm" ng-model="vm.mSceneGenerateWork.incidentConfirm"
+									required data-required-msg="Nội dung không được để trống" />
+							</div>
+							<span data-for="incidentConfirm" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ý kiến khác</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<textarea class="form-control width100" name="otherComments" maxlength="1000" 
+									id="otherComments" ng-model="vm.mSceneGenerateWork.otherComments" ></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Kết
+							luận</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="conclusion" maxlength="500" 
+									id="conclusion" ng-model="vm.mSceneGenerateWork.conclusion"
+									required data-required-msg="Kết luận không được để trống" />
+							</div>
+							<span data-for="conclusion" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered">
+		<div class="portlet-title"disable-all="vm.viewDisable">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Khối lượng phát sinh</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+				<div class="btn-group margin-left-button" disable-all="vm.viewDisable">
+					<button type="button"
+						class="btn btn-default padding-button box-shadow"
+						ng-click="vm.importReportSceneGenerate()" uib-tooltip="Import khối lượng phát sinh công trình">
+						<div class="action-button import2"
+							 translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</button>
+			</div>
+			<div kendo-grid="vm.reportSceneGenerateListGrid" 
+				k-options="vm.gridOptions" id="reportSceneGenerateListGrid">
+			</div>
+			<script>
+                $(document).ready(function() {
+                    var tooltip = $("#reportSceneGenerateListGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#reportSceneGenerateListGrid").find("td").click(false);
+                });
+            </script>
+		</div>
+	</div>
+	</div>
+</form>

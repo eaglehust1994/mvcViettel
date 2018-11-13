@@ -1,0 +1,206 @@
+<div ng-controller="DsbgvtController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<form class="form-horizontal row" role="form">
+		<div class="btn-toolbar margin-bottom-10 margin-top">
+			<div data-ng-include="'qlhc/bgvttbac/dsbgvttbac_header.html'"
+				></div>
+		</div>
+		<div class="form-body" style="padding-bottom: 1%">
+			<div id="u3183" class="clearfix">
+				<div class="clearfix">
+					<div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" 
+								 translate>Thông tin chung</span>
+						</div>
+					</div>
+					<p></p>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label ">Số hợp đồng</label>
+							<div class="col-md-8">
+								<input type="hidden" name="constructId" readonly
+									ng-model="vm.constrObj.constructId" id="constructId" /> <input
+									class="form-control width100" value="Profit center 16" name="shd"
+									id="shd" ng-model="vm.dsbgvtObj.shd" required readonly
+									data-required-msg="Số hợp đồng không được bỏ trống" />
+							</div>
+
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label ">Tên hợp đồng</label>
+							<div class="col-md-8">
+								<input class="form-control width100" value="Profit center 16" name="thd"
+									ng-model="vm.dsbgvtObj.tenhd" required readonly
+									data-required-msg="Tên hợp đồng không được bỏ trống" />
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label ">Mã công trình</label>
+							<div class="col-md-8">
+								<input class="form-control width100" value="Profit center 16" name="mact"
+									ng-model="vm.dsbgvtObj.mact" required readonly
+									data-required-msg="Mã công trình không được bỏ trống" /> <span
+									data-for='assetgroup' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label ">Tên công trình</label>
+							<div class="col-md-8">
+								<input class="form-control width100" value="Profit center 16" name="tct"
+									ng-model="vm.dsbgvtObj.tenct" required readonly
+									data-required-msg="Tên công trình không được bỏ trống" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label ">Địa chỉ công
+									trình</label>
+								<div class="col-md-10">
+									<input style="height: 40px" class="form-control width100"
+										value="Profit center 16" name="dcct"
+										ng-model="vm.dsbgvtObj.diachict" required readonly
+										data-required-msg="Địa chỉ công trình không được bỏ trống" />
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p></p>
+			<div ng-show="vm.showDetail" disable-all="vm.disableAll">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Địa điểm ký</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="signPlace" id="signPlace"
+								ng-model="vm.signPlace" required maxlength="200"
+								data-required-msg="Địa điểm ký không được bỏ trống" /> 
+								<span
+								data-for='assetgroup' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req" translate>Ngày
+							ký</label>
+						<div class="col-md-8">
+							<input style="width: 100%;" kendo-date-picker name="signDate"
+								 id="signDate" ng-model="vm.signDate"
+								k-format="'dd/MM/yyyy'" required
+								data-required-msg="Ngày ký không được để trống" 
+								data-date-msg="Nhập đúng định dạng ngày ký" /> <span
+								data-for='signDate' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+				<p></p>
+	<div id="loading">
+  		<img id="loading-img" alt="Loading...">
+	</div>			
+				<div data-ng-include="'qlhc/bgvttbac/ban_giao_v_t_t__tb_a_c.html'"></div>
+			</div>
+			<p></p>
+			<div id="u3183" class="clearfix">
+				<div id="ds" class="clearfix">
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" 
+								 translate>Danh sách</span>
+						</div>
+					</div>
+
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div kendo-grid="vm.contractGrid" k-options="vm.options"
+								id="contractGrid"></div>
+								<script>
+                $(document).ready(function() {
+                    var tooltip = $("#contractGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#contractGrid").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#contractGrid").find("td").click(false);
+                });
+            </script>
+						</div>
+					</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<p></p>
+	<p></p>
+	<!-- The Modal -->
+	<div id="myModal1" class="modal">
+
+		<!-- Modal content -->
+		<div class="modal-content">
+			<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" 
+						 translate>Danh sách phiếu đã xuất kho ra công trình</span>
+				</div>
+			</div>
+			<div class="form-body">
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div kendo-grid="vm.pxkGridBoxung" k-options="vm.optionsBoxung"
+							id="pxkGridBoxung"></div>
+							<script>
+                $(document).ready(function() {
+                    var tooltip = $("#pxkGridBoxung").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#pxkGridBoxung").find("td").click(false);
+                });
+            </script>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<input type="button" value="Bổ sung" ng-click="vm.addBoxung()" />
+						<input type="button" value="Đóng" ng-click="vm.closeBoxung()" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</div>
+
+</div>
+
+</div>

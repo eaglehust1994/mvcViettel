@@ -1,0 +1,23 @@
+<div>
+<div id="detailErrGrid"
+	kendo-grid="caller.detailErrGrid" k-editable="false"
+	k-options="caller.errGridOptions" ></div>
+	
+<div class="portlet light">
+<div class="col-md-12 text-right">
+				<button type="button"
+					class="btn btn-qlk padding-search-right margin_right10 excelQLK btn pull-right"
+					ng-click="caller.exportErrExcelGrid()" translate>Xuất file lỗi</button>
+				<button type="button"
+					class="btn btn-qlk padding-search-right margin_right10 closeQLK"
+					ng-click="caller.close()" translate>Đóng</button>
+			</div>
+</div>
+<script type="text/javascript">
+var grid = $("#detailErrGrid").data("kendoGrid");
+if(grid){
+	grid.dataSource.data();
+	grid.refresh();
+}
+</script>
+</div>

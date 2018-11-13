@@ -1,0 +1,94 @@
+<div class="portlet light bordered">
+
+    <div class="portlet-title" style="border-bottom: none">
+        <div class="caption">
+            <span class="caption-subject bold lowercase" translate>Thông tin chung</span>
+        </div>
+    </div>
+
+    <div class="portlet-body form">
+        <!-- BEGIN FORM-->
+        <form action="#" class="form-horizontal">
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Số hợp đồng</label>
+                    <div class="col-md-8">
+                        <input class="form-control width100" disabled id="value" ng-model="vm.item.contractCode" required data-required-msg="Số hiệu hợp đồng không được để trống" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Tên hợp đồng</label>
+                    <div class="col-md-8">
+                        <input class="form-control width100" disabled name="contractName" id="contractName" ng-model="vm.item.contractName">
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Mã công trình</label>
+                    <div class="col-md-8">
+                        <input class="form-control width100" disabled name="constrtCode" id="constrtCode" ng-model="vm.item.constrtCode">
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Tên công trình</label>
+                    <div class="col-md-8">
+                        <input class="form-control width100" disabled name="constrtName" id="constrtName" ng-model="vm.item.constrtName">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-md-12">
+                <div class="form-group col-md-12" style="margin-bottom: 0px;">
+                    <label class="col-md-2 control-label">Địa chỉ công trình</label>
+                    <div class="col-md-10 ">
+                        <input align="left" class="form-control width100" disabled name="constrtAddress" id="constrtAddress" ng-model="vm.item.constrtAddress" required data-required-msg="Nội dung không được để trống" />
+                        <span data-for="constrtAddress" class="k-invalid-msg"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix" ng-show="vm.showDetail" disable-all="vm.disableAll">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label req">Địa điểm ký</label>
+                    <div class="col-md-8">
+                        <input class="form-control width100" maxlength="1000"name="signPlace" id="signPlace" ng-model="vm.reportObj.signPlace" required data-required-msg="Nội dung không được để trống" />
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label req">Thời gian ký</label>
+                    <!--<div class="col-md-8">
+				<input style="width: 100%;" kendo-date-picker required name="signDate"
+				id="signDate" ng-model="vm.reportObj.signDate" data-required-msg="Ngày Ký không để trống"
+				k-format="'dd/MM/yyyy'" data-date-msg="Ngày ký không hợp lệ"/>
+				<span data-for='signDate' class='k-invalid-msg'></span>
+			</div>
+			<script>
+				$(function() {
+					var validTo = $("#signDate");
+					validTo.kendoMaskedTextBox({
+						mask : "00/00/0000"
+					});
+
+					validTo.kendoDatePicker({
+						format : "dd/MM/yyyy"
+					});
+
+					validTo.closest(".k-datepicker").add(validTo)
+					.removeClass("k-textbox");
+				});
+			</script>-->
+                    <div class="col-md-8">
+                        <input style="width: 100%;" kendo-date-picker name="signDate" required id="signDate" ng-model="vm.reportObj.signDate" k-format="'dd/MM/yyyy'" data-required-msg="Ngày Ký không để trống" data-date-msg="Ngày ký không hợp lệ" />
+                        <span data-for='signDate' class='k-invalid-msg'></span>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="clearfix form-actions">
+        <div class="row pull-right">
+
+        </div>
+    </div>
+    </form>
+    <!-- END FORM-->
+</div>
+</div>

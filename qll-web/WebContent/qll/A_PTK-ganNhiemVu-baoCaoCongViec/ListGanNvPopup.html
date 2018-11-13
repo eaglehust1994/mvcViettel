@@ -1,0 +1,124 @@
+<style>
+#ganNvGrid>.k-grid-content {
+	overflow-y: hidden !important;
+}
+</style>
+<style>
+#ganNvGrid>.k-grid-header {
+	padding-right: 0px !important;
+}
+</style>
+
+
+<div data-ng-controller="GNVController as vm" id="GanNvControl">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div id="demoOrderChange1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Nhân viên :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" 
+											k-options="vm.patternOptionsGetNv" kendo-auto-complete
+											name="nhanVienAuto" ng-model="vm.ganNvSearch.fullname" 
+											maxlength="200" id="nhanVienAuto" />
+									
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Loại nhiệm vụ</label>
+									<div class="col-md-8">
+										<select ng-model="vm.ganNvSearch.tenNhiemVu"
+											class=" form-control width100">
+											<option value="" selected="selected">~~Chọn~~</option>
+											<option value="Đã nhận tại PTK">Đã nhận tại PTK</option>
+											<option value="Đã nhận QTK">Đã nhận QTK</option>
+											<option value="Đã thẩm định QTK">Đã thẩm định QTK</option>
+											<option value="Đã lập đề nghị">Đã lập đề nghị</option>
+											<option value="Đã chốt với CDT">Đã chốt với CDT</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Thuộc công việc :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											k-options="vm.patternOptionsAutoTenCv" kendo-auto-complete
+											name="tenCvAuto" ng-model="vm.ganNvSearch.tenCongViec"
+											maxlength="200" id="tenCvAuto" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Trạng thái</label>
+									<div class="col-md-8">
+										<select ng-model="vm.ganNvSearch.trangThai"
+											class=" form-control width100">
+											<option value="" selected="selected">~~Chọn~~</option>
+											<option value="Mới tạo">Mới tạo</option>
+											<option value="Hoàn Thành">Hoàn thành</option>
+											<option value="Quá hạn">Quá hạn</option>
+										</select>
+									</div>
+								</div>
+							</div>
+					
+							<div class="clearfix form-actions margin-top">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<button type="button" id="timqlCvPtk"
+											class="btn  btn-qlk padding-search-right searchQLK" translate
+											ng-click="vm.doSearch()">Tìm kiếm</button>
+											
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="ganNvCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#ganNvCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="ganNvCollapse" class="collapse in ">
+			<div id="ganNvGrid" kendo-grid="vm.ganNvGrid" k-editable="false"
+				k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("input").change(function() {
+		$(this).val($.trim($(this).val()));
+	});
+</script>

@@ -1,0 +1,21 @@
+<div ng-controller="drawingsListController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div ng-show="showCreate">
+		<div ng-show="!showEdit">
+			<div
+				data-ng-include="'qlhc/drawingsList/createDrawingsEditForm.html'"
+				>
+			</div>
+		</div>
+		<div ng-show="showEdit">
+			<div data-ng-include="'qlhc/drawingsList/createDrawingsForm.html'"
+				>
+			</div>
+		</div>
+
+	</div>
+	<div ng-show="!showCreate">
+		<div data-ng-include="'qlhc/drawingsList/drawingsListForm.html'"
+			></div>
+	</div>
+
+</div>

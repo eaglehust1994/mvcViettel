@@ -1,0 +1,9 @@
+<jaxrs:server id="${tbl.tableNameVar}ServiceRest" address="/${tbl.tableNameVar}ServiceRest">
+	<jaxrs:providers>
+		<ref bean="jsonProvider" />
+		<ref bean="exceptionMapper" />
+	</jaxrs:providers>
+	<jaxrs:serviceBeans>
+		<bean id="${tbl.tableNameVar}ServiceClass" class="com.viettel.ims.rest.${tbl.tableNameJV}RsServiceImpl"/>
+	</jaxrs:serviceBeans>
+</jaxrs:server>

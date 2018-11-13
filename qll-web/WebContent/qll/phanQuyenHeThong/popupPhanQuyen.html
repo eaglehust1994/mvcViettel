@@ -1,0 +1,27 @@
+<div>
+	<!-- <div id="detailErrGrid"
+	kendo-grid="caller.detailErrGrid" k-editable="false"
+	k-options="caller.errGridOptions" ></div> -->
+
+	<div class="padding-width18">
+		<div class="clearfix border-gray">
+				<label class="col-md-4 control-label " translate>Chọn quyền :</label>
+					<div class="col-md-8" id="idDetelte">
+						<select kendo-drop-down-list id="RoleCode"
+							style="width: 100%" name="RoleCode"
+							k-option-label="'--Chọn--'" ng-model="caller.rolesUser.tblRolesId"
+							k-data-source="caller.listRoles"
+							k-data-value-field="'tblRolesId'" k-data-text-field="'roleName'" >
+						</select>
+					</div>
+		</div>
+	</div>
+	<div class="portlet light text-right">
+		<button type="button"
+			class="btn btn-qlk padding-search-right saveQLK"
+			ng-click="caller.insertRoles()" translate>Ghi lai</button>
+		<button type="button"
+			class="btn btn-qlk padding-search-right closeQLK"
+			ng-click="cancel()" translate>Đóng</button>
+	</div>
+</div>

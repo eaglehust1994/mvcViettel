@@ -1,0 +1,54 @@
+
+<form class="form-horizontal row" role="form" name="popUpExLuong"
+	id="popUpExLuong" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body " aria-hidden="true">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Xuất
+					báo cáo lương theo tháng</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix text-center">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-label " translate>Chọn
+								tháng xuất b/c:</label>
+							<div class="col-md-8">
+								<select class=" form-control width100"
+									ng-model="caller.exportLuongHD.thangGhiNhanQuyLuongTqt">
+									<option value="">~~Chọn~~</option>
+									<option value="01/{{caller.date}}">01/{{caller.date}}</option>
+									<option value="02/{{caller.date}}">02/{{caller.date}}</option>
+									<option value="03/{{caller.date}}">03/{{caller.date}}</option>
+									<option value="04/{{caller.date}}">04/{{caller.date}}</option>
+									<option value="05/{{caller.date}}">05/{{caller.date}}</option>
+									<option value="06/{{caller.date}}">06/{{caller.date}}</option>
+									<option value="07/{{caller.date}}">07/{{caller.date}}</option>
+									<option value="08/{{caller.date}}">08/{{caller.date}}</option>
+									<option value="09/{{caller.date}}">09/{{caller.date}}</option>
+									<option value="10/{{caller.date}}">10/{{caller.date}}</option>
+									<option value="11/{{caller.date}}">11/{{caller.date}}</option>
+									<option value="12/{{caller.date}}">12/{{caller.date}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+							ng-click="caller.cancel1()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right excelQLK" style="width: auto;"
+							id="saveChange11" ng-click="caller.xuatBCLuong()" translate>Xuất báo cáo</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

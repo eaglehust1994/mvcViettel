@@ -1,0 +1,207 @@
+<form class="form-horizontal row" role="form">
+	<div style="border: 0.5px solid black">
+		<div
+			style="width: 100%; height: 5px; clear: left; background-color: #eaeaea"></div>
+		<div style="padding-bottom: 1%">
+			<p style="margin: 7px 0 0 5px; font-size: 18px;" class="font-gray">Thông
+				tin chung</p>
+			<hr>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Số hợp đồng</label>
+					<div class="col-md-8">
+						<input type="hidden" name="constructId"
+							ng-model="vm.item.constructId" id="constructId" /> <input
+							ng-model="vm.item.contractCode" name="contractNo"
+							id="contractCode" class="form-control width100" required
+							data-required-msg="hãy nhập" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày kí hợp
+						đồng</label>
+					<div class="col-md-8">
+						<input style="width: 100%;" kendo-date-picker name="signed_date"
+							required data-for='signed_date' id="signed_date"
+							ng-model="vm.item.signed_date" k-format="'dd/MM/yyyy'"
+							data-req-msg="Nội dung không được để trống" />
+					</div>
+					<script>
+						$(function() {
+							var validTo = $("#signed_date");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000"
+							});
+
+							validTo.kendoDatePicker({
+								format : "dd/MM/yyyy"
+							});
+
+							validTo.closest(".k-datepicker").add(validTo)
+									.removeClass("k-textbox");
+						});
+					</script>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã công trình</label>
+					<div class="col-md-8">
+						<input ng-model="vm.item.constrtCode" class="form-control width100"
+							name="constrtCode" id="constrtCode" required
+							data-required-msg="Không để trống trường này !" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên công trình</label>
+					<div class="col-md-8">
+						<input ng-model="vm.item.constrtName" read-only
+							class="form-control width100" name="constrtName" id="constrtName" required
+							data-required-msg="Không để trống trường này !" />
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ
+							công trình</label>
+						<div class="col-md-10">
+							<input type="text" class="form-control width100" name="constrtAddress"
+								id="constrtAddress" ng-model="vm.item.constrtAddress">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- -----------thanh phan chu dau tu-------------- -->
+	<p></p>
+	<div style="border: 0.5px solid black">
+		<label translate><h4>Thành phần chủ đầu tư</h4></label>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Thủ trưởng
+						Đơn vị</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input type="hidden" name="adOrgId" ng-model="vm.report.adOrgId"
+								id="adOrgId" /> <i class="fa fa-search"
+								ng-click="vm.bean.status != 'PO' && vm.showDonViForm('adOrgId')"></i>
+							<input class="width100" name="adOrgName" id="adOrgName"
+								ng-model="vm.report.adOrgName"
+								ng-readonly="vm.report.status == 'PO'" required
+								data-required-msg="Đơn vị không được để trống" />
+						</div>
+						<span data-for='adOrgName' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Người Nhận</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input type="hidden" name="adOrgId" ng-model="vm.report.adOrgId"
+								id="adOrgId" /> <i class="fa fa-search"
+								ng-click="vm.report.status != 'PO' && vm.showDonViForm('adOrgId')"></i>
+							<input class="width100" name="adOrgName" id="adOrgName"
+								ng-model="vm.report.adOrgName"
+								ng-readonly="vm.report.status == 'PO'" required
+								data-required-msg="Đơn vị không được để trống" />
+						</div>
+						<span data-for='adOrgName' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- thanh phan thi cong -->
+	<p></p>
+	<div style="border: 0.5px solid black">
+		<label translate><h4>Thành phần nhà thầu thi công</h4></label>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Thủ trưởng
+						Đơn vị</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input type="hidden" name="adOrgId" ng-model="vm.report.adOrgId"
+								id="adOrgId" /> <i class="fa fa-search"
+								ng-click="vm.bean.status != 'PO' && vm.showDonViForm('adOrgId')"></i>
+							<input class="width100" name="adOrgName" id="adOrgName"
+								ng-model="vm.report.adOrgName"
+								ng-readonly="vm.report.status == 'PO'" required
+								data-required-msg="Đơn vị không được để trống" />
+						</div>
+						<span data-for='adOrgName' class='k-invalid-msg'></span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Người nhận</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input type="hidden" name="adOrgId" ng-model="vm.report.adOrgId"
+								id="adOrgId" /> <i class="fa fa-search"
+								ng-click="vm.report.status != 'PO' && vm.showDonViForm('adOrgId')"></i>
+							<input class="width100" name="adOrgName" id="adOrgName"
+								ng-model="vm.report.adOrgName"
+								ng-readonly="vm.report.status == 'PO'" required
+								data-required-msg="Đơn vị không được để trống" />
+						</div>
+						<span data-for='adOrgName' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- noi dung ban giao -->
+	<p></p>
+	<div style="border: 0.5px solid black">
+		<label translate><h4>Nội dung bàn</h4></label>
+		<div class="form-body">
+			<div class="clearfix">
+
+				<div kendo-grid="vm.reportGrid" k-options="vm.gridOptions"
+					id="reportGrid">
+					<!-- <div k-detail-template grid-detail>
+					<div kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+				</div> -->
+				</div>
+
+			</div>
+
+			<div class="clearfix form-actions">
+				<div class="row pull-left ">
+					<div class="col-md-12">
+						<button type="button" class="btn green" translate
+							ng-click="vm.add()">Bổ Sung</button>
+						<button type="button" class="btn default" translate
+							ng-click="vm.remove()">Xóa</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p></p>
+	<div class="clearfix form-actions">
+		<div class="row pull-left ">
+			<div class="col-md-12">
+				<button type="button" class="btn green" translate
+					ng-click="vm.add()">Bổ Sung</button>
+				<button type="button" class="btn default" translate
+					ng-click="vm.remove()">Xóa</button>
+			</div>
+		</div>
+	</div>
+
+</form>
+
+

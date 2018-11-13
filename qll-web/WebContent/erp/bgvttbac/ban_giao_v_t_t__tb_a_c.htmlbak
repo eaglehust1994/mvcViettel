@@ -1,0 +1,229 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+	margin: 4px 2px;
+}
+.k-select .k-link{
+margin-top: -3px; 
+}
+</style>
+<form class="form-horizontal row" role="form">
+
+	<div class="form-body">
+		<div id="u3183" class="clearfix">
+			<div class="clearfix">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase"
+							 translate>Bên giao</span>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Thủ trưởng</label>
+						<div class="col-md-8">
+							<select class="form-control" id="thutruong" style="width: 100%"
+								name="thutruong" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'id'"
+								k-data-source="vm.thutruong"
+								ng-model="vm.materialObj.adirectorId" required
+								data-required-msg="Thủ trưởng không được để trống"></select>
+
+						</div>
+						<span data-for='shd' class='k-invalid-msg'></span>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Người giao</label>
+						<div class="col-md-8">
+							<select class="form-control" id="nguoigiao" style="width: 100%"
+								name="nguoigiao" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'id'"
+								k-data-source="vm.nguoigiao"
+								ng-model="vm.materialObj.ahandoverPersonId" required
+								data-required-msg="Người giao không được để trống"></select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p></p>
+		<div id="u3183" class="clearfix">
+			<div class="clearfix">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase"
+							 translate>Bên nhận</span>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Giám đốc</label>
+						<div class="col-md-8">
+							<select class="form-control" id="giamdoc" style="width: 100%"
+								name="giamdoc" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'id'"
+								k-data-source="vm.giamdoc" ng-model="vm.materialObj.bdirectorId"
+								required data-required-msg="Giám đốc không được để trống"></select>
+						</div>
+						<span data-for='shd' class='k-invalid-msg'></span>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Người nhận</label>
+						<div class="col-md-8">
+							<select class="form-control" id="nguoinhan" style="width: 100%"
+								name="nguoinhan" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'id'"
+								k-data-source="vm.nguoinhan"
+								ng-model="vm.materialObj.breceivePersonId" required
+								data-required-msg="Người nhận không được để trống"></select>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p></p>
+		<div id="u3183" class="clearfix">
+			<div class="clearfix">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase"
+							 translate>Thời gian tiến hành bàn
+							giao</span>
+					</div>
+				</div>
+				<p></p>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Ngày bắt đầu</label>
+
+						<div class="col-md-8">
+							<input class="form-control width100" kendo-date-picker k-options="vm.datePickerConfig"
+								style="width: 100%;" name="fromDate"
+								ng-model="vm.materialObj.handoverFromDate" required
+								data-required-msg="Ngày bắt đầu không để trống"
+								data-date-msg="Nhập đúng định dạng ngày bắt đầu"
+								k-format="'dd/MM/yyyy'" k-max="maxTransDate"
+								k-rebind="maxTransDate" k-on-change="dateChangedTransDateFrom()"
+								id="fromDate" /> <span data-for="fromDate"
+								class="k-invalid-msg"></span>
+						</div>
+						<script>
+							$(function() {
+								var fromDate = $("#fromDate");
+								fromDate.kendoDateTimePicker({
+											format : "dd/MM/yyyy HH:mm:ss",
+											parseFormats : [
+													"yyyy-MM-dd HH:mm:ss",
+													"dd/MM/yyyy HH:mm:ss",
+													"yyyy/MM/dd HH:mm:ss" ],
+											footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#",
+										})
+							});
+						</script>
+
+
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Ngày kết thúc</label>
+						
+						<div class="col-md-8">
+							<input class="form-control width100" kendo-date-picker k-options="vm.datePickerConfig"
+								style="width: 100%;" name="toDate"
+								ng-model="vm.materialObj.handoverToDate" required
+								data-required-msg="Ngày kết thúc không để trống"
+								data-date-msg="Nhập đúng định dạng ngày kết thúc"
+								k-format="'dd/MM/yyyy'" k-max="maxTransDate"
+								k-rebind="maxTransDate" k-on-change="dateChangedTransDateFrom()"
+								id="toDate" /> <span data-for="toDate"
+								class="k-invalid-msg"></span>
+						</div>
+						<script>
+							$(function() {
+								var toDate = $("#toDate");
+								toDate.kendoDateTimePicker({
+											format : "dd/MM/yyyy HH:mm:ss",
+											parseFormats : [
+													"yyyy-MM-dd HH:mm:ss",
+													"dd/MM/yyyy HH:mm:ss",
+													"yyyy/MM/dd HH:mm:ss" ],
+											footer : "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#",
+										})
+							});
+						</script>
+
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label req">Tại</label>
+							<div class="col-md-10">
+								<input class="form-control width100" name="tai" id="tai"
+									ng-model="vm.materialObj.handoverPlace" required maxlength=2000
+									data-required-msg="Trường Tại không được bỏ trống" /> <span
+									data-for="tai" class="k-invalid-msg"></span>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<p></p>
+	<div id="u3183" class="clearfix">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					 translate>Danh sách phiếu đã xuất
+					kho ra công trình</span>
+			</div>
+		</div>
+
+		<div style="margin-left: 15px; margin-bottom: -10px;">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.boxung()" ng-disabled="vm.disabledButtom">
+				<div class="action-button add" uib-tooltip="Bổ sung" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div kendo-grid="vm.pxkGrid" k-options="vm.options1" id="pxkGrid"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="u3183" class="clearfix">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					 translate>Danh sách vật tư, thiết bị
+					bàn giao</span>
+			</div>
+		</div>
+
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div kendo-grid="vm.vttbGrid" k-options="vm.optionsvttb"
+					id="vttbGrid"></div>
+			</div>
+		</div>
+	</div>
+
+	<div id="u3183" class="clearfix">
+		<div class="clearfix">
+			<div class="clearfix">
+				<div style="padding-top: 10px;" class="form-group col-md-12">
+					<label class="col-md-2 control-label">Ý kiến khác</label>
+					<div class="col-md-10">
+						<input class="form-control width100" value="Profit center 16"
+							name="otherComment" id="otherComment"
+							ng-model="vm.materialObj.otherComment" />
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</form>

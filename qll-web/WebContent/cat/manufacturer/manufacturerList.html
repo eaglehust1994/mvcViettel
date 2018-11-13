@@ -1,0 +1,101 @@
+
+<div data-ng-controller="manufacturerController as vm" id="appIdSearch">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form" >
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin tìm kiếm </span>
+
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#unitSearching"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="unitSearching" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Nội dung tìm kiếm</label>
+									<div class="col-md-8">
+										<input id="keySearch" class=" form-control width100" type="text" maxlength="500"
+											ng-model="vm.manufacturerSearch.keySearch" placeholder="Mã nhà sản xuất/Tên nhà sản xuất"/>
+									</div>
+								</div>
+								
+								
+							</div>
+							
+							
+							<div class="clearfix form-actions margin-top">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<!-- <button type="button" id="find"
+											class="btn green btn-outline padding-search-right"
+											ng-click="vm.doSearch()" translate>TÃ¬m kiáº¿m</button> -->
+											<button type="button" id="findParam" ng-click="vm.doSearch()" class="btn btn-qlk padding-search-right searchQLK" translate>Tìm kiếm</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>
+				Kết quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase" id="unitCount">{{vm.count}}</label>
+				<label class="control-label bold lowercase">&nbsp;bản ghi</label>
+				
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#unitSearching2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="unitSearching2" class="collapse in from-search">
+						<div class="clearfix position-relative">
+			<!-- <div class="margin_top_button">
+				<button  type="button"
+				class="btn green btn-outline padding-search-right"
+				ng-click="vm.add()" translate>ThÃªm má»›i</button>
+				<div class="pull-right margin10">
+					<i class="fa fa-cog" aria-hidden="true"></i>
+				</div>
+			</div> -->
+			<div id="manufacturerGrid" kendo-grid="vm.manufacturerGrid" k-editable="false"
+			k-options="vm.gridOptions"
+			k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+			</div>
+	</div>
+</div>
+<script type="text/javascript">
+ 
+		$('#appIdSearch').keypress(function(event){
+			$("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			document.onkeydown= keyDown;
+            function keyDown(e){
+       		switch(e.keyCode) {
+       			case 27:
+       				$("#cancel").click();
+       				break;
+       			case 13:
+       				if($('.k-widget.k-window.fix-footer').css('display')!=='block'){
+       				$("#findParam").click();
+					}
+       				break;
+					
+       		}
+       	} 
+					});
+	</script> 
+			

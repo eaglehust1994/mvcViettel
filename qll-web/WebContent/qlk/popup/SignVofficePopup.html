@@ -1,0 +1,109 @@
+<!-- <style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 30%;
+	height: 280px;
+}
+
+.fright {
+	float: right;
+	height: 280px;
+	width: 70%;
+}
+</style> -->
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 30%;
+	height: 300px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background:;
+}
+
+.fright {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	height: 300px;
+	width: 70%;
+}
+</style>
+	<div class="fleft col-md-8">
+		<form>
+		<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Danh sách yêu cầu trình ký(3)</span>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="fright col-md-8">
+		<form>
+			<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin người ký cho yêu cầu :</span>
+				</div>
+			</div>
+			<div class="clearfix position-relative">
+				<div class="col-md-11">
+					<label class="col-md-4 control-label" translate>1. Đơn vị
+						yêu cầu</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="One_icon">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix position-relative">
+				<div class="col-md-11">
+					<label class="col-md-4 control-label" translate>2. Đơn vị
+						phê duyệt</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="One_icon">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix position-relative">
+				<div class="col-md-11">
+					<label class="col-md-4 control-label" translate>3. Đơn vị
+						quản lý</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" />
+					</div>
+				</div>
+				<div class="col-md-1">
+					<div class="One_icon">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+<div class="portlet light" align="right">
+	<button type="button" class="btn red btn-outline padding-search-right"
+		ng-click="cancel()" translate>Hủy bỏ</button>
+	<button type="button" class="btn blue btn-outline padding-search-right"
+		ng-click="caller.saveSign()" translate>Ghi lại</button>
+</div>

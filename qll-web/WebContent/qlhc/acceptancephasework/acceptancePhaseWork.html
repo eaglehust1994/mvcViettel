@@ -1,0 +1,337 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+    margin: 4px 2px;
+}
+</style>
+
+<form class="form-horizontal row" role="form" disable-all="vm.disableCreat">
+	<div class="portlet light bordered">
+	<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin chung</span>
+			</div>
+		</div>	 	
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Số hợp đồng</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="contractCode" readonly="readonly"
+						id="contractCode" ng-model="vm.listacceptance.contractCode" required
+						data-required-msg="Số HĐ không được để trống"/> <span
+						data-for='code' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Ngày
+					ký HĐ</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="contractDateSign"
+						id="contractDateSign" readonly="readonly"
+						ng-model="vm.listacceptance.contractDateSign"required
+						data-required-msg="Ngày ký HĐ không được để trống"/> <span
+						data-for='contractDateSign' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>				
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Mã công	trình</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="constrtCode" id="constrtCode"
+						ng-model="vm.listacceptance.constrtCode" readonly="readonly" required
+						data-required-msg="Mã công trình không được để trống"/> <span
+						data-for='constructId' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Tên công trình</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="constructName" id="constructName"
+						ng-model="vm.listacceptance.constructName" readonly="readonly" required
+						data-required-msg="Tên công trình không được để trống"/> <span
+						data-for='constructName' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label req" translate>Địa	chỉ công trình</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control width100" name="constructAddress" id="constructAddress"
+							ng-model="vm.listacceptance.constructAddress" readonly="readonly" required
+							data-required-msg="Địa chỉ công trình không được để trống" /> <span
+							data-for='constructAddress' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<combo-box-second searchtype="" model-label="Hạng mục nghiệm thu"
+						caller="vm" required
+						req="req"
+						msg="Hạng mục nghiệm thu không được để trống"  
+						popup-id="acceptance_Phaseworck_estimatesItemChildIdXXX"
+						popup-type="grid"
+						popup-source-link="EstimatesItemsChildRsServiceRest/getListEstimateItemschild"
+						combo-id="acceptance_Phaseworck_txtEstimatesItemChildIdXXX"
+						combo-source-link="EstimatesItemsChildRsServiceRest/getListEstimateItemschild"
+						combo-name="itemName" 
+						combo-value="itemId" 
+						combo-code="value"
+						combo-search="vm.findestimates" 
+						combo-grid="vm.gridCommon"
+						model-id="vm.listacceptance.estimatesItemChildId"
+						model-name="vm.listacceptance.estimatesItemChildName">
+			</combo-box-second>											
+		</div>		
+		<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Địa điểm ký</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="signPlace" maxlength="1000"
+							id="signPlace" ng-model="vm.listacceptance.signPlace" 
+							required data-required-msg="Địa điểm ký không được để trống"/> 	
+						<span data-for='signPlace' class='k-invalid-msg'></span>							
+					</div>
+				</div>
+			<!-- <div class="form-group col-md-6">					
+				<label class="col-md-4 control-label req" translate>Địa điểm ký</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="signPlace" id="signPlace"
+						ng-model="vm.listacceptance.signPlace" required
+						data-required-msg="Địa điểm ký không được để trống" />
+						<span data-for='signPlace' class='k-invalid-msg'></span>
+				</div>					
+				
+			</div> -->
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Ngày ký</label>
+				<div class="col-md-8">					
+					<input kendo-date-picker k-options="vm.dateTimePickerConfig1" name="signDate"
+						id="signDate" ng-model="vm.listacceptance.signDate"
+						style="width: 100%;"
+						required
+						data-required-msg="Ngày ký không được để trống"
+						data-date-msg="Ngày ký không hợp lệ"/>
+					<span data-for='signDate' class='k-invalid-msg'></span>
+				</div>
+				<script>
+				/* $(function() {							
+					var signDate = $("#signDate");
+					signDate.kendoDateTimePicker({
+						format: "dd/MM/yyyy HH:mm:ss",
+				        parseFormats: ["yyyy-MM-dd HH:mm:ss", "dd/MM/yyyy HH:mm:ss", "yyyy/MM/dd HH:mm:ss"],
+				        footer: "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+					})
+				}); */
+				$(function() {
+					var validTo = $("#signDate");
+					validTo.kendoMaskedTextBox({
+						mask : "00/00/0000"
+					});
+
+					validTo.kendoDatePicker({
+						format : "dd/MM/yyyy"
+					});
+
+					validTo.closest(".k-datepicker").add(validTo)
+							.removeClass("k-textbox");
+				});
+				</script>				
+			</div>
+		</div>
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thành phần tham gia</span>
+			</div>
+		</div>
+			<div class="clearfix">
+									
+				<combo-box-second searchtype="" model-label="Giám sát thi công của chủ đầu tư"
+					caller="vm" 
+					req="req"
+					msg="Giám sát thi công của chủ đầu tư không được để trống"  
+					popup-id="acceptance_Phaseworck_amonitorId"
+					popup-type="grid"
+					popup-source-link="CatEmployeeRsServiceRest/getListMonitorChangeConstruct"
+					combo-id="acceptance_Phaseworck_txtAmonitorId"
+					combo-source-link="CatEmployeeRsServiceRest/getListMonitorChangeConstruct"
+					combo-name="fullName" 
+					combo-value="id" 
+					combo-code="value"
+					combo-search="vm.findAmonitorId" 
+					combo-grid="vm.gridCommon"
+					model-id="vm.listacceptance.amonitorId"
+					model-name="vm.listacceptance.amonitorName">
+				</combo-box-second>
+				
+				<combo-box-second searchtype="" model-label="Kỹ thuật thi công"
+					caller="vm"
+					req="req" 
+					msg="Phụ trách kỹ thuật không được để trống"  
+					popup-id="ground_handover_binChargeConstructId"
+					popup-type="grid"
+					popup-source-link="CatEmployeeRsServiceRest/getListMonitorChangeConstruct"
+					combo-id="ground_handover_txtBinChargeConstructId"
+					combo-source-link="CatEmployeeRsServiceRest/getListMonitorChangeConstruct"
+					combo-name="fullName" 
+					combo-value="id" 
+					combo-code="value"
+					combo-search="vm.findBinChargeConstructId" 
+					combo-grid="vm.gridCommon"
+					model-id="vm.listacceptance.binChargeConstructId"
+					model-name="vm.listacceptance.binChargeConstructName">
+				</combo-box-second>						
+			</div>
+			</div>
+
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thời gian nghiệm thu</span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Ngày bắt đầu</label>
+				<div class="col-md-8">					
+					<input kendo-date-time-picker k-options="vm.dateTimeOptions" name="acceptFromDate"
+						id="acceptFromDate" ng-model="vm.listacceptance.acceptFromDate"
+						k-format="'dd/MM/yyyy'" k-max="maxTransDate" style="width: 100%;"
+						k-rebind="maxTransDate" k-on-change="dateChangedTransDateFrom()" required
+						data-required-msg="Ngày bắt đầu không được để trống"
+						data-date-msg="Ngày bắt đầu không hợp lệ"/>
+					<span data-for='acceptFromDate' class='k-invalid-msg'></span>
+				</div>
+				<script>
+					$(function() {							
+						var acceptFromDate = $("#acceptFromDate");
+						acceptFromDate.kendoDateTimePicker({
+							format: "dd/MM/yyyy HH:mm:ss",
+					        parseFormats: ["yyyy-MM-dd HH:mm:ss", "dd/MM/yyyy HH:mm:ss", "yyyy/MM/dd HH:mm:ss"],
+					        footer: "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+						})
+					});
+				</script>
+				
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Ngày kết thúc</label>
+				<div class="col-md-8">				
+					<input kendo-date-time-picker k-options="vm.dateTimeOptions" name="acceptToDate"
+						id="acceptToDate" ng-model="vm.listacceptance.acceptToDate"
+						k-format="'dd/MM/yyyy'" k-max="maxTransDate" style="width: 100%;"
+						k-rebind="maxTransDate" k-on-change="dateChangedTransDateFrom()" required
+						data-required-msg="Ngày kết thúc không được để trống" 
+						data-date-msg="Ngày kết thúc không hợp lệ"/>
+					<span data-for='acceptToDate' class='k-invalid-msg'></span>
+				</div>
+				<script>
+					$(function() {
+						
+						var acceptToDate = $("#acceptToDate");
+						acceptToDate.kendoDateTimePicker({
+							format: "dd/MM/yyyy HH:mm:ss",
+					        parseFormats: ["yyyy-MM-dd HH:mm:ss", "dd/MM/yyyy HH:mm:ss", "yyyy/MM/dd HH:mm:ss"],
+					        footer: "Currently #: kendo.toString(data,'dd-MM-yyyy HH:mm:ss')#"
+						})						
+					});
+				</script>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label req" translate>Tại</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control width100" name="acceptPlace" maxlength="1000"
+							id="acceptPlace" ng-model="vm.listacceptance.acceptPlace" required
+							data-required-msg="Trường không được để trống" />
+						<span data-for='acceptPlace' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>
+<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Đánh giá công việc xây dựng</span>
+			</div>
+		</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Quy	chuẩn, tiêu chuẩn được áp dụng</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="applyBenchmark" maxlength="500"
+							id="applyBenchmark"
+							ng-model="vm.listacceptance.applyBenchmark" required
+							data-required-msg="Quy	chuẩn, tiêu chuẩn được áp dụng không được để trống" /> 
+							<span data-for='applyBenchmark' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Các văn	bản, tài liệu khác nếu có</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="otherDocuments" maxlength="500"
+							id="otherDocuments" ng-model="vm.listacceptance.otherDocuments" /> 
+						<span data-for='otherDocuments' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Chất lượng công việc xây dựng</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="constructionQuality" id="constructionQuality"
+							ng-model="vm.listacceptance.constructionQuality" maxlength="200" required
+							data-required-msg="Chất lượng công việc xây dựng không được để trống" />
+					<span data-for='constructionQuality' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Các ý kiến khác</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="otherComments" maxlength="1000"
+							id="otherComments" ng-model="vm.listacceptance.otherComments" /> 								
+					</div>
+				</div>
+			</div>
+		</div>
+<div class="portlet light bordered">
+	<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết luận</span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Kết luận</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list class="form-control width100" name="conclusion" id="conclusion" ng-model="vm.listacceptance.conclusion" style="width: 100%"
+						 		required data-required-msg="Kết luận không được để trống">
+							<option value="1">Chấp nhận nghiệm thu và đồng ý cho triển khai các công việc tiếp theo</option>
+							<option value="0">Không chấp nhận nghiệm thu</option>
+						</select>
+						<span data-for='conclusion' class='k-invalid-msg'></span>
+					</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Yêu cầu sửa chữa, hoàn thiện</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control width100" name="completeRequest" maxlength="1000"
+							id="completeRequest"
+							ng-model="vm.listacceptance.completeRequest">
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+</form>

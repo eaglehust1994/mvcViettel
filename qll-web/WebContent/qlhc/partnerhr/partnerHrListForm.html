@@ -1,0 +1,127 @@
+<form class="form-horizontal row" role="form" name ="partnerHr" >
+	<!-- <h4>&nbsp;Thông Tin Chung</h4> -->
+	<span class="caption-subject bold lowercase"translate><h5><b>Thông tin chung</b></h5></span>
+	<div class="form-body" >
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Họ tên</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="fullName" id="fullName" maxlength = "100" ng-pattern="pattern" 
+						ng-model="vm.partnerHr.fullName" required data-required-msg="Họ tên không được để trống" />
+						 <span data-for='name' class='k-invalid-msg'></span>
+						 <span ng-show="partnerHr.fullName.$error.pattern" style="color: red;">Không được phép nhập kí tự đặc biệt</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Chứng minh thư</label>
+				<div class="col-md-8">
+					<input class="form-control width100 width100" name="identifyNumber" id="identifyNumber" ng-pattern="pattern2"  
+						string-to-number ng-model="vm.partnerHr.identifyNumber" required data-required-msg="Chứng minh thư không được để trống" /> 
+						<span data-for='name' class='k-invalid-msg'></span>
+						<span ng-show="partnerHr.identifyNumber.$error.pattern" style="color: red;">Chỉ được nhập kiểu số</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Email</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="email" id="email" ng-pattern="pattern3"
+						ng-model="vm.partnerHr.email" required data-required-msg="Email không được để trống" />
+						 <span data-for='name' class='k-invalid-msg'></span>
+						 <span ng-show="partnerHr.email.$error.pattern" style="color: red;">Không tồn tại dạng email này</span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Số điện thoại</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="phoneNumber" id="phoneNumber" ng-pattern="pattern2" 
+						ng-model="vm.partnerHr.phoneNumber" required data-required-msg="Số điện thoại không được để trống" />
+						 <span data-for='name' class='k-invalid-msg'></span>
+						 <span ng-show="partnerHr.phoneNumber.$error.pattern" style="color: red;">Chỉ được nhập kiểu số</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Chức vụ</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="positionName" id="position" ng-pattern="pattern"
+						ng-model="vm.partnerHr.positionName" required data-required-msg="Chức vụ không được để trống" />
+						<span data-for='name' class='k-invalid-msg'></span>
+						<span ng-show="partnerHr.positionName.$error.pattern" style="color: red;">Không được phép nhập kí tự đặc biệt</span>
+				</div>
+			</div>
+			
+			<search-box-second 
+				model-label="Đối tác" 
+				req="req" 
+				searchtype="searchPartnerHr"
+				msg="Đơn vị không được để trống"  
+				caller="vm" 
+				popup-id="pa_partnerHr_partnerId" 
+				popup-type="grid" 
+				popup-source-link="catPartnersServiceRest/catPartners/getForAutoComplete"
+				combo-id="pa_partnerHr_txtpartnerId" 
+				combo-source-link="catPartnersServiceRest/catPartners/getForAutoComplete"
+				combo-name="partnerName" 
+				combo-value="partnerId" 
+				combo-code="address"
+				combo-search="vm.commonSearch" 
+				combo-grid="vm.gridCommon"
+				model-id="vm.partnerHr.partnerOrgId" 
+				model-name="vm.partnerHr.partnerOrgName" >
+            </search-box-second> 
+		</div>
+
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label">Account Voffice</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="vofficeAccount" id="vofficeAccount" ng-pattern="pattern"
+						ng-model="vm.partnerHr.vofficeAccount"  /> 
+						<span data-for='name' class='k-invalid-msg'></span>
+						<span ng-show="partnerHr.vofficeAccount.$error.pattern" style="color: red;">Không được phép nhập kí tự đặc biệt</span>
+				</div>
+			</div>
+			
+			<search-box-second
+				searchtype="partnerHr" 
+				model-label="Account HCQT" 
+				caller="vm" popup-id="pa_partnerHr_userId" 
+				popup-type="grid" 
+				popup-source-link="SysUserServiceRest/sysUser/getForAutoComplete"
+				combo-id="pa_partnerHr_txtuserId" 
+				combo-source-link="SysUserServiceRest/sysUser/getForAutoComplete" 
+				combo-name="loginName" 
+				combo-value="userId" 
+				combo-code="fullName"
+				combo-search="vm.commonSearchAcc" 
+				combo-grid="vm.gridCustom"
+				model-id="vm.partnerHr.userId" 
+				model-name="vm.partnerHr.userName" >
+            </search-box-second>
+		</div>
+		
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req">Ảnh chữ ký</label>
+					<div class="col-md-8">
+						<input type="file" id="fileUpload" name="fileUpload" accept="image/*" 
+						 required data-required-msg="Ảnh chữ ký không được để trống" />
+					</div>
+			</div>
+			<div class="form-group col-md-6">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-8">
+					<a href='{{vm.pathFile}}{{vm.partnerHr.documentPath}}'>{{vm.partnerHr.imagePath}}</a>
+					</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+
+	

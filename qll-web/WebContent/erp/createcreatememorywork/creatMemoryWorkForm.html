@@ -1,0 +1,190 @@
+<form class="form-horizontal row" role="form">
+	<div style="border: 0.5px solid black">
+		<label translate><h4>Thông Tin Chung</h4></label>
+		<div class="form-body">
+			<!-- phần này code phụ thuộc code của dodt -->
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số hợp đồng</label>
+					<div class="col-md-8">
+						<input class="form-control" name="name" id="name"
+							ng-model="vm.adPayment.name" required
+							data-required-msg="Tên không " /> <span data-for='name'
+							class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày kí HĐ</label>
+					<div class="col-md-8">
+						<input class="form-control" name="accountNo" id="accountNo"
+							ng-model="vm.adPayment.accountNo" data-required-msg="" /> <span
+							data-for='accountNo' class='k-invalid-msg'></span>
+					</div>
+					<script>
+						$(function() {
+							var validTo = $("#validTo");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000"
+							});
+
+							validTo.kendoDatePicker({
+								format : "dd/MM/yyyy"
+							});
+
+							validTo.closest(".k-datepicker").add(validTo)
+									.removeClass("k-textbox");
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Mã công
+					trình</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name"
+						ng-model="vm.adPayment.name" required data-required-msg="T" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Tên công
+					trình</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" id="name"
+						ng-model="vm.adPayment.name" required
+						data-required-msg="Tên không được để trống" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Địa chỉ
+						công trình</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control" name="description" id="description"
+							required ng-model="vm.adPayment.description">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+
+
+	<!-- thông tin nhật ký công trình-->
+	<p></p>
+	<div style="border: 0.5px solid black">
+		<label translate><h4>Thông tin nhật ký công trình</h4></label>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Hạng mục
+						công ty</label>
+					<div class="col-md-8">
+						<div class="input-icon right" ng-click="vm.showOrgForm()">
+							<i class="fa fa-search"></i> <input type="hidden"
+								ng-model="cat_employee.full_name"
+								class="ng-pristine ng-untouched ng-valid"> <span
+								tabindex="-1" role="presentation"
+								class="k-widget k-autocomplete k-header form-control   ng-pristine ng-untouched k-state-default ng-invalid ng-invalid-required">
+								<input kendo-auto-complete=""
+								class="form-control   ng-pristine ng-untouched k-input ng-invalid ng-invalid-required"
+								ng-model="a1" required
+								data-required-msg="Đơn vị không được để trống"
+								data-role="autocomplete" type="text" autocomplete="off"
+								role="textbox" aria-haspopup="true" aria-disabled="false"
+								aria-readonly="false" aria-autocomplete="list" aria-owns=""
+								style="width: 100%;"> <span class="k-icon k-loading"
+								style="display: none"></span>
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày nhật
+						ký</label>
+					<div class="col-md-8">
+						<input style="width: 100%;" kendo-date-picker name="validTo"
+							required id="validTo" ng-model="vm.adPayment.validTo"
+							k-format="'dd/MM/yyyy'"
+							data-date-msg="Ngày hi?u l?c k?t thúc không h?p l?" />
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Nội dung
+							công việc</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="description" id="description"
+								required ng-model="vm.adPayment.description">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Những thay
+							đổi bổ sung phát sinh</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="description" id="description"
+								required ng-model="vm.adPayment.description">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ý kiến của
+							đơn vị thi công</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="description" id="description"
+								required ng-model="vm.adPayment.description">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ý kiến
+							giám sát</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="description" id="description"
+								required ng-model="vm.adPayment.description">
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- button save -->
+	<p></p>
+	<div class="col-md-12" style="text-align: center; margin-bottom: 10px">
+		<button type="button" class="btn default" translate
+			ng-click="vm.saveContent()">Ghi Lại</button>
+		<button type="button" class="btn default" translate
+			ng-click="vm.exportContent()">Tìm Kiếm</button>
+	</div>
+	
+	<!-- Danh Sách nhật ký công trình -->
+	
+
+
+</form>
+
+

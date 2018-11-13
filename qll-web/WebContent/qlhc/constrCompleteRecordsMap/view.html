@@ -1,0 +1,16 @@
+<div ng-controller="constrCompleteRecordsMapController as vm">
+	<div ng-show="vm.showSearch">
+		<div data-ng-include="'qlhc/constrCompleteRecordsMap/searchForm.html'"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+		<div kendo-grid="vm.grid" k-options="vm.gridOptions">
+			<div k-detail-template grid-detail></div>
+		</div>
+	</div>
+	<!-- <div id="loading">
+  		<img id="loading-img" alt="Loading...">
+	</div> -->	
+	<div ng-show="vm.showDetail">
+		<div data-ng-include="'qlhc/constrCompleteRecordsMap/form.html'"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</div>
+</div>

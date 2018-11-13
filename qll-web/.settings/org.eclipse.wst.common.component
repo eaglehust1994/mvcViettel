@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="qll-web">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resource"/>
+        <dependent-module archiveName="gson-2.8.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/gson-2.8.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vpclient-ws-4.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vpclient-ws-4.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-api-1.7.21.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/slf4j-api-1.7.21.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="erp-utils.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/erp-utils.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vpclient-4.0.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vpclient-4.0.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vsa_service_client.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vsa_service_client.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="log4j-1.2.17.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/log4j-1.2.17.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="slf4j-log4j12-1.7.21.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/slf4j-log4j12-1.7.21.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vptoken-4.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vptoken-4.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vsa-service.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vsa-service.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging-1.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/commons-logging-1.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vpclient_SSO_Update_2017.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vpclient_SSO_Update_2017.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-codec-1.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/commons-codec-1.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpclient-4.3.6.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/httpclient-4.3.6.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vptoken.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vptoken.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="standard-2.2.0.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/standard-2.2.0.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-httpclient-3.1.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/commons-httpclient-3.1.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="httpcore-4.3.3.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/httpcore-4.3.3.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jstl-1.2.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/jstl-1.2.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="vpclient-ws.jar" deploy-path="/WEB-INF/lib" handle="module:/classpath/lib/qll-web/ext-lib/vpclient-ws.jar">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="java-output-path" value="/qll-web/build/classes"/>
+        <property name="context-root" value="qll-web"/>
+    </wb-module>
+</project-modules>

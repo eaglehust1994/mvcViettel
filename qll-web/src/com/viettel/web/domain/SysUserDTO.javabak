@@ -1,0 +1,179 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.viettel.web.domain;
+
+/**
+ *
+ * @author thuannht
+ */
+public class SysUserDTO {
+
+	/**
+	 * 
+	 */
+	private Long isUserMaster;
+	private String loginName;
+	private String fullName;
+	private String email;
+	private Long userId;
+	private Long groupId;
+	private Long posId;
+	private Long parentId;
+	private String groupName;
+	private String groupCode;
+	private Long provinceId;
+	private String phone;
+	private String jobTitle;
+	private Long catEmployeeId;
+	private Long role;
+	private Long flagSms;
+	private Long flagMail;
+	private String vofficeName;
+
+	public Long getIsUserMaster() {
+		return isUserMaster;
+	}
+
+	public void setIsUserMaster(Long isUserMaster) {
+		this.isUserMaster = isUserMaster;
+	}
+
+	public String getLoginName() {
+		return loginName;
+	}
+
+	public void setLoginName(String loginName) {
+		this.loginName = loginName;
+	}
+
+	public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Long getUserId() {
+		return userId;
+	}
+
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
+
+	public Long getGroupId() {
+		return groupId;
+	}
+
+	public void setGroupId(Long groupId) {
+		this.groupId = groupId;
+	}
+
+	public Long getPosId() {
+		return posId;
+	}
+
+	public void setPosId(Long posId) {
+		this.posId = posId;
+	}
+
+	public Long getParentId() {
+		return parentId;
+	}
+
+	public void setParentId(Long parentId) {
+		this.parentId = parentId;
+	}
+
+	public String getGroupName() {
+		return groupName;
+	}
+
+	public void setGroupName(String groupName) {
+		this.groupName = groupName;
+	}
+
+	public String getGroupCode() {
+		return groupCode;
+	}
+
+	public void setGroupCode(String groupCode) {
+		this.groupCode = groupCode;
+	}
+
+	public Long getProvinceId() {
+		return provinceId;
+	}
+
+	public void setProvinceId(Long provinceId) {
+		this.provinceId = provinceId;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getJobTitle() {
+		return jobTitle;
+	}
+
+	public void setJobTitle(String jobTitle) {
+		this.jobTitle = jobTitle;
+	}
+
+	public Long getCatEmployeeId() {
+		return catEmployeeId;
+	}
+
+	public void setCatEmployeeId(Long catEmployeeId) {
+		this.catEmployeeId = catEmployeeId;
+	}
+
+	public Long getRole() {
+		return role;
+	}
+
+	public void setRole(Long role) {
+		this.role = role;
+	}
+
+	public Long getFlagSms() {
+		return flagSms;
+	}
+
+	public void setFlagSms(Long flagSms) {
+		this.flagSms = flagSms;
+	}
+
+	public Long getFlagMail() {
+		return flagMail;
+	}
+
+	public void setFlagMail(Long flagMail) {
+		this.flagMail = flagMail;
+	}
+
+	public String getVofficeName() {
+		return vofficeName;
+	}
+
+	public void setVofficeName(String vofficeName) {
+		this.vofficeName = vofficeName;
+	}
+}

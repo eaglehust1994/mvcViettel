@@ -1,0 +1,308 @@
+
+ 
+<!-- saved from url=(0063)http://104.199.131.150:68/pmtc2.0/app/popup/donViForm.view.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-utf8">
+<style>.supply{color:green;} .gF{margin:10px;}</style>
+</head>
+<body>
+<div class="modal-body">
+    <!-- BEGIN PORTLET-->
+    <div class="col-md-12">
+	<div class="col-md-6 padding-height-15">
+		<button type="button"
+		class="btn button-header-popup" id="detailGoods"
+		ng-click="caller.gotoTabOneNoteDetailPopUp()">Thông tin chung</button>
+		<button type="button" 
+			class="btn  button-header-popup" id="detailGoods"
+			ng-click="caller.gotoTabTwoNoteDetailPopUp()" >Thông tin hàng hóa</button>
+		<button type="button" 
+			class="btn  button-header-popup" id="aaa"
+			ng-click="caller.gotoTabThreeNoteDetailPopUp()" translate>Thông tin trình ký</button>
+	</div>
+	<div class="col-md-6">
+		<button type="button" class="width-button-header-popup pull-right btn padding-search-right" ng-click="caller.exportOrderWithoutNonSerial()">
+			<div class="docQLK"></div>
+			<div class="text-button"
+			 translate>Xuất phiếu
+			không Serial</div>
+		</button>	
+		<button type="button" class="width-button-header-popup pull-right btn padding-search-right" ng-click="caller.exportOrderWithoutSerial()">
+			<div class="docQLK"></div>
+			<div class="text-button"
+			 translate>Xuất phiếu có
+			Serial</div>
+		</button>
+	</div>
+</div>
+
+	<div ng-show="caller.showTabOneNoteDetail">
+		<form class="form-horizontal col-md-12" role="form">
+			<div class="form-body">
+			<div class="portlet-title">
+						<div class="col-md-8 caption-subject bold lowercase ng-scope">
+							Thông	tin chung
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#extStateDetail1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+				<div id="extStateDetail1" class="portlet light bordered collapse in from-search">
+					
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã yêu cầu </label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.orderCode"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Kho xuất </label>
+							<div class="col-md-8">
+								<label class="control-label"  ng-bind="caller.stockTrans.stockName"></label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã phiếu </label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.code"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người nhận hàng</label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.shipperName"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+								<label class="col-md-4 control-label " translate>Ghi chú </label>
+								<div class="col-md-8">
+								<label class="control-label supply" ng-bind="caller.stockTrans.description"></label>
+								</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tình
+								trạng ký CA</label>
+							<!-- <div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.signState"></label>
+							</div> -->
+							<div class="col-md-8">
+									<label class="control-label supply" ng-if="caller.stockTrans.signState == 1">Chưa
+										trình ký</label> <label class="control-label supply"
+										ng-if="caller.stockTrans.status == 2">Đã trình ký</label> <label
+										class="control-label supply" ng-if="caller.stockTrans.status == 3">Đã
+										ký</label> <label class="control-label supply"
+										ng-if="caller.stockTrans.status == 4">Đã từ chối</label>
+								</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Trạng
+								thái phiếu</label>
+							<div class="col-md-8">
+									<label class="control-label supply" ng-if="caller.stockTrans.status == 1">Chưa
+										tạo phiếu</label> <label class="control-label supply"
+										ng-if="caller.stockTrans.status == 2">Đã tạo phiếu</label> <label
+										class="control-label supply" ng-if="caller.stockTrans.status == 3">Đã
+										nhập/xuất</label> <label class="control-label supply"
+										ng-if="caller.stockTrans.status == 4">Đã hủy</label> <label
+										class="control-label supply" ng-if="caller.stockTrans.status == 5">Đã
+										từ chối</label>
+								</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet-title">
+						<div class="col-md-8 caption-subject bold lowercase ng-scope">
+							Thông tin bổ sung
+						</div>
+							<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#extStateDetail2"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+				<div id="extStateDetail2" class="portlet light bordered collapse in from-search">
+					
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người tạo</label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.createdByName"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày tạo</label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.createdDate"></label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Đơn vị tạo</label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.createdDeptName"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày thực
+								nhập</label>
+							<div class="col-md-8">
+							<label class="control-label supply" ng-bind="caller.stockTrans.realIeTransDate"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet-title">
+							<div class="col-md-8 caption-subject bold lowercase ng-scope">
+								Thông
+									tin tích hợp
+							</div>
+							<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#extStateDetail3"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+						</div>
+				<div id="extStateDetail3" class="portlet light bordered collapse in from-search">
+						
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng PM tài chính</label>
+								<div class="col-md-8">
+								<label class="control-label supply" ng-bind="caller.stockTrans.keySearch"></label>
+								</div>
+							</div>
+						</div>
+				</div>
+				<div class="portlet-title">
+							<div class="col-md-8 caption-subject bold lowercase ng-scope">
+								Thông
+									tin hủy phiếu
+							</div>
+							<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#extStateDetail4"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+						</div>
+				<div id="extStateDetail4" class="portlet light bordered collapse in from-search">
+						
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									thực hiện</label>
+								<div class="col-md-8">
+								<label class="control-label supply" ng-bind="caller.stockTrans.cancelByName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Lý do</label>
+								<div class="col-md-8">
+								<label class="control-label supply" ng-bind="caller.stockTrans.cancelReasonName"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									thực hiện</label>
+								<div class="col-md-8">
+								<label class="control-label supply" ng-bind="caller.stockTrans.cancelDate"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ghi chú</label>
+								<div class="col-md-8">
+								<label class="control-label supply" ng-bind="caller.stockTrans.cancelDescription"></label>
+								</div>
+							</div>
+						</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div ng-show="caller.showTabTwoNoteDetail">
+		<div class="wrap">
+			<div class="fleftdetail col-md-8" style="height: 400px;">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption-subject bold lowercase ng-scope">
+							Danh sách hàng hóa
+						</div>
+					</div>
+					<div id="goodsListForDetailGrid" kendo-grid="caller.goodsListForDetailGrid"
+						k-editable="false" k-options="caller.goodsListForDetailGridOptions"></div>
+						
+					</div>
+
+			</div>
+			<div class="frightdetail col-md-8" style="height: 400px;">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption-subject bold lowercase ng-scope">
+							Thông tin chi tiết hàng hóa
+						</div>
+					</div>
+						<div class="clearfix gF">
+								<div class="form-group col-md-12">
+							<label  class="col-md-3 control-label" translate>Hàng hóa</label>
+							<div class="col-md-9">
+							<label class="control-label" id="goodName"
+								ng-bind="caller.stockTransDetail.goodsCode"></label>
+								<label class="control-label">(</label>
+								<label class="control-label" ng-bind="caller.stockTransDetail.goodsName"></label>
+								<label class="control-label">)</label>
+						</div>
+						</div>
+						</div>
+						<div class="clearfix gF">
+								<div class="form-group col-md-12">
+							<label class="col-md-3 control-label" translate> Tình trạng:</label>
+							<div class="col-md-9">
+							<label class="control-label" id="goodsStateName"
+								ng-bind="caller.stockTransDetail.goodsStateName"></label>
+						</div>
+						</div>
+						</div>
+					  <table id="goodsDetailForNoteGrid3" kendo-grid="caller.goodsDetailForNoteGrid3"
+						k-editable="false" k-options="caller.goodsDetailForNoteGrid3Options"></table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="caller.showTabThreeNoteDetail" >
+		<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption-subject bold lowercase ng-scope">	Danh sách người kí
+						</div>
+					</div>
+					<div ng-repeat="ls in caller.list">
+						<combo-data-sign model-label="{{ls.oderName}}" caller="signVofficeController"
+								page-size="10"
+								combo-user-id="user{{$index}}"
+								combo-source-user-link="userRoleServiceRest/userRole/getForAutoCompleteSysUser"
+								combo-role-id="role{{$index}}"
+								combo-source-role-link="signVofficeRsServiceRest/signVoffice/getRoleByEmail"
+								combo-user-name="fullName" combo-user-value="sysUserId" combo-user-code="email"
+								combo-role-name="sysRoleName" combo-role-value="sysRoleId" combo-role-adorg="adOrgId"
+								model-user-id="ls.sysUserId" model-user-name="ls.fullName" model-user-code="ls.email"
+								model-role-id="ls.sysRoleId" model-role-name="ls.sysRoleName" model-ad-org-id="ls.adOrgId">
+		</combo-data-sign>
+		
+	
+</div>	
+		</div>
+	
+    <!-- END PORTLET-->
+</div>
+<div class="row">
+    <div class="col-md-12 text-right">
+		<!-- <button type="submit" id="submit" class="btn green btn-outline border-find-footer" ng-click="save()">Ghi lại ddi</button>
+ -->	    <button type="button" id="cancel" class="btn btn-qlk padding-search-right margin_right10 closeQLK " ng-click="caller.close()" style="margin-top: 7px;">Đóng</button>
+	</div>
+</div>
+			 
+</body></html>

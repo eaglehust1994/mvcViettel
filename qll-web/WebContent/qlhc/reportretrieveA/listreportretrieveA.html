@@ -1,0 +1,200 @@
+<div ng-controller="listController as vm" kendo-validator="vm.validator"
+	k-options="vm.validatorOptions">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div class="btn-group margin-left-button">
+			<button type="button"
+				class="btn btn-default padding-button border-radius-left margin-left-button box-shadow"
+				ng-click="vm.goToAdd()" ng-disabled="vm.disabledButtom"
+				ng-disabled="vm.disabledButtom" uib-tooltip="Thêm mới">
+				<div class="action-button add"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.showGrid()" uib-tooltip="Xem bảng/Chi tiết">
+				<div class="action-button view" 
+					translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.save()" ng-hide="!vm.showDetail"
+				ng-disabled="vm.disabledButtom" ng-disabled="vm.disabledButtom" uib-tooltip="Lưu">
+				<div class="action-button save"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow  border-radius-right"
+				ng-click="vm.multiDelete()" ng-disabled="vm.disabledButtom"
+				ng-hide="vm.showDetail" uib-tooltip="Xóa">
+				<div class="action-button del"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		<div class="btn-group">
+			<!-- <button type="button"
+					class="btn btn-default padding-button border-radius-left margin-left-button box-shadow"
+					ng-click="vm.removereport()" ng-disabled="vm.disabledButtom"
+					ng-hide="vm.showDetail">
+					<div class="action-button del" uib-tooltip="Xóa" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button> -->
+
+			<button type="button"
+				class="btn btn-default padding-button border-radius-left box-shadow"
+				ng-click="vm.exportFile()" ng-disabled="vm.disabledButtomEx"  uib-tooltip="ExportPDF">
+				<div class="action-button pdf" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button  border-radius-right box-shadow"
+				ng-click="vm.exportFileDoc()" ng-disabled="vm.disabledButtomEx" uib-tooltip="ExportDOC">
+				<div class="action-button doc"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button border-radius-right box-shadow"
+				ng-click="vm.signCA()" translate="" id="btnCopyPayroll"
+				ng-disabled="vm.disabledButtom" uib-tooltip="Ký CA">
+				<div class="action-button signature"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+	</div>
+
+	<form class="form-horizontal row" role="form">
+		<div class="portlet light bordered">
+			
+			<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin chung</span>
+			</div>
+		</div>
+				<div style="padding-bottom: 1%">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Số hợp đồng</label>
+						<div class="col-md-8">
+							<input ng-model="vm.item.contractCode" name="contractNo"
+								id="contractCode" class="form-control width100" required
+								data-required-msg="hãy nhập" readonly="" />
+						</div>
+					</div>
+					<div class="form-group col-md-6" ng-hide="vm.showDetail">
+						<label class="col-md-4 control-label">Tên hợp đồng</label>
+						<div class="col-md-8">
+							<input ng-model="vm.item.contractName" name="contractName"
+								id="contractName" class="form-control width100" required
+								data-required-msg="Không để trống trường này !" readonly="" />
+						</div>
+					</div>
+
+					<div class="form-group col-md-6" ng-hide="!vm.showDetail">
+						<label class="col-md-4 control-label" translate>Ngày kí
+							hợp đồng</label>
+						<div class="col-md-8">
+							<input ng-model="vm.item.signed_date" name="signed_date"
+								id="signed_date" class="form-control width100" readonly="" />
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Mã công trình</label>
+						<div class="col-md-8">
+							<input ng-model="vm.item.constrtCode" class="form-control width100"
+								name="constrtCode" id="constrtCode" required
+								data-required-msg="Không để trống trường này !" readonly="" />
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Tên công trình</label>
+						<div class="col-md-8">
+							<input ng-model="vm.item.constrtName" read-only
+								class="form-control width100" name="constrtName" id="constrtName"
+								required data-required-msg="Không để trống trường này !"
+								readonly="" />
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Địa chỉ
+								công trình</label>
+							<div class="col-md-10">
+								<input type="text" class="form-control width100" name="constrtAddress"
+									id="constrtAddress" ng-model="vm.item.constrtAddress"
+									readonly="">
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix" ng-hide="!vm.showDetail">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req">Tại</label>
+						<div class="col-md-8">
+							<input ng-model="vm.item.signPlace" class="form-control width100"
+								name="signPlace" id="signPlace" required
+								data-required-msg="Không để trống trường này !"
+								ng-disabled="vm.disabledButtom" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<!-- Danh Sach -->
+
+
+		<div ng-show="!vm.showDetail">
+			<!-- Danh Sach -->
+			<p></p>
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Danh sách</span>
+			</div>
+		</div>
+				<div class="form-body">
+					<div class="clearfix">
+
+						<div kendo-grid="vm.reportGrid" k-options="vm.gridOptions"
+							id="reportGridVT"></div>
+					<script>
+                $(document).ready(function() {
+                    var tooltip = $("#reportGridVT").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+            	              if ($(target).hasClass('statusColumn')) {//check column status
+            	            	var dataItem = $("#reportGridVT").data("kendoGrid").dataItem(e.target.closest("tr"));
+            	              	var status = dataItem.statusCa;
+            	              	if(status===3){ // check co pjai tu choi hay ko
+            	              		var content=dataItem.comments;
+            	              	} else {
+            	              	var content=$(target).text();
+            	              	}
+            	              	return content;
+            	              } else {
+            	            	return $(target).text();
+            	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#reportGridVT").find("td").click(false);
+                });
+            </script>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div ng-show="vm.showDetail">
+			<div
+				data-ng-include="'qlhc/reportretrieveA/reportretrievelostA.html'"></div>
+			<!-- Danh Sach -->
+		</div>
+
+
+	</form>
+</div>

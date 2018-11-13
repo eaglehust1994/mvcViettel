@@ -1,0 +1,45 @@
+<div ng-controller="reportS21Controller as vm" >
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption">
+                <i class=""></i> <span
+                    class="caption-subject  bold uppercase" translate>Báo cáo tăng giảm tài sản trong kỳ</span>
+            </div>
+        </div>
+        <div class="portlet-body form">
+            <!-- BEGIN FORM-->
+            <form action="#" class="form-horizontal">
+                <div class="clearfix">
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Đơn vị hạch toán</label>
+                        <div class="col-md-8">
+                            <input kendo-auto-complete k-options="vm.sysGroupOptions"
+                                   ng-model="vm.search.groupCode"
+                                   class="form-control width100" name="groupCode" required
+                                   data-required-msg="hãy nhập dữ liệu" />
+                        </div>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Kỳ báo cáo</label>
+                        <div class="col-md-4">
+                            <input style="width: 100%;" placeholder="Từ ngày" kendo-date-picker name="fromDate"
+                                   ng-disabled="isDisabled" required id="fromDate"
+                                   data-k-ng-model="vm.search.fromDateReportTSCD"
+                                   data-k-format="'MM/yyyy'"
+                                   data-required-msg="Trường không được để trống" />
+                            <span data-for='fromDate' class='k-invalid-msg'></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="clearfix form-actions">
+                    <div class="row">
+                        <div class="col-md-12"  style ="text-align: center;">
+                            <button type="button" class="btn green" translate ng-click="vm.doExportBaoCaoTSCoDinhTheoDonvi()">Xuất báo cáo</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

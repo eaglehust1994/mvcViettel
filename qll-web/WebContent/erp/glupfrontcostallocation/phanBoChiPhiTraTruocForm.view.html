@@ -1,0 +1,208 @@
+<div ng-controller="PhanBoChiPhiTraTruocFormController as vm">
+    <form class="form-horizontal row" role="form">
+        <div class="form-body">
+            <div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Đơn vị</label>
+                    <div class="col-md-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-search" ng-click="showDonViForm('Tìm đơn vị')"></i>
+                            <input kendo-auto-complete k-options="vm.donViOptions" class="form-control width100">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Phòng ban</label>
+                    <div class="col-md-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-search" ng-click="showDonViForm('Tìm phòng ban')"></i>
+                            <input kendo-auto-complete k-options="vm.phongBanOptions" class="form-control width100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Loại chứng từ</label>
+                    <div class="col-md-8">
+                        <select kendo-combo-box class="form-control" style="width: 100%">
+                            <option>Phân bổ chi phí trả trước</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Số chứng từ</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Ngày chứng từ</label>
+                    <div class="col-md-8">
+                        <input kendo-date-picker value="31/01/2016"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Kỳ phân bổ</label>
+                    <div class="col-md-8">
+                        <select kendo-combo-box class="form-control" style="width: 100%">
+                            <option>01-2016</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Kỳ hoạch toán</label>
+                    <div class="col-md-8">
+                        <select kendo-combo-box class="form-control" style="width: 100%">
+                            <option>01-2016</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Số CTGS</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Ngày hạch toán</label>
+                    <div class="col-md-8">
+                        <input kendo-date-picker value="31/01/2016"/>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Số THTT</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Nội dung THTT</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Số THNB</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Nội dung THNB</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group form-control-custom">
+                    <label class="col-md-2 control-label">Nội dung chứng từ</label>
+                    <div class="col-md-10">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Tiền tệ</label>
+                    <div class="col-md-8">
+                        <select kendo-combo-box class="form-control">
+                            <option>USD</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Tài khoản</label>
+                    <div class="col-md-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-search" ng-click="vm.showTaiKhoanForm()"></i>
+                            <input kendo-auto-complete k-options="vm.autoCompleteOptions" class="form-control width100">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Nguồn kinh phí</label>
+                    <div class="col-md-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-search" ng-click="showDonViForm('Tìm nguồn kinh phí')"></i>
+                            <input kendo-auto-complete k-options="vm.autoCompleteOptions" class="form-control width100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Khoản mục</label>
+                    <div class="col-md-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-search" ng-click="showDonViForm('Tìm khoản mục')"></i>
+                            <input kendo-auto-complete k-options="vm.autoCompleteOptions" class="form-control width100">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Vụ việc</label>
+                    <div class="col-md-8">
+                        <div class="input-icon right">
+                            <i class="fa fa-search" ng-click="showDonViForm('Tìm vụ việc')"></i>
+                            <input kendo-auto-complete k-options="vm.autoCompleteOptions" class="form-control width100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Tổng tiền nguyên tệ</label>
+                    <div class="col-md-8">
+                        <input class="form-control text-align-right" value="1,000"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Tổng tiền hạch toán</label>
+                    <div class="col-md-8">
+                        <input class="form-control text-align-right" value="22,000,000"/>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Trạng thái</label>
+                    <div class="col-md-8">
+                        <select kendo-combo-box class="form-control" style="width: 100%">
+                            <option>Nháp/Đã hạch toán</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Người tạo</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Người cập nhật</label>
+                    <div class="col-md-8">
+                        <input class="form-control"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

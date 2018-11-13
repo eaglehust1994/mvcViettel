@@ -1,0 +1,40 @@
+<dom-module id="pi-chart-tscd-dashboard">
+			 <template>
+			 <div style="display:block">
+			<vaadin-pie-chart > 
+				<chart-title>Biểu đồ biên bản bàn giao</chart-title> 
+					<tooltip
+					point-format="{series.name}: <b>{point.percentage:.1f}%</b>"></tooltip>
+				<plot-options> 
+					<pie allow-point-select="true"
+					cursor="pointer"> 
+						<data-labels enabled="true"
+						format="<b>{point.name}</b>:    {point.percentage:.1f} %">
+						</data-labels> 
+					</pie> 
+				</plot-options>
+				<data-series name="Tỉ lệ" data="[[dataSerials]]"> 
+				</data-series>
+			</vaadin-pie-chart> 
+			</div>
+			</template> 
+			<script>
+					Polymer({
+						is : "pi-chart-tscd-dashboard",
+						properties : {
+							dataSerials : {
+								type : Array,
+					            notify: true
+
+							}
+	
+						}
+					});
+			</script>
+			<style>
+			.pi-chart-tscd-dashboard{
+			display:block;
+			max-width:600px;
+			max-height:600px;	
+			</style>
+			</dom-module>

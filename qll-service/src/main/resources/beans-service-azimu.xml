@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+	<!-- dong -->
+	<jaxrs:server id="TitAziConstrAcceptListRsServiceRest"
+		address="/TitAziConstrAcceptListRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="TitAziConstrAcceptListRsServiceClass"
+				class="com.viettel.erp.rest.TitAziConstrAcceptListRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="TitAziConstrAcceptRsServiceRest"
+		address="/TitAziConstrAcceptRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="TitAziConstrAcceptRsServiceClass" class="com.viettel.erp.rest.TitAziConstrAcceptRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<!-- VietDB -->
+	<jaxrs:server id="DetailSettlementProposalRsServiceRest"
+		address="/DetailSettlementProposalRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="DetailSettlementProposalRsServiceClass"
+				class="com.viettel.erp.rest.DetailSettlementProposalRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!-- dongEnd -->
+
+</beans>

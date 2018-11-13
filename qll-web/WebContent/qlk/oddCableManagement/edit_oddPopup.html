@@ -1,0 +1,75 @@
+
+<form class="form-horizontal row" role="form" name="editPopup"
+	id="editPopup" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body">
+		<div class="clearfix">
+			<div style="margin-top: 10px">
+				<!-- <auto-search model-label="Hàng hóa" caller="caller"
+					template-url="views/popup/gridView.html"
+					header-template="caller.headerTemplateOddCable"
+					template-auto="caller.templateGoods" page="1" page-size="20"
+					popup-id="Goods_AutoComplete" popup-type="gridplus"
+					popup-source-link="goodsRsServiceRest/doSearchActiveGoods"
+					combo-id="findGoods"
+					combo-source-link="goodsRsServiceRest/getForAutoCompleteGoods"
+					combo-name="name" combo-value="goodsId" combo-code="name"
+					combo-search="caller.commonSearch"
+					combo-grid="caller.gridCommonOddCable"
+					model-id="caller.SearchOddCable2.goodsId"
+					model-name="caller.SearchOddCable2.goodsName"> </auto-search> -->
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-label" translate>Hàng hóa</label>
+					<div class="col-md-8">
+						<input class="form-control" name="goodsName"
+							id="goodsName" maxlength="200" ng-model="data.goodsName" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label" translate>Đơn vị tính</label>
+				<div class="col-md-8">
+					<input class="form-control" name="goodsUnitName" id="goodsUnitName"
+						maxlength="200" ng-model="data.goodsUnitName" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-4 control-label req" translate>Chiều
+					dài tối thiểu</label>
+				<div class="col-md-8">
+					<input class="form-control" name="amountMinimum" id="amountMinimum"
+						maxlength="200" ng-model="data.amountMinimum" required
+						data-required-msg="không được để trống" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button type="button" class="btn green btn-outline padding-search"
+						id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="save"
+						class="btn green btn-outline padding-search-right"
+						ng-click="save()" translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				$("#save").click();
+				break;
+			}
+		}
+	</script>
+</form>
+<br />

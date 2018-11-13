@@ -1,0 +1,21 @@
+<div>
+<div id="importGoodResultGrid"
+	kendo-grid="caller.importGoodResultGrid" k-editable="false"
+	k-options="caller.importGoodResultGridOptions" ></div>
+	
+<div class="portlet light">
+				<button type="button"
+					class="btn btn-qlk padding-search-right margin_right10 excelQLK btn pull-right"
+					ng-click="caller.exportExcelErr()" translate>Xuất file lỗi</button>
+				<button type="button"
+					class="btn btn-qlk padding-search-right margin_right10 closeQLK btn pull-right"
+					ng-click="caller.closeErrImportPopUp()" translate>Đóng</button>
+			</div>
+<script type="text/javascript">
+var grid = $("#importGoodResultGrid").data("kendoGrid");
+if(grid){
+	grid.dataSource.data();
+	grid.refresh();
+}
+</script>
+</div>

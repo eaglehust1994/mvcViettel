@@ -1,0 +1,155 @@
+
+<form class="form-horizontal row padding10" role="form" name="appParam"
+	id="appParam" kendo-validator="validator" k-options="validatorOptions">
+	<div class="border-gray">
+		<div class="clearfix">
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Mã gói
+						thầu</label>
+					<div class="col-md-8">
+						<input class="form-control" ng-blur="focusOut()" name="code"
+							id="code" maxlength="100" ng-model="caller.appParam.code"
+							ng-readonly="caller.editForm" required
+							data-required-msg="Mã gói thầu không được bỏ trống" /> <span
+							data-for='parType' class='k-invalid-msg'></span>
+						<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Tên gói
+						thầu</label>
+					<div class="col-md-8">
+						<input class="form-control" ng-blur="focusOut()" name="name"
+							id="name" maxlength="200" ng-model="caller.appParam.name"
+							required data-required-msg="Tên gói thầu không được bỏ trống" />
+						<span data-for='name' class='k-invalid-msg'></span>
+						<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Hình
+						thức đấu thầu</label>
+					<div class="col-md-8">
+						<select class="form-control" name="procurementFormsId"
+							ng-blur="focusOut()"
+							ng-options="x for (x, y) in caller.procurementFormsId"
+							id="procurementFormsId"
+							ng-model="caller.appParam.procurementFormsId" required
+							data-required-msg="Hình thức đấu thầu không được để trống">
+
+						</select> <span data-for='procurementFormsId' class='k-invalid-msg'></span>
+						<!-- <span style="color:red">{{caller.listApp.mess1}}</span>  -->
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Loại chủ
+						đầu tư</label>
+					<div class="col-md-8">
+						<select class="form-control" name="investmentOwnerType"
+							ng-blur="focusOut()" id="investmentOwnerType"
+							ng-model="caller.appParam.investmentOwnerType"
+							ng-options="x for (x, y) in caller.investmentOwnerType">
+							<option value="0">Đối tác trong Viettel</option>
+							<option value="1">Đối tác ngoài Viettel</option>
+						</select> <span data-for='investmentOwnerType' class='k-invalid-msg'></span>
+						<!-- <span style="color:red">{{caller.listApp.mess1}}</span>  -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<!-- <label class="col-md-2 control-label" translate>Ngày ký</label>
+				<div class="col-md-4" >
+					<input class="form-control" name="signDate" ng-blur="focusOut()" id="signDate"
+					ng-model="caller.appParam.signDate" type="date"  />
+					<span data-for='signDate' class='k-invalid-msg'></span>
+					 <span style="color:red">{{caller.listApp.mess2}}</span>
+				</div> -->
+
+
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày ký</label>
+					<div class="col-md-8">
+						<input class="form-control" name="signDate" ng-blur="focusOut()"
+							id="signDate" ng-blur="caller.validateDate()"
+							ng-model="caller.appParam.signDate" type="text"
+							kendo-date-picker date-time k-format="'dd/MM/yyyy'"
+							min-year="1000" data-minyear-msg="Ngày ký không hợp lệ" date-time />
+
+						<span data-for='signDate' class='k-invalid-msg'></span> <span
+							style="color: red">{{caller.errMessage}}</span>
+					</div>
+					<div class="One_icon">
+						<i class="fa fa-times" aria-hidden="true"
+							ng-click="caller.cancelDatePopup()"></i>
+					</div>
+				</div>
+
+
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Giá trị</label>
+					<div class="col-md-8">
+						<input class="form-control" ng-blur="focusOut()" name="price"
+							id="price" maxlength="38" ng-model="caller.appParam.price"
+							required data-required-msg="Giá trị không được bỏ trống" /> <span
+							data-for='price' class='k-invalid-msg'></span>
+						<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label " translate>Nội dung</label>
+					<div class="col-md-10">
+					<div class="input-icon right">
+						 <textarea class="form-control" name="content" id="content" rows=4
+							maxlength="1000" ng-model="caller.appParam.content"></textarea> 
+
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br>
+	<div class="clearfix form-actions margin-top">
+		<div class="row">
+			<div class="col-md-12 text-right" style="padding-right: 0px;">
+				<button type="button"
+					class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+					ng-click="caller.cancel()" translate>Hủy bỏ</button>
+				<button type="button" id="savepopupApp"
+					class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+					translate>Ghi lại</button>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("input").change(function() {
+			$(this).val($.trim($(this).val()));
+		});
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				if (e.keyCode === 13 && !$('#cancel:focus').length
+						&& !$('#savepopupApp:focus').length) {
+					$("#savepopupApp").click();
+					break;
+				}
+			}
+		}
+	</script>
+</form>

@@ -1,0 +1,129 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+    margin: 4px 2px;
+}
+</style>
+
+       <div class="portlet light bordered" disable-all="vm.disableAll"> 
+	       <div class="portlet-title">
+				<div class="caption">
+					 <span class="caption-subject bold lowercase"   translate>Nội dung</span>
+				</div>
+			</div>
+	       <div class="clearfix">
+	       		<div class="form-group col-md-6">
+                     <label class="col-md-4 control-label req" translate=""><span class="ng-scope" req>Ngày nhận nhiệm vụ</span></label>
+                     <div class="col-md-6 ">
+                          <input class="form-control width100" kendo-date-time-picker ng-disabled="vm.vohieuhoa"  name="missionDate" id="missionDate" required data-required-msg="Trường này không được để trống"
+                          			k-options="vm.datePickerConfig" 
+                          			ng-model="vm.bean.missionDate"/>
+							<span data-for="missionDate" class="k-invalid-msg"></span>
+                      </div>
+                      <script>
+						$(function() {
+							var validTo = $("#acceptFromDate");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000 00:00:00"
+							});
+	
+							validTo.kendoDateTimePicker({
+								format : "dd/MM/yyyy HH:mm:ss"
+							});
+	
+							validTo.closest(".k-datetimepicker").add(
+									validTo).removeClass("k-textbox");
+						});
+					</script>
+                 </div>
+                 
+	            <div class=" form-group col-md-6">
+	                <label class="col-md-4 control-label">Số chứng chỉ văn bằng giám sát</label>
+	                <div class="col-md-8">
+	                        <input ng-model="vm.bean.monitorDocument" class="form-control width100" id="applyBenchmark" name="applyBenchmark" maxlength="500" ng-disabled="vm.vohieuhoa"
+	                        	  />    
+	                </div>
+	            </div>
+	       </div>
+	        <div class="clearfix ">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<input type="text" maxlength="500" class="form-control width100" ng-model="vm.bean.assignNote" id="assignNote" name="assignNote" ng-disabled="vm.vohieuhoa">							
+						</div>
+					</div>
+				</div>
+			</div>
+        </div>
+     
+       <div class="portlet light bordered" > 
+	       
+	       <div class="portlet-title">
+				<div class="caption">
+					 <span class="caption-subject bold lowercase"   translate>File chứng chỉ văn bằng giám sát</span>
+				</div>
+			</div>
+			<br>
+	       	<div class="clearfix">
+				<div class="form-group col-md-6" disable-all="vm.disableAll">
+					<label class="col-md-4 control-label req" translate>File</label>
+					<div class="col-md-8">
+						<form id='upload-file-form'>
+							<input id='upload_file_assign' type='file' name='uploadfileassign'
+								accept='.pdf' required data-required-msg="Không để trống trường này !"/>
+						</form>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-8">
+					<a href='/ktts-service/fileservice/downloadFileATTT?{{vm.moniMissAss.documentPath}}'>{{vm.moniMissAss.documentName}}</a>
+					</div>
+			</div>
+			</div>
+			
+        </div>
+        
+        <div ng-show="vm.showPheDuyet">
+			<div class="form-body">
+				<div class="portlet-title">
+					<div class="caption">
+						</i> <span class="caption-subject bold lowercase"
+						 translate>Phê Duyệt</span>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Phê Duyệt</label>
+
+						<div class="col-md-8">
+						 <select id="statusCode">
+							<option value="1">Phê Duyệt</option>
+							<option value="2">Từ chối</option>
+						   </select>
+			   
+					        </div>
+						
+						
+						
+						
+						
+						
+
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Nhận xét/ Lý do từ chối duyệt</label>
+							<div class="col-md-10 input-width">
+								<textarea class="form-control width100" name="description"
+									id="description" ng-model="vm.approDTO.comments"> </textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+       

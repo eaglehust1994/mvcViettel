@@ -1,0 +1,15 @@
+<form class="form-horizontal row" role="form">
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Danh
+						sách hàng hóa của lô hàng</span>
+				</div>
+			</div>
+			<div id="shipmentGoodsGrid" kendo-grid="vm.shipmentGoodsGrid"
+				k-editable="false" k-options="vm.gridGoodsOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</form>

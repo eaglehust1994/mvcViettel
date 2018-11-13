@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+
+<style>
+.wrap {
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 40%;
+	border-top: 1px solid #D3D3D3;
+}
+
+.fright {
+	float: right;
+	width: 60%;
+}
+
+.frightdetail {
+	width: 100%;
+	padding-top: 200px;
+	height: 100%;
+	border: 0;
+}
+</style>
+
+</head>
+<body>
+
+	<div data-ng-controller="changeProductController as vm">
+		<div class="wrap">
+			<div class="fleft col-md-8">
+				<form class="form-horizontal row" role="form">
+					<div class="forms-body">
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<span class="caption-subject bold lowercase" translate>Danh
+										sách phiếu trình kí 
+								</div>
+							</div>
+
+							<div style="margin-top: 10px" id="signBoard"
+								kendo-grid="vm.signBoard" k-editable="false"
+								k-options="vm.signBoardGridOptions"></div>
+
+						</div>
+
+					</div>
+				</form>
+			</div>
+
+			<div class="fright">
+				<form class="form-horizontal row" role="form">
+					<div class="form-body">
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<span class="caption-subject bold lowercase" translate>Thông
+										tin người kí</span>
+
+								</div>
+							</div>
+
+						</div>
+
+						<div class="">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>1. Đơn
+										vị yêu cầu</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.reasonSearch.keySearch" />
+									</div>
+
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</div>
+
+								</div>
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>2. Đơn
+										vị phê duyệt</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.reasonSearch.keySearch" />
+									</div>
+
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"></i>
+									</div>
+								</div>
+
+							</div>
+						</div>
+
+					</div>
+
+				</form>
+
+			</div>
+
+		</div>
+		<div class="portlet light" align="right">
+			<button type="button"
+				class="btn red btn-outline padding-search-right"
+				ng-click="vm.closePopup()" translate>Hủy bỏ</button>
+			<button type="button"
+				class="btn green btn-outline padding-search-right"
+				ng-click="vm.sendToSign()" translate>Ghi lại</button>
+
+		</div>
+	</div>
+
+</body>
+</html>
+

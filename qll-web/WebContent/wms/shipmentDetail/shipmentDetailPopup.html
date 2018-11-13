@@ -1,0 +1,143 @@
+<!-- 
+
+<div class="form-body">
+	<label style="margin-bottom: -20px;margin-left: 20px;padding:0px;"
+		class="portlet light ">ThÃ´ng tin chung</label>
+		<div class="text-right margin-row-title" >
+				<i data-toggle="collapse" data-target="#thongtinchung" style="margin-right: 10px;"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+			<div id="thongtinchung"
+							class="collapse in from-search row">
+	<div class="portlet light bordered" 
+		style="margin-left: 20px;margin-right: 20px;">
+		<div class="clearfix" style="margin-top: 10px;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">MÃ£
+					lÃ´ hÃ ng</label>
+				<div class="col-md-8" style="text-align: left;">
+					<span>{{vm.shipmentDetail.code}}</span>
+
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">MÃ£ há»£p Ä‘á»“ng</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.contractCode}}</div>
+			</div>
+		</div>
+
+		<div class="clearfix" style="margin-top: 10px;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">Loáº¡i lÃ´
+						hÃ ng</label>
+				<div class="col-md-8">
+					<span ng-if="vm.shipmentDetail.type ==1" style="text-align: left;">
+						LÃ´ hÃ ng há»£p Ä‘á»“ng ná»™i </span> <span ng-if="vm.shipmentDetail.type ==2"
+						style="text-align: left;"> LÃ´ hÃ ng há»£p Ä‘á»“ng ngoáº¡i</span>
+
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">NgÆ°á»�i giao
+						hÃ ng</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.shiper}}</div>
+			</div>
+		</div>
+
+		<div class="clearfix" style="margin-top: 10px;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">Ä�á»‹a Ä‘iá»ƒm
+						giao hÃ ng</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.shipPlace}}</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">NgÃ y
+					giao hÃ ng</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.shiperDate}}</div>
+			</div>
+		</div>
+		<div class="clearfix" style="margin-top: 10px;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">Ghi
+					chÃº</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.description}}</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">Sá»‘ tá»� khai</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.customsProcedure}}</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<label style="margin-bottom: -20px;  margin-left:20px;padding:0px;"
+		class="portlet light ">Danh sÃ¡ch file Ä‘Ã­nh kÃ¨m</label>
+		<div class="text-right margin-row-title" >
+				<i data-toggle="collapse" data-target="#danhsachfile" style="margin-right: 10px;"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+			<div id="danhsachfile"
+							class="collapse in from-search row">
+	<div class="portlet light " >
+		<div id="shipmentFile1Grid" kendo-grid="vm.shipmentFile1Grid"
+			k-editable="false" k-options="vm.gridFile1Options"
+			k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			
+	</div>
+</div>
+
+	<label style="margin-bottom: -20px;margin-left: 20px;padding:0px"
+		class="portlet light ">ThÃ´ng tin bá»• sung</label>
+		<div class="text-right margin-row-title" >
+				<i data-toggle="collapse" data-target="#thongtinbosung"
+					class="fa fa-chevron-circle-up" aria-hidden="true" style="margin-right: 10px;"></i>
+			</div>
+			<div id="thongtinbosung"
+							class="collapse in from-search row">
+	<div class="portlet light bordered"  style="margin-left: 20px;margin-right: 20px;">
+		<div class="clearfix" style="margin-top: 10px;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">NgÆ°á»�i táº¡o</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.fullName}}</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " style="text-align: right;">NgÃ y
+					táº¡o</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.createdDate}}</div>
+			</div>
+		</div>
+		<div class="clearfix" style="margin-top: 10px;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" style="text-align: right;">Ä�Æ¡n vá»‹ táº¡o</label>
+				<div class="col-md-8" style="text-align: left;">
+					{{vm.shipmentDetail.createdDeptName}}</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+	<label style="margin-bottom: -20px;margin-left: 20px;padding:0px"
+		class="portlet light ">ThÃ´ng tin há»§y</label>
+		<div class="text-right margin-row-title" >
+				<i data-toggle="collapse" data-target="#thongtinhuy"
+					class="fa fa-chevron-circle-up" aria-hidden="false" style="margin-right: 10px;"></i>
+			</div>
+	<div class="portlet light " id="thongtinhuy" style="width: 1024px;margin:0px;"></div>
+	
+
+</div>
+
+
+
+
+
+
+ -->

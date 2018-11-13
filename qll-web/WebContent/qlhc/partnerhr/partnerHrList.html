@@ -1,0 +1,50 @@
+<div ng-controller="partnerHrListController as vm" name="partnerHr" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div class="btn-group margin-left-button">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.add()" ng-disabled="vm.disabledButtom">
+				<div class="action-button add" uib-tooltip="Thêm mới" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.save()" ng-disabled="vm.disabledButtom">
+				<div class="action-button save" uib-tooltip="Lưu" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow" 
+				ng-click="vm.showGrid()">
+				
+				<div class="action-button view" uib-tooltip="Xem bảng/Chi tiết"
+					translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.remove()" ng-disabled="vm.disabledButtom">
+				<div class="action-button del" uib-tooltip="Xóa" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+
+		<button type="button"
+			class="btn btn-default padding-button box-shadow  border-radius-right"
+			ng-click="vm.search()">
+			<div class="action-button search" uib-tooltip="Tìm kiếm" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+
+	</div>
+
+	<hr class="line-Hr">
+	<div ng-show="!vm.showDetail" id="partnerhr">
+		<div ng-show="vm.showSearch">
+			<div data-ng-include="'qlhc/partnerhr/searchPartnerHrForm.html'"></div>
+		</div>
+		<div kendo-grid="vm.partnerHrGrid" k-options="vm.gridOptions"
+			id="partnerHrGrid"
+			k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)">
+		</div>
+	</div>
+	<div ng-show="vm.showDetail" class="backgroundWhite">
+		<div data-ng-include="'qlhc/partnerhr/partnerHrListForm.html'"
+			k-editable="true" ></div>
+	</div>
+</div>

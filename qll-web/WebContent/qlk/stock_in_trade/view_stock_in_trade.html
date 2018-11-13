@@ -1,0 +1,129 @@
+<div data-ng-controller="viewstockInTradeController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo" class="collapse in from-search">
+						<div class="clearfix position-relative">
+								<auto-search model-label="Kho" caller="vm"
+								template-url="views/popup/gridView.html" header-template="vm.headerTemplate" 
+								template-auto="vm.templateStock" page="1" page-size="20" 
+								popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+								popup-source-link="stockRsServiceRest/doSearch"
+								combo-id="findSerial"
+								combo-source-link="stockRsServiceRest/getForAutoCompleteStock"
+								combo-name="name" combo-value="stockId" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.stockTradeSearch.stockId" 
+								ng-model="vm.stockTradeSearch.stock"
+								model-name="vm.stockTradeSearch.stockName"
+								req="req"> </auto-search>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Loại hàng hóa</label>
+								
+									<combo-box-second searchtype="contractgroup"
+										caller="vm" method-popup="POST"
+										popup-id="good_GroupId" popup-type="grid"
+										popup-source-link="goodsTypeRsServiceRest/getGoodTypeList"
+										combo-id="good_GroupId"
+										combo-source-link="goodsTypeRsServiceRest/getGoodTypeList"
+										combo-name="name" combo-value="code" combo-code="name"
+										method-combo="POST" combo-search="vm.commonSearch"
+										combo-grid="vm.gridCommon"> </combo-box-second>
+								
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix position-relative">
+							<!-- <div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>HĂ ng hĂ³a</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.stockTradeSearch.keySearch" />
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div> -->
+							<auto-search model-label="Hàng hóa" caller="vm"
+								template-url="views/popup/gridView.html" header-template="vm.headerTemplate" 
+								template-auto="vm.templateGoods" page="1" page-size="20" 
+								popup-id="Goods_AutoComplete" popup-type="gridplus"
+								popup-source-link="goodsRsServiceRest/doSearchActiveGoods"
+								combo-id="findGoods"
+								combo-source-link="goodsRsServiceRest/getForAutoCompleteGoods"
+								combo-name="name" combo-value="goodsId" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommonGoods"
+								model-id="vm.stockTradeSearch.goodsId" 
+								model-name="vm.stockTradeSearch.goodsName"> </auto-search>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình trạng</label>
+								<div class="col-md-8">
+									<input style="float: left;" type="radio" id="status"
+										name="status" ng-model="vm.stockTradeSearch.goodsState"
+										ng-checked="vm.stockTradeSearch.goodsState == 0" value="0">
+									<span class="padding_radio">Tất cả</span> <input
+										style="float: left;" type="radio" id="status" name="status"
+										ng-model="vm.stockTradeSearch.goodsState"
+										ng-checked="vm.stockTradeSearch.goodsState == 1" value="1">
+									<span class="padding_radio">Bình thường</span> <input
+										style="float: left;" type="radio" id="status" name="status"
+										ng-model="vm.stockTradeSearch.goodsState"
+										ng-checked="vm.stockTradeSearch.goodsState == 2" value="2">
+									<span class="padding_radio"> Hỏng</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button"
+										class="btn btn-qlk padding-search-right searchQLK"
+										ng-click="vm.doSearch()" translate>
+										<i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption ">
+				<span class="caption-subject bold lowercase" translate>Kết quả tìm kiếm: {{vm.stockTradeGrid.dataSource.total()}} bản ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo" class="collapse in from-search">
+			<div class=" margin_top_button">
+				<!-- <button type="button"
+					class="btn green btn-outline padding-search-right"
+					ng-click="vm.exportST()" translate>Xuáº¥t tháº» kho</button> -->
+				<!-- <div class="pull-right margin_right10">
+					<i class="fa fa-cog" aria-hidden="true"></i> <a
+						class="action-button excelQLK"></a>
+				</div> -->
+			</div>
+			<div id="stockTradeGrid" kendo-grid="vm.stockTradeGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

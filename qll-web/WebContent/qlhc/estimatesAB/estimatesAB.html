@@ -1,0 +1,107 @@
+<div ng-controller="estimateABController as vm"  kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="btn-toolbar margin-bottom-10 margin-top">			
+		
+		<div class="btn-group">
+			<button type="button" id = "btnSave" uib-tooltip="Ghi lại" class="btn btn-default padding-button box-shadow border-radius-left" ng-click="vm.saveForm()" ng-disabled="vm.disableBtnSave" translate >
+				<div class="action-button save"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" id = "btnExDoc" uib-tooltip="Export File Doc" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFileDOC()" ng-disabled="vm.disableBtnExpDoc" translate>
+				<div class="action-button doc"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>								
+			<button type="button" id = "btnExPDF" uib-tooltip="Export File PDF" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFilePDF()" ng-disabled="vm.disableBtnExpPdf" translate>
+				<div class="action-button pdf"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" id = "btnSign" uib-tooltip="Ký CA" class="btn btn-default padding-button box-shadow  border-radius-right" ng-click="vm.sendApprpval()" ng-disabled="vm.disableBtnApprpval" translate>
+				<div class="action-button signature"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		
+	</div>
+	<hr class="line-Hr">
+	<div class="backgroundWhiteAB">
+		<div class="col-md-3 ">			
+				<!-- autofocus -->
+					<button id = "btnForm1" class="btn green btn-outline padding-btn-left white-space" autofocus  
+						ng-click="vm.showFormAB1()" traslate>Bảng tính giá trị đề nghị quyết toán</button>			
+			
+			
+				
+					<button id = "btnForm2" class="btn green btn-outline padding-btn-left white-space" 
+						ng-click="vm.showFormAB2()" traslate>Bảng xác định giá trị khối lượng quyết toán</button>
+				
+			
+			
+				
+					<button id = "btnForm3" class="btn green btn-outline padding-btn-left white-space"
+						ng-click="vm.showFormAB3()" traslate>Biên bản xác định khối lượng xây lắp hoàn thành QT</button>
+				
+			
+			
+				
+					<button id = "btnForm4" class="btn green btn-outline padding-btn-left white-space"
+						ng-click="vm.showFormAB4()" traslate>Biên bản diễn giải khối lượng xây lắp hoàn thành</button>
+				
+			
+			
+				
+					<button id = "btnForm5" class="btn green btn-outline padding-btn-left white-space"
+						ng-click="vm.showFormAB5()" traslate>Bảng phân tích chi tiết đơn giá điều chỉnh theo quyết toán</button>
+				
+			
+			
+				
+					<button id = "btnForm6" class="btn green btn-outline padding-btn-left white-space"
+						ng-click="vm.showFormAB6()" traslate>Biên bản đối chiếu vật tư thi công</button>
+				
+		</div>
+
+		<div class="col-md-9 border-estimate">
+			<div ng-show="!vm.showDetail">	
+				<div ng-show="vm.showForm2">
+					<div data-ng-include="'qlhc/estimatesAB/estimatesAB_Form2.html'"></div>
+				</div>	
+				<div ng-show="vm.showForm3">
+					<div data-ng-include="'qlhc/estimatesAB/estimatesAB_Form3.html'"></div>
+				</div>	
+				<div ng-show="vm.showForm4">
+					<div data-ng-include="'qlhc/estimatesAB/estimatesAB_Form4.html'"></div>
+				</div>	
+				<div ng-show="vm.showForm5">
+					<div data-ng-include="'qlhc/estimatesAB/estimatesAB_Form5.html'"></div>
+				</div>	
+				<div ng-show="vm.showForm6">
+					<div data-ng-include="'qlhc/estimatesAB/estimatesAB_Form6.html'"></div>
+				</div>			
+				
+			</div>
+			<div ng-show="vm.showDetail">
+				<div data-ng-include="'qlhc/estimatesAB/estimatesAB_Form1.html'"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- <div ng-show="vm.showSearch">
+	    	<div data-ng-include="'erp/apkmpbudget/searchForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	    </div>
+	    <div kendo-splitter
+                 k-panes="[ {collapsible: true, size: '30%'}, null]"
+                 k-orientation="'horizontal'" class="category-splitter">
+		      <div class="k-pane-content">   	           
+		       		<div class="btn-group row">
+		            	<button  id="button" type="button" class="btn btn-info" ng-click= "vm.assignAdOrg()" traslate>Gán đơn vị sử dụng</button>
+		             </div>
+		             <div class="btn-group row">
+		            	<button  id="button" type="button" class="btn btn-info" ng-click= "vm.assignAdOrg()" traslate>Gán đơn vị sử dụng</button>
+		             </div>
+		             <div class="btn-group row">
+		            	<button  id="button" type="button" class="btn btn-info" ng-click= "vm.assignAdOrg()" traslate>Gán đơn vị sử dụng</button>
+		             </div>
+		   			 
+		     </div>
+		      <div class="k-pane-content">
+		    		<div ng-show="vm.showDetail">
+		        		<div data-ng-include="'erp/apkmpbudget/ap_kmp_budgetForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+		    		</div>
+		      </div>
+		</div> -->
+</div>

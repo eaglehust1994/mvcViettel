@@ -1,0 +1,78 @@
+
+<form class="form-horizontal row padding10" role="form"
+	name="catConstructionFee" id="catConstructionFee"
+	kendo-validator="validator" k-options="validatorOptions"
+	style="width: 575px;">
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-3 control-label req" translate>Mã chi
+				phí</label>
+			<div class="col-md-9">
+				<input class="form-control" ng-blur="focusOut()" name="code"
+					id="code" maxlength="50" ng-model="caller.catConstructionFee.code"
+					required data-required-msg="Mã chi phí không được để trống" /> <span
+					data-for='parType' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-3 control-label req" translate>Tên chi
+				phí</label>
+			<div class="col-md-9">
+				<input class="form-control" ng-blur="focusOut()" name="name"
+					id="name" maxlength="200" ng-model="caller.catConstructionFee.name"
+					required data-required-msg="Tên chi phí không được để trống" /> <span
+					data-for='parType' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-3 control-label req" translate>Loại chi
+				phí</label>
+			<div class="col-md-9">
+<select class="form-control" id="feeTypeId"
+									name="feeTypeId" style="width: 100%"
+									kendo-drop-down-list
+									k-options="caller.chooseFeeTypeDownListOptions"
+									k-ng-model="caller.catConstructionFee.feeType" required data-required-msg="Loại chi phí không được để trống" ></select>
+
+			</div>
+		</div>
+	</div>
+
+	<div class="modal-footer">
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="savepopupApp"
+						class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+						translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("input").change(function() {
+			$(this).val($.trim($(this).val()));
+		});
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				if (e.keyCode === 13 && !$('#cancel:focus').length
+						&& !$('#savepopupApp:focus').length) {
+					$("#savepopupApp").click();
+					break;
+				}
+			}
+		}
+	</script>
+</form>

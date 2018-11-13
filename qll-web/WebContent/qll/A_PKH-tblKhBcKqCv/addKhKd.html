@@ -1,0 +1,104 @@
+
+<form class="form-horizontal row" role="form" name="addKhQlVcId"
+	id="addKhQlVcId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin cập nhật</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Đơn vị/Khối đơn vị:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternOptionsMaDvPop" kendo-auto-complete
+									name="donViPop" ng-model="caller.BcKqKdPop.tenDonVi"
+									maxlength="200" id="donViPop" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Thời gian :</label>
+							<div class="col-md-8">
+								<input name="thoiGianPop" id="thoiGianPop"
+									ng-model="caller.BcKqKdPop.thoiGian"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Thời gian không hợp lệ"
+									data-date-msg="Thời gian không hợp lệ"
+									 date-time /> <span
+									data-for="thoiGianPop" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 10px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Sản lượng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									 parsecurrency value-model="caller.BcKqKdPop.sanLuong" 
+									ng-model="caller.BcKqKdPop.sanLuong" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Doanh thu :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									 parsecurrency value-model="caller.BcKqKdPop.doanhThu" 
+									ng-model="caller.BcKqKdPop.doanhThu" />
+							</div>
+						</div>
+
+					</div>
+					
+					
+					
+					<div class="clearfix" style="margin-top: 10px;">
+
+							<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Hoàn công quyết toán :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									 parsecurrency value-model="caller.BcKqKdPop.hcqt" 
+									ng-model="caller.BcKqKdPop.hcqt" />
+							</div>
+						</div>
+
+						
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Loại 
+								:</label>
+							<div class="col-md-8">
+								<select ng-model="caller.BcKqKdPop.loai"
+									class=" form-control width100">
+									<option value="" selected="selected">~~Chọn~~</option>
+									<option value="TT">Thực tế</option>
+									<option value="KH">Kế hoạch</option>
+									
+								</select>
+							</div>
+						</div>
+					</div>
+
+					
+				</div>
+			</div>
+
+
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange1"
+							ng-click="caller.saveKhKd()" translate>Ghi lại</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

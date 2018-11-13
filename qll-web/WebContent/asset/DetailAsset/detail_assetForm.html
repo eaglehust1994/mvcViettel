@@ -1,0 +1,185 @@
+ <h3 class="page-title" translate>
+	<i class="fa fa-line-chart" aria-hidden="true"></i>
+	Thông tin tài sản
+</h3> 
+<div data-ng-controller="detailassetcontroller as vm">	
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class="icon-equalizer font-red-sunglo"></i> <span
+					class="caption-subject bold lowercase" translate></span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+			<form action="#" class="form-horizontal">
+				<div class="clearfix" ng-hide="vm.item.hide">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Mã trạm</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="stationCode" id="stationCode"
+								ng-model="vm.item.stationCode" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Công trình</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="constructName" name="constructName"
+								ng-model="vm.item.constructName" readonly="readonly">
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Đơn vị
+							hạch toán</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="groupName" name="groupName"
+								ng-model="vm.item.groupName" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Đơn vị sử
+							dụng</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="useGroupName" name="useGroupName"
+								ng-model="vm.item.useGroupName" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Loại tài
+							sản</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="assetTypeName" name="assetTypeName"
+								ng-model="vm.item.assetTypeName" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Nhóm tài
+							sản</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="assetGroupName" name="assetGroupName"
+								ng-model="vm.item.assetGroupName" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Dòng tài
+							sản</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="assetSourceName" name="assetSourceName"
+								ng-model="vm.item.assetSourceName" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Tên tài
+							sản</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="assetNameName" name="assetNameName"
+								ng-model="vm.item.assetNameName" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Mã Tài Sản</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="lotaCode" name="lotaCode"
+								ng-model="vm.item.lotaCode" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Nguyên giá
+							Tài Sản (VNĐ)</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="originalPrice" name="originalPrice"
+								ng-model="vm.item.originalPrice" readonly="readonly">
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Dự án</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="constrtCode" name="constrtCode"
+								ng-model="vm.item.constrtCode" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Hợp đồng</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="constrtCode" name="constrtCode"
+								ng-model="vm.item.constrtCode" readonly="readonly">
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Số biên
+							bản bàn giao</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="handoverCode" name="handoverCode"
+								ng-model="vm.item.handoverCode" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Ngày bàn
+							giao đưa vào SD</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="depreciationStartDate" name="depreciationStartDate"
+								ng-model="vm.item.depreciationStartDate" readonly="readonly">
+						</div>
+					</div>
+				</div>
+
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>File đình
+							kèm BBBG</label>
+						<div class="col-md-8">
+							<input class="form-control width100" id="attachName" name="attachName"
+								ng-model="vm.item.attachName" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Trạng thái hình thành tài sản</label>
+						<div class="col-md-8">
+							<label> <input type="radio" id="status" ng-model="vm.item.lotaStatus"
+								value=0 disabled="disabled"> Tạm tăng</label>
+							 <label> <input type="radio" id="status" ng-model="vm.item.lotaStatus"
+								value=1 disabled="disabled"> Đã quyết toán </label>
+							
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<uib-tabset class="tabbable-custom">
+			<uib-tab heading="Danh sách thiết bị có Serial">
+			<div kendo-grid="vm.gridOne"
+				k-options="vm.gridOptionsOne" k-editable="false"
+				id="gridOne"></div>
+</uib-tab>
+			<uib-tab heading="Danh sách vật tư thiết bị không có Serial">
+			<div kendo-grid="vm.gridTwo"
+				k-options="vm.gridOptionsTwo" k-editable="false"
+				id="gridTwo"></div>
+	</uib-tab>
+			<uib-tab heading="Danh sách chi phí phân bổ">
+			<div kendo-grid="vm.gridFour"
+				k-options="vm.gridOptionsFour" k-editable="false"
+				id="gridFour"></div>
+		</uib-tab>
+		<div class="btn-group">
+					<button id="button" type="button"
+						class="btn green btn-outline buttonSearch" ng-click="vm.doEdit()" ng-show="vm.showEditBtn()" >Sửa</button>
+		</div>
+	</uib-tabset>
+</div>

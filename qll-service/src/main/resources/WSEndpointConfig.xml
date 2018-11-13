@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- To change this license header, choose License Headers in Project Properties. 
+	To change this template file, choose Tools | Templates and open the template 
+	in the editor. -->
+<WSEndpointConfig>
+	<Service>
+		<fullClassName>com.viettel.passport.PassportWS</fullClassName>
+		<address>http://112.72.97.197:8606/passportv3/passportWS?wsdl</address>
+		<targetNameSpace>http://passport.viettel.com/</targetNameSpace>
+		<userName>admin_passport</userName>
+		<password>QL0AFWMIX8NRZTKeof9cXsvbvu8=</password>
+		<connectTimeout>100000</connectTimeout>
+		<receiverTimeout>1000</receiverTimeout>
+		<maxPoolSize>1000</maxPoolSize>
+		<maxIdleTime>30000</maxIdleTime>
+		<maxWaitMillis>30000</maxWaitMillis>
+	</Service>
+</WSEndpointConfig>

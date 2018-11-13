@@ -1,0 +1,65 @@
+<div class="portlet light bordered" >
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate=""><span class="ng-scope">Tìm kiếm</span></span>
+		</div>
+	</div>
+	<div class="portlet-body form">
+		<!-- BEGIN FORM-->
+		<form action="#" class="form-horizontal" name = "partnerHrSearch">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Họ tên</label>
+					<div class="col-md-8">
+						<input class="form-control width100" id="fullName" name="fullName" ng-model="vm.criteriaSearch.fullName" ng-pattern="pattern">
+						<span ng-show="partnerHrSearch.fullName.$error.pattern" style="color: red;">Không được phép nhập kí tự đặc biệt</span>
+					</div>
+				</div>
+				
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Email</label>
+					<div class="col-md-8">
+						<input class="form-control width100" id="email" name="email" ng-model="vm.criteriaSearch.email" ng-pattern="">
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<!-- popup-type="grid" -->
+				<search-box-second 
+					model-label="Đối tác" 
+					caller="vm" 
+					popup-id="pa_partnerHr_search_partnerId" 
+					searchtype="searchPartnerHr"
+					popup-type="grid" 
+					popup-source-link="catPartnersServiceRest/catPartners/getForAutoComplete"
+					combo-id="pa_criteriaSearch_search_txtsearchPartnerId" 
+					combo-source-link="catPartnersServiceRest/catPartners/getForAutoComplete"
+					combo-name="partnerName" 
+					combo-value="partnerId" 
+					combo-code="address"
+					combo-search="vm.commonSearch" 
+					combo-grid="vm.gridCommon"
+					model-id="vm.criteriaSearch.partnerOrgId" 
+					model-name="vm.criteriaSearch.partnerOrgName" >
+            	</search-box-second>
+			</div>
+			
+			<div class="clearfix form-actions">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button" class="btn green btn-outline padding-search" ng-click="vm.canceldoSearch()" translate>Làm lại</button>
+						<button type="button" class="btn green btn-outline padding-search-right"  ng-click="vm.doSearch()" translate>Tìm kiếm</button>
+					</div>
+					</div>
+				</div>
+			</div>
+			
+			<div id="loading">
+  				<img id="loading-image" src="../ims-web/assets/layouts/layout/img/loading-data.gif" alt="Loading..." />
+			</div>
+			
+		</form>
+		<!-- END FORM-->
+	</div>
+	
+	

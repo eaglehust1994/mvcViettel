@@ -1,0 +1,92 @@
+<style>
+	#phanQuyenHTGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#phanQuyenHTGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="phanQuyenHTController as vm"
+	id="phanQuyenHTControl">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demophanQuyenHT"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demophanQuyenHT" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Đơn vị :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="doiTuongNhanNoId"
+											ng-model="vm.phanQuyenHTSearch.donVi" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Họ tên nhân sự :</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+													k-options="vm.patternOptionsNV" kendo-auto-complete
+													name="phanQuyenHTNhanVienAuto" ng-model="vm.phanQuyenHTSearch.hoVaTen"
+													maxlength="200" id="phanQuyenHTNhanVienAuto" />
+									</div>
+								</div>
+
+							</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button type="button" id="findphanQuyenHT"
+								class="btn  btn-qlk padding-search-right searchQLK" translate
+								ng-click="vm.doSearch()">Tìm kiếm</button>
+							<!-- <button type="button" id="findphanQuyenHT"
+								class="btn  btn-qlk padding-search-right searchQLK" translate
+								ng-click="vm.insertRoles8()">Thêm quyền 8</button> -->
+								
+						</div>
+					</div>
+				</div>
+		</form>
+	</div>
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="phanQuyenHTCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#phanQuyenHTCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="phanQuyenHTCollapse" class="collapse in ">
+			<div id="phanQuyenHTGrid" kendo-grid="vm.phanQuyenHTGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,149 @@
+<!-- BEGIN PAGE HEADER-->
+
+<script type="text/x-kendo-template" id="windowPromptTemplate">
+    <div class="modal-body">
+   		<label class="control-label" traslate>#= message #</label>
+		<div class="col-md-12">
+			<textarea class="form-control" id="promptPopup_txtReason" name="promptPopup_txtReason" maxlength = "2000" rows="5"></textarea>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<button id="promptPopup_btnCancel" type="button" class="btn green btn-outline padding-search" translate>Bá»� qua</button>
+		<button id="promptPopup_btnConfirm" type="button" class="btn green border-button-tree padding-search-right" translate>XÃ¡c nháº­n</button>
+	</div>
+</script>
+	
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="DashboardController as vm">
+	<!-- BEGIN DASHBOARD STATS -->
+	<div class="row margin-top15">
+		<div class="col-md-7" >
+			<div class="col-md-12 background-header-deal">
+				<div class="col-md-6 text-left header-chart-line">
+						<img src="assets/layouts/layout/img/input/YeuCauMoi.png"/>
+						<p>Yêu cầu mới</p>
+				</div>
+				<div class="col-md-6 text-right">
+						<a><img ng-click="vm.exportOrder()" src="assets/layouts/layout/img/input/Export_Excel.png"/></a>
+				</div>
+			</div>
+			<div class="col-md-12 border-dash"><canvas id="bar-chart-grouped" style="height:305px"></canvas></div>
+		</div>
+		<div class="col-md-5">
+			<div class="col-md-12 background-header-deal">
+				<div class="col-md-8 text-left header-chart-line">
+						<img src="assets/layouts/layout/img/input/GiaoDich.png"/>
+						<p>Giao dịch nhập/xuất kho</p>
+				</div>
+				<div class="col-md-4 text-right button-header">
+					<a id="week" ng-click="vm.getCharTwoWeek()">Tuần</a>
+					<a id="month"  ng-click="vm.getCharTwoMonth()">Tháng</a>
+					<a class="a-img"><img ng-click="vm.exportCharTwo()" src="assets/layouts/layout/img/input/Export_Excel.png"/></a>
+				</div>
+			</div>
+			<div class="col-md-12 border-dash"><canvas id="myChart" style="height:305px"></canvas></div>
+		</div>
+	</div>
+	<div class="row margin_top30">
+		<div class="col-md-7">
+			<div class="col-md-12 background-header-deal">
+				<div class="col-md-8 text-left header-chart-line kpi">
+						<img src="assets/layouts/layout/img/input/KPI.png"/>
+						<p>KPI tồn kho</p>
+						
+				</div>
+				<div class="col-md-4 text-right button-header ">
+					<a id="amount" ng-click="vm.getCharOneAmount()">Số lượng</a>
+					<a id="time" ng-click="vm.getCharOneTimes()">Thời gian</a>
+					<a class="a-img"><img ng-click="vm.exportKpi()" src="assets/layouts/layout/img/input/Export_Excel.png"/></a>
+				</div>
+			</div>
+			<div class="col-md-12 border-dash"><canvas id="myChartLine" style="height:305px"></canvas></div>
+		</div>
+		<div class="col-md-5">
+			<div class="col-md-12 background-header-deal">
+				<div class="col-md-10 text-left header-chart-line">
+						<img src="assets/layouts/layout/img/input/PhieuXuatNhap.png"/>
+						<p>Phiếu nhập/xuất chưa hoàn thành</p>
+				</div>
+				<div class="col-md-2 text-right">
+					<a><img ng-click="vm.exportCharFour()" src="assets/layouts/layout/img/input/Export_Excel.png"/></a>
+				</div>
+			</div>
+			<div class="col-md-12 border-dash" id="progressBarId">
+				 <p class="text-import">Nhập</p>
+				 <div class="row">
+				 	<div class="col-md-4">
+				 		Chưa ký CA
+				 	</div>
+				 	<div class="col-md-7">
+				 		<div class="progress">
+						    <div class="progress-bar progress-bar-danger " id="progressbarOne" role="progressbar" aria-valuenow="{{vm.ImNotSignRate}}" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						    </div>
+						 </div>
+				 	</div>
+				 	<div class="col-md-1">{{vm.ImNotSign}}</div>
+				 </div>
+				  <div class="row">
+				 	<div class="col-md-4">
+				 		Chưa thực nhập
+				 	</div>
+				 	<div class="col-md-7">
+				 		 <div class="progress">
+						    <div class="progress-bar progress-bar-info " id="progressbarTwo" "role="progressbar" aria-valuenow="{{vm.ImNotRealRate}}" aria-valuemin="0" aria-valuemax="100">
+						    </div>
+						 </div>
+				 	</div>
+				 	<div class="col-md-1">{{vm.ImNotReal}}</div>
+				 </div>
+				 <p class="text-import">Xuất</p>
+				 <div class="row">
+				 	<div class="col-md-4">
+				 		Chưa ký CA
+				 	</div>
+				 	<div class="col-md-7">
+				 		 <div class="progress">
+						    <div class="progress-bar progress-bar-danger " id="progressbarThree" role="progressbar" aria-valuenow="{{vm.ExNotSignRate}}" aria-valuemin="0" aria-valuemax="100 - {{vm.ExNotSignRate}}" style="width:50%">
+						    </div>
+						 </div>
+				 	</div>
+				 	<div class="col-md-1">{{vm.ExNotSign}}</div>
+				 </div>
+				 <div class="row">
+				 	<div class="col-md-4">
+				 		Chưa thực xuất
+				 	</div>
+				 	<div class="col-md-7">
+				 		 <div class="progress">
+						    <div class="progress-bar progress-bar-info " id="progressbarFour" role="progressbar" aria-valuenow="{{vm.ExNotRealRate}}" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						    </div>
+						 </div>
+				 	</div>
+				 	<div class="col-md-1">{{vm.ExNotReal}}</div>
+				 </div>
+				 <div class="row">
+				 	<div class="col-md-4">
+				 		Đang đi đường
+				 	</div>
+				 	<div class="col-md-7">
+				 		 <div class="progress">
+						    <div class="progress-bar progress-bar-warning " id="progressbarFive" role="progressbar" aria-valuenow="{{vm.ExInRoadRate}}" aria-valuemin="0" aria-valuemax="100" style="width:50%">
+						    </div>
+						 </div>
+				 	</div>
+				 	<div class="col-md-1">{{vm.ExInRoad}}</div>
+				 </div>
+			</div>
+		</div>
+	</div>
+
+	<div class="scroll-to-top">
+	    <i class="icon-arrow-up"></i>
+	</div>
+	<!-- END PORTLET-->
+</div>
+
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS & CSS -->
+<!-- BEGIN MAIN JS & CSS -->

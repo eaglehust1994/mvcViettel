@@ -1,0 +1,30 @@
+
+<form class="form-horizontal row" role="form" name="infoId"
+	id="infoId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Danh
+					sách quyền của nhân viên : </span> <b>{{caller.infoxxx.fullName}} </b>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div >
+						<ul>
+							<li ng-repeat=" info in caller.infoRoles" ng-bind-html-unsafe="info.tblRolesName">
+								{{ info.tblRolesName }}</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Đóng</button>
+					</div>
+				</div>
+			</div>
+</form>

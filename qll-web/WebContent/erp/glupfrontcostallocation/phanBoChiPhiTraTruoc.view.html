@@ -1,0 +1,47 @@
+<div ng-controller="PhanBoChiPhiTraTruocController as vm">
+    <div>
+        <div class="action-button them-moi" ng-click="vm.add()"> Thêm</div>
+        <div class="action-button them-moi" ng-click="vm.add()"> Sửa</div>
+        <div class="action-button xoa" ng-click="vm.remove()"> Xóa</div>
+        <div class="action-button luu" ng-click="vm.save()"> Lưu</div>
+        <div class="action-button dang-bang" ng-click="vm.showGrid()"> View </div>
+        <div class="action-button popup" ng-click="vm.popup()"><i class="icon-layers font-blue"></i> Popup</div>
+        <div class="action-button sao-chep" ng-click="vm.copy()"> Copy</div>
+        <div class="action-button import" ng-click="vm.import()"> Imp</div>
+        <div class="action-button export" ng-click="vm.export()">Exp</div>
+        <div class="action-button xoa-nhieu" ng-click="vm.removeMore()"> Xóa nhiều</div>
+        <div class="action-button tim-kiem" ng-click="vm.search()"> Tìm kiếm</div>
+        <div class="action-button lam-moi" ng-click="vm.refresh()"> Refresh</div>
+        <div class="action-button next" ng-click="vm.next()"> Next</div>
+        <div class="action-button previous" ng-click="vm.previous()"> Previous</div>
+        <div class="action-button undo" ng-click="vm.undo()">Undo</div>
+        <div class="action-button attach" ng-click="vm.attach()"> Attach</div>
+        <div class="action-button cos" ng-click="vm.cos()"> Cos</div>
+        <div class="action-button pos" ng-click="vm.pos()"> Pos</div>
+        <div class="action-button rps" ng-click="vm.rps()"> Thay thế hàng loạt(RPS)</div>
+        <div class="action-button replace" ng-click="vm.replace()"> Thay thế tab dưới</div>
+        <div class="action-button print" ng-click="vm.print()"> Print</div>
+        <div class="action-button hoachToan" ng-click="vm.hoachToan()"> Hoạch toán</div>
+        <div class="action-button huyHoachToan" ng-click="vm.huyHoachToan()"> Hủy hoạch toán</div>
+    </div>
+    <br>
+
+    <div ng-show="isShow('showSearch')">
+        <div data-ng-include="'app/phanBoChiPhiTraTruoc/phanBoChiPhiTraTruocSearch.view.html'"
+             kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+    </div>
+
+    <div ng-show="isShow('showGrid')">
+        <div kendo-grid="vm.nhomDonViGrid" k-options="vm.gridOptions">
+            <div k-detail-template grid-detail>
+                <div data-ng-include="'app/phanBoChiPhiTraTruoc/phanBoChiPhiTraTruocForm.view.html'"
+                     kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="isShow('showDetail')">
+        <div data-ng-include="'app/phanBoChiPhiTraTruoc/phanBoChiPhiTraTruocForm.view.html'"
+             kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+    </div>
+</div>

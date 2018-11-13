@@ -1,0 +1,727 @@
+<style>
+.portlet-title {
+	font-size: 120%;
+	padding: 10px;
+}
+
+.k-link {
+	margin-top: -3px;
+}
+</style>
+<div ng-show="caller.showTabOne" class="portlet light "
+	kendo-validator="caller.validator" k-options="caller.validatorOptions">
+	<div class="portlet-title background-title ">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Sao
+				chép yêu cầu xuất kho</span>
+		</div>
+		<div class="text-right margin-row-title">
+			<i data-toggle="collapse" data-target="#detailCopy"
+				class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+		</div>
+	</div>
+	<!-- 	<div id="flowBoxes" class="padding20" >
+		        <div class="right Left active"><p class="width-80">1.Nhập thông tin chung</p></div>
+		        <div 
+		        class="Left right "><p class="width-80">2.Nhập thông tin hàng hóa</p></div>
+		</div> -->
+	<div id="flowBoxes" class="padding20">
+		<div class="Left right  active" id="copyExtReqBCone"
+			ng-click="caller.prevStep()">
+			<p class="acceptQLK postion-icon" id="copyExtReqBCIconOne"></p>
+			<p class="width-80 ">1.Nhập thông tin chung</p>
+		</div>
+		<div class="Left right " id="copyExtReqBCtwo" ng-click="caller.nextStep()">
+			<p class="acceptQLK postion-icon" id="copyExtReqBCIconTwo"></p>
+			<p class="width-80">2.Nhập thông tin hàng hóa</p>
+		</div>
+	</div>
+	<div id="detailCopy" class="collapse in from-search row">
+		<div class="row border-popup-management">
+			<div class="col-md-12 col-lg-3 border-right ">
+				<form class="padding-height-20 form-horizontal row" role="form">
+					<div class="form-body">
+						<div class="portlet-title light">
+							<div class="caption">
+								<span class="bold lowercase" translate>Loại yêu cầu</span>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForDepartment" ng-change="caller.checkbox(caller.businessTypes[0].type)"
+										ng-model="caller.value"  value="0"> 
+								<label for="extForDepartment" class="stt_radio">1.{{caller.businessTypes[0].name}}</label>			
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForConstruct" ng-change="caller.checkbox()"
+										ng-model="caller.value"  value="1">
+										<label for="extForConstruct" class="stt_radio">2.{{caller.businessTypes[1].name}}</label>	
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForBHSC" ng-change="caller.checkbox()"
+										ng-model="caller.value"
+										value="2">
+								<label for="extForBHSC" class="stt_radio">3.{{caller.businessTypes[2].name}}</label>			
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extAlternativeStock" ng-change="caller.checkbox()"
+										ng-model="caller.value" value="3">
+								<label for="extAlternativeStock" class="stt_radio">4.{{caller.businessTypes[3].name}}</label>		
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForGift" ng-change="caller.checkbox()" ng-model="caller.value"
+										value="4">
+								<label for="extForGift" class="stt_radio">5.{{caller.businessTypes[4].name}}</label>		
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForBorrow" ng-change="caller.checkbox()"
+										ng-model="caller.value" value="5">
+								<label for="extForBorrow" class="stt_radio">6.{{caller.businessTypes[5].name}}</label>			
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForPay" ng-change="caller.checkbox()" ng-model="caller.value"
+										value="6">
+								<label for="extForPay" class="stt_radio">7.{{caller.businessTypes[6].name}}</label>		
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForSale" ng-change="caller.checkbox()" ng-model="caller.value"
+										value="7">
+								<label for="extForSale" class="stt_radio">8.{{caller.businessTypes[7].name}}</label>			
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForProject" ng-change="caller.checkbox()"
+										ng-model="caller.value" value="8">
+								<label for="extForProject" class="stt_radio">9.{{caller.businessTypes[8].name}}</label>		
+								</div>
+								<div class="col-md-6 col-lg-12 col-sm-3 col-xs-6 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForSell" ng-change="caller.checkbox()" ng-model="caller.value"
+										value="9">
+								<label for="extForSell" class="stt_radio">10.{{caller.businessTypes[9].name}}</label>		
+								</div>
+						</div>
+
+					</div>
+				</form>
+			</div>
+			<div class="form-horizontal  padding-height-20  col-md-12 col-lg-9"
+				role="form">
+				<div class="form-body ">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin chung </span>
+						</div>
+					</div>
+
+					<div class="padding-width18">
+						<div class="border-gray">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" if translate>Mã
+										yêu cầu</label>
+									<div class="col-md-8">
+										<input readonly class=" form-control width100" type="text"
+											ng-model="caller.dupOrder.code" />
+									</div>
+								</div>
+
+								<auto-search model-label="Kho xuất" caller="caller"
+									template-url="views/popup/gridView.html"
+									header-template="caller.headerTemplate"
+									template-auto="caller.template" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId1221" popup-type="gridplus"
+									popup-source-link="stockRsServiceRest/getStocksForAutocomplete"
+									combo-id="orderExportStock" domain="true"
+									combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+									combo-search="caller.commonSearch"
+									combo-grid="caller.gridCommon" combo-name="name"
+									combo-value="stockId" combo-code="code"
+									model-id="caller.dupOrder.stockId" req="req"
+									model-name="caller.dupOrder.stockName"
+									ng-model="caller.dupOrder.stockId" id="orderExportStock">
+								</auto-search>
+
+
+
+							</div>
+							<div class="clearfix">
+								<auto-search model-label="Người nhận hàng" caller="caller"
+									template-url="views/popup/gridViewCreateUser.html"
+									header-template="caller.userHeaderTemplate"
+									template-auto="caller.userTemplate" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId39COP1233"
+									popup-type="gridplusUser" req="req"
+									popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+									combo-id="recCUCOP"
+									combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+									combo-name="fullName" combo-value="sysUserId"
+									combo-code="employeeCode" combo-search="caller.commonSearch"
+									combo-grid="caller.gridCreator"
+									model-id="caller.dupOrder.recieverId"
+									model-name="caller.dupOrder.recieverName"
+									ng-model="caller.dupOrder.recieverName"> </auto-search>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Ngày
+										nhận hàng dự kiến</label>
+									<div class="col-md-8">
+										<input kendo-date-picker date-time name="exReqManaCreatedDate"
+											id="receiveDate"
+											ng-model="caller.dupOrder.expectedRecievedDate"
+											style="width: 100%" k-format="'dd/MM/yyyy'" min-year="1000" data-minyear-msg="Ngày nhận hàng không hợp lệ"
+											ng-change="caller.validateDate('expectedRecievedDate')" /> <span
+											style="color: red; margin: 5px 0"
+											ng-bind="caller.errMessage2"></span>
+									</div>
+
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="caller.cancelInput('date')"></i>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Mã hợp
+										đồng</label>
+									<div class="col-md-8">
+										<input kendo-auto-complete k-options="caller.contractOptions"
+											ng-model="caller.dupOrder.contractCode" ng-blur="caller.changeDataAuto('exportCopyContract')"
+											class="form-control width100" name="exportCopyContract" id="exportCopyContract"/>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="caller.cancelInput('contract')"></i>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Mã
+										phiếu nhập</label>
+									<div class="col-md-8">
+										<input kendo-auto-complete
+											k-options="caller.ImportNoteOptions" id="importNote"
+											ng-model="caller.dupOrder.stockTransCode" ng-blur="caller.changeDataAuto('importNote')"
+											class="form-control width100" name="name2" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="caller.cancelInput('impNote')"></i>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Ghi
+											chú</label>
+										<div class="col-md-10">
+											<textarea class="form-control" name="description"
+												id="description" maxlength="500"
+												ng-model="caller.dupOrder.description"></textarea>
+										</div>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+					</div>
+
+					<div class="">
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									<span class="caption-subject bold lowercase" translate>Thông
+										tin theo từng loại yêu cầu</span>
+								</div>
+							</div>
+
+							<div class="padding-width18">
+								<div class="border-gray row">
+									<div class="form-group col-md-6"
+										ng-show="caller.showExtForDepartment" disable-all="!caller.showExtForDepartment" >
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="caller.openDepartmentTo('depOpenToCP')"></i>
+											</div>
+											<input kendo-auto-complete k-options="caller.deprtOptions1" ng-blur="caller.changeDataAuto('exportCopyDept')"
+												class=" form-control width100" type="text" id="exportCopyDeptExtForDepartment"
+												ng-model="caller.dupOrder.deptReceiveName" name="dvn1"
+												onclick="reset_msg();" required
+												data-required-msg="Tên đơn vị nhận không để trống" /> <span
+												id="msg" data-for='dvn1' class='k-invalid-msg'></span>
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('deptReceive')"></i>
+										</div>
+										<script>
+											function reset_msg() {
+												document.getElementById('msg').innerHTML = '';
+											}
+										</script>
+
+									</div>
+
+									<div class="form-group col-md-12"
+										ng-show="caller.showExtForConstruct" disable-all="!caller.showExtForConstruct" >
+										<div class="clearfix">
+											<div class="form-group col-md-6">
+												<label class="col-md-4 control-label req" translate>Công
+													trình</label>
+												<div class="col-md-8">
+													<input class=" form-control width100" type="text" ng-blur="caller.changeDataAuto('exportconstrCode')"
+														name="ctr" kendo-auto-complete id="exportconstrCodeExtForConstruct"
+														k-options="caller.extForConstructCodeOptions"
+														ng-model="caller.dupOrder.constrCode"
+														onclick="reset_msg5();" required
+														data-required-msg="Tên công trình không để trống" /> <span
+														id="msg5" data-for='ctr' class='k-invalid-msg'></span>
+												</div>
+
+												<div class="One_icon">
+													<i class="fa fa-times" aria-hidden="true"
+														ng-click="caller.cancelInput('cons')"></i>
+												</div>
+
+												<script>
+													function reset_msg5() {
+														document
+																.getElementById('msg5').innerHTML = '';
+													}
+												</script>
+											</div>
+											<div class="form-group col-md-6">
+												<label class="col-md-4 control-label req" translate>Lý
+													do xuất</label>
+												<div class="col-md-8">
+													<select kendo-drop-down-list class="form-control width100"
+														name="cancelReasonName"
+														k-data-source="caller.dataReasonDelete"
+														k-data-value-field="'reasonId'" k-data-text-field="'name'"
+														required data-required-msg="Lý do xuất không để trống"
+														ng-model="caller.dupOrder.reasonId">
+													</select>
+												</div>
+											</div>
+
+										</div>
+
+										<div class="clearfix">
+											<div class="form-group col-md-6">
+												<label class="col-md-4 control-label req" translate>Đơn
+													vị nhận</label>
+												<div class="col-md-8">
+													<div class="input-icon right ">
+														<i class="fa fa-search directive"
+															ng-click="caller.openDepartmentTo('depOpenToCP')"></i>
+													</div>
+													<input kendo-auto-complete k-options="caller.deprtOptions1" 
+													ng-blur="caller.changeDataAuto('exportCopyDept')"
+														class=" form-control width100" type="text" id="exportCopyDeptExtForConstruct"
+														onclick="reset_msg12();"
+														ng-model="caller.dupOrder.deptReceiveName" name="dvn12"
+														required
+														data-required-msg="Tên đơn vị nhận không để trống" /> <span
+														id="msg12" data-for='dvn12' class='k-invalid-msg'></span>
+												</div>
+
+												<div class="One_icon">
+													<i class="fa fa-times" aria-hidden="true"
+														ng-click="caller.cancelInput('deptReceive')"></i>
+												</div>
+												<script>
+													function reset_msg12() {
+														document
+																.getElementById('msg12').innerHTML = '';
+													}
+												</script>
+											</div>
+										</div>
+
+									</div>
+									<div class="form-group col-md-12"
+										ng-show="caller.showExtForBHSC" disable-all="!caller.showExtForBHSC" >
+										<div class="form-group col-md-6">
+											<label class="col-md-4 control-label req" translate>Đơn
+												vị nhận</label>
+											<div class="col-md-8">
+												<div class="input-icon right ">
+													<i class="fa fa-search directive"
+														ng-click="caller.openDepartmentTo('depOpenToCP')"></i>
+												</div>
+												<input kendo-auto-complete k-options="caller.deprtOptions1" ng-blur="caller.changeDataAuto('exportCopyDept')"
+													class=" form-control width100" type="text" id="exportCopyDeptExtForBHSC"
+													onclick="reset_msg14();"
+													ng-model="caller.dupOrder.deptReceiveName" name="dvn14"
+													required
+													data-required-msg="Tên đơn vị nhận không để trống" /> <span
+													id="msg14" data-for='dvn14' class='k-invalid-msg'></span>
+											</div>
+
+											<div class="One_icon">
+												<i class="fa fa-times" aria-hidden="true"
+													ng-click="caller.cancelInput('deptReceive')"></i>
+											</div>
+											<script>
+												function reset_msg14() {
+													document
+															.getElementById('msg14').innerHTML = '';
+												}
+											</script>
+										</div>
+
+									</div>
+									<div class="form-group col-md-12"
+										ng-show="caller.showExtAlternativeStock" disable-all="!caller.showExtAlternativeStock" >
+										<auto-search model-label="Kho nhận" caller="caller"
+											template-url="views/popup/gridView.html"
+											header-template="caller.headerTemplate"
+											template-auto="caller.template" page="1" page-size="10"
+											popup-id="ar_deposit_browser_adOrgId321"
+											popup-type="gridplus"
+											popup-source-link="stockRsServiceRest/getStocksForAutocomplete"
+											combo-id="orderIEStockExtAlternativeStock" req="req" domain="true"
+											combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+											combo-name="name" combo-value="stockId" combo-code="code"
+											combo-search="caller.commonSearch"
+											combo-grid="caller.gridCommon"
+											model-id="caller.dupOrder.ieStockId"
+											model-name="caller.dupOrder.ieStockName"
+											ng-model="caller.dupOrder.ieStockName"> </auto-search>
+
+									</div>
+
+									<div class="form-group col-md-6"
+										ng-show="caller.showExtForGift" disable-all="!caller.showExtForGift" >
+										<label class="col-md-4 control-label req" translate>Đối
+											tác</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForGiftCodeExtForGift" kendo-auto-complete  ng-blur="caller.changeDataAuto('extForGiftCode')"
+												k-options="caller.extForPartnerCodeOptions"
+												ng-model="caller.dupOrder.partnerName" name="dt1"
+												onclick="reset_msg7();" required
+												data-required-msg="Đối tác không để trống" /> <span
+												id="msg7" data-for='dt1' class='k-invalid-msg'></span>
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('partner')"></i>
+										</div>
+										<script>
+											function reset_msg7() {
+												document.getElementById('msg7').innerHTML = '';
+											}
+										</script>
+									</div>
+									<div class="form-group col-md-6"
+										ng-show="caller.showExtForBorrow" disable-all="!caller.showExtForBorrow" >
+										<label class="col-md-4 control-label req" translate>Đối
+											tác</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForGiftCodeExtForBorrow" kendo-auto-complete name="dt2"
+												k-options="caller.extForPartnerCodeOptions"
+												onclick="reset_msg8();" ng-blur="caller.changeDataAuto('extForGiftCode')"
+												ng-model="caller.dupOrder.partnerName" required
+												data-required-msg="Đối tác không để trống" /> <span
+												id="msg8" data-for='dt2' class='k-invalid-msg'></span>
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('partner')"></i>
+										</div>
+
+										<script>
+											function reset_msg8() {
+												document.getElementById('msg8').innerHTML = '';
+											}
+										</script>
+									</div>
+									<div class="form-group col-md-6" ng-show="caller.showExtForPay" disable-all="!caller.showExtForPay" >
+										<label class="col-md-4 control-label req" translate>Đối
+											tác</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForGiftCodeExtForPay" kendo-auto-complete ng-blur="caller.changeDataAuto('extForGiftCode')"
+												k-options="caller.extForPartnerCodeOptions" name="dt3"
+												ng-model="caller.dupOrder.partnerName"
+												onclick="reset_msg9();" required
+												data-required-msg="Đối tác không để trống" /> <span
+												id="msg9" data-for='dt3' class='k-invalid-msg'></span>
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('partner')"></i>
+										</div>
+
+										<script>
+											function reset_msg9() {
+												document.getElementById('msg9').innerHTML = '';
+											}
+										</script>
+									</div>
+									<div class="form-group col-md-6"
+										ng-show="caller.showExtForSale" disable-all="!caller.showExtForSale" >
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="caller.openDepartmentTo('depOpenToCP')"></i>
+											</div>
+											<input kendo-auto-complete k-options="caller.deprtOptions1" ng-blur="caller.changeDataAuto('exportCopyDept')"
+												class=" form-control width100" type="text" name="dvn3"
+												ng-model="caller.dupOrder.deptReceiveName" id="exportCopyDeptExtForSale"
+												onclick="reset_msg3();" required
+												data-required-msg="Tên đơn vị nhận không để trống" /> <span
+												id="msg3" data-for='dvn3' class='k-invalid-msg'></span>
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('deptReceive')"></i>
+										</div>
+
+										<script>
+											function reset_msg3() {
+												document.getElementById('msg3').innerHTML = '';
+											}
+										</script>
+									</div>
+
+									<div class="form-group col-md-6"
+										ng-show="caller.showExtForProject" disable-all="!caller.showExtForProject" >
+										<label class="col-md-4 control-label req" translate>Mã
+											đề tài/dự án</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForProjectCodeExtForProject" kendo-auto-complete ng-blur="caller.changeDataAuto('extForProjectCode')"
+												k-options="caller.extForProjCodeOptions"
+												ng-model="caller.dupOrder.projectCode" required
+												data-required-msg="Tên mã đề tài/dự án không để trống" />
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('proj')"></i>
+										</div>
+									</div>
+
+									<div class="form-group col-md-6"
+										ng-show="caller.showExtForSell" disable-all="!caller.showExtForSell" >
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="caller.openDepartmentTo('depOpenToCP')"></i>
+											</div>
+											<input kendo-auto-complete k-options="caller.deprtOptions1"
+												class=" form-control width100" type="text" name="dvn4" ng-blur="caller.changeDataAuto('exportCopyDept')"
+												ng-model="caller.dupOrder.deptReceiveName" id="exportCopyDeptExtForSell"
+												onclick="reset_msg4();" required
+												data-required-msg="Tên đơn vị nhận không để trống" /> <span
+												id="msg4" data-for='dvn4' class='k-invalid-msg'></span>
+										</div>
+
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="caller.cancelInput('deptReceive')"></i>
+										</div>
+										<script>
+											function reset_msg4() {
+												document.getElementById('msg4').innerHTML = '';
+											}
+										</script>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	<div class="portlet light" align="right">
+		<button type="button" id="nextStepCopy"
+				class="btn btn-qlk   padding-search-right btn pull-right  nextQLK"
+				ng-click="caller.nextStep()" translate>Tiếp</button>
+			<button type="button"
+				class="btn btn-qlk padding-search-right margin_right10 closeQLK btn pull-right"
+				ng-click="caller.close()" translate>Hủy bỏ</button>
+			
+		</div>
+</div>
+
+<div ng-show="!caller.showTabOne" class="portlet light ">
+	<div class="portlet-title background-title ">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Sao
+				chép yêu cầu xuất kho</span>
+		</div>
+		<div class="text-right margin-row-title">
+			<i data-toggle="collapse" data-target="#detailCopy1"
+				class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+		</div>
+	</div>
+	<!-- <div id="flowBoxes" class="padding20">
+		        <div class="right left"><p class="width-80">1.Nhập thông tin chung</p></div>
+		        <div class="left right active"><p class="width-80">2.Nhập thông tin hàng hóa</p></div>
+		</div> -->
+	<div id="flowBoxes" class="padding20">
+		<div class="Left right  " id="copyExtReqBCone"
+			ng-click="caller.prevStep()">
+			<p class="acceptQLK postion-icon" id="copyExtReqBCIconThree"></p>
+			<p class="width-80 ">1.Nhập thông tin chung</p>
+		</div>
+		<div class="Left right active" id="copyExtReqBCtwo" ng-click="caller.nextStep()">
+			<p class="acceptQLK postion-icon" id="copyExtReqBCIconFour"></p>
+			<p class="width-80">2.Nhập thông tin hàng hóa</p>
+		</div>
+	</div>
+	<form id="detailCopy1" class="collapse in form-horizontal row" role="form">
+		<div class="form-body">
+			<div class="row border-popup-management">
+				<!-- <div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Import
+								bằng file excel</span>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>File
+								import</label>
+							<div class="col-md-6">
+								<input class=" form-control width100" type="file" id="file"
+									ng-disabled="caller.disableImport" />
+							</div>
+							<div class="col-md-2">
+								<button type="button" ng-click="caller.submit()"
+									ng-disabled="caller.disableImport" translate>Tải lên</button>
+							</div>
+						</div>
+						<div class="form-group col-md-6" align="right">
+							<a href="javascript:void(0);"
+									ng-click="caller.downloadImportTemplate()">Tải file biểu
+								mẫu</a>
+						</div>
+					</div>
+
+				</div> -->
+<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Import bằng file excel</span>
+						</div>
+					</div>
+					<div class="padding-width18">
+							<div class="clearfix border-gray">
+								<div class="clearfix ex10">
+									<div class="form-group col-md-8">
+										<file-input list-file-type="xls,xlsx" model="caller.dataList"
+											size="100000" caller="caller" input-id="file"
+											model-label="File import"
+											msg="Không được để trống file"></file-input>
+										<input class="col-md-2" ng-click="caller.submit()"
+											type="submit" value="Tải lên" style="height:20px;">
+									
+									</div>
+									<div class="form-group col-md-4" align="right">
+										<a id="templateLink" href="javascript:void(0);" style="text-decoration: underline; cursor: pointer"
+									ng-click="caller.downloadImportTemplate()">Tải file biểu mẫu</a>
+									</div>
+								</div>
+								<div class="form-group col-md-4" align="right" style="margin-left: 0.5px;">
+								<span style="color: gray;">Dung lượng &lt;= 100MB, định dạng
+									xls,xlsx</span>
+							</div>
+							</div>
+						</div>	
+			</div>
+
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Danh
+								sách hàng hóa yêu cầu</span>
+						</div>
+
+						<div class="col-md-3 position-relative  pull-right">
+						<label class="col-md-3 control-label" translate>hoặc</label>
+							<a href="javascript:void(0);"
+								ng-click="caller.showPatternGoods()">
+							<label class="col-md-7 control-label" translate
+								style="text-decoration: underline; cursor: pointer">Chọn
+									biểu mẫu</label></a> <label class="control-label" translate></label>
+						</div>
+
+						<div class="col-md-4 position-relative pull-right">
+
+							<input ng-model="caller.goods.keySearch" id="orderGoods2"
+								kendo-auto-complete k-options="caller.patternOptions1"
+								class="form-control width100" />
+						</div>
+					</div>
+					<div id="goodsListGridEditable"
+						kendo-grid="caller.goodsListGridEditable" k-editable="true"
+						k-options="caller.goodsListGridEditableOptions"></div>
+
+				</div>
+			</div>
+
+
+
+		</div>
+	</form>
+	<div class="portlet light">
+		<button type="button"
+			class="btn btn-qlk padding-search-right backQLK btn pull-righ"
+			ng-click="caller.prevStep()" translate>Trước</button>
+		<button type="button"
+			class="btn btn-qlk padding-search-right btn pull-right nextQLK"
+			ng-click="caller.saveExportReq()" translate>Ghi lại</button>
+		<button type="button"
+			class="btn btn-qlk padding-search-right margin_right10 closeQLK btn pull-right"
+			ng-click="caller.close()" translate>Hủy
+			bỏ</button>
+	</div>
+</div>
+<script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#nextStepCopy").click();
+                    				break;
+                    		}
+                    	} 
+</script> 

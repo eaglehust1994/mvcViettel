@@ -1,0 +1,139 @@
+
+<form class="form-horizontal row" role="form" name="addHdId"
+	id="addHdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin cập nhật</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+				<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Xây dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkXd" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Điện :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkDien" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkLapDung" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp BTS :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkLapBts" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Khác:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkKhac" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tổng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkTong" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm:</label>
+							<div class="col-md-8">
+								<input name="ngayGtQtkPtk" id="ngayGtQtkPtk"
+									ng-model="caller.addCvPopup.gtQtkPtkNgay"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayGtQtkPtk" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người chốt :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkNguoiChot" disabled="disabled"/>
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thuộc định mức tờ trình:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.gtQtkPtkDmtt" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+						<label class="col-md-4 control-label " translate>Tháng QTK:</label>
+						<div class="col-md-8">
+							<select class=" form-control width100"
+								
+								ng-model="caller.addHdPop.gtQtkPtkThangQtk">
+								<option value="">~~Chọn~~</option>
+								<option value="01/{{caller.date}}">01/{{caller.date}}</option>
+								<option value="02/{{caller.date}}">02/{{caller.date}}</option>
+								<option value="03/{{caller.date}}">03/{{caller.date}}</option>
+								<option value="04/{{caller.date}}">04/{{caller.date}}</option>
+								<option value="05/{{caller.date}}">05/{{caller.date}}</option>
+								<option value="06/{{caller.date}}">06/{{caller.date}}</option>
+								<option value="07/{{caller.date}}">07/{{caller.date}}</option>
+								<option value="08/{{caller.date}}">08/{{caller.date}}</option>
+								<option value="09/{{caller.date}}">09/{{caller.date}}</option>
+								<option value="10/{{caller.date}}">10/{{caller.date}}</option>
+								<option value="11/{{caller.date}}">11/{{caller.date}}</option>
+								<option value="12/{{caller.date}}">12/{{caller.date}}</option>
+							</select>
+						</div>
+					</div>
+					</div>  
+						
+				</div>
+			</div>
+		</div>
+		
+	
+		
+		
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange1"
+							ng-click="caller.saveCV()" translate>Ghi lại</button>
+						
+					</div>
+				</div>
+			</div>
+	</div>
+</form>

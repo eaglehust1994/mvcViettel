@@ -1,0 +1,89 @@
+<h3 class="page-title">
+	<i class="fa fa-line-chart" aria-hidden="true"></i> Thông tin cảnh báo
+</h3>
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="TscdDashboardController as vm">
+	<div class="row">
+		<div class="col-md-6 col-sm-12">
+			<!-- BEGIN PORTLET-->
+			<div class="portlet light bordered tasks-widget">
+				<div class="portlet-title">
+					<div class="caption caption-md">
+						<i class="fa fa-bell-o" aria-hidden="true"></i> <span
+							class="caption-subject font-gray ">Cảnh báo tài sản cố định</span>
+					</div>
+				</div>
+				<div class="outerhome">
+					<ul class="task-list">
+						<li class="task-list-one">
+							<div class="task-title row">
+								<div class="col-md-8 ">Loại thống kê</div>
+								<div class="col-md-4 ">Số lượng</div>
+							</div>
+						</li>
+					</ul>
+
+					<div class="innerhome" style="overflow-y: auto;">
+						<div class="portlet-body">
+							<div class="task-content">
+								<div style="height: 100%;" data-always-visible="1"
+									data-rail-visible1="0" data-handle-color="#D7DCE2">
+									<!-- START TASK LIST -->
+									<ul class="task-list">
+										<li>
+											<div class="task-title row">
+												<span class="col-md-8">Số biên bản nghiệm thu công
+													trình chưa hình thành tài sản</span>
+												<div class="col-md-4 " style="padding-left: 25px"></div>
+												<div class="col-md-4" style="padding-left: 35px">
+													<button type="button" class="btn btn-info red"
+														ng-click="vm.goToListHandoverByConstruction();">
+														{{vm.countConstructionAcceptainStatusNotCreatedAsset}}</button>
+												</div>
+											</div>
+										</li>
+										<li>
+											<div class="task-title row">
+												<span class="col-md-8">Số BB bàn giao chưa hình thành
+													tài sản</span>
+												<div class="col-md-4 " style="padding-left: 35px">
+													<button type="button" class="btn btn-info red"
+														ng-click="vm.goToListHandoverNotByConstruction();">{{vm.countMerHandOverStatusNotCreatedAsset}}
+													</button>
+												</div>
+
+											</div>
+										</li>
+									</ul>
+									<!-- END START TASK LIST -->
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-6" style=" height: 600px;">
+		<div class="outerhome">
+			<div class="innerhome">
+					<div class="portlet-body">
+					<div class="task-content">
+						<div class="scroller" style="height: 100%;"
+									data-always-visible="1" data-rail-visible1="0"
+									data-handle-color="#D7DCE2">
+									<pie-chart-tscd-dashboard 
+				data-serials="{{vm.ratioArray}}"></pie-chart-tscd-dashboard>
+				</div>
+						</div>
+					</div>
+					</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	
+</div>

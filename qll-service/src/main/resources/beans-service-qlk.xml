@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+	<!-- Beans definition for module EST -->
+	<jaxrs:server address="/authenServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.AssetAuthenRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<!-- <jaxrs:server address="/service/SynchErpRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.wms.rest.SynchErpRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxws:endpoint id="vofficeServiceRest" implementor="com.viettel.voffice.vo.ReceiveMultiFromVOfficeImpl" address="/voffice/ReceiveMultiFromVOfficeImpl"/>
+	<jaxrs:server id="signVofficeRsServiceRest" address="/signVofficeRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/signVofficeRsServiceClass" class="com.viettel.wms.rest.SignVofficeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="commonServiceRest" address="/commonServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/commonServiceClass" class="com.viettel.wms.rest.CommonRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="reportServiceRest" address="/reportServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="reportServiceClass" class="com.viettel.wms.rest.ReportRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="appParamServiceRest" address="/appParamServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="appParamServiceClass" class="com.viettel.wms.rest.AppParamRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="departmentServiceRest" address="/departmentServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="departmentServiceClass" class="com.viettel.wms.rest.DepartmentRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	kienpv
+	<jaxrs:server id="stockRsServiceRest" address="/stockRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockRsServiceClass" class="com.viettel.wms.rest.StockRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockCellRsServiceRest" address="/stockCellRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockCellRsServiceClass" class="com.viettel.wms.rest.StockCellRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockDailyRemainRsServiceRest" address="/stockDailyRemainRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockDailyRemainRsServiceClass" class="com.viettel.wms.rest.StockDailyRemainRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="orderChangeGoodsRsServiceRest" address="/orderChangeGoodsRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderChangeGoodsRsServiceClass" class="com.viettel.wms.rest.OrderChangeGoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="orderChangeGoodsDetailRsService" address="/orderChangeGoodsDetailRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderChangeGoodsDetailRsServiceClass" class="com.viettel.wms.rest.OrderChangeGoodsDetailRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	end
+	<jaxrs:server id="taxRsServiceRest" address="/taxRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="taxRsServiceClass" class="com.viettel.wms.rest.TaxRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="orderServiceRest" address="/orderServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderServiceClass" class="com.viettel.wms.rest.OrderRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockTransServiceRest" address="/stockTransServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockTransServiceClass" class="com.viettel.wms.rest.StockTransRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	phongpv
+	<jaxrs:server id="reasonRsServiceRest" address="/reasonRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="reasonRsServiceClass" class="com.viettel.wms.rest.ReasonRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="shipmentRsServiceRest" address="/shipmentRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="shipmentRsServiceClass" class="com.viettel.wms.rest.ShipmentRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="attachmentRsServiceRest" address="/attachmentRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="attachmentRsServiceClass" class="com.viettel.wms.rest.AttachmentRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="shipmentGoodsRsServiceRest" address="/shipmentGoodsRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="shipmentGoodsRsServiceClass" class="com.viettel.wms.rest.ShipmentGoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="shipmentGoodsDetailRsServiceRest" address="/shipmentGoodsDetailRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="shipmentGoodsDetailRsServiceClass" class="com.viettel.wms.rest.ShipmentGoodsDetailRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="shipmentTaxRsServiceRest" address="/shipmentTaxRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="shipmentTaxRsServiceClass" class="com.viettel.wms.rest.ShipmentTaxRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="objectReferenceRsServiceRest" address="/objectReferenceRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="objectReferenceRsServiceClass" class="com.viettel.wms.rest.ObjectReferenceRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="objectReferenceDetailRsServiceRest" address="/objectReferenceDetailRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="objectReferenceDetailRsServiceClass" class="com.viettel.wms.rest.ObjectReferenceDetailRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="iProjInvestProjectRsServiceRest" address="/iProjInvestProjectRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="iProjInvestProjectRsServiceClass" class="com.viettel.wms.rest.IProjInvestProjectRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="iCntContractRsServiceRest" address="/iCntContractRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="iCntContractRsServiceClass" class="com.viettel.wms.rest.ICntContractRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	end phongpv
+	
+	<jaxrs:server id="catOwnerConstructionRsServiceRest"
+		address="/catOwnerConstructionRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catOwnerConstructionRsServiceClass" class="com.viettel.wms.rest.ConstructionRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="partnerRsServiceRest"
+		address="/partnerRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="partnerRsServiceClass" class="com.viettel.wms.rest.PartnerRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="orderGoodsServiceRest" address="/orderGoodsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderGoodsServiceClass" class="com.viettel.wms.rest.OrderGoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="orderGoodsDetailServiceRest" address="/orderGoodsDetailServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderGoodsServiceDetailClass" class="com.viettel.wms.rest.OrderGoodsDetailRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockTransDetailServiceRest" address="/stockTransDetailServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockTransServiceDetailClass" class="com.viettel.wms.rest.StockTransDetailRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockTransDetailSerialServiceRest" address="/stockTransDetailSerialServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockTransDetailSerialServiceDetailClass" class="com.viettel.wms.rest.StockTransDetailSerialRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="stockStockDeliveryConfigServiceRest" address="/stockStockDeliveryConfigServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockstockStockDeliveryConfigClass" class="com.viettel.wms.rest.StockDeliveryConfigRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	VietLT
+	<jaxrs:server id="stockGoodsKpiServiceRest" address="/stockGoodsKpiServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockGoodsKpiServiceClass" class="com.viettel.wms.rest.StockGoodsKpiRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockGoodsServiceRest" address="/stockGoodsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockGoodsServiceRestClass" class="com.viettel.wms.rest.StockGoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="stockGoodsSerialServiceRest" address="/stockGoodsSerialServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockGoodsSerialServiceClass" class="com.viettel.wms.rest.StockGoodsSerialRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="manufacturerServiceRest" address="/manufacturerServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="manufacturerServiceClass" class="com.viettel.wms.rest.ManufacturerRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="producingCountryServiceRest" address="/producingCountryServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="producingCountryServiceClass" class="com.viettel.wms.rest.ProducingCountryRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	NghiaTM
+	<jaxrs:server id="configSignVofficeRsServiceRest"
+		address="/configSignVofficeRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="configSignVofficeRsServiceClass"
+				class="com.viettel.wms.rest.ConfigSignVofficeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	TuanNB
+	<jaxrs:server id="stockDailyImportExportServiceRest"
+		address="/stockDailyImportExportServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockDailyImportExportServiceClass"
+				class="com.viettel.wms.rest.StockDailyImportExportRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="stockGoodsTotalServiceRest" address="/stockGoodsTotalServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockGoodsTotalServiceRestClass" class="com.viettel.wms.rest.StockGoodsTotalRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="stockGoodsTotalReponseRsServiceRest" address="/stockGoodsTotalReponseRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockGoodsTotalReponseRsServiceRestClass" class="com.viettel.wms.rest.StockGoodsTotalReponseRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="goodsTypeRsServiceRest" address="/goodsTypeRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="goodsTypeRsServiceRestClass" class="com.viettel.wms.rest.GoodsTypeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	TUANNB end
+		
+	<jaxrs:server id="userRoleServiceRest" address="/userRoleServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="userRoleServiceRestClass" class="com.viettel.wms.rest.UserRoleRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="sysRoleServiceRest" address="/sysRoleServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="sysRoleServiceRestClass" class="com.viettel.wms.rest.SysRoleRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+		HungNp
+	<jaxrs:server id="sysUserServiceRest" address="/sysUserServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="sysUserServiceRestClass" class="com.viettel.wms.rest.SysUserQLKRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	TaoTQ
+	<jaxrs:server id="orderPatternServiceRest" address="/orderPatternServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderPatternServiceRestClass" class="com.viettel.wms.rest.OrderPatternRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	OrderPatternGood
+	<jaxrs:server id="orderPatternGoodServiceRest" address="/orderPatternGoodServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="orderPatternGoodServiceRestClass" class="com.viettel.wms.rest.OrderPatternGoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="oddCableServiceRest" address="/oddCableServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="oddCableServiceRestClass" class="com.viettel.wms.rest.OddCableRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="goodsRsServiceRest" address="/goodsRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="goodsRsServiceClass" class="com.viettel.wms.rest.GoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="stockSignRsServiceRest" address="/stockSignRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="stockSignRsServiceClass" class="com.viettel.wms.rest.ConfigSignVofficeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="objectReferenceGoodsRsServiceRest" address="/objectReferenceGoodsRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="objectReferenceGoodsRsServiceClass" class="com.viettel.wms.rest.ObjectReferenceGoodsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="objectReferenceGoodsDetailRsServiceRest" address="/objectReferenceGoodsDetailRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="objectReferenceGoodsDetailRsServiceClass" class="com.viettel.wms.rest.ObjectReferenceGoodsDetailRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server> -->
+	
+</beans>

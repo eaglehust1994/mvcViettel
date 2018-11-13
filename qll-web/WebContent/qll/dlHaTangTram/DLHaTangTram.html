@@ -1,0 +1,255 @@
+
+<div data-ng-controller="dlHatangTramController as vm"
+	id="changeControl">
+	<div ng-show="vm.showSearch">
+		<!-- 			<p class="text-brecum">{{vm.String}}</p>
+ -->
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demoOrderChange" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.dlHaTangTramSearch.keySearch" />
+											</div>
+
+										</div>
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Tháng
+									</label>
+									<div class="col-md-4">
+									<input type="date" name="bday" id="dateDLHaTangTram"min="2000-01-02"><br><br>
+								</div>
+									<!-- <div class="col-md-4">
+										<select id="dlmonthID" style="width: 100%; height: 25px;"
+											name="dlmonthID" ng-model="vm.dlHaTangTramSearch.exThang">
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearmonth()"></i>
+									</div>
+
+
+									<label class="col-md-1 control-label" translate>Năm</label>
+									<div class="col-md-3 position-relative">
+										<select id="dlyearID" style="width: 100%; height: 25px;"
+											name="dlyearID" ng-model="vm.dlHaTangTramSearch.exNam">
+											<option value="2005">2005</option>
+											<option value="2006">2006</option>
+											<option value="2007">2007</option>
+											<option value="2008">2008</option>
+											<option value="2009">2009</option>
+											<option value="2010">2010</option>
+											<option value="2011">2011</option>
+											<option value="2012">2012</option>
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option value="2015">2015</option>
+											<option value="2016">2016</option>
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearSearchDate()"></i>
+									</div>-->
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>KV
+									</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="dlkVId"
+											ng-model="vm.dlHaTangTramSearch.khuVuc" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearkV()"></i>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Tên
+										tỉnh </label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<!-- <i class="fa fa-search directive"
+											ng-click="vm.openDepartment()" style="cursor: pointer;"></i> -->
+											<input class=" form-control width100" type="text"
+												k-options="vm.patternOptions" kendo-auto-complete
+												name="dlHaTangTramAuto" ng-model="vm.dlHaTangTramSearch.maTinh"
+												maxlength="200" id="dlHaTangTramAuto" />
+										</div>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cleartenTinh()"></i>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Tên
+										huyện </label>
+									<div class="col-md-8" style="heigth: 25px;">
+										<input class=" form-control width100" type="text" ng-keydown="vm.checkNullTinh()"
+												k-options="vm.patternOptions1" kendo-auto-complete
+												name="dlHaTangTramAuto1" ng-model="vm.dlHaTangTramSearch.huyen"
+												maxlength="200" id="dlHaTangTramAuto1" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cleartenHuyen()"></i>
+									</div>
+								</div>
+
+
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Mã
+										trạm </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maTramId" ng-model="vm.dlHaTangTramSearch.maTram" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearmaTram()"></i>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Loại
+										địa hình </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="loaiDiaHinhId"
+											ng-model="vm.dlHaTangTramSearch.loaiDiaHinh" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearloaiDiaHinh()"></i>
+									</div>
+								</div>
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Phân
+										loại trạm </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maTramId" ng-model="vm.dlHaTangTramSearch.phanLoaiTram" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearphanLoaiTram()"></i>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Vùng
+									</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="vungId"
+											ng-model="vm.dlHaTangTramSearch.vung" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearvung()"></i>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Mã
+										nhân viên </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="maNVId"
+											ng-model="vm.dlHaTangTramSearch.maNv" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearmaNv()"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix form-actions margin-top">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button type="button" id="findOrderChange"
+									class="btn  btn-qlk padding-search-right searchQLK" translate
+									ng-click="vm.doSearch()">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="changeCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#dlHaTangTramCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="dlHaTangTramCollapse" class="collapse in ">
+			<div id="dlHaTangTramGrid" kendo-grid="vm.dlHaTangTramGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

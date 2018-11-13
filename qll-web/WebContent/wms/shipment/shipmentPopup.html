@@ -1,0 +1,194 @@
+<style>
+.hover {
+	background-color: Silver;
+}
+
+.appFile1 {
+	color: red;
+}
+
+.k-button.k-upload-button {
+	width: 100%;
+	border: 1px dotted;
+}
+</style>
+<form class="form-horizontal row" role="form" name="shipment"
+	id="shipment" kendo-validator="validator" k-options="validatorOptions">
+	<div class="portlet-title margin-top15">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Thông
+				tin chung</span>
+		</div>
+	</div>
+	<div class="padding-width18">
+		<div class="border-gray">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Mã lô
+						hàng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" ng-blur="focusOut($index)"
+							type="text" required maxlength="50" tabindex="1"
+							data-required-msg="Mã lô hàng không được để trống" id="code123"
+							name="code123" ng-model="caller.shipmentCreate.code" /> <span
+							data-for="code123" class="k-invalid-msg"></span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Mã hợp
+						đồng</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="caller.contractOptions"
+							required maxlength="50"
+							ng-blur="caller.changeDataAuto('cntCode')" tabindex="3"
+							data-required-msg="Mã hợp đồng không được để trống" id="cntCode"
+							header-template="caller.headerTemplate2"
+							class="form-control width100" name="cntCode"
+							ng-model="caller.shipmentCreate.contractCode" /> <span
+							id="scode" data-for="cntCode" class="k-invalid-msg"></span> <span
+							style="color: red">{{caller.mess}}</span>
+					</div>
+					<div class="One_icon" ng-click="caller.cancelShipment('contract')">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Loại lô
+						hàng</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list="applySelect" class="form-control"
+							k-option-label="'--Chọn--'" ng-blur="focusOut($index)"
+							tabindex="2" id="type123" style="width: 100%" name="type123"
+							required data-required-msg="Loại lô hàng không được để trống"
+							ng-model="caller.shipmentCreate.type">
+							<option value="1">Lô hàng nội</option>
+							<option value="2">Lô hàng ngoại</option>
+						</select> <span data-for="type123" class="k-invalid-msg"></span>
+					</div>
+				</div>
+
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã đề
+						tài/dự án</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="caller.projectOptions"
+							maxlength="50" tabindex="5"
+							header-template="caller.headerTemplate3"
+							class="form-control width100" id="proj"
+							ng-blur="caller.changeDataAuto('proj')"
+							name="projInvestProjectId"
+							ng-model="caller.shipmentCreate.projectCode" />
+					</div>
+					<div class="One_icon" ng-click="caller.cancelShipment('project')">
+						<i class="fa fa-times" aria-hidden="true"></i>
+					</div>
+				</div>
+
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Người
+						giao hàng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" id="shiper"
+							maxlength="100" ng-blur="focusOut($index)" tabindex="4"
+							name="shiper" required
+							data-required-msg="Người giao hàng không được để trống"
+							ng-model="caller.shipmentCreate.shiper" /> <span
+							data-for="shiper" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày giao
+						hàng</label>
+					<div class="col-md-8">
+						<input name="shiperDate" id="shiperDate"
+							ng-blur="focusOut($index)" tabindex="6"
+							ng-model="caller.shipmentCreate.shiperDate" style="width: 100%;"
+							data-date-msg="Ngày giao hàng không hợp lệ" date-time
+							rule="validator" min-year="1000"
+							data-minyear-msg="Ngày giao hàng không hợp lệ" /> <span
+							data-for="shiperDate" class="k-invalid-msg"></span>
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Địa điểm
+						giao hàng</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" id="shipPlace"
+							maxlength="1000" tabindex="7" name="shipPlace"
+							ng-model="caller.shipmentCreate.shipPlace" /> <span
+							data-for="shipPlace" class="k-invalid-msg"></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số tờ khai</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" maxlength="100"
+							tabindex="8" id="customsProcedure" name="customsProcedure"
+							ng-model="caller.shipmentCreate.customsProcedure" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<textarea class="form-control width100" name="description"
+									maxlength="1000" tabindex="9" id="description" type="text"
+									ng-model="caller.shipmentCreate.description"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="portlet-title margin-top15">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Danh
+				sách file đính kèm</span>
+		</div>
+	</div>
+
+	<div class="padding-width18">
+		<div class="border-gray">
+			<div>
+				<center>Kéo thả các file vào đây hoặc click để chọn file</center>
+			</div>
+			<div class="clearfix">
+				<div class="col-md-12">
+					<input class="file-input" name="files" type="file" kendo-upload
+						id="files" tabindex="10" k-select="caller.onSelect" />
+				</div>
+			</div>
+			<center>
+				<span style="color: gray">Dung lượng &#60;&#61; 100MB, định
+					dạng xls,xlsx,doc,docx,pdf</span>
+			</center>
+			<div id="shipmentFileGrid" kendo-grid="caller.shipmentFileGrid"
+				k-options="caller.gridFileOptions"
+				k-on-change="onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="portlet light" align="right">
+			<button type="button"
+				class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+				tabindex="12" ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button" id="sav"
+				class="btn btn-qlk margin_right10 padding-search-right saveQLK"
+				ng-click="save()" tabindex="11" translate>Ghi lại</button>
+		</div>
+	</div>
+</form>

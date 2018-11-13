@@ -1,0 +1,100 @@
+
+	<div ng-show="caller.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light">	
+							<div class="caption "><span class="caption-subject bold lowercase" translate>Thông
+								Tin phiếu xuất kho </span></div>
+				</div>		
+						
+					<div id="demo" class="collapse in from-search">
+					 <div class="portlet light bordered">
+						<div class="clearfix position-relative">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<label class="control-label" ng-bind="caller.orderForNote.code"></label>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị tạo yêu cầu</label>
+									<label class="control-label" ng-bind="caller.orderForNote.createdDeptedName"></label>
+							</div>
+							
+						</div>
+						<div class="clearfix">
+								<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Mã phiếu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-bind="caller.reasonSearch.keySearch3"  />
+										
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Người nhận hàng</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-bind="caller.orderForNote.shipperName" />
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-label" translate>Ghi chú</label>
+									<div class="col-md-10">
+										<div class="input-icon right">
+											<textarea class="form-control width100" name="name" id="name"
+												type="text" ng-model="qtCSuggest.name1"></textarea>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+</div>
+					</div>
+					
+				</div>
+				</form>
+			</div>
+<div class="portlet light">	
+				<span class="caption-subject bold lowercase" translate>Danh sách hàng hóa của phiếu</span>
+
+		
+		<div class="caption ">
+			<div id="demo" class="collapse in from-search">
+			
+			<div class="portlet light bordered">
+			<div class="clearfix position-relative">
+					<div class="form-group col-md-9">
+							<file-input list-file-type="xls,xlsx"
+								model="caller.dataList" size="100000" caller="caller"
+								input-id="file" model-label="File import" req="req"
+								msg="Không được để trống file"></file-input>
+						<input class="col-md-2" ng-click="caller.submit()" type="submit" value="Tải lên">
+					</div>
+					
+					<div class="form-group col-md-3">
+						<a class="form-group col-md-12"  href="">Tải file biểu mẫu</a>
+					</div>
+				
+				</div>
+			</div>
+				
+			
+			</div>
+		</div>
+		
+	
+</div>
+
+
+		
+	
+<div class="portlet light bordered">
+		
+	<div id="demo1" class="collapse in from-search">
+		<div id="addInforDeliveryOrder" kendo-grid="caller.addInforDeliveryOrder" k-editable="false"
+			k-options="caller.addInforDeliveryOrderOptions"></div>
+	</div>
+</div>

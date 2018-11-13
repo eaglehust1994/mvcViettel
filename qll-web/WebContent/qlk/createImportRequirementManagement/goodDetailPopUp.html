@@ -1,0 +1,21 @@
+<div class="clearfix" style="margin-top: 20px;">
+	<div class="form-group col-md-6">
+		<label class="col-md-4 control-label" translate>Hàng hóa</label>
+		<div class="col-md-8">
+			<label class="control-label"
+				ng-bind="caller.detail.goodsName"></label>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+	<div class="form-group col-md-6">
+		<label class="col-md-4 control-label" translate>Kho</label>
+		<div class="col-md-8">
+			<label class="control-label"
+				ng-bind="caller.detail.goodsStateName"></label>
+		</div>
+	</div>
+</div>
+<div id="goodsDetailForOrderGrid"
+	kendo-grid="caller.goodsDetailForOrderGrid" k-editable="false"
+	k-options="caller.goodsDetailForOrderGridOptions"></div>

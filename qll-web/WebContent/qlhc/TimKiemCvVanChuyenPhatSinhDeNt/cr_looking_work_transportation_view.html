@@ -1,0 +1,79 @@
+<form class="form-horizontal row" role="form"
+	kendo-validator="ctrl.validator"
+	ng-controller="CrLookingWorkTranstationController as vm">
+	
+	<div class="form-body">
+
+		<div class="btn-toolbar margin-bottom-10 margin-top">
+			<div data-ng-include="'erp/apcommon/ap_action_header.html'"
+				kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			</div>
+		</div>
+		<hr class="line-Hr">
+		<div style="border: 0.5px solid black">
+			<h4>Thông tin tìm kiếm công trình</h4>
+			<br>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên hạng mục</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="ctrl.objectsData.adOrgName"
+							class="form-control width100" name="soHopDong" required
+							data-required-msg="hãy nhập dữ liệu" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã Công Trình</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="ctrl.objectsData.adOrgName"
+							class="form-control width100" name="soHopDong" required
+							data-required-msg="hãy nhập dữ liệu" />
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên Công Trình
+						</label>
+					<div class="col-md-8">
+						<input kendo-combo-box k-options="ctrl.statusOptions"
+							ng-model="ctrl.objectsData.statusName"
+							class="form-control width100" required
+							data-required-msg="hãy nhập dữ liệu" />
+					</div>
+				</div>
+			</div>
+			<br>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-8">
+						<button type="button" ng-click="ctrl.btnExchangeRateDifference()"
+							class=" btn btn-primary">Tìm Kiếm</button>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+
+
+
+		<!-- SHOW GRIDVIEW -->
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b>Danh sách công việc vận chuyển phát sinh</b>
+			</h4>
+			<br>
+			<div kendo-grid="vm.inoutGrid" k-options="vm.gridOptions">
+				<div k-detail-template grid-detail>
+					<div kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+				</div>
+			</div>
+		</div>
+		<!-- END SHOW GRIDVIEW -->
+
+	</div>
+</form>

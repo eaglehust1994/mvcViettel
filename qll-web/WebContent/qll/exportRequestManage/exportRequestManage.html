@@ -1,0 +1,250 @@
+<div data-ng-controller="exportRequestManageController as vm">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator2" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>ThÃ´ng
+								tin tÃ¬m kiáº¿m</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#ext1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="ext1" class="collapse in from-search">
+
+						<div class="clearfix position-relative">
+							<div class="search_plus">
+								<i class="fa fa-search-plus" aria-hidden="true"
+									id="extReqAdvancedSearch" ng-hide="vm.showAdvancedSearch"
+									ng-click="vm.advancedSearch()" uib-tooltip="Má»Ÿ rá»™ng"></i>
+								<i class="fa fa-search-minus" aria-hidden="true"
+									id="extReqAdvancedSearch" ng-hide="!vm.showAdvancedSearch"
+									ng-click="vm.advancedSearch()" uib-tooltip="Thu gá»�n"></i>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>MÃ£ yÃªu
+									cáº§u</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.orderSearch.keySearch" id="extCode" />
+								</div>
+							</div>
+							<multi-select model-label="Kho yÃªu cáº§u xuáº¥t" caller="vm"
+								template-url="views/popup/gridViewMulti.html" domain="true"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="10" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplus"
+								popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+								combo-id="orderStock"
+								combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+								combo-name="name" combo-value="stockId" combo-code="code"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.orderSearch.listStockId"
+								model-name="vm.orderSearch.stockName"
+								ng-model="vm.orderSearch.stockName"> </multi-select>
+
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>NgÃ y
+									táº¡o: Tá»« ngÃ y </label>
+								<div class="col-md-4">
+									<input kendo-date-picker date-time
+										name="exReqManaCreateFromDate" id="exReqManaCreateFromDate"
+										ng-model="vm.orderSearch.createdDateFrom"
+										class="form-control width100" required
+										data-required-msg="NgÃ y táº¡o khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+										k-format="'dd/MM/yyyy'"
+										data-date-msg="NgÃ y táº¡o khÃ´ng há»£p lá»‡"
+										ng-change="vm.validateDate('checkErr1')" min-year="1000"
+										data-minyear-msg="NgÃ y táº¡o khÃ´ng há»£p lá»‡" /> <span
+										data-for="exReqManaCreateFromDate" class="k-invalid-msg"></span>
+									<span style="color: red">{{vm.errMessage1}}</span>
+								</div>
+								<label class="col-md-1 control-label" translate>Ä‘áº¿n</label>
+								<div class="col-md-3 position-relative">
+									<input kendo-date-picker date-time name="exReqManaCreateToDate"
+										id="exReqManaCreateToDate"
+										ng-model="vm.orderSearch.createdDateTo"
+										class="form-control width100" k-format="'dd/MM/yyyy'"
+										data-date-msg="NgÃ y táº¡o Ä‘áº¿n khÃ´ng há»£p lá»‡"
+										ng-change="vm.validateDate('checkErr')" min-year="1000"
+										data-minyear-msg="NgÃ y Ä‘áº¿n khÃ´ng há»£p lá»‡" /> <span
+										data-for="exReqManaCreateToDate" class="k-invalid-msg"></span>
+									<span style="color: red">{{vm.errMessage}}</span>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.cancelTime('search')"></i>
+								</div>
+							</div>
+							<auto-search model-label="NgÆ°á»�i táº¡o" caller="vm"
+								template-url="views/popup/gridViewCreateUser.html"
+								header-template="vm.userHeaderTemplate"
+								template-auto="vm.userTemplate" page="1" page-size="10"
+								popup-id="ar_deposit_browser_adOrgId39"
+								popup-type="gridplusUser"
+								popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+								combo-id="orderCreator10"
+								combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+								combo-name="fullName" combo-value="sysUserId"
+								combo-code="employeeCode" combo-search="vm.commonSearch"
+								combo-grid="vm.gridCreator" model-id="vm.orderSearch.createdBy"
+								model-name="vm.orderSearch.createdByName"
+								ng-model="vm.orderSearch.createdByName"> </auto-search>
+
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6" id="listExtStatus">
+								<label class="col-md-4 control-label" translate>Tráº¡ng
+									thÃ¡i yÃªu cáº§u</label>
+								<div class="col-md-8 position-relative">
+									<select kendo-multi-select id="listStatus" style="width: 100%"
+										name="listStatus" ng-model="vm.orderSearch.listStatus">
+										<option value="1" selected>1.ChÆ°a táº¡o phiáº¿u</option>
+										<option value="2">2.Ä�Ã£ táº¡o phiáº¿u</option>
+										<option value="3">3.Ä�Ã£ xuáº¥t</option>
+										<option value="4">4.Ä�Ã£ há»§y</option>
+										<option value="5">5.Ä�Ã£ tá»« chá»‘i</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.cancelListStatus()"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6" id="listExtBusinessTypes">
+								<label class="col-md-4 control-label" translate>Loáº¡i
+									yÃªu cáº§u</label>
+								<div class="col-md-8 position-relative">
+									<select kendo-multi-select id="requTypeCreExpNote"
+										style="width: 100%" name="requTypeCreExpNote"
+										kendo-multi-select k-data-source="vm.businessTypes"
+										k-data-text-field="'name'" k-data-value-field="'code'"
+										ng-model="vm.orderSearch.listBussinessType">
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.cancelListBussinessType()"></i>
+								</div>
+							</div>
+						</div>
+						<div ng-show="vm.showAdvancedSearch">
+							<div class="clearfix">
+								<div class="form-group col-md-6" id="listExtSignCA">
+									<label class="col-md-4 control-label" translate>TÃ¬nh
+										tráº¡ng kÃ½ CA</label>
+									<div class="col-md-8 position-relative">
+										<select id="signCA" style="width: 100%" name="signCA"
+											ng-model="vm.orderSearch.listSignState" kendo-multi-select>
+											<option value="1">1.ChÆ°a trÃ¬nh kÃ½</option>
+											<option value="2">2.Ä�Ã£ trÃ¬nh kÃ½</option>
+											<option value="3">3.Ä�Ã£ kÃ½</option>
+											<option value="4">4.Ä�Ã£ tá»« chá»‘i</option>
+
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cancelListSignState()"></i>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Ä�Æ¡n
+										vá»‹ táº¡o</label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartmentCreate('depOpenCreate')"></i>
+										</div>
+										<input kendo-auto-complete k-options="vm.deprtOptions"
+											ng-blur="vm.changeDataAuto('exportcreatedDeptedName')"
+											class=" form-control width100" type="text"
+											id="exportcreatedDeptedName"
+											ng-model="vm.orderSearch.createdDeptedName" />
+
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cancelCreptedDepted('search')"></i>
+									</div>
+								</div>
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>ThÃ´ng
+										tin khÃ¡c</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.orderSearch.otherKey"
+											placeholder="MÃ£ há»£p Ä‘á»“ng, mÃ£ dá»± Ã¡n/Ä‘á»� tÃ i, mÃ£ cÃ´ng trÃ¬nh, mÃ£ Ä‘á»‘i tÃ¡c" />
+
+
+									</div>
+
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Ä�Æ¡n
+										vá»‹ nháº­n</label>
+
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartmentTo('depOpenTo')"></i>
+										</div>
+										<input kendo-auto-complete k-options="vm.deprtOptions2"
+											ng-blur="vm.changeDataAuto('exportdeptReceiveName')"
+											class=" form-control width100" type="text"
+											id="exportdeptReceiveName"
+											ng-model="vm.orderSearch.deptReceiveName" />
+
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cancelDeptReceive('search')"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findExt"
+										class="btn btn-qlk padding-search-right searchQLK btn-focus"
+										translate ng-click="vm.doSearch()">TÃ¬m kiáº¿m</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Káº¿t
+					quáº£ tÃ¬m kiáº¿m :</span>&nbsp;<label
+					class="control-label bold lowercase" id="extRegCount"></label><label
+					class="control-label bold lowercase">&nbsp;báº£n ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#ext2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="ext2" class="collapse in ">
+
+			<div ng-show="vm.showDetail" id="sign"></div>
+			<div id="exRegManaGrid" kendo-grid="vm.exRegManaGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

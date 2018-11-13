@@ -1,0 +1,119 @@
+<style>
+.k-datetimepicker .k-picker-wrap .k-icon {
+    margin: 4px 2px;
+}
+.k-icon {
+    margin-top: 4px;
+}
+</style>
+<div ng-controller="ConstructionAcceptanceController as vm">
+     <div class="btn-toolbar margin-bottom-10 margin-top">
+			<div data-ng-include="'erp/apcommon/ap_action_header2.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>	
+
+	</div>
+	
+	<form class="form-horizontal row" role="form">
+	<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			 <span
+				class="caption-subject bold lowercase" translate>Thông tin chung</span>
+		</div>
+	</div>
+	<input type="hidden" name="type" ng-init="vm.item.type = 2"  ng-model="vm.item.type"  id="type" />
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Số Hợp đồng</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control width100 ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text" value = "1ss"
+						ng-model="vm.item.contractCode" readonly="" />
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên hợp đồng</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control width100 ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.contractName" readonly="">
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Mã Công
+				Trình</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control width100 ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.constrtCode" readonly="">
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên công
+				trình</label>
+			<div class="col-md-8">
+				<div class="input-icon right">
+					<input class="form-control width100 ng-pristine ng-valid ng-touched"
+						name="contractNo" id="contractNo" type="text"
+						ng-model="vm.item.constrtName" readonly="">
+				</div>
+				<span data-for="value" class="k-invalid-msg"></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label " translate>Địa chỉ
+					công trình</label>
+				<div class="col-md-10">
+					<div class="input-icon right">
+						<input class="form-control width100 ng-pristine ng-valid ng-touched"
+							name="contractNo" id="contractNo" type="text"
+							ng-model="vm.item.constrtAddress" readonly="" />
+					</div>
+					<span data-for="value" class="k-invalid-msg"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<p></p>
+	
+    <div ng-show="!vm.showDetail">
+
+        <div kendo-grid="vm.MainGrid" k-options="vm.MainGridOptions" id="mainGrid">
+
+        </div>
+        <script>
+                $(document).ready(function() {
+                    var tooltip = $("#mainGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#mainGrid").find("td").click(false);
+                });
+            </script>
+    </div>
+    <div ng-show="vm.showDetail">
+        <div data-ng-include="'qlhc/inspection/mainformInspection.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+    </div>
+    </form>
+</div>
+

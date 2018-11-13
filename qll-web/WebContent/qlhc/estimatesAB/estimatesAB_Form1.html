@@ -1,0 +1,377 @@
+<div class="portlet light bordered">
+	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Thông tin chung</span>
+	  	</div>
+ 	</div>
+		<div class="portlet-body">
+			<form action="#" class="form-horizontal">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Số Hợp Đồng</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="code"
+								id="code" ng-model="vm.estimatesAB3.contractCode"
+								readonly="readonly" /> 
+								<span data-for='code' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Ngày ký HĐ</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="contractDateSign"
+								id="contractDateSign"
+								ng-model="vm.estimatesAB3.contractDateSign" 
+								readonly="readonly" /> <span
+								data-for='contractDateSign' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Mã công trình</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="constrtCode" id="constrtCode"
+								ng-model="vm.estimatesAB3.constrtCode" 
+								readonly="readonly" /> <span
+								data-for='constructId' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Tên công trình</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="constructName" id="constructName"
+								ng-model="vm.estimatesAB3.constructName" readonly="readonly" /> <span
+								data-for='constructName' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Địa	chỉ công trình</label>
+							<div class="col-md-10 input-width">
+								<input class="form-control width100" name="constructAddress" id="constructAddress"
+									ng-model="vm.estimatesAB3.constructAddress" readonly="readonly" /> <span
+									data-for='constructAddress' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Mã trạm/tuyến</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="stationcode" id="stationcode"
+								ng-model="vm.estimatesAB3.stationcode" readonly="readonly" /> <span
+								data-for='constructName' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Trạng thái ký CA</label>
+						<div class="col-md-8">
+							<input class="form-control width100" name="statusCA" id="statusCA"
+								ng-model="vm.estimatesAB1.statusCA" readonly="readonly" /> <span
+								data-for='constructName' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					
+				</div>
+			</form>
+		</div>
+</div>
+
+<div class="portlet light bordered" disable-all = "vm.disableAll">
+	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span span class="caption-subject bold lowercase" translate >Thành phần ký</span>
+	  	</div>
+ 	</div>
+			<div class="portlet-body">
+				<form action="#" class="form-horizontal" >
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thủ trưởng chủ đầu tư</label>
+								<div class="col-md-8">
+								<select class="form-control" id="cbbF1" style="width: 100%" name="amonitorId" 
+									kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listAmonitorConstruction" 
+									ng-model="vm.estimatesAB1.adirectorId" required
+									data-required-msg="Giám sát thi công của chủ đầu tư không được để trống"
+									ng-disabled="vm.disableEstimate1"></select>
+								<span data-for="amonitorId" class="k-invalid-msg"></span>
+							</div>
+							
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giám đốc nhà thầu</label>
+							<div class="col-md-8">
+								<select class="form-control" id="cbbF2" style="width: 100%" name="ConstructorId"
+									kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listContractorsConstruction"
+									ng-model="vm.estimatesAB1.bdirectorId" required
+									data-required-msg="Phụ trách kỹ thuật không được để trống"
+									ng-disabled="vm.disableEstimate1"></select>
+								<span data-for="ConstructorId" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>				
+				</form>
+			</div>
+</div>
+
+<div class="portlet light bordered" disable-all = "vm.disableAll">
+ 	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Nội dung</span>
+	  	</div>
+ 	</div>
+		<br/>
+		<div class="portlet-body">
+			<form action="#" class="form-horizontal" id = "settlementAB" >
+				<div class="form-body">
+					<div class="clearfix">
+					
+						<table style="width:100%" class="table-settlementAB" >
+						  <tr align="center">
+						    <th width="5%">TT</th>
+						    <th width="45%">Nội dung</th> 
+						    <th width="8%">ĐVT</th>
+						    <th width="15%">Giá trị</th>
+						    <th>Ghi chú</th>
+						  </tr>
+						  <tr>
+						    <td align="center"><b>I</b></td>
+						    <td><b>&nbsp Giá trị hợp đồng/Phụ lục đã kí</b></td> 
+						    <td></td>
+						    <!-- vm.tmpContractTotalValue -->
+						    <td align="right"><b>{{vm.estimatesAB1.total}}&nbsp</b></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center"><b>II</b></td>
+						    <td><b>&nbsp Vật tư chủ đầu tư cấp (vật tư A cấp)</b></td> 
+						    <td></td>
+						    <td></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">1</td>
+						    <td>&nbsp Giá trị vật tư xuất kho</td> 
+						    <td></td>
+						    <!-- {{vm.tmpTotalPrice}} -->
+						    <td><input type="text" style="text-align:right;" id="exportMaterialValue" name="exportMaterialValue" ng-disabled="vm.disableEstimate1" ng-model="vm.estimatesAB1.exportMaterialValue"></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">2</td>
+						    <td>&nbsp Giá trị vật tư thực tế thi công</td> 
+						    <td></td>
+						    <!-- {{vm.tmpValueConstrMerchandise}} -->
+						    <td><input type="text" style="text-align:right;" id="acceptMaterialValue" name="acceptMaterialValue" ng-disabled="vm.disableEstimate1" ng-model="vm.estimatesAB1.acceptMaterialValue">
+						    </td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">3</td>
+						    <td>&nbsp Giá trị đền bù vật tư do mất mát, hư hỏng...</td> 
+						    <td></td>
+						    <!-- {{vm.tmpValueLost}} -->
+						    <td><input type="text" style="text-align:right;" id="lostMaterialValue" name="lostMaterialValue" ng-disabled="vm.disableEstimate1" ng-model="vm.estimatesAB1.lostMaterialValue"></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">4</td>
+						    <td>&nbsp Giá trị vật tư A cấp đã được thu hồi</td> 
+						    <td></td>
+						    <!-- {{vm.tmpValueSupplies}} -->
+						    <td><input type="text" style="text-align:right;" id="recoveryMaterialValue" name="recoveryMaterialValue" ng-disabled="vm.disableEstimate1" ng-model="vm.estimatesAB1.recoveryMaterialValue"></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">5</td>
+						    <td>&nbsp Giá trị vật tư A cấp chưa được thu hồi</td> 
+						    <td></td>
+						    <!-- {{vm.tmpValueNotSupplies}} -->
+						    <!-- <td><input style="text-align:right;" id="unrecoveryMaterialValue" name="unrecoveryMaterialValue" 
+						    	ng-disabled="false" ng-model="vm.estimatesAB1.unrecoveryMaterialValue"></td> -->
+						    <td align="right"><span id="unrecoveryMaterialValue">{{vm.estimatesAB1.unrecoveryMaterialValueKendo}}</span></td>	
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center"><b>III<b></td>
+						    <td><b>&nbsp Giá trị quyết toán của nhà thầu thực hiện<b></td> 
+						    <td></td>
+						    <td align="right"><b>{{vm.estimatesAB1.valueFinalizationContractorsKendo}}&nbsp</b></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">1</td>
+						    <td>&nbsp Khối lượng hoàn thành theo hợp đồng</td> 
+						    <td align="center"> VNĐ</td>
+						    <!-- vm.tmpValueProposed -->
+						    <td align="right">{{vm.estimatesAB1.valueProposedKendo}}&nbsp</td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">2</td>
+						    <td>&nbsp Khối lượng công việc phát sinh ngoài hợp đồng</td> 
+						    <td align="center"> VNĐ</td>
+						    <!-- vm.tmpValueOutProposed -->
+						    <td align="right">{{vm.estimatesAB1.valueOutProposedKendo}}&nbsp</td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center"><b>IV<b></td>
+						    <td><b>&nbsp Cộng giá trị quyết toán công trình (II.2) + (III)</b></td> 
+						    <td><input type="hidden" id="valueFinalizationContractorsHidden" value="{{vm.estimatesAB1.valueFinalizationContractors}}"></input></td>
+						    
+						    <td align="right"><b><span id="discountPercent">{{vm.estimatesAB1.sumSettlementConstructionKendo}}</span>&nbsp</b></td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">1</td>
+						    <td>&nbsp Giá trị vật tư A cấp</td> 
+						    <td align="center"> VNĐ</td>
+						    <td align="right">{{vm.tmpValueConstrMerchandiseKendo}}&nbsp</td>
+						    <td></td>
+						  </tr>
+						  <tr>
+						    <td align="center">2</td>
+						    <td>&nbsp Giá trị nhà thầu thực hiện</td> 
+						    <td align="center"> VNĐ</td>
+						    <td align="right">{{vm.tmpValueFinalizationContractorsKendo}}&nbsp</td>
+						    <td></td>
+						  </tr>
+					    <tr>
+						    <td align="center"><b>V<b></td>
+						    <td><b>&nbsp Giá trị đã thanh toán cho nhà thầu</b></td> 
+						    <td align="center"><b> VNĐ</b></td>
+						    <!-- vm.tmpPaidValue -->
+						    <td><input style="text-align:right;" id="paidValue" name="paidValue" ng-disabled="vm.disableEstimate1" ng-model="vm.estimatesAB1.paidValue"></td>
+						    <td></td>
+						</tr>
+						<tr>
+						    <td align="center"><b>VI<b></td>
+						    <td><b>&nbsp Giảm trừ giá trị vật tư đền bù do mất mát,hư hỏng...(nếu có)</b></td> 
+						    <td></td>
+						    <td><input style="text-align:right;" id="valueDeductionSupplies" name="valueDeductionSupplies" ng-disabled="vm.disableEstimate1" ng-model="vm.estimatesAB1.valueDeductionSupplies"></td>
+						    <td></td>
+						</tr>
+						<tr>
+						    <td align="center"><b>VII<b></td>
+						    <td><b>&nbsp Giá trị còn lại nhà thầu được thanh toán<b></td> 
+						    <td align="center"><b> VNĐ</b></td>
+						    <td align="right"><b><span id="valueResidual">{{vm.estimatesAB1.valueResidualKendo}}</span>&nbsp</b></td>
+						    <td></td>
+						</tr>
+						</table>
+					</div>
+				</div>
+		</form>
+	</div>		
+</div>
+<script>
+						    var format = function(num){
+								var str = num.toString().replace("$", ""), parts = false, output = [], i = 1, formatted = null;
+								if(str.indexOf(".") > 0) {
+									parts = str.split(".");
+									str = parts[0];
+								}
+								str = str.split("").reverse();
+								for(var j = 0, len = str.length; j < len; j++) {
+									if(str[j] != ",") {
+										output.push(str[j]);
+										if(i%3 == 0 && j < (len - 1)) {
+											output.push(",");
+										}
+										i++;
+									}
+								}
+								formatted = output.reverse().join("");
+								return(formatted + ((parts) ? "." + parts[1].substr(0, 2) : ""));
+							};
+							var initialize = function(){
+								var $list = $("#settlementAB :input[type='text']");
+								$list.each(function(e){
+									var self = $(this);
+									var data = self.val();
+									self.val(format(data));
+								});
+							};
+							var calculate = function(){
+								
+								/* vm.estimatesAB1.exportMaterialValue - vm.estimatesAB1.acceptMaterialValue 
+								- vm.estimatesAB1.lostMaterialValue - vm.estimatesAB1.recoveryMaterialValue */
+								var exportMaterialValue = replaceAll($("#exportMaterialValue").val(), ",", "");
+								var acceptMaterialValue = replaceAll($("#acceptMaterialValue").val(), ",", "");
+								var lostMaterialValue = replaceAll($("#lostMaterialValue").val(), ",", "");
+								var recoveryMaterialValue = replaceAll($("#recoveryMaterialValue").val(), ",", "");
+								var formated = format(exportMaterialValue - acceptMaterialValue - lostMaterialValue - recoveryMaterialValue);
+								
+								var discountPercent = Number($("#valueFinalizationContractorsHidden").val()) + Number(acceptMaterialValue);
+								var discountPercentFormated = format(discountPercent);
+								
+								
+								if($.isNumeric(exportMaterialValue - acceptMaterialValue - lostMaterialValue - recoveryMaterialValue)){
+									$("#unrecoveryMaterialValue").html(formated);
+								} else {
+									$("#unrecoveryMaterialValue").html(0);
+								}
+								if($.isNumeric(discountPercent)){
+									$("#discountPercent").html(discountPercentFormated);
+								} else {
+									$("#discountPercent").html(0);
+								}
+								
+								var paidValue = replaceAll($("#paidValue").val(), ",", "");
+								var valueDeductionSupplies = replaceAll($("#valueDeductionSupplies").val(), ",", "");
+								var temp = Number($("#valueFinalizationContractorsHidden").val()) - paidValue - valueDeductionSupplies;
+								formated = format(temp);
+								if($.isNumeric(temp)){
+									$("#valueResidual").html(formated);
+								} else {
+									$("#valueResidual").html(0);
+								}
+							};
+							var replaceAll = function(str, find, replace) {
+							  return str.replace(new RegExp(find, 'g'), replace);
+							};
+							$(function(){
+							    $("#exportMaterialValue").keyup(function(e){
+							        $(this).val(format($(this).val()));
+							        calculate();
+							    });
+							    $("#acceptMaterialValue").keyup(function(e){
+							        $(this).val(format($(this).val()));
+							        calculate();
+							    });
+							    $("#lostMaterialValue").keyup(function(e){
+							        $(this).val(format($(this).val()));
+							        calculate();
+							    });
+							    $("#recoveryMaterialValue").keyup(function(e){
+							        $(this).val(format($(this).val()));
+							        calculate();
+							    });
+							    $("#paidValue").keyup(function(e){
+							        $(this).val(format($(this).val()));
+							        calculate();
+							    });
+							    $("#valueDeductionSupplies").keyup(function(e){
+							        $(this).val(format($(this).val()));
+							        calculate();
+							    });
+							});
+						    </script>

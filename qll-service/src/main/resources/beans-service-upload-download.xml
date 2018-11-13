@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<jaxrs:server id="restContainer1" address="/fileservice">
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.erp.rest.FileServiceImpl" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+	</jaxrs:server>
+	<jaxrs:server id="restContainer" address="/fileUpload">
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.FileUploadRsService" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+	</jaxrs:server>
+</beans>

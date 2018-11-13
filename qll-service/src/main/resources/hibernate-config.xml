@@ -1,0 +1,76 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<import resource="classpath:jasypt_encoding.xml" />
+
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
+		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+
+		<!-- <property name="jdbcUrl" value="${db_url}" /> <property name="user" 
+			value="${db_username}" /> <property name="password" value="${db_password}" 
+			/> -->
+
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@10.61.19.199:1521:dbtest" />
+		<property name="user" value="PMTL2" />
+		<property name="password" value="PMTL2" />
+
+
+
+		<property name="acquireIncrement" value="2" />
+		<property name="minPoolSize" value="1" />
+		<property name="maxPoolSize" value="5" />
+		<property name="maxIdleTime" value="600" />
+		<property name="maxStatementsPerConnection" value="3000" />
+	</bean>
+
+	<!-- Hibernate session factory -->
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="packagesToScan">
+			<array>
+				<!-- <value>com.viettel.asset.bo</value> <value>com.viettel.erp.bo</value> -->
+				<value>com.viettel.ims.bo</value>
+				<!-- <value>com.viettel.wms.bo</value> -->
+				<value>com.viettel.cat.bo</value>
+				<value>com.viettel.qll.bo</value>
+			</array>
+		</property>
+		<property name="configLocation">
+			<value>classpath:hibernate.cfg.xml</value>
+		</property>
+		 <property name="annotatedClasses">
+			<list>
+				<value>com.viettel.qll.bo.TblTypeAPxkBO</value>
+			</list>
+		</property> 
+	</bean>
+
+	<bean id="hibernateSessionFactory"
+		class="com.viettel.service.base.dao.HibernateSessionFactoryImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:component-scan base-package="com.viettel.erp.business" />
+	<context:component-scan base-package="com.viettel.erp.dao" />
+	<context:component-scan base-package="com.viettel.asset.business" />
+	<context:component-scan base-package="com.viettel.asset.dao" />
+	<context:component-scan base-package="com.viettel.asset.exception" />
+	<context:component-scan base-package="com.viettel.qll.dao" />
+	<context:component-scan base-package="com.viettel.qll.business" />
+
+	<!-- <context:annotation-config /> -->
+
+</beans>

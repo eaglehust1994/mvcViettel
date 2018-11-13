@@ -1,0 +1,52 @@
+	<div class="">
+		<div class="wrap">
+			<div class="fleftdetail col-md-7">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption col-sm-12">
+							<span class="caption-subject bold " style="margin-left: 0px" 
+								translate>{{caller.nameToSign}}  </span>
+						</div>
+					</div>
+					<div id="gridVoffice" kendo-grid="gridVoffice" k-on-change="onRowChange(dataItem)"
+						k-editable="false" k-options="gridVofficeOptions"></div>
+				</div>
+
+			</div>
+			<div class="frightdetail col-md-10">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption col-sm-12">
+							<span class="caption-subject bold " style="margin-left: 0px"
+								translate>Thông tin người ký cho yêu cầu: </span>
+							<span class="caption-subject bold " id="storeNameSign"></span>
+						</div>
+					</div>
+				</div>
+				
+						<div ng-repeat="ls in list">
+						<combo-data-sign model-label="{{ls.oderName}}" caller="signVofficeController"
+								page-size="10"
+								combo-user-id="userPopup{{$index}}"
+								combo-source-user-link="userRoleServiceRest/userRole/getForAutoCompleteSysUser"
+								combo-role-id="rolePopup{{$index}}"
+								combo-source-role-link="signVofficeRsServiceRest/signVoffice/getRoleByEmail"
+								combo-user-name="fullName" combo-user-value="sysUserId" combo-user-code="email"
+								combo-role-name="sysRoleName" combo-role-value="sysRoleId" combo-role-adorg="adOrgId"
+								model-user-id="ls.sysUserId" model-user-name="ls.fullName" model-user-code="ls.email"
+								model-role-id="ls.sysRoleId" model-role-name="ls.sysRoleName" model-ad-org-id="ls.adOrgId">
+						</combo-data-sign>
+	</div>				
+				
+		</div>
+	</div>
+	<div class="portlet light ">
+		<div class="portlet-title" align="right">
+			<button type="button"  style="margin-right:10px"
+				class="btn btn-qlk padding-search-right  closeQLK"
+				id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>	
+			<button type="button" id="checkout"  class="btn btn-qlk padding-search-right saveQLK "
+				ng-click="save()" translate>Trình ký</button>
+			
+		</div>
+	</div>

@@ -1,0 +1,348 @@
+package com.viettel.ktts2.filter;
+
+import java.io.IOException;
+
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.xml.sax.SAXException;
+
+
+import viettel.passport.client.UserToken;
+
+
+import org.apache.log4j.Logger;
+
+import viettel.passport.util.SecureURL;
+
+public class VpsServiceTicketValidator
+{
+  //private static String WS_VSA_URL;
+  private static String WS_VPS_URL;
+ 
+  private static Logger log = Logger.getLogger(VpsServiceTicketValidator.class);
+  private String casValidateUrl;
+  private String proxyCallbackUrl;
+  private String st;
+  private String service;
+  private String pgtIou;
+  private String user;
+  private String errorMessage;
+  private String entireResponse;
+  private boolean renew = false;
+  private boolean successfulAuthentication;
+  private String domainCode;
+  private UserToken userToken;
+  private String cookie;
+  private String ipWan;
+  private static long TIME_OUT = 18000L;
+  public static final long ACTION_TIMEOUT = 60000L;
+  private int authenticateCode;
+  
+  public void p(String x)
+  {
+    this.casValidateUrl = x;
+  }
+  
+  public String getCasValidateUrl()
+  {
+    return this.casValidateUrl;
+  }
+  
+  public void setProxyCallbackUrl(String x)
+  {
+    this.proxyCallbackUrl = x;
+  }
+  
+  public void setRenew(boolean b)
+  {
+    this.renew = b;
+  }
+  
+  public String getProxyCallbackUrl()
+  {
+    return this.proxyCallbackUrl;
+  }
+  
+  public void setServiceTicket(String x)
+  {
+    this.st = x;
+  }
+  
+  public void setService(String x)
+  {
+    this.service = x;
+  }
+  
+  public String getUser()
+  {
+    return this.user;
+  }
+  
+  public String getPgtIou()
+  {
+    return this.pgtIou;
+  }
+  
+  public boolean isAuthenticationSuccesful()
+  {
+    return this.successfulAuthentication;
+  }
+  
+  public int getAuthenticateCode()
+  {
+    return this.authenticateCode;
+  }
+  
+  public void setAuthenticateCode(int authenticateCode)
+  {
+    this.authenticateCode = authenticateCode;
+  }
+  
+  public String getErrorMessage()
+  {
+    return this.errorMessage;
+  }
+  
+  public String getResponse()
+  {
+    return this.entireResponse;
+  }
+  
+  public String getDomainCode()
+  {
+    return this.domainCode;
+  }
+  
+  public void setDomainCode(String domainCode)
+  {
+    this.domainCode = domainCode;
+  }
+  
+  public UserToken getUserToken()
+  {
+    return this.userToken;
+  }
+  
+  public void setUserToken(UserToken userToken)
+  {
+    this.userToken = userToken;
+  }
+  
+  protected void clear()
+  {
+    this.user = (this.pgtIou = this.errorMessage = null);
+    this.successfulAuthentication = false;
+  }
+  
+  public void validate()
+    throws IOException, ParserConfigurationException
+  {
+    if ((this.casValidateUrl == null) || (this.st == null)) {
+      throw new IllegalStateException("must set validation URL and ticket");
+    }
+    clear();
+    StringBuilder sb = new StringBuilder();
+    sb.append(this.casValidateUrl);
+    if (this.casValidateUrl.indexOf('?') == -1) {
+      sb.append('?');
+    } else {
+      sb.append('&');
+    }
+    sb.append("service=").append(this.service).append("&ticket=").append(this.st);
+    if (this.proxyCallbackUrl != null) {
+      sb.append("&pgtUrl=").append(this.proxyCallbackUrl);
+    }
+    if (this.renew) {
+      sb.append("&renew=true");
+    }
+    sb.append("&domainCode=").append(this.domainCode);
+    sb.append("&ipWan=").append(this.ipWan);
+    String url = sb.toString();
+    log.info("Start validate for URL: " + url);
+    long start = System.currentTimeMillis();
+    SecureURL secure = new SecureURL();
+    if (((this.cookie != null ? 1 : 0) & ("".equals(this.cookie) ? 0 : 1)) != 0) {
+      this.entireResponse = secure.retrieve(url, "JSESSIONID=" + this.cookie);
+    } else {
+      this.entireResponse = secure.retrieve(url);
+    }
+    long elapse = System.currentTimeMillis() - start;
+    log.info("Receive validate response for service ticket [" + this.st + "], response time = " + elapse);
+    if (elapse > 60000L) {
+      log.warn("Action timeout: Too long time to validate ticket [" + this.st + "], response time is " + elapse);
+    }
+    try
+    {
+      parseXMLResponse(this.entireResponse);
+      
+      elapse = System.currentTimeMillis() - start;
+      log.info("Finish validate service ticket [" + this.st + "], elapse time = " + elapse);
+      if (elapse > 60000L) {
+        log.error("Action timeout: Too long time to validate user, elapse time = " + elapse);
+      }
+    }
+    catch (SAXException ex)
+    {
+      log.error("Error when parse xml response, respone data:\n\"" + this.entireResponse + "\"", ex);
+      
+      elapse = System.currentTimeMillis() - start;
+      log.info("Finish validate service ticket [" + this.st + "], elapse time = " + elapse);
+      if (elapse > 60000L) {
+        log.error("Action timeout: Too long time to validate user, elapse time = " + elapse);
+      }
+    }
+    finally
+    {
+      elapse = System.currentTimeMillis() - start;
+      log.info("Finish validate service ticket [" + this.st + "], elapse time = " + elapse);
+      if (elapse > 60000L) {
+        log.error("Action timeout: Too long time to validate user, elapse time = " + elapse);
+      }
+    }
+  }
+  
+  public void parseXMLResponse(String response)
+    throws ParserConfigurationException, SAXException, IOException
+  {
+    this.userToken = UserToken.parseXMLResponse(response);
+    if (this.userToken == null)
+    {
+      this.successfulAuthentication = false;
+      this.authenticateCode = 0;
+      log.info("khong ton tai phien dang nhap");
+      log.info("Authenticate failure for service ticket [" + this.st + "], respone data:\n\"" + response + "\"");
+      return;
+    }
+    if (this.userToken.getStaffCode() == null)
+    {
+      log.info("khong ton tai ma nhien vien");
+      this.authenticateCode = 2;
+      return;
+    }
+    if ((this.userToken.getStaffCode() != null) && (!"".equals(this.userToken.getStaffCode().trim()))) {
+      try
+      {
+        log.info("Lay thong tin nguoi dung tu vsaService tap trung");
+        updateUser(this.userToken);
+      }
+      catch (Throwable e)
+      {
+        log.error("Loi khi update role cho tai khoan", e);
+      }
+    }
+    if ((this.userToken != null) && (this.userToken.getObjectTokens() != null) && (this.userToken.getObjectTokens().size() > 0))
+    {
+      this.user = this.userToken.getUserName();
+      this.pgtIou = this.userToken.getFullName();
+      this.successfulAuthentication = true;
+      this.authenticateCode = 1;
+      log.info("Authenticate successful for username [" + this.userToken.getUserName() + "] for service ticket [" + this.st + "]");
+    }
+    else
+    {
+      this.user = null;
+      this.pgtIou = null;
+      this.successfulAuthentication = false;
+      this.authenticateCode = 2;
+      log.info("size cua token:" + this.userToken.getObjectTokens().size());
+      log.info("nguoi dung chua duoc phan quyen voi" + this.st);
+      log.info("Authenticate failure for service ticket [" + this.st + "], respone data:\n\"" + response + "\"");
+    }
+  }
+  
+  private void updateUser(UserToken userToken)
+    throws Throwable
+  {
+   /* CallWebservice callWs = new CallWebservice();
+    StringBuilder requestWs = new StringBuilder("<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:web=\"http://webservice.qldtktts.viettel.com/\">");
+    
+    requestWs.append("   <soapenv:Header/>");
+    requestWs.append("   <soapenv:Body>");
+    requestWs.append("      <web:getUserUpdate>");
+    requestWs.append("<domainCode>");
+    requestWs.append(FunctionUtil.getAppCode());
+    requestWs.append("</domainCode>");
+    requestWs.append("<staffCode>");
+    requestWs.append(userToken.getStaffCode());
+    requestWs.append("</staffCode>");
+    requestWs.append("      </web:getUserUpdate>");
+    requestWs.append("   </soapenv:Body>");
+    requestWs.append("</soapenv:Envelope>");
+    String soapAction = "getUserUpdate";
+    
+    WS_VSA_URL = FunctionUtil.getVSAWS();
+    String response = callWs.sendWebservice(requestWs.toString(), soapAction, WS_VSA_URL);
+    log.info("Request: " + requestWs.toString());
+    log.info("Response from vsaServise: " + response);
+    List error = callWs.readAsXml(response, CODE_TAG);
+    
+    ArrayList listDeptTokens = new ArrayList();
+    ArrayList listRoleTokens = new ArrayList();
+    ArrayList<ObjectToken> listObjectTokens = new ArrayList();
+    String userName = "";
+    if ((error != null) && (((String)error.get(0)).toString().equals(OK_CODE)))
+    {
+      listDeptTokens = readDeptAsXml(response, DEPT_TAG);
+      listRoleTokens = readRoleAsXml(response, ROLE_TAG);
+      listObjectTokens = readObjectAsXml(response, OBJECT_TAG);
+      userName = readUserAsXml(response, USER_TAG);
+    }
+    userToken.setDeptTokens(listDeptTokens);
+    userToken.setRolesList(listRoleTokens);
+    userToken.setObjectTokens(listObjectTokens);
+    userToken.setUserName(userName);
+    
+    ArrayList arrAllComponent = new ArrayList();
+    for (ObjectToken parentObj : listObjectTokens)
+    {
+      if ((parentObj.getObjectUrl() == null) || ("".equals(parentObj.getObjectUrl()))) {
+        parentObj.setObjectUrl("#");
+      }
+      if (parentObj.getObjectType().equals("C"))
+      {
+        arrAllComponent.add(parentObj);
+      }
+      else
+      {
+        List childList = new ArrayList();
+        for (ObjectToken childObject : listObjectTokens) {
+          if (("M".equals(childObject.getObjectType())) && (childObject.getParentId() == parentObj.getObjectId())) {
+            childList.add(childObject);
+          }
+        }
+        Collections.sort(childList);
+        parentObj.setChildObjects((ArrayList)childList);
+      }
+    }
+    ArrayList parentObject = ObjectToken.findFirstLevelMenus(listObjectTokens);
+    Collections.sort(parentObject);
+    
+    userToken.setParentMenu(parentObject);
+    userToken.setComponentList(arrAllComponent);*/
+  }
+  
+  
+  
+ 
+
+  
+  public String getCookie()
+  {
+    return this.cookie;
+  }
+  
+  public void setCookie(String cookie)
+  {
+    this.cookie = cookie;
+  }
+  
+  public String getIpWan()
+  {
+    return this.ipWan;
+  }
+  
+  public void setIpWan(String ipWan)
+  {
+    this.ipWan = ipWan;
+  }
+}

@@ -1,0 +1,211 @@
+
+<form class="form-horizontal row" role="form" name="addHdTdId"
+	id="addHdTdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin thẩm định</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Số hợp
+								đồng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" id="soHd"
+									ng-model="caller.addHdPop.soHd" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Số kế
+								hoạch thi công :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addHdPop.soKhTc" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>TT
+								chuyển chứng từ :</label>
+							<div class="col-md-8">
+								<select class=" form-control width100"
+									ng-model="caller.addHdPop.tinhTrangChungTu"
+									id="tinhTrangChungTu">
+									<option value="">~~Chọn~~</option>
+									<option value="Lỗi">Lỗi</option>
+									<option value="đang tại Phòng TK">đang tại Phòng TK</option>
+									<option value="Tạm tính">Tạm tính</option>
+									<option value="Đang ở Tài chính">Đang ở Tài chính</option>
+									<option value="Đang ở PDG">Đang ở PDG</option>
+									<option value="Đang ở văn thư">Đang ở văn thư</option>
+									<option value="Xong">Xong</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày t/ứ
+								theo tình trạng chứng từ :</label>
+							<div class="col-md-8">
+								<input name="ngayTutttt" id="ngayTutttt"
+									ng-model="caller.addHdPop.ngayTutttt"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày t/ứ không được để trống"
+									min-year="1000" data-minyear-msg="Ngày t/ứ không hợp lệ"
+									data-date-msg="Ngày t/ứ không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayKyKhPop" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Tháng
+								HSHC về quỹ lương theo quyết toán :</label>
+							<div class="col-md-8">
+								<select class=" form-control width100"
+									ng-model="caller.addHdPop.thangHshcQuyLuong">
+									<option value="">~~Chọn~~</option>
+									<option value="01/{{caller.date}}">01/{{caller.date}}</option>
+									<option value="02/{{caller.date}}">02/{{caller.date}}</option>
+									<option value="03/{{caller.date}}">03/{{caller.date}}</option>
+									<option value="04/{{caller.date}}">04/{{caller.date}}</option>
+									<option value="05/{{caller.date}}">05/{{caller.date}}</option>
+									<option value="06/{{caller.date}}">06/{{caller.date}}</option>
+									<option value="07/{{caller.date}}">07/{{caller.date}}</option>
+									<option value="08/{{caller.date}}">08/{{caller.date}}</option>
+									<option value="09/{{caller.date}}">09/{{caller.date}}</option>
+									<option value="10/{{caller.date}}">10/{{caller.date}}</option>
+									<option value="11/{{caller.date}}">11/{{caller.date}}</option>
+									<option value="12/{{caller.date}}">12/{{caller.date}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Tháng
+								ghi nhận quỹ lương theo quyết toán:</label>
+							<div class="col-md-8">
+								<select class=" form-control width100"
+									ng-model="caller.addHdPop.thangGhiNhanQuyLuongTqt">
+									<option value="">~~Chọn~~</option>
+									<option value="01/{{caller.date}}">01/{{caller.date}}</option>
+									<option value="02/{{caller.date}}">02/{{caller.date}}</option>
+									<option value="03/{{caller.date}}">03/{{caller.date}}</option>
+									<option value="04/{{caller.date}}">04/{{caller.date}}</option>
+									<option value="05/{{caller.date}}">05/{{caller.date}}</option>
+									<option value="06/{{caller.date}}">06/{{caller.date}}</option>
+									<option value="07/{{caller.date}}">07/{{caller.date}}</option>
+									<option value="08/{{caller.date}}">08/{{caller.date}}</option>
+									<option value="09/{{caller.date}}">09/{{caller.date}}</option>
+									<option value="10/{{caller.date}}">10/{{caller.date}}</option>
+									<option value="11/{{caller.date}}">11/{{caller.date}}</option>
+									<option value="12/{{caller.date}}">12/{{caller.date}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix">
+
+
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Tạm ứng
+								lương:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number" step="0.01"
+									ng-model="caller.addHdPop.tamUngLuong"
+									ng-change="caller.sumLuongThucNhan()" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Lương
+								thực nhận :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number" step="0.01"
+									ng-change="caller.totalLuongTN()"
+									ng-model="caller.addHdPop.luongThucNhan" disabled="disabled" />
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Tỷ lệ(%)
+								:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number" step="0.01"
+									ng-change="caller.tyle()" ng-model="caller.addHdPop.tyLe"
+									disabled="disabled" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Hồ sơ
+								tồn quá 5 ngày chưa sử lý :</label>
+							<div class="col-md-8">
+								<label type="text" style="margin-top: 10px;">{{caller.addHdPop.hsTonQua5n}}</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Người
+								duyệt PTK :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" step="0.01"
+									ng-change="caller.totalTd()"
+									ng-model="caller.addHdPop.nguoiPheDuyetPtk" disabled="disabled" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Giải
+									trình về quá hạn chưa sử lý chứng từ :</label>
+								<div class="col-md-10">
+									<div class="input-icon right">
+										<textarea class="form-control width100" type="text"
+											maxlength="2000" id='descript'
+											ng-model="caller.addHdPop.gtQhXlCt"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Ghi chú
+									HS lỗi :</label>
+								<div class="col-md-10">
+									<div class="input-icon right">
+										<textarea class="form-control width100" type="text"
+											maxlength="1000" id='descript'
+											ng-model="caller.addHdPop.ghiChuHsLoi"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK"
+							id="saveChange11" ng-click="caller.save1()" translate>Ghi
+							lại</button>
+					</div>
+				</div>
+			</div>
+</form>

@@ -1,0 +1,32 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+</style>
+<form class="form-horizontal row" role="form">
+	<div class="form-body wrap">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Kết
+						quả phân bổ giá hàng hóa</span>
+				</div>
+			</div>
+		</div>
+		<div id="shipmentPrice2Grid" kendo-grid="caller.shipmentPrice2Grid"
+			k-editable="false" k-options="caller.gridPrice2Options"
+			k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+	</div>
+</form>
+<div class="portlet light">
+	<button type="button" class="btn blue btn-outline padding-search-right"
+		ng-click="caller.prevStep()" translate>Trước</button>
+	<button type="button"
+		class="btn green btn-outline padding-search-right btn pull-right"
+		ng-click="caller.save()" translate style="margin-left: 1%">Ghi
+		lại</button>
+	<button type="button"
+		class="btn red btn-outline padding-search-right btn pull-right"
+		ng-click="cancel()" translate>Hủy bỏ</button>
+</div>

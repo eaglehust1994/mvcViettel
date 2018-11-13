@@ -1,0 +1,177 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 50%;
+	height: 100%;
+	background: #FFFFFF;
+}
+
+.fright {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	height: 100%;
+	width: 50%;
+	background: #FFFFFF;
+}
+</style>
+<form class="form-horizontal col-md-12"
+	style="padding: 20px 20px 20px 20px;" role="form" kendo-validator="caller.validator" k-options="caller.validatorOptions">
+	<div class="form-body">
+		<div class="caption">
+			<span class=" bold lowercase" translate>Thông tin phiếu nhập kho</span>
+		</div>
+		<div class="border-gray">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+					<div class="col-md-8">
+						<label class="control-label"
+							ng-bind="caller.orderForNote.orderCode"></label>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Đơn vị tạo yêu cầu</label>
+					<div class="col-md-8">
+						<label class="control-label"
+							ng-bind="caller.orderForNote.createdDeptedName"></label>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Mã phiếu</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text"
+							ng-model="caller.orderForNote.code" readonly />
+					</div>
+				</div>
+				<auto-search model-label="Người giao hàng" caller="caller"
+					template-url="views/popup/gridViewCreateUser.html"
+					header-template="caller.userHeaderTemplate"
+					template-auto="caller.userTemplate" page="1" page-size="20"
+					popup-id="ar_deposit_browser_adOrgId" popup-type="gridplusUser"
+					popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+					combo-id="creImpNoteShipper"
+					combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+					combo-name="fullName" combo-value="employeeCode"
+					combo-code="employeeCode" combo-search="caller.commonSearch"
+					combo-grid="caller.gridCreator"
+					model-id="caller.orderForNote.shipperId"
+					model-name="caller.orderForNote.shipperName" req="req"
+					ng-model="caller.orderForNote.shipperName"> </auto-search>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label " translate>Ghi chú</label>
+						<div class="col-md-10">
+							<textarea class=" form-control width100" type="text"
+								ng-model="caller.description" /></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="caption" style="padding-top: 20px;">
+			<span class=" bold lowercase" translate>Import vị trí bằng file excel</span>
+		</div>
+		<div class="border-gray">
+							<div class="clearfix">
+								<div class="form-group clearfix ex10">
+									<div class="form-group col-md-8">
+										<file-input list-file-type="xls,xlsx" model="caller.dataList"
+											size="100000" caller="caller" input-id="fileCreImpNote"
+											model-label="File import"
+											msg="Không được để trống file" ng-disabled="caller.disableImport"></file-input>
+										<input class="col-md-2" ng-click="caller.submit()" ng-disabled="caller.disableImport"
+											type="submit" value="Tải lên" style="height:20px;">
+									
+									</div>
+									<div class="form-group col-md-4" align="right">
+										<a id="templateLink" href="javascript:void(0);" ng-disabled="caller.disableImport"
+									ng-click="caller.getExcelTemplate()">Tải file biểu mẫu</a>
+									</div>
+								</div>
+							<div class="form-group col-md-4" align="right" style="margin-left: 0.5px;">
+								<span style="color: gray;">Dung lượng &lt;= 100MB, định dạng
+									xls,xlsx</span>
+							</div>
+							</div>
+						</div>
+		<!-- <div class="border-gray">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>File import</label>
+					<div class="col-md-6">
+						<input class=" form-control width100" type="file"
+							id="fileCreImpNote" /> <span style="color: #A1B2CC">Dung lượng <= 100MB,định dạng xls,xlsx</span>
+					</div>
+					<div class="col-md-2">
+						<button type="button"
+							ng-click="caller.submit()" translate>Tải lên</button>
+					</div>
+				</div>
+				<div class="form-group col-md-6" align="right">
+					<a href="javascript:void(0);" ng-click="caller.getExcelTemplate()">Tải file biểu mẫu</a>
+				</div>
+			</div>
+		</div> -->
+		<div class="caption" style="padding-top: 20px;">
+			<span class=" bold lowercase" translate>Danh sách hàng hóa</span>
+		</div>
+		<div class="border-gray">
+			<div class="wrap">
+				<div class="fleft col-md-8">
+
+					<div id="goodsListForNoteGrid"
+						kendo-grid="caller.goodsListForNoteGrid" k-editable="false" k-on-change="caller.onChangeGoodListForNote()"
+						k-options="caller.goodsListForNoteGridOptions"></div>
+
+				</div>
+				<div class="fright col-md-8">
+							<div class="caption" style="padding-top: 10px;">
+								<span class="caption-subject bold lowercase" translate>Thông tin chi tiết hàng hóa</span>
+							</div>
+						<div class="clearfix" style="margin-top: 10px;">
+							<div class="form-group col-md-7">
+								<label class="col-md-5 control-label" translate>Hàng hóa</label>
+								<div class="col-md-7">
+									<label class="control-label">{{caller.orderGoodsDetailSearchForNote.goodsCode}} {{caller.orderGoodsDetailSearchForNote.goodsName}}</label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-7">
+								<label class="col-md-5 control-label" translate>Tình trạng</label>
+								<div class="col-md-7">
+									<label class="control-label">{{caller.orderGoodsDetailSearchForNote.goodsStateName}}</label>
+								</div>
+							</div>
+						</div>
+						<div id="goodsDetailForNoteGrid"
+							kendo-grid="caller.goodsDetailForNoteGrid" k-editable="false" 
+							k-options="caller.goodsDetailForNoteGridOptions"></div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet light">
+			<button type="button"
+				class="btn btn-qlk padding-search-right saveQLK pull-right" 
+				ng-click="caller.create()" translate>Tạo phiếu</button>
+			<button type="button"
+				class="btn btn-qlk padding-search-right margin_right10  saveTNQLK pull-right" 
+				ng-click="caller.createAndRealImport()" translate>Tạo phiếu và thực nhập</button>
+			<button type="button"
+				class="btn btn-qlk padding-search-right margin_right10  closeQLK btn pull-right" 
+				ng-click="caller.cancel()" translate>Hủy bỏ</button>
+		</div>
+	</div>
+
+</form>
+

@@ -1,0 +1,17 @@
+<div ng-controller="listControllertheSign as vm" >
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.clickSignCA()" ng-disabled="disabledButtom">
+				<div class="action-button save" uib-tooltip="Trình Ký" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+	</div>
+
+	<hr class="line-Hr">
+	<form class="form-horizontal row" role="form">
+		<div data-ng-include="'qlhc/thesignca/thesignca.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</form>
+</div>

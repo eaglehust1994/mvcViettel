@@ -1,0 +1,57 @@
+/**
+ * 
+ */
+package com.viettel.web.servlet;
+
+import java.io.IOException;
+import java.net.URLEncoder;
+import java.util.ResourceBundle;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import viettel.passport.client.UserToken;
+
+/**
+ * @author Huy
+ *
+ */
+public class LogoutServlet extends HttpServlet {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7710455005801637191L;
+	 private static Logger LOGGER = LoggerFactory.getLogger(LogoutServlet.class);
+	 private static ResourceBundle rb;
+	 private static String logout;
+	 private static String service;
+	 private static String domainCode;
+	 static {
+	        try {
+	        	  rb = ResourceBundle.getBundle("cas");
+	        	  logout=rb.getString("logoutUrl");
+	        	  service = rb.getString("service");
+	        	  domainCode=rb.getString("domainCode");
+	        }catch(Exception ex){
+	        	LOGGER.error(ex.getMessage(), ex);
+	        }
+     }
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		LOGGER.info("Logging out");
+		  UserToken vsaUserToken = (UserToken) req.getSession().getAttribute("vsaUserToken");
+		req.getSession().invalidate();
+		StringBuilder logoutUrl = new StringBuilder();		
+		 logoutUrl.append(logout)
+        .append("?service=" + URLEncoder.encode(service, "UTF-8"))
+        .append("&userName=").append(vsaUserToken.getUserName())
+        .append("&appCode=").append(domainCode);
+		 resp.sendRedirect(logoutUrl.toString());
+	}
+}

@@ -1,0 +1,50 @@
+
+<form class="form-horizontal row" role="form" name="popUpExLuong"
+	id="popUpExLuong" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body " aria-hidden="true">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Xuất
+					báo cáo theo đầu mục việc</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix text-center">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-label " translate>Trạng thái chuyển chứng từ:</label>
+							<div class="col-md-8">
+								<select kendo-multi-select id="listStatus" style="width: 100%" name="listTtCt" ng-model="caller.xuatBCDMV.listTinhTrangChuyenUngTu">
+										<option value="">~~Chọn~~</option>
+										<option value="Lỗi">1.Lỗi</option>
+										<option value="Vướng">2.Vướng</option>
+										<option value="Chưa Quyết toán khoán">3.Chưa Quyết toán khoán</option>
+										<option value="Quyết toán khoán tạm tính">4.Quyết toán khoán tạm tính</option>
+										<option value="Đã lập đề nghị QT chưa chuyển CDT">5.Đã lập đề nghị QT chưa chuyển CDT</option>
+										<option value="Đã chuyển chủ đầu tư chưa Thẩm định">6.Đã chuyển chủ đầu tư chưa Thẩm định</option>
+										<option value="Đã thẩm định chưa có đề nghi">7.Đã thẩm định chưa có đề nghi</option>
+										<option value="Đã chuyển tài chính">8.Đã chuyển tài chính</option>
+										<option value="đã xuất hóa đơn trả CDT">9.đã xuất hóa đơn trả CDT</option>
+										<option value="Hoàn thành">10.Hoàn thành</option>
+									</select>'
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+							ng-click="caller.cancel1()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right excelQLK" style="width: auto;"
+							id="saveChange11" ng-click="caller.xuatBCtheoDM()" translate>Xuất báo cáo</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

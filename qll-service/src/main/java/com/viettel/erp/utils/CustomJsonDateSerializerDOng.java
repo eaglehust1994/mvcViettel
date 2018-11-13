@@ -1,0 +1,22 @@
+package com.viettel.erp.utils;
+
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import org.codehaus.jackson.JsonGenerator;
+import org.codehaus.jackson.JsonProcessingException;
+import org.codehaus.jackson.map.JsonSerializer;
+import org.codehaus.jackson.map.SerializerProvider;
+import org.joda.time.DateTime;
+
+public class CustomJsonDateSerializerDOng extends JsonSerializer<Date> {
+
+	@Override
+	public void serialize(Date value, JsonGenerator jgen, SerializerProvider provider) throws IOException, JsonProcessingException {
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	    String format = formatter.format(value);
+	    jgen.writeString(format);
+	}
+}

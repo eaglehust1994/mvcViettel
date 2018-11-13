@@ -1,0 +1,236 @@
+<style>
+span.k-widget.k-tooltip-validation{
+margin-top: 5px;
+}
+.k-select .k-link{
+margin-top: -3px; 
+}
+
+.k-list-filter>.k-icon{
+top: -5px;
+</style>
+<div>
+	<div class="form-group col-md-6" disable-all = "vm.disableAll">
+		<label class="col-md-4 control-label req">Địa điểm ký <span
+			style="color: red"></span></label>		
+		<div class="col-md-8">
+			<input class="form-control width100" required
+				data-required-msg="Địa điểm ký không được để trống!" id="tai"
+				name="tai" ng-model="vm.itemID.signPlace" maxlength="1000"/>
+				 <span style= "margin-top: -10px;" data-for="tai"
+				class="k-invalid-msg"></span>
+		</div>
+	</div>
+	<div class="form-group col-md-6" disable-all = "vm.disableAll">
+		<label class="col-md-4 control-label req" translate>Ngày ký </label>
+		<div class="col-md-8">
+			<input class="form-control width100" required data-required-msg="Ngày ký không được để trống!"
+				data-date-msg="Ngày ký không hợp lệ" style="width: 100%;"
+				kendo-date-picker name="dateFormAcct" id="dateFormAcct"
+				ng-model="vm.itemID.signDate" k-format="'dd/MM/yyyy'" /> <span
+				data-for="dateFormAcct" class="k-invalid-msg"></span>
+		</div>
+		<script>
+			$(function() {
+				var dateFormAcct = $("#dateFormAcct");
+				dateFormAcct.kendoMaskedTextBox({
+					mask : "00/00/0000"
+				});
+
+				dateFormAcct.kendoDatePicker({
+					format : "dd/MM/yyyy"
+				});
+
+				dateFormAcct.closest(".k-datepicker").add(dateFormAcct)
+						.removeClass("k-textbox");
+			});
+		</script>
+	</div>
+</div>
+<!-- Thanh phan tham gia -->
+
+<div style="border: 0.5px white">
+	<br> <br> <br> <br>
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				translate>Thành phần tham gia</span>
+		</div>
+	</div>
+
+	<div class="clearfix" disable-all = "vm.disableAll">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req ">Giám sát thi công</label>			
+			<div class="col-md-8">
+				<select class="form-control" id="monitoring" style="width: 100%"
+							name="monitoring" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.monitoring" ng-model="vm.itemID.amonitorId" required
+							data-required-msg="Giám sát không được để trống">
+				</select>	
+			</div>
+		</div>
+
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req">Kỹ thuật nhà thầu</label>				
+			<div class="col-md-8">
+				<select class="form-control" id="technical" style="width: 100%"
+							name="technical" kendo-drop-down-list 
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.technical" ng-model="vm.itemID.binChargeConstructId" required
+							data-required-msg="Kỹ thuật nhà thầu không được để trống">
+				</select>	
+			</div>
+
+		</div>
+
+	</div>
+	</div>
+</div>
+<!-- BEGIN DIV NOI DUNG -->
+<div style="border: 0.5px white">
+	<br> <br>
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				translate>Nội dung</span>
+		</div>
+	</div>
+
+	<div class="clearfix" disable-all = "vm.disableAll">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req">Các căn cứ nghiệm thu</label>
+			<div class="col-md-8">
+				<input class="form-control width100" id="canCuNghiemThu"
+					name="canCuNghiemThu" ng-model="vm.itemID.acceptanceBase" required maxlength="500"
+					data-required-msg="Căn cứ nghiệm thu không được để trống " /> <span
+					data-for="canCuNghiemThu" class="k-invalid-msg"></span>
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="btn-group margin-left-button" disable-all = "vm.disableAll"
+		ng-controller="MenuController as menu">
+		<button type="button"
+			class="btn btn-default padding-button box-shadow"
+			ng-click="vm.showPopup()" uib-tooltip="Bổ sung từ danh sách B cấp" > 
+			<div class="action-button import"
+				translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>		
+		<button type="button"
+			class="btn btn-default padding-button box-shadow"
+			ng-click="vm.addRow()" ng-disabled="vm.disabledButtom" uib-tooltip="Thêm vật tư ngoài HĐ">
+			<div class="action-button add" 
+				translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button border-radius-right  box-shadow"
+			ng-click="vm.removeRow()" ng-disabled="vm.disabledButtom" uib-tooltip="Xóa">
+			<div class="action-button del"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button box-shadow"
+			ng-click="vm.importBmaterial()" uib-tooltip="Import vật tư B cấp">
+			<div class="action-button import2"
+				 translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+	</div>
+	<!-- SHOW GRIDVIEW -->
+
+
+	<div kendo-grid="vm.inoutGridDetail" k-options="vm.gridOptionsDetail" disable-all = "vm.disableAll"
+		id="inoutGridDetail"></div>
+		<script>
+                $(document).ready(function() {
+                    var tooltip = $("#inoutGridDetail").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#inoutGridDetail").find("td").click(false);
+                });
+            </script>
+	<!-- END SHOW GRIDVIEW -->
+</div>
+
+<!-- END DIV NOI DUNG -->
+<div style="border: 0.5px white">
+	<p>
+	<h2></h2>
+	</p>
+
+	<div class="clearfix" disable-all = "vm.disableAll">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" translate>Kết luận</label>
+			<div class="col-md-8">
+				<select kendo-drop-down-list id="conclusion"
+					k-data-text-field="'value'" k-data-value-field="'id'"
+					k-data-source="vm.conclusion" ng-model="vm.template.conclusion"
+					style="width: 100%">
+				</select>
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+<!-- asasasas -->
+
+<br>
+<div ng-show="vm.appro">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				translate>Phê duyệt</span>
+		</div>
+	</div>
+	<div class="portlet-body form">
+		<!-- BEGIN FORM-->
+		<form action="#" class="form-horizontal">
+			<br />
+			<div class="clearfix" disable-all = "vm.disableAll">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Phê duyệt</label>
+					<div class="col-md-8">
+						       <select kendo-drop-down-list class="form-control" name="statusCa" id="statusCa"  
+						        ng-model="vm.approData.statusCa" style="width: 100%"> 
+						        <option value="2">Phê duyệt</option> 
+						        <option value="3">Từ chối</option> 
+						       </select> 
+						<!--<select kendo-drop-down-list id="pheduyet2" name="statusCa"
+							id="statusCa" k-data-text-field="'value'"
+							k-data-value-field="'id'" k-data-source="vm.pheduyet2"
+							ng-model="vm.approData.statusCa" style="width: 100%">
+						</select> -->
+                        <span data-for='statusCa' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6"></div>
+			</div>
+			<div class="clearfix" disable-all = "vm.disableAll">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Nhận xét/
+							Lý do từ chối duyệt</label>
+						<div class="col-md-10">
+							<textarea class="form-control" name="statusDetail"
+								id="statusDetail" ng-model="vm.approData.comments"> 
+       </textarea>
+							<span data-for='constructId' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br />
+		</form>
+	</div>
+</div>

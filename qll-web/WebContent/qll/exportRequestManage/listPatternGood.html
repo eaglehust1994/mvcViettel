@@ -1,0 +1,94 @@
+<div>
+	<div class="collapse in from-search row">
+		<div class="row border-popup-management" style="height: 450px;">
+			<div class="col-md-4 border-right" style="height: 449px;">
+				<form class="padding-height-20 form-horizontal row" role="form">
+					<div class="form-body">
+						<div class="portlet light" style="margin:0px;">
+							<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Danh sách mẫu </span>
+<span class="control-label ng-binding">(</span>
+<span class="control-label ng-binding" ng-bind="caller.totalSample"></span>
+<span class="control-label ng-binding">)</span>
+							</div>
+							</div>
+						</div>
+						
+						<div>
+							<div id="listDetailGoods" kendo-grid="caller.listDetailGrid"
+								k-editable="false" k-options="caller.patternGoodGridOptions"></div>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="form-horizontal  padding-height-20 col-md-8" role="form">
+				<div class="form-body ">
+					<div class="portlet light" style="margin:0px;">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin chung</span>
+						</div>
+					</div>
+					</div>
+					
+					<div class="padding-width18">
+						<div class="portlet light bordered">
+							<div class="clearfix">
+								<div class="form-group col-md-8">
+								<label class="col-md-4 control-label" translate>Tên mẫu:</label>
+									<div class="col-md-8">
+									<label class="control-label" id="personCreate" ng-bind="caller.orderPatternUser.name"></label>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-8">
+								<label class="col-md-4 control-label" translate>Người tạo:</label>
+									<div class="col-md-8">
+								<label class="control-label" id="personCreate" ng-bind="caller.orderPatternUser.createdUserName"></label>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+									<div class="form-group col-md-8">
+								<label class="col-md-4 control-label" translate>Ghi
+											chú:</label>
+									<div class="col-md-8">
+								<label class="control-label" id="personCreate" ng-bind="caller.orderPatternUser.description"></label>
+									</div>
+			
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="">
+					<div class="portlet light" style="margin:0px;">
+							<div class="portlet-title">
+									<div class="caption margin-top10">
+									<span class="caption-subject bold lowercase" translate>Danh sách hàng hóa của mẫu</span>
+								</div>
+								</div>
+						</div>
+						<div>
+							<div id="listGoods" kendo-grid="caller.listGoodsGrid"
+								k-editable="false" k-options="caller.listGoodGridOptions"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top"">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right margin_right10 closeQLK"
+						ng-click="caller.close()" translate>Đóng</button>
+					<button type="button"
+						class="btn btn-qlk padding-search-right saveQLK"
+						ng-click="caller.selectPatternGood()" translate>Chọn mẫu</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

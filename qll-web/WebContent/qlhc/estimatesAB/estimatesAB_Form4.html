@@ -1,0 +1,185 @@
+<!--  THONG TIN CHUNG BEGIN -->
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class=""></i> <span class="caption-subject bold lowercase"
+				 translate>Thông
+				tin chung</span>
+		</div>
+	</div>
+	<div class="portlet-body">
+		<form action="#" class="form-horizontal">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số Hợp Đồng</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="code" id="code"
+							ng-model="vm.item.contractCode" readonly="readonly" /> <span
+							data-for='code' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày ký HĐ</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="contractDateSign"
+							id="contractDateSign" ng-model="vm.item.signed_date"
+							readonly="readonly" /> <span data-for='contractDateSign'
+							class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã công
+						trình</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="constructId"
+							id="constructId" ng-model="vm.item.constrtCode"
+							readonly="readonly" /> <span data-for='constructId'
+							class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Tên công
+						trình</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="constructName"
+							id="constructName" ng-model="vm.item.constrtName"
+							readonly="readonly" /> <span data-for='constructName'
+							class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ
+							công trình</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control width100" name="constructAddress"
+								id="constructAddress" ng-model="vm.item.constrtAddress"
+								readonly="readonly" /> <span data-for='constructAddress'
+								class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã trạm/tuyến</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="stationcode"
+							id="stationcode" ng-model="vm.item.stationCode"
+							readonly="readonly" /> <span data-for='constructName'
+							class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Trạng thái ký CA</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="statusCA" id="statusCA"
+							readonly="readonly" ng-model="vm.estimatesAB4.statusCA" />
+					</div>
+				</div>
+
+			</div>
+		</form>
+	</div>
+</div>
+<!--  THONG TIN CHUNG END -->
+<!--  THANH PHAN KY BEGIN -->
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class=""></i> <span class="caption-subject bold lowercase"
+				 translate>Thành phần ký</span>
+		</div>
+	</div>
+
+<div class="portlet-body" disable-all="vm.disableAll">
+	<form action="#" class="form-horizontal">
+		<div class="clearfix" style="padding-top: 1%;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate=""><span
+					class="ng-scope">Thủ trưởng chủ đầu tư</span></label>
+				<div class="col-md-8">
+					<select id="cbb1f4" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.thutruongdonviForm4"
+						ng-model="vm.bean.thutruongdonvi" required
+						data-required-msg="Thủ trưởng chủ đầu tư không được để trống"
+						style="width: 100%">
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label ">Giám đốc nhà thầu</label>
+				<div class="col-md-8">
+					<select id="cbb2f4" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.giamdocnhathauForm4"
+						ng-model="vm.bean.giamdocnhathau" required
+						data-required-msg="Giám đốc nhà thầu không được để trống"
+						style="width: 100%">
+					</select>
+				</div>
+			</div>
+		</div>
+
+		<div style="width: 100%; height: 5px; clear: left;"></div>
+		<div class="clearfix" style="padding-top: 1%;">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate=""><span
+					class="ng-scope">PT Giám sát chủ đầu tư</span></label>
+				<div class="col-md-8">
+					<select id="cbb3f4" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.giamsatcdtForm4" ng-model="vm.bean.giamsatcdt"
+						required
+						data-required-msg="PT Giám sát chủ đầu tư không được để trống"
+						style="width: 100%">
+					</select>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label ">Phụ trách thi công
+					nhà thầu</label>
+				<div class="col-md-8">
+					<select id="cbb4f4" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.thicongnhathauForm4"
+						ng-model="vm.bean.thicongnhathau" required
+						data-required-msg="Phụ trách thi công nhà thầu không được để trống"
+						style="width: 100%">
+					</select>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+</div>
+<!-- THANH PHAN KY END -->
+<!-- NOI DUNG BEGIN -->
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class=""></i> <span class="caption-subject bold lowercase"
+				 translate>Nội dung</span>
+		</div>
+	</div>
+<div class="portlet-body" disable-all="vm.disableAll">
+	<form action="#" class="form-horizontal">
+		<div class="form-body">
+			<div class="clearfix">
+				<div kendo-grid="vm.tableAbForm4" class="gridView"
+					k-options="vm.gridOptions4" id="mainGrid4"
+					k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+		</div>
+		</form>
+</div>
+</div>
+
+
+<!-- NOI DUNG END -->

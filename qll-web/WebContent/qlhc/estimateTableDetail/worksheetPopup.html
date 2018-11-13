@@ -1,0 +1,28 @@
+<div data-ng-controller="worksheetController as vm" >
+<div class="portlet light bordered">
+		<div class="portlet-body form">
+				<!-- BEGIN FORM-->
+				<form action="#" class="form-horizontal">
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+										<label class="col-md-4 control-label" translate>File chiết tính</label>
+										<div class="col-md-8">
+											<input name="xlfile" id="xlf" type="file" placeholder="Choose File" >
+										</div>
+								</div>
+							</div>
+					</div>
+				</form>
+		</div>
+		
+		<div class="clearfix form-actions">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<button type="button" class="btn green btn-outline padding-search-right"  ng-click="vm.importWorkSheet()" translate>Import</button>
+					<button type="button" class="btn green btn-outline padding-search" ng-click="vm.cancelImport()" translate>Đóng</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

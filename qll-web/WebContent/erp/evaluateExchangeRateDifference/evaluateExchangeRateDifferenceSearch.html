@@ -1,0 +1,83 @@
+<form class="form-horizontal row" role="form">
+    <div class="form-body">
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Số chứng từ</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="ctrl.searchParam.documentNo" ng-init="ctrl.searchParam.documentNo=''" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Số CTGS</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="ctrl.searchParam.voucherNo" ng-init="ctrl.searchParam.voucherNo=''" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Ngày chứng từ từ</label>
+                <div class="col-md-8">
+                    <input masked-date-picker kendo-date-picker k-options="ctrl.datePickerOptions" ng-model="ctrl.searchParam.transDateFrom" k-max="ctrl.maxTransDate" k-rebind="ctrl.maxTransDate" k-on-change="ctrl.dateChangedTransDateFrom()" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Ngày chứng từ đến</label>
+                <div class="col-md-8">
+                    <input masked-date-picker kendo-date-picker k-options="ctrl.datePickerOptions" ng-model="ctrl.searchParam.transDateTo" k-min="ctrl.minTransDate" k-rebind="ctrl.minTransDate" k-on-change="ctrl.dateChangedTransDateTo()" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Ngày hạch toán từ</label>
+                <div class="col-md-8">
+                    <input masked-date-picker kendo-date-picker k-options="ctrl.datePickerOptions" ng-model="ctrl.searchParam.dateAcctFrom" k-max="ctrl.maxdateAcct" k-rebind="ctrl.maxdateAcct" k-on-change="ctrl.dateChangeddateAcctFrom()" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Ngày hạch toán đến</label>
+                <div class="col-md-8">
+                    <input masked-date-picker kendo-date-picker k-options="ctrl.datePickerOptions" ng-model="ctrl.searchParam.dateAcctTo" k-min="ctrl.mindateAcct" k-rebind="ctrl.mindateAcct" k-on-change="ctrl.dateChangeddateAcctTo()" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Số THTT</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="ctrl.searchParam.batchNo" ng-init="ctrl.searchParam.batchNo=''" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Nội dung THTT</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="ctrl.searchParam.batchName" ng-init="ctrl.searchParam.batchName=''" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Số THNB</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="ctrl.searchParam.groupBatchNo" ng-init="ctrl.searchParam.groupBatchNo=''" />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Nội dung THNB</label>
+                <div class="col-md-8">
+                    <input class="form-control" ng-model="ctrl.searchParam.groupBatchName" ng-init="ctrl.searchParam.groupBatchName=''" />
+                </div>
+            </div>
+        </div>
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label"></label>
+                <div class="col-md-8">
+                    <button type="button" class="btn btn-primary col-md-12" ng-click="ctrl.eventSearch()">Tìm kiếm</button>
+                </div>
+            </div>
+        </div>
+        <div kendo-grid="ctrl.grid" k-options="ctrl.gridOptions"></div>
+    </div>
+</form>

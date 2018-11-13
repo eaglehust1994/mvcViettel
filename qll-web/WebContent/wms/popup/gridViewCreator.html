@@ -1,0 +1,60 @@
+
+<!-- saved from url=(0063)http://104.199.131.150:68/pmtc2.0/app/popup/donViForm.view.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-utf8"></head><body><div class="modal-body">
+	<form class="form-horizontal" role="form">
+    	 <div class="row popup-margintop paddingPopupTree">
+                <div class="col-md-5 ">
+                    <label class="col-md-3 control-label text-center">Mã</label>
+                    <div class="col-md-9">
+                        <input class="form-control-popup" value="" ng-model="searchGrid.value">
+                    </div>
+                </div>
+                <div class="col-md-5 paddingPopupTree">
+                        <label class="col-md-3 control-label text-center">Tên</label> 
+                        <div class="col-md-9">
+                            <input class="form-control-popup" value="" ng-model="searchGrid.name">
+                        </div>
+                </div>
+                <div class="col-md-2 text-right ">
+                       <button type="button" id="find" class="btn green border-button-tree" ng-click="searchOnGrid(popupId,searchType)">Tìm kiếm</button>
+                 </div>
+            </div>
+       
+    </form>
+
+    <!-- BEGIN PORTLET-->
+    <div class="portlet light bordered">
+        <div class="portlet-body">
+            <div id="gridView" kendo-grid k-options="data" k-ng-delay="data" 
+            	 k-on-change="caller.onRowChange(dataItem, popupId)"
+            	 k-editable="false" k-cache="false"
+            	 >
+	        </div>
+        </div>
+    </div>
+    
+    <!-- END PORTLET-->
+</div>
+<div class="modal-footer row" hidden>
+    <div class="col-md-12 text-right">
+		<button type="submit" id="submit" class="btn green btn-outline border-find-footer"  ng-click="save()">Ghi lại</button>
+	    <button type="button" id="cancel" class="btn green btn-outline border-find-footer"  ng-click="cancel()">Hủy</button>
+	</div>
+</div>
+			 <script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#find").click();
+                    				break;
+                    		}
+                    	} 
+                         
+                         $("#gridView").delegate("tbody>tr", "dblclick", function(){
+                        	 $("#submit").click();});
+						</script> 
+</body></html>

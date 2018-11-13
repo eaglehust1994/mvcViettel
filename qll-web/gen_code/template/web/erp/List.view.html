@@ -1,0 +1,85 @@
+<!-- @author hailh10 -->
+ <h3 class="page-title" translate>
+	<i class="fa fa-line-chart" aria-hidden="true"></i>
+	Danh sách ${tbl.tableNameJV}
+</h3> 
+<div ng-controller="${tbl.tableNameJV}ListController as vm">
+    
+	<hr class="line-Hr">
+    <div  id="${tbl.tableNameVar}">
+	    
+	    <div kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<i class="icon-equalizer font-red-sunglo"></i> <span
+							class="caption-subject font-red-sunglo bold uppercase" translate>Search</span>
+					</div>
+				</div>
+				<div class="portlet-body form">
+					<!-- BEGIN FORM-->
+					<form action="#" class="form-horizontal" name = "${tbl.tableNameVar}Search">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Value</label>
+								<div class="col-md-8">
+									<input class="form-control" name="searchValue" id="searchValue" ng-model="vm.criteriaSearch.value">
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Name</label>
+								<div class="col-md-8">
+									<input class="form-control" id="searchName" name="searchName" ng-model="vm.criteriaSearch.name">
+								</div>
+							</div>	
+						</div>
+						<div class="clearfix form-actions">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" class="btn green btn-outline padding-search" ng-click="vm.canceldoSearch()" translate>Làm lại</button>						
+									<button type="button" class="btn green border-button-tree padding-search-right"  ng-click="vm.doSearch()" translate>Tìm kiếm</button>
+									<button type="button" class="btn  green btn-outline padding-search"  ng-click="vm.isShowAdvanced=!vm.isShowAdvanced">{{vm.isShowAdvanced?('Ẩn tìm kiếm nâng cao'|translate):('Hiển thị tìm kiếm nâng cao'|translate)}}</button>
+								</div>
+							</div>	
+						</div>
+					</form>
+					<!-- END FORM-->
+				</div>
+			</div>
+		</div>
+	    <div class="porlet-title">
+	    	<div class="caption">
+	    		<span class="caption-subject bold uppercase ng-scope">{{'Kết quả tìm kiếm'|translate}} ({{vm.${tbl.tableNameVar}Grid.dataSource.total()}})</span>
+	    	</div>
+	    </div>
+        <div id="${tbl.tableNameVar}GridId" kendo-grid="vm.${tbl.tableNameVar}Grid" k-options="vm.gridOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)">            
+        </div>
+    </div>
+    
+</div>
+
+<script type="x/kendo-template" id="${tbl.tableNameJV}ListAction">
+            <div class="btn-group">
+            <button  type="button" class="btn default" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-columns"></i></button>
+            <div class="dropdown-menu hold-on-click dropdown-checkboxes" role="menu">
+            <label ng-repeat="column in vm.${tbl.tableNameVar}Grid.columns| filter: vm.gridColumnShowHideFilter">
+            <input type="checkbox" checked="column.hidden" ng-click="vm.showHideColumn(column)"> {{column.title}}
+            </label>
+            </div>
+            </div>
+            <div class="btn-group btn-group-solid">
+            <button type="button" title="Thêm mới"  
+            ng-click="vm.add()" 
+            class="btn default">
+            <i class="fa fa-plus"></i>
+            </button>
+           
+    		<button type="button" title="{{ 'common.title.detail' | translate }}" 
+            ng-click="vm.remove()" 
+            class="btn default" >
+            <i class="fa fa-trash"></i>
+            </button>
+            </div>
+            
+            
+        </script>

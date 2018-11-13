@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<!-- Beans definition for module webservice -->
+	<jaxws:endpoint id="catAssetCodeHistoryService"
+		implementor="com.viettel.asset.webservice.CatAssetCodeHistoryWsImpl"
+		address="/service/catAssetCodeHistoryWs">
+	</jaxws:endpoint>
+	<jaxrs:server address="/service/CatAssetCodeHistoryServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.webservice.CatAssetCodeHistoryWsRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<!-- Beans definition for module webservice -->
+	
+	<jaxrs:server address="/common/commonSysGroupServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.ktts2.rest.CommonRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+
+	<jaxws:endpoint id="longTermAssetService"
+		implementor="com.viettel.asset.webservice.LongTermAssetWsImpl"
+		address="/service/longTermAssetWs">
+	</jaxws:endpoint>
+
+	<jaxrs:server address="/service/longTermAssetServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.webservice.LongTermAssetWsRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+
+
+
+	<!-- Beans definition for module Asset -->
+
+	<jaxrs:server address="/catAssetCodeServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.CatAssetCodeRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server address="/longTermAssetServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.LongTermAssetRsRService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server address="/merHandOverInfoServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.MerHandOverInfoRService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<!-- hanhls1 -->
+	<jaxrs:server address="/assetReportServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.AssetReportRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<!-- <bean id="userSession" class="com.viettel.asset.filter.session.UserSession"></bean> -->
+
+	<jaxrs:server address="/authenServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.AssetAuthenRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="catPartsServiceRest" address="/catPartsServiceRest">
+	<jaxrs:providers>
+		<ref bean="jsonProvider" />
+		<ref bean="exceptionMapper" />
+	</jaxrs:providers>
+	<jaxrs:serviceBeans>
+		<bean id="catPartsServiceClass" class="com.viettel.ims.rest.CatPartsRsServiceImpl"/>
+	</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="catBankBranchBakServiceRest" address="/catBankBranchBakServiceRest">
+	<jaxrs:providers>
+		<ref bean="jsonProvider" />
+		<ref bean="exceptionMapper" />
+	</jaxrs:providers>
+	<jaxrs:serviceBeans>
+		<bean id="catBankBranchBakServiceClass" class="com.viettel.ims.rest.CatBankBranchBakRsServiceImpl"/>
+	</jaxrs:serviceBeans>
+</jaxrs:server>
+</beans>

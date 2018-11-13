@@ -1,0 +1,80 @@
+<div ng-controller="GroupExpenseItemsCtr as vm" ng-init="init()">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+    	<div class="btn-group margin-left-button">
+				<button type="button" class="btn btn-default padding-button  border-radius-left box-shadow" ng-click="vm.refresh()">
+					<div class="action-button clear"  uib-tooltip="Làm lại" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="btnAdd()">
+					<div class="action-button add"  uib-tooltip="Thêm mới" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow border-radius-right" ng-click="vm.copy()">
+					<div class="action-button copy"  uib-tooltip="Sao chép" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-click="btnRemove()">
+					<div class="action-button del"  uib-tooltip="Xóa" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="btnSave()">
+					<div class="action-button save"  uib-tooltip="Lưu" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button  box-shadow">
+					<div class="action-button popup" ng-click="popup()" uib-tooltip="Popup" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="btnShowGrid()">
+					<div class="action-button view"  uib-tooltip="Xem bảng/Chi tiết" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow  border-radius-right" ng-click="btnSearch()">
+					<div class="action-button search"  uib-tooltip="Tìm kiếm" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-click="vm.refresh()">
+					<div class="action-button refresh"  uib-tooltip="Làm mới" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.print()">
+					<div class="action-button print"  uib-tooltip="In" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow  border-radius-right" ng-click="vm.multiDelete()">
+					<div class="action-button deletes"  uib-tooltip="Xóa nhiều" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-click="">
+					<div class="action-button attach"  uib-tooltip="Attachment" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFile()">
+					<div class="action-button export"  uib-tooltip="Export" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.importFile()">
+					<div class="action-button import"  uib-tooltip="Import" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+			<div class="btn-group">
+				<button type="button" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-click="previousRow()">
+					<div class="action-button arrowprevious"  uib-tooltip="Previous" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow  border-radius-right" ng-click="nextRow()">
+					<div class="action-button arrownext"  uib-tooltip="Next" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+    </div>
+	
+    <div ng-show="!showCreate">
+        <div ng-show="showSearch">
+            <div data-ng-include="'erp/groupExpenseItems/groupExpenseItemsSearch.html'"></div>
+        </div>
+        <div ng-show="showTable">
+            <div kendo-grid="gridList" k-options="gridOptions" ng-hide="showDetail">
+                <div k-detail-template grid-detail>
+                    <div data-ng-include="'erp/groupExpenseItems/groupExpenseItemsForm.html'" kendo-validator="vm.validator"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="showCreate">
+        <div data-ng-include="'erp/groupExpenseItems/groupExpenseItemsForm.html'" kendo-validator="vm.validator"></div>
+    </div>
+
+</div>

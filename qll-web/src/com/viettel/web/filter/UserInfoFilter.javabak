@@ -1,0 +1,101 @@
+/**
+ * 
+ */
+package com.viettel.web.filter;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Properties;
+
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.viettel.fw.vsa.FWVSAFilter;
+import com.viettel.web.constant.Constant;
+import com.viettel.web.domain.SysUserDTO;
+
+import viettel.passport.client.UserToken;
+import viettel.passport.util.VsaFilter;
+
+/**
+ * @author Huy
+ *
+ */
+public class UserInfoFilter extends VsaFilter {
+	
+	private Logger LOGGER = LoggerFactory.getLogger(getClass());
+	
+	@Override
+	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)
+			throws IOException, ServletException {
+		super.doFilter(req, resp, chain);
+
+		HttpServletRequest request = (HttpServletRequest) req;
+
+		UserToken userToken = (UserToken) request.getSession().getAttribute(Constant.VSA_USER_TOKEN);
+		if (userToken != null) {
+			String userName = userToken.getUserName();
+			
+			final Properties prop = new Properties();
+			prop.load(UserInfoFilter.class.getClassLoader().getResourceAsStream("config.properties"));
+			
+			try {
+				String serURL = request.getScheme()
+					      + "://"
+					      + request.getServerName()
+					      + ":"
+					      + request.getServerPort()
+					      + prop.get("service.user-info.url")
+					      + userName;
+				
+				LOGGER.info("Sending GET request to {}", serURL);
+				URL url = new URL(serURL);
+				
+				HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+				conn.setRequestMethod("GET");
+				conn.setRequestProperty("Accept", "application/json");
+
+				if (conn.getResponseCode() == 404) {
+					throw new RuntimeException("User này không tồn tại trong hệ thống hoàn công điện tử!");
+				} 
+				if (conn.getResponseCode() != 200) {
+					throw new RuntimeException("Failed : HTTP error code : " + conn.getResponseCode());
+				}
+
+				BufferedReader br = new BufferedReader(new InputStreamReader((conn.getInputStream())));
+
+				String output;
+				LOGGER.info("Output from Server .... \n");
+				while ((output = br.readLine()) != null) {
+					LOGGER.info("Service User Info {}", output);
+					
+					Gson gson = new GsonBuilder()
+							.setDateFormat("dd/MM/yyyy HH:mm:ss")
+							.create();
+					SysUserDTO dto = gson.fromJson(output, SysUserDTO.class);
+					request.getSession().setAttribute(Constant.APP_USER_TOKEN, dto);
+				}
+				conn.disconnect();
+
+			} catch (Exception ex) {
+	        	LOGGER.error(ex.getMessage(), ex);
+	        }/*catch (MalformedURLException e) {
+				LOGGER.error(e.getMessage(), e);
+			} catch (IOException e) {
+				LOGGER.error(e.getMessage(), e);
+			}*/
+		}
+	}
+}

@@ -1,0 +1,87 @@
+
+<div data-ng-controller="patternRequirementManagementController as vm" id="patternMainId">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoPattern1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demoPattern1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tên mẫu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text" autofocus="autofocus"
+										id="patternName" ng-model="vm.patternRequirementManagementSearch.keySearch" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người tạo</label>
+								<div class="col-md-8">
+									<label style="margin-top: 6px;" 
+									ng-bind="vm.patternRequirementManagementSearch.createdUserName"></label>
+								</div>
+							</div>
+							
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findOrderPattern"
+										class="btn btn-qlk padding-search-right searchQLK"
+										ng-click="vm.doSearch()" translate>
+										<i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase" id="patternCount">{{vm.count}}</label><label class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demoPattern2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demoPattern2" class="collapse in from-search">
+			<div id="patternRequirementManagementGrid"
+				kendo-grid="vm.patternRequirementManagementGrid" k-editable="false"
+				k-options="vm.gridOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('#patternMainId').keypress(function(event){
+			document.onkeydown= keyDown;
+            function keyDown(e){
+       		switch(e.keyCode) {
+       			case 27:
+       				$("#cancel").click();
+       				break;
+       			case 13:
+       				if($('.k-widget.k-window.fix-footer').css('display')!=='block'){
+       				$("#findOrderPattern").click();
+					}
+       				break;
+					
+       		}
+       	} 
+	});
+</script>

@@ -1,0 +1,358 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleftdetail {
+	float: left;
+	width: 50%;
+	height: 500px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.frightdetail {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	height: 500px;
+	width: 50%;
+	background: #FFFFFF;
+}
+</style>
+<div class="col-md-12">
+	<div class="col-md-6 padding-height-15">
+		<button type="button"
+		class="btn button-header-popup" id="detailGoods"
+		ng-click="vm.gotoTabOneNoteDetailPopUp()">Thông tin chung</button>
+		<button type="button" 
+			class="btn  button-header-popup" id="detailGoods"
+			ng-click="vm.gotoTabTwoNoteDetailPopUp()" >Thông tin hàng hóa</button>
+		<button type="button" 
+			class="btn  button-header-popup" id="aaa"
+			ng-click="vm.gotoTabThreeNoteDetailPopUp()" translate>Thông tin ....</button>
+	</div>
+	<div class="col-md-6">
+		<button type="button" class="width-button-header-popup pull-right btn padding-search-right" ng-click="vm.gotoTabOnePopUp()">
+			<div class="docQLK"></div>
+			<div class="text-button"
+			 translate>Xuất yêu cầu
+			không Serial</div>
+		</button>	
+		<button type="button" class="width-button-header-popup pull-right btn padding-search-right" ng-click="vm.gotoTabTwoPopUp()">
+			<div class="docQLK"></div>
+			<div class="text-button"
+			 translate>Xuất yêu cầu có
+			Serial</div>
+		</button>
+	</div>
+</div>
+<!-- 	<div class="portlet light">
+		<button type="button"
+			class="btn green btn-outline padding-search-right"
+			ng-click="vm.gotoTabOneNoteDetailPopUp()" translate>Thông tin chung</button>
+		<button type="button"
+			class="btn green btn-outline padding-search-right"
+			ng-click="vm.gotoTabTwoNoteDetailPopUp()" translate>Thông tin hàng hóa</button>
+		<button type="button"
+			class="btn green btn-outline padding-search-right"
+			ng-click="vm.gotoTabThreeNoteDetailPopUp()" translate>Thông tin ....</button>
+		<button type="button"
+			class="btn blue btn-outline padding-search-right pull-right"
+			ng-click="vm.gotoTabOnePopUp()" translate>Xuất yêu cầu có Serial
+			Serial</button>
+		<button type="button"
+			class="btn blue btn-outline padding-search-right pull-right"
+			ng-click="vm.gotoTabTwoPopUp()" translate>Xuất yêu cầu không có Serial
+			Serial</button>
+	</div>
+ -->	
+ <div ng-show="vm.showTabOneNoteDetail">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin chung</span>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Kho nhập</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã phiếu</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người giao hàng</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ghi chú</label>
+							<div class="col-md-8">
+								<input class=" form-control" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tình trạng ký CA</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Trạng thái</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin bổ sung</span>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người tạo</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày tạo</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>dsdsd</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày tháng nhập</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông tin ....</span>
+							</div>
+	
+						</div>
+					<div class="clearfix">
+					
+						
+						
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình trạng PM tài chính</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.reasonSearch.keySearch" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông tin ... phiếu</span>
+							</div>
+						</div>
+					<div class="clearfix">
+						
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>.............</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.reasonSearch.keySearch" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Lý do</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.reasonSearch.keySearch" />
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày tháng</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.reasonSearch.keySearch" />
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ghi chú</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.reasonSearch.keySearch" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div ng-show="vm.showTabTwoNoteDetail">
+		<div class="wrap">
+			<div class="fleftdetail col-md-8">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Danh
+								sách hàng hóa</span>
+						</div>
+					</div>
+					<div id="goodsListGrid" kendo-grid="vm.goodsListGrid"
+						k-editable="false" k-options="vm.goodsListGridOptions"></div>
+				</div>
+
+			</div>
+			<div class="frightdetail col-md-8">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin chi tiết hàng hóa</span>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-label" translate>Hàng hóa</label>
+							<div class="col-md-8">
+								<input name="createFrom" id="createFrom"
+									ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+									required data-required-msg="NgĂ y táº¡o tá»« khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+									data-date-msg="NgĂ y táº¡o tá»« khĂ´ng há»£p lá»‡" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-label" translate>Tình trạng</label>
+							<div class="col-md-8">
+								<input name="createFrom" id="createFrom"
+									ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+									required data-required-msg="Ngày tạo không để trống"
+									data-date-msg="Ngày tạo không được ..." />
+							</div>
+						</div>
+					</div>
+					<div id="goodsDetailGrid" kendo-grid="vm.goodsDetailGrid"
+						k-editable="false" k-options="vm.goodsDetailGridOptions"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="vm.showTabThreeNoteDetail">
+			<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Danh
+								sách hàng hóa</span>
+						</div>
+					</div>
+					
+			</div>
+
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-label" translate>Th.... kho</label>
+					<div class="col-md-8">
+						<input name="createFrom" id="createFrom"
+							ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+							required data-required-msg="NgĂ y táº¡o tá»« khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+							data-date-msg="NgĂ y táº¡o tá»« khĂ´ng há»£p lá»‡" />
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-label" translate>Người giao hàng</label>
+					<div class="col-md-8">
+						<input name="createFrom" id="createFrom"
+							ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+							required data-required-msg="NgĂ y táº¡o tá»« khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+							data-date-msg="NgĂ y táº¡o tá»« khĂ´ng há»£p lá»‡" />
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-label" translate>Phá»¥ trĂ¡ch káº¿ toĂ¡n - tá»•ng há»£p</label>
+					<div class="col-md-8">
+						<input name="createFrom" id="createFrom"
+							ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+							required data-required-msg="NgĂ y táº¡o tá»« khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+							data-date-msg="NgĂ y táº¡o tá»« khĂ´ng há»£p lá»‡" />
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-label" translate>Phụ trách tài chính</label>
+					<div class="col-md-8">
+						<input name="createFrom" id="createFrom"
+							ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+							required data-required-msg="NgĂ y táº¡o tá»« khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+							data-date-msg="NgĂ y táº¡o tá»« khĂ´ng há»£p lá»‡" />
+					</div>
+				</div>
+				<div class="form-group col-md-12">
+					<label class="col-md-4 control-label" translate>Thá»§ trÆ°á»Ÿng Ä‘Æ¡n vá»‹</label>
+					<div class="col-md-8">
+						<input name="createFrom" id="createFrom"
+							ng-model="vm.reasonSearch.keySearch" class=" form-control width100"
+							required data-required-msg="NgĂ y táº¡o tá»« khĂ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"
+							data-date-msg="NgĂ y táº¡o tá»« khĂ´ng há»£p lá»‡" />
+					</div>
+				</div>
+
+	</div>
+<div class="portlet light">
+<button type="button"
+			class="btn btn-qlk padding-search-right closeQLK btn pull-right"
+			ng-click="vm.close()" translate>Close</button>
+</div>

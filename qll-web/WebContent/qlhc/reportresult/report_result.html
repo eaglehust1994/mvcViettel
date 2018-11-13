@@ -1,0 +1,158 @@
+
+
+<!-- thành phần tham gia -->
+
+
+<div class="portlet light bordered" disable-all="vm.checkDisable">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Thành
+				phần tham gia</span>
+		</div>
+	</div>
+	<div class="form-body">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Giám sát chủ đầu
+					tư</label>
+				<div class="col-md-8">
+					<select class="form-control" id="monitoring" style="width: 100%"
+						name="monitoring" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'userId'"
+						k-data-source="vm.monitoring" ng-model="vm.item.amonitorId"
+						required
+						data-required-msg="Giám sát chủ đầu tư không được để trống"></select>
+
+				</div>
+				<span data-for='shd' class='k-invalid-msg'></span>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req">Kỹ thuật nhà thầu
+					thi công</label>
+				<div class="col-md-8">
+					<select class="form-control" id="technical" style="width: 100%"
+						name="technical" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'userId'"
+						k-data-source="vm.technical" ng-model="vm.item.bconstructId"
+						required
+						data-required-msg="Kỹ thuật nhà thầu thi công không được để trống"></select>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Kết quả đo -->
+<p></p>
+<div class="portlet light bordered">
+	<div class="portlet-title" disable-all="vm.checkDisable">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Kết quả đo</span>
+		</div>
+	</div>
+	<div>
+		<!-- <div class="btn-group margin-left-button"
+			disable-all="vm.checkDisable">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.add()" ng-disabled="vm.disabledButtom">
+				<div class="action-button add" uib-tooltip="Thêm dòng" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button border-radius-left margin-left-button box-shadow"
+				ng-click="vm.remove()" ng-disabled="vm.disabledButtom">
+				<div class="action-button del" uib-tooltip="Xóa" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button border-radius-left margin-left-button box-shadow"
+				ng-click="vm.showImport()" ng-disabled="vm.disabledButtom">
+				<div class="action-button import2" uib-tooltip="Import" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<input type="file" style="display: none" id="importFile"
+				name="importFile" ng-model="fileUpload"
+				onchange="angular.element(this).scope().uploadFile()" />
+		</div> -->
+	</div>
+
+	<div>
+		<!-- <div class="clearfix">
+			<div kendo-grid="vm.reportGridDetail" k-options="vm.gridOptions"
+				id="reportGridDetail"></div>
+			<script>
+				$(document).ready(function() {
+					var tooltip = $("#reportGridDetail").kendoTooltip({
+						filter : "td",
+						position : "top",
+						content : function(e) {
+							var target = e.target; // element for which the tooltip is shown
+							return $(target).text();
+						}
+					}).data("kendoTooltip");
+
+					$("#reportGridDetail").find("td").click(false);
+				});
+			</script>
+		</div> -->
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="col-md-12">
+				
+	<div class="btn-group margin-left-button" disable-all = "vm.disableAll">
+		<button type="button"
+			class="btn btn-default padding-button border-radius-left box-shadow"
+			ng-click="vm.add()"ng-disabled="vm.disabledButtom" uib-tooltip="Thêm dòng" >
+			<div class="action-button add"
+				translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>		
+		<button type="button"
+			class="btn btn-default padding-button box-shadow"
+			ng-click="vm.remove()"ng-disabled="vm.disabledButtom" uib-tooltip="Xóa">
+			<div class="action-button del"
+				 translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button box-shadow  border-radius-right"
+			ng-click="vm.showImport()" ng-disabled="vm.disabledButtom" uib-tooltip="Import">
+			<div class="action-button import2"
+				 translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<input type="file" style="display: none" id="importFile"
+				name="importFile" ng-model="fileUpload"
+				onchange="angular.element(this).scope().uploadFile()" />
+	</div>
+				
+					<div kendo-grid="vm.reportGridDetail" k-options="vm.gridOptions"
+						id="reportGridDetail"></div>
+					
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="btn-toolbar margin-bottom-10 margin-top">
+	<!--------------------------------------------------------------------------- -->
+	<!-- <div style="margin-left: 15px">
+		<button class=" btn green btn-outline padding-btn"
+			ng-click="vm.showImport()" translate="" id="showImport"
+			ng-disabled="vm.disabledImport" ng-show="vm.showImportButton">
+			<span class="ng-scope">Import</span>
+		</button>
+
+		 <input type="file" style="display:none" id="importFile" name="importFile"  ng-model="fileUpload" onchange="angular.element(this).scope().uploadFile()"  />
+	</div> -->
+	<!-- ------------------------------------------------------------------------ -->
+</div>
+<div class="row" ng-show="vm.showImportValue">
+	<div class="col-md-6"></div>
+	<!--  <div class="col-md-6">
+ <p><input type="file" name="xlfile" id="xlf" accept=".xls,.xlsx" /></p>
+  <button class=" btn green btn-outline padding-btn" ng-click="vm.Import()" translate="" id="importExcel" class="col-md-offset-3"><span class="ng-scope">Ghi lại</span></button>
+  <button class=" btn green btn-outline padding-btn" ng-click="vm.exportExcel()" translate="" id="exportExcel"><span class="ng-scope">Biểu mẫu</span></button>
+  <div class="btn-group"></div>
+
+ </div> -->
+</div>

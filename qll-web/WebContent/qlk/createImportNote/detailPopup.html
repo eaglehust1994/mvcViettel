@@ -1,0 +1,407 @@
+
+<div class="portlet light">
+	<button type="button"
+		class="btn green btn-outline padding-search-right"
+		ng-click="caller.gotoTabOnePopUp()" translate>Thông tin chung</button>
+	<button type="button"
+		class="btn green btn-outline padding-search-right"
+		ng-click="caller.gotoTabTwoPopUp()" translate>Thông tin hàng
+		hóa</button>
+	<button type="button"
+		class="btn blue btn-outline padding-search-right pull-right"
+		ng-click="caller.gotoTabOnePopUp()" translate>Xuất yêu cầu
+		không Serial</button>
+	<button type="button"
+		class="btn blue btn-outline padding-search-right pull-right"
+		ng-click="caller.gotoTabTwoPopUp()" translate>Xuất yêu cầu có
+		Serial</button>
+</div>
+<div ng-show="caller.showTabOne">
+	<div class="row border-popup-management">
+		<div class="col-md-4">
+			<form class="padding-height-20 form-horizontal row" role="form">
+				<div class="form-body">
+					<div class="caption">
+						<span class="bold lowercase" translate>Loại yêu cầu</span>
+					</div>
+					<div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="1" id="fromProvider"
+								ng-change="caller.checkboxDetailPopup()" ng-model="value"><label
+								class="control-label" ng-bind="caller.businessTypes[0].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label> <input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="2" id="beforeWarranty"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[1].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="3" id="afterWarranty"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[2].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="4" id="fromConstruction"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[3].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="5" id="fromUnit"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[4].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="6" id="fromBorrowedGoods"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[5].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="7" id="fromAlternativeStock"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[6].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="8" id="fromProject"
+								ng-model="value" ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[7].name"></label></label><br>
+						</div>
+						<div class="col-md-12 margin-top10">
+							<label><input ng-disabled="caller.disableCheckboxes"
+								type="radio" name="type" value="9" id="direct" ng-model="value"
+								ng-change="caller.checkboxDetailPopup()"><label
+								class="control-label" ng-bind="caller.businessTypes[8].name"></label></label><br>
+						</div>
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<form class="form-horizontal border-left padding-height-20 col-md-8"
+			role="form">
+			<div class="form-body">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin chung</span>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.code"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Kho nhập</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.stockName"></label>
+								</div>
+							</div>
+							<div class="clearfix">
+									<div class="form-group col-md-12">
+										<div class="form-group col-md-12">
+											<label class="col-md-2 control-label" translate>Ghi
+												chú</label>
+											<div class="col-md-10">
+												<div class="input-icon right">
+													<label class="control-label" ng-bind="data.description"></label>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng ký CA</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.signState"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Trạng
+									thái</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.status"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="">
+					<div class="caption margin-top10">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin theo từng loại yêu cầu</span>
+					</div>
+					<div class="padding-width18">
+						<div class="border-gray row">
+							<div class="form-group col-md-6"
+								ng-show="caller.showFromProvider">
+								<label class="col-md-4 control-label" translate>Mã
+									lô hàng</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.shipmentCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6"
+								ng-show="caller.showBeforeWarranty">
+								<label class="col-md-4 control-label" translate>Mã
+									yêu cầu BHSC</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.maintainOrderCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6"
+								ng-show="caller.showAfterWarranty">
+								<label class="col-md-4 control-label" translate>Mã
+									BBBG BHSC</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.maintainReportCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6"
+								ng-show="caller.showFromConstruction">
+								<label class="col-md-4 control-label" translate>Mã
+									yêu cầu thu hồi</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.consRetrieveOrderCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6" ng-show="caller.showFromUnit">
+								<label class="col-md-4 control-label" translate>Mã
+									yêu cầu thu hồi</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.deptRetrieveOrderCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6"
+								ng-show="caller.showFromBorrowedGoods">
+								<label class="col-md-4 control-label" translate>Mã
+									yêu cầu thu hồi</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.loanRetrieveOrderCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6"
+								ng-show="caller.showFromAlternativeStock">
+								<label class="col-md-4 control-label" translate>Mã
+									phiếu xuất</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.stockTransCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6"
+								ng-show="caller.showFromProject">
+								<label class="col-md-4 control-label" translate>Mã
+									đề tài/dự án</label>
+								<div class="col-md-8">
+								<label class="control-label" ng-bind="vm.order.projectCode"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="caption margin-top10">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin hóa đơn, chứng từ</span>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Số hóa
+									đơn</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.purchaseOrderNo"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày hóa
+									đơn</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.purchaseOrderDate"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Số chứng
+									từ</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.cerNo"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									chứng từ</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.cerDate"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									giao hàng</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.shipperName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									giao hàng</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.shipDate"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="caption margin-top10">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin bổ sung</span>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									tạo</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.createdByName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày tạo</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdDate"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị
+									tạo</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.createdDeptedName"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="caption margin-top10">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin hủy/từ chối</span>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									thực hiện</label>
+								<div class="col-md-8">
+								<label class="control-label"
+										ng-bind="caller.order.cancelByName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Lý do</label>
+								<div class="col-md-8">
+								<label class="control-label"
+										ng-bind="caller.order.cancelReasonName"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									thực hiện</label>
+								<div class="col-md-8">
+								<label class="control-label"
+										ng-bind="caller.order.cancelDate"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ghi chú</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.cancelDescription"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+
+	</div>
+
+</div>
+<div ng-show="!caller.showTabOne">
+	<div class="wrap">
+		<div class="fleftdetail col-md-8">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Danh
+							sách hàng hóa</span>
+					</div>
+				</div>
+				<div id="goodsListGrid" kendo-grid="caller.goodsListGrid"
+					k-editable="false" k-options="caller.goodsListGridOptions"></div>
+			</div>
+
+		</div>
+		<div class="frightdetail col-md-8">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin chi tiết hàng hóa</span>
+					</div>
+				</div>
+				<div class="clearfix" style="margin-top: 20px;">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Hàng hóa</label>
+						<div class="col-md-8">
+							<label class="control-label"
+								ng-bind="caller.orderGoodsDetailSearch.goodsName"></label>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Tình trạng</label>
+						<div class="col-md-8">
+							<label class="control-label"
+								ng-bind="caller.orderGoodsDetailSearch.goodsStateName"></label>
+						</div>
+					</div>
+				</div>
+				<div id="goodsDetailGrid" kendo-grid="caller.goodsDetailGrid"
+					k-editable="false" k-options="caller.goodsDetailGridOptions"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="portlet light" align="right">
+	<button type="button" class="btn red btn-outline padding-search-right"
+		ng-click="cancel()" translate>Đóng</button>
+</div>

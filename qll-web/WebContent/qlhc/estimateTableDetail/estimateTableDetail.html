@@ -1,0 +1,254 @@
+
+<style>
+.k-select .k-link {
+	margin-top: -3px;
+}
+</style>
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Thành phần"> <br />
+	
+<div class="portlet-body form" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<!-- BEGIN FORM-->
+	<form action="#" class="form-horizontal" disable-all="vm.disableForm">
+		<div class="clearfix">
+			<!-- <combo-box-second searchtype=""
+				model-label="Người lập của chủ đầu tư" caller="vm" req="req"  
+				msg="Người lập của chủ đầu tư không được để trống" 
+				popup-id="estimates_detail_createdEvaluatePerId" popup-type="grid"
+				popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-id="estimates_detail_txtCreatedEvaluatePerId"
+				combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-name="fullName" combo-value="id" combo-code="value"
+				combo-search="vm.getroledirectora" combo-grid="vm.gridCommon"
+				model-id="vm.item.createdEvaluatePerId"
+				model-name="vm.item.createdEvaluatePerName"> </combo-box-second> -->
+					<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Người lập của chủ đầu tư không được để trống</label>
+							<div class="col-md-8">
+								<input class="form-control" name="estimates_detail_txtCreatedEvaluatePerId" id="estimates_detail_txtCreatedEvaluatePerId"
+									ng-model="vm.item.createdEvaluatePerName" readonly="readonly">
+							</div>
+						</div>
+			<!-- <combo-box-second searchtype=""
+				model-label="Người kiểm tra của chủ đầu tư" caller="vm" req="req"
+				msg="Người kiểm tra của chủ đầu tư không được để trống"  
+				popup-id="estimates_detail_checkEvaluatePerId" popup-type="grid"
+				popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-id="estimates_detail_txtCheckEvaluatePerId"
+				combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-name="fullName" combo-value="id" combo-code="value"
+				combo-search="vm.getrolemonitor" combo-grid="vm.gridCommon"
+				model-id="vm.item.checkEvaluatePerId"
+				model-name="vm.item.checkEvaluatePerName"> </combo-box-second> -->
+ 				<Search-Grid-Popup searchtype="codePerSon" model-label="Người kiểm tra của chủ đầu tư" req="req"
+ 					msg="Người kiểm tra của chủ đầu tư không được để trống"
+							caller="vm" popup-id="estimates_detail_checkEvaluatePerId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="estimates_detail_txtCheckEvaluatePerId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.item.checkEvaluatePerId"
+							model-name="vm.item.checkEvaluatePerName">
+						</Search-Grid-Popup>  
+		</div>
+
+		<div class="clearfix">
+		<!-- 	<combo-box-second searchtype=""
+				model-label="Người đề nghị quyết toán" caller="vm" req="req"
+				msg="Người đề nghị quyết toán không được để trống"
+				popup-id="estimates_detail_sendPersonId" popup-type="grid"
+				popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-id="estimates_detail_txtSendPersonId"
+				combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-name="fullName" combo-value="id" combo-code="value"
+				combo-search="vm.getroleinChargeMonitor" combo-grid="vm.gridCommon"
+				model-id="vm.item.sendPersonId" model-name="vm.item.sendPersonName">
+			</combo-box-second> -->
+			<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Người đề nghị quyết toán</label>
+							<div class="col-md-8">
+								<input class="form-control" name="estimates_detail_txtSendPersonId" id="estimates_detail_txtSendPersonId"
+									ng-model="vm.item.sendPersonName" readonly="readonly">
+							</div>
+						</div>
+			 <!-- <combo-box-second searchtype=""
+				model-label="Đại diện chủ đầu tư" caller="vm" req="req"
+				msg="Đại diện chủ đầu tư không được để trống"
+				popup-id="estimates_detail_aDirectorId" popup-type="grid"
+				popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-id="estimates_detail_txtaDirectorId"
+				combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-name="fullName" combo-value="id" combo-code="value"
+				combo-search="vm.getroledirectora" combo-grid="vm.gridCommon"
+				model-id="vm.item.aDirectorId" model-name="vm.item.aDirectorName">
+			</combo-box-second>  -->
+			
+ 			 <Search-Grid-Popup searchtype="codePerSon" model-label="Đại diện chủ đầu tư" req="req"
+ 					msg="Đại diện chủ đầu tư không được để trống"
+							caller="vm" popup-id="estimates_detail_aDirectorId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="estimates_detail_txtaDirectorId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.item.aDirectorId"
+							model-name="vm.item.aDirectorName">
+						</Search-Grid-Popup>  
+		</div>
+		<div class="clearfix">
+			<combo-box-second searchtype="" model-label="Giám đốc" caller="vm" req="req"
+				msg="Giám đốc không được để trống"
+				popup-id="estimates_detail_brepresentativeId" popup-type="grid"
+				popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-id="estimates_detail_txtBrepresentativeId"
+				combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+				combo-name="fullName" combo-value="id" combo-code="value"
+				combo-search="vm.getroledirectorb" combo-grid="vm.gridCommon"
+				model-id="vm.item.brepresentativeId"
+				model-name="vm.item.brepresentativeName"> </combo-box-second>
+		</div>
+	</form>
+	<!-- END FORM-->
+</div>
+</uib-tab> </uib-tabset>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Tổng giá trị xây lắp công trình">
+<div style="height: 180px" kendo-grid="vm.gridSumContract"
+	k-options="vm.gridOptionsSumContract" id="sumEvaluateContract"
+	k-on-change="vm.onGridSumContract(kendoEvent, { selected: selected }, data)"></div>
+</uib-tab> </uib-tabset>
+<script>
+                $(document).ready(function() {
+                    var tooltip = $("#sumEvaluateContract").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#sumEvaluateContract").find("td").click(false);
+                });
+            </script>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Nội dung công việc trong hợp đồng">
+<div kendo-grid="vm.contentWorkInsideContract"
+	k-options="vm.gridOptionsInsideContract"
+	id="contentWorkInsideContractEva"></div>
+</uib-tab> </uib-tabset>
+<script>
+                $(document).ready(function() {
+                    var tooltip = $("#contentWorkInsideContractEva").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#contentWorkInsideContractEva").find("td").click(false);
+                });
+            </script>
+
+<uib-tabset class="tabbable-custom"> <uib-tab
+	heading="Nội dung công việc phát sinh ngoài hợp đồng">
+<div kendo-grid="vm.contentWorkOutsideContract"
+	k-options="vm.gridOptionsOutsideContract"
+	id="contentWorkOutsideContractEva"></div>
+</uib-tab> </uib-tabset>
+<script>
+                $(document).ready(function() {
+                    var tooltip = $("#contentWorkOutsideContractEva").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#contentWorkOutsideContractEva").find("td").click(false);
+                });
+            </script>
+
+</uib-tabset>
+		<uib-tabset class="tabbable-custom">
+		<uib-tab heading="File đính kèm">
+	<div kendo-grid="vm.calculateFileGrid"
+		k-options="vm.gridCalculateOptions" id="calculateFileGrid" >
+	</div>
+	</uib-tab></uib-tabset>
+<div class="portlet light bordered" ng-show="vm.disabledPheDuyet">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class=""></i> <span
+				class="caption-subject font-red-sunglo  bold uppercase" translate>Phê
+				duyệt</span>
+		</div>
+	</div>
+	<br />
+	<div class="portlet-body form">
+		<!-- BEGIN FORM-->
+		<form action="#" class="form-horizontal">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phê duyệt</label>
+					<div class="col-md-8">
+						<select class="form-control" id="monitoring" style="width: 100%"
+							name="monitoring" kendo-drop-down-list
+							ng-model="vm.approDTO.statusCa">
+							<option value=2>Đã duyệt</option>
+							<option value=3>Từ chối duyệt</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Nhận
+							xét/Lý do từ chối duyệt</label>
+						<div class="col-md-10">
+							<textarea class="form-control" name="description"
+								id="description" ng-model="vm.approDTO.comments">
+											</textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<!-- END FORM-->
+	</div>
+</div>
+
+<div class="clearfix form-actions" ng-show="!vm.disabledPheDuyet"
+	ng-hide="vm.hideAll">
+	<div class="row">
+		<div class="col-md-12 text-center">
+			<button type="button"
+				class="btn green btn-outline padding-search-right"
+				ng-click="vm.exportListContact()" translate>Export danh
+				sách công việc HĐ</button>
+			<button type="button" class="btn green btn-outline padding-search"
+				ng-click="vm.exPortCTTDPopup()" translate>Export chi tiết giá trị quyết toán</button>
+			<button type="button"
+				class="btn green btn-outline padding-search-right"
+				ng-click="vm.imPortCTTDPopup()" ng-show="vm.checkCTTD" translate>Import
+				chiết tính thẩm định</button>
+			<button type="button" class="btn green btn-outline padding-search"
+				ng-click="vm.imPortKLTDPopup()" ng-show="vm.checkCTTD" translate>Import
+				khối lượng thẩm định</button>
+		</div>
+	</div>
+</div>

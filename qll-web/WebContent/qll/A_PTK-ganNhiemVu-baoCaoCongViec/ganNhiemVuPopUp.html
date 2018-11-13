@@ -1,0 +1,268 @@
+
+<form class="form-horizontal row" role="form" name="addHdId"
+	id="addHdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body " >
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Nhiệm vụ 1: Đã nhận tại PTK</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix" >
+						<div class="form-group col-md-6" >
+							<label class="col-md-4 control-label " translate>Chọn nhân viên :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" 
+									k-options="caller.patternOptionsNV1" kendo-auto-complete
+									name="nhanVienAuto1" ng-model="caller.addQlcvPopup.hoVaTen1" 
+									maxlength="200" id="nhanVienAuto1" />
+									
+							</div>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày giao nhiệm vụ:</label>
+							<div class="col-md-8">
+								<input name="ngayGiaoNv1" id="ngayGiaoNv1"
+									ng-model="caller.addQlcvPopup.ngayGiaoNv1"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày giao nhiệm vụ không hợp lệ"
+									data-date-msg="Ngày giao nhiệm vụ không hợp lệ"
+									ng-change="caller.checkErr()" date-time  /> 
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Ngày hoàn thành :</label>
+							<div class="col-md-8" >
+								<input name="ngayht1" id="ngayht1"
+									required data-required-msg="Ngày hoàn thành không được để trống"
+									ng-model="caller.addQlcvPopup.ngayHt1"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày hoàn thành không hợp lệ"
+									data-date-msg="Ngày hoàn thành không hợp lệ"
+									ng-change="caller.checkErr()" date-time  /> 
+									<span
+											data-for="ngayht1" 
+											class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>			
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Nhiệm vụ 2: Đã nhận QTK</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+				<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Chọn nhân viên :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" 
+									k-options="caller.patternOptionsNV2" kendo-auto-complete
+									name="nhanVienAuto2" ng-model="caller.addQlcvPopup.hoVaTen2" 
+									maxlength="200" id="nhanVienAuto2" />
+								
+							</div>
+						</div>
+					
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày giao nhiệm vụ:</label>
+							<div class="col-md-8">
+								<input name="ngayGiaoNv2" id="ngayGiaoNv2"
+									ng-model="caller.addQlcvPopup.ngayGiaoNv2"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày giao nhiệm vụ không hợp lệ"
+									data-date-msg="Ngày giao nhiệm vụ không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> 
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Ngày hoàn thành :</label>
+							<div class="col-md-8">
+								<input name="ngayht2" id="ngayht2"
+									ng-model="caller.addQlcvPopup.ngayHt2"
+									required data-required-msg="Ngày hoàn thành không được để trống"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày hoàn thành không hợp lệ"
+									data-date-msg="Ngày hoàn thành không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> 
+									<span
+											data-for="ngayht2" 
+											class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate> Nhiệm vụ 3: Đã thẩm định QTK</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+						<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Chọn nhân viên :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternOptionsNV3" kendo-auto-complete
+									name="nhanVienAuto3" ng-model="caller.addQlcvPopup.hoVaTen3" 
+									maxlength="200" id="nhanVienAuto3" />
+									
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày giao nhiệm vụ:</label>
+							<div class="col-md-8">
+								<input name="ngayGiaoNv3" id="ngayGiaoNv3"
+									ng-model="caller.addQlcvPopup.ngayGiaoNv3"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày giao nhiệm vụ không hợp lệ"
+									data-date-msg="Ngày giao nhiệm vụ không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> 
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Ngày hoàn thành :</label>
+							<div class="col-md-8">
+								<input name="ngayht3" id="ngayht3"
+									ng-model="caller.addQlcvPopup.ngayHt3"
+									required data-required-msg="Ngày hoàn thành không được để trống"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày hoàn thành không hợp lệ"
+									data-date-msg="Ngày hoàn thành không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> 
+									<span
+											data-for="ngayht3" 
+											class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Nhiệm vụ 4: Đã lập đề nghị </span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Chọn nhân viên :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" 
+									k-options="caller.patternOptionsNV4" kendo-auto-complete
+									name="nhanVienAuto4" ng-model="caller.addQlcvPopup.hoVaTen4" 
+									maxlength="200" id="nhanVienAuto4" />
+									
+							</div>
+						</div>
+				
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày giao nhiệm vụ:</label>
+							<div class="col-md-8">
+								<input name="ngayGiaoNv4" id="ngayGiaoNv4"
+									ng-model="caller.addQlcvPopup.ngayGiaoNv4"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày giao nhiệm vụ không hợp lệ"
+									data-date-msg="Ngày giao nhiệm vụ không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> 
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Ngày hoàn thành :</label>
+							<div class="col-md-8">
+								<input name="ngayht4" id="ngayht4"
+									ng-model="caller.addQlcvPopup.ngayHt4"
+									required data-required-msg="Ngày hoàn thành không được để trống"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày hoàn thành không hợp lệ"
+									data-date-msg="Ngày hoàn thành không hợp lệ"
+									ng-change="caller.checkErr()" date-time />
+									<span
+											data-for="ngayht4" 
+											class="k-invalid-msg"></span> 
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Nhiệm vụ 5: Đã chốt với CDT</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Chọn nhân viên :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternOptionsNV5" kendo-auto-complete
+									name="nhanVienAuto5" ng-model="caller.addQlcvPopup.hoVaTen5" 
+									maxlength="200" id="nhanVienAuto5" />
+								
+							</div>
+						</div>
+				
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày giao nhiệm vụ:</label>
+							<div class="col-md-8">
+								<input name="ngayGiaoNv5" id="ngayGiaoNv5"
+									ng-model="caller.addQlcvPopup.ngayGiaoNv5"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày giao nhiệm vụ không hợp lệ"
+									data-date-msg="Ngày giao nhiệm vụ không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> 
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Ngày hoàn thành :</label>
+							<div class="col-md-8">
+								<input name="ngayht5" id="ngayht5"
+									ng-model="caller.addQlcvPopup.ngayHt5"
+									required data-required-msg="Ngày hoàn thành không được để trống"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày hoàn thành không hợp lệ"
+									data-date-msg="Ngày hoàn thành không hợp lệ"
+									ng-change="caller.checkErr()" date-time 
+									
+									/> <span
+											data-for="ngayht5" 
+											class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange1"
+							ng-click="caller.saveNv()" translate>Ghi lại</button>
+						
+					</div>
+				</div>
+			</div>
+	</div>
+</form>
+
+<!-- <div ng-show="!vm.showTabOne">
+<h1>abc</h1>
+</div> -->

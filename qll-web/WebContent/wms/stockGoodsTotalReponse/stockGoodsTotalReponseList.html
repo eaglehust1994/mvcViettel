@@ -1,0 +1,130 @@
+
+<div data-ng-controller="stockGoodsTotalReponseController as vm" id="stockGoodsTotalReponseId">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo25"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo25" class="collapse in from-search">
+						<div class="clearfix">
+								<auto-search model-label="Kho" caller="vm" req="req" focus-e="true"
+									template-url="views/popup/gridView.html" domain="true"
+									header-template="vm.headerTemplate" template-auto="vm.template"
+									page="1" page-size="20" popup-id="stockResponsePopup"
+									popup-type="gridplus"
+									popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+									combo-id="stockResponseCombo"
+									combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+									combo-name="name" combo-value="stockId" combo-code="name" model-Id="vm.stockGoodsTotalReponseSearch.stockId"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-name="vm.stockGoodsTotalReponseSearch.keySearch">
+								</auto-search>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình trạng hàng hoá</label>
+								<div class="col-md-8 margin_top">
+						           <input style=" float: left;" type="radio" id="goodsState"  name="goodsState"  ng-model="vm.stockGoodsTotalReponseSearch.goodsState" ng-checked="vm.stockGoodsTotalReponseSearch.goodsState == 2" value="2" class="ng-pristine ng-untouched ng-valid">
+						                <span class="padding_radio"> Tất cả</span>
+						                
+						           <input style=" float: left;" type="radio" id="goodsState" name="goodsState" ng-model="vm.stockGoodsTotalReponseSearch.goodsState" ng-checked="vm.stockGoodsTotalReponseSearch.goodsState == 1" value="1" class="ng-pristine ng-untouched ng-valid">
+						                <span class="padding_radio"> Bình thường</span>
+						                
+						           <input style=" float: left;" type="radio" id="goodsState" name="goodsState" ng-model="vm.stockGoodsTotalReponseSearch.goodsState" ng-checked="vm.stockGoodsTotalReponseSearch.goodsState == 0" value="0" class="ng-pristine ng-untouched ng-valid">
+						                <span class="padding_radio"> Hỏng</span>
+						         </div>
+							</div>
+						</div>
+
+						<div class="clearfix">
+							<div class="form-group col-md-6" id="listTypeGoods2">
+								<label class="col-md-4 control-label " translate>Loại hàng hoá</label>
+								<div class="col-md-8 position-relative">
+									<select multiple="multiple"
+										id="listGoodsTypeReponse" style="width: 100%" name="listGoodsType"
+										ng-model="vm.stockGoodsTotalReponseSearch.listGoodsType">
+									</select>
+								</div>
+								<div class="One_icon"
+									ng-click="vm.cancelStock('clearGoodsType')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Khả năng đáp ứng</label>
+								<div class="col-md-8 margin_top">
+						           <input style=" float: left;" id="reponseStatus" name="reponseStatus" type="radio" ng-model="vm.stockGoodsTotalReponseSearch.reponseStatus" ng-checked="vm.stockGoodsTotalReponseSearch.reponseStatus == 2" value="2" class="ng-pristine ng-untouched ng-valid">
+						                <span class="padding_radio"> Tất cả</span>
+						                
+						           <input style=" float: left;" type="radio" id="reponseStatus" name="reponseStatus" ng-model="vm.stockGoodsTotalReponseSearch.reponseStatus" ng-checked="vm.stockGoodsTotalReponseSearch.reponseStatus == 1" value="1" class="ng-pristine ng-untouched ng-valid">
+						                <span class="padding_radio"> Còn đủ hàng</span>
+						                
+						           <input style=" float: left;" type="radio" id="reponseStatus" name="reponseStatus" ng-model="vm.stockGoodsTotalReponseSearch.reponseStatus" ng-checked="vm.stockGoodsTotalReponseSearch.reponseStatus == 0" value="0" class="ng-pristine ng-untouched ng-valid">
+						                <span class="padding_radio"> Thiếu hàng</span>
+						         </div>
+							</div>
+							
+						
+						</div>
+						<div class="clearfix">
+							<auto-search model-label="Hàng hóa" caller="vm"
+								template-url="views/popup/gridViewGoodsPopup.html" 
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="goodsTotalResponse" popup-type="gridplusGoods"
+								popup-source-link="stockRsServiceRest/doSearchGoodsInPopup"
+								combo-id="goodsTotalResponse" combo-source-link="orderGoodsServiceRest/orderGoods/getForAutoComplete"
+								combo-name="name" combo-value="code" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommonGoods"
+								model-name="vm.stockGoodsTotalReponseSearch.name"/>
+						</div>
+
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" ng-click="vm.doSearch()" id="doSearchResponse" 
+										class="btn btn-qlk padding-search-right  noteQLK"  translate> Xem trước</button>
+									<button type="button" ng-click="vm.exportexcel()" 
+										class="btn btn-qlk padding-search-right  excelQLK" translate> Xuất excel</button>
+									<button type="button" ng-click="vm.exportpdf()" 
+										class="btn btn-qlk padding-search-right  pdfQLK" translate>Xuất pdf</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết quả tìm kiếm: {{vm.stockGoodsTotalReponseGrid.dataSource.total()}} bản ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo24"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo24" class="collapse in from-search">
+			<div id="stockGoodsTotalReponseGrid"
+				kendo-grid="vm.stockGoodsTotalReponseGrid" k-editable="false"
+				k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	 $("#listTypeGoods2").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+</script>

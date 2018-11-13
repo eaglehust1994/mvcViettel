@@ -1,0 +1,321 @@
+<form class="form-horizontal row" role="form" name="creatmemoryworkerror">
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				 translate>Thông tin chung</span>
+		</div>
+	</div>
+	<div class="form-body ">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Số Hợp Đồng</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="name" id="name"
+						ng-model="vm.item.contractCode" readonly="" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Ngày ký HĐ</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="name" id="name"
+						ng-model="vm.item.signed_date" readonly="" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Mã công trình</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constrtCode" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên công
+				trình</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constrtName" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" translate>Địa chỉ công
+					trình</label>
+				<div class="col-md-10 input-width">
+					<input class="form-control width100" name="description" id="description"
+						readonly="" ng-model="vm.item.constrtAddress">
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- thông tin nhật ký công trình-->
+
+	<div class="form-body" ng-hide="showList" disable-all="vm.disableAll">
+		<p></p>
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					 translate>Thông tin nhật ký công
+					trình</span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<!-- <div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Tên công
+					việc</label>
+				<div class="col-md-8">
+					<div class="input-icon right">
+						<i class="fa fa-search" ng-click="vm.showEstimatesWorkForm()"></i>
+						<input class="form-control" name="investProjectName" required
+							data-required-msg="Trường không được để trống"
+							id="investProjectName" ng-model="vm.criteria.workItemName"
+							ng-disabled="isDisabled"> <span
+							data-for='investProjectName' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div> -->
+
+
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Ngày
+					nhật ký</label>
+				<div class="col-md-8">
+					<input style="width: 100%;" kendo-date-picker name="logDate"
+						ng-disabled="isDisabled" required id="logDate"
+						ng-model="vm.criteria.logDate" k-format="'dd/MM/yyyy'"
+						data-required-msg="Trường không được để trống" /> <span
+						data-for='logDate' class='k-invalid-msg'></span>
+				</div>
+				<script>
+					$(function() {
+						var validTo = $("#logDate");
+						validTo.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+
+						validTo.kendoDatePicker({
+							format : "dd/MM/yyyy"
+						});
+
+						validTo.closest(".k-datepicker").add(validTo)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label req" translate>Nội
+						dung công việc</label>
+					<div class="col-md-10 input-width">
+						<textarea class="form-control width100" ng-disabled="isDisabled"
+							id="workContent" name="workContent" required
+							data-required-msg="Trường không được để trống"
+							ng-model="vm.criteria.workContent" maxlength="500" compare-to="$scope.workContent"></textarea>
+						<span data-for='workContent' class='k-invalid-msg'></span>
+						<!-- <span ng-show="regex.workContent" style="color: red;">Không nhập quá 2000 kí tự</span> -->
+						<span ng-show="creatmemoryworkerror.workContent.$error.maxlength" style="color: red;">Không nhập quá 2000 kí tự</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Những thay
+						đổi bổ sung phát sinh</label>
+					<div class="col-md-10 input-width">
+						<textarea class="form-control width100" name="description1"
+							id="description1" ng-disabled="isDisabled"
+							ng-model="vm.criteria.additionChangeArise" maxlength="500"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label req" translate>Ý kiến
+						của đơn vị thi công</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control width100" name="contractorComments"
+							id="contractorComments" ng-disabled="isDisabled" required
+							data-required-msg="Trường không được để trống"
+							ng-model="vm.criteria.contractorComments" maxlength="500"> <span
+							data-for='contractorComments' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Ý kiến
+						giám sát</label>
+					<div class="col-md-10 input-width">
+						<input class="form-control width100" name="monitorComments"
+							id="monitorComments" ng-disabled="isDisabled" 
+							ng-model="vm.criteria.monitorComments" maxlength="500"> <span
+							data-for='monitorComments' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Kỹ thuật
+					nhà thầu thi công</label>
+				<div class="col-md-8">
+					<select class="form-control" id="monitoring2" style="width: 100%"
+						name="monitoring2" kendo-drop-down-list
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.aMonitorId" ng-model="vm.criteria.aMonitorId"
+						ng-disabled="isDisabled" required
+						data-required-msg="Trường không được để trống"></select> <span
+						data-for='monitoring2' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Giám sát
+					thi công</label>
+				<div class="col-md-8">
+					<select class="form-control" id="monitoring1" style="width: 100%"
+						name="monitoring1" kendo-drop-down-list ng-disabled="isDisabled"
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.bConstructId"
+						ng-model="vm.criteria.bConstructId" required
+						data-required-msg="Trường không được để trống"></select> <span
+						data-for='monitoring1' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+</div>
+		<div class="form-body" ng-show="isDisabled">
+			<div class="portlet-title">
+				<div class="caption">
+					</i> <span class="caption-subject bold lowercase"
+						 translate>Phê duyệt</span>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phê duyệt</label>
+					<div class="col-md-8">
+						<select class="form-control" id="monitoring" style="width: 100%"
+							name="monitoring" kendo-drop-down-list
+							ng-model="vm.approDTO.statusCa">
+							<option value=2>Duyệt</option>
+							<option value=3>Từ chối duyệt</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Nhận
+							xét/Lý do từ chối duyệt</label>
+						<div class="col-md-10 input-width">
+							<textarea class="form-control width100" name="description"
+								id="description" ng-model="vm.approDTO.comments"> </textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	</div>
+
+	<p></p>
+	<div ng-show="showBia">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					 translate>Bìa nhật ký công trình</span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div id="IdTableBia" style="height: 180px"
+				kendo-grid="vm.reportGridMemoryBia" k-editable="false"
+				k-on-change="vm.onChangeBia()" k-options="vm.gridOptionsBia"
+				id="IdTable"></div>
+				<script>
+                $(document).ready(function() {
+                    var tooltip = $("#IdTableBia").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#IdTableBia").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#IdTableBia").find("td").click(false);
+                });
+            </script>
+		</div>
+	</div>
+</div>
+	<!-- Danh Sach -->
+	<p></p>
+	<div ng-show="showList">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					 translate>Danh sách nhật ký công
+					trình</span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div id="IdTable" kendo-grid="vm.reportGridMemory" k-editable="false"
+				k-on-change="vm.onChange()" k-options="vm.gridOptions" id="IdTable"></div>
+				<script>
+                $(document).ready(function() {
+                    var tooltip = $("#IdTable").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#IdTable").find("td").click(false);
+                });
+            </script>
+		</div>
+		</div>
+	</div>
+</form>
+

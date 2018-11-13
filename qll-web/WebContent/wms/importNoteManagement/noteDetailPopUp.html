@@ -1,0 +1,343 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleftdetail {
+	float: left;
+	width: 50%;
+	height: 500px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.frightdetail {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	height: 500px;
+	width: 50%;
+	background: #FFFFFF;
+}
+</style>
+<div class="row">
+	<div class="col-md-6 padding-height-15" id="button-header">
+	<div class="margin-left">
+		<button type="button" class="btn button-header-popup"
+			ng-click="caller.gotoTabOneNoteDetailPopUp()">Thông tin
+			chung</button>
+		<button type="button" class="btn button-header-popup"
+			ng-click="caller.gotoTabTwoNoteDetailPopUp()">Thông tin hàng
+			hóa</button>
+		<button type="button" class="btn button-header-popup"
+			ng-click="caller.gotoTabThreeNoteDetailPopUp()">Thông tin
+			trình ký</button>
+			</div>
+	</div>
+	<div class="col-md-6">
+		<button type="button"
+			class="width-button-header-popup pull-right btn padding-search-right">
+			<div class="docQLK"></div>
+			<div class="text-button" ng-click="caller.exportNoteWithoutSerial()"
+				translate>Xuất phiếu không Serial</div>
+		</button>
+		<button type="button"
+			class="width-button-header-popup pull-right btn padding-search-right">
+			<div class="docQLK"></div>
+			<div class="text-button" ng-click="caller.exportNoteWithSerial()"
+				translate>Xuất phiếu có Serial</div>
+		</button>
+	</div>
+</div>
+<div ng-show="caller.showTabOneNoteDetail">
+	<form class="form-horizontal row" role="form">
+		<div class="form-body">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin chung</span>
+					</div>
+					<div class="text-right margin-row-title">
+						<i data-toggle="collapse" data-target="#impNoteGenInfo"
+							class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div class="padding-width18 collapse in" id="impNoteGenInfo">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.stockTrans.orderCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Kho nhập</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.stockTrans.stockName"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã phiếu</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.stockTrans.code"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									giao hàng</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.stockTrans.shipperName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-label " translate>Ghi
+										chú</label>
+									<div class="col-md-10">
+										<label class="control-label"
+											ng-bind="caller.stockTrans.description"></label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng ký CA</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.stockTrans.signStateName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Trạng
+									thái phiếu</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.stockTrans.statusName"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin bổ sung</span>
+					</div>
+					<div class="text-right margin-row-title">
+						<i data-toggle="collapse" data-target="#impNoteAddedInfo"
+							class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<div class="padding-width18 collapse in" id="impNoteAddedInfo">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người tạo</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.createdByName"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày tạo</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.createdDate"></label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Đơn vị
+								tạo</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.createdDeptName"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày thực
+								nhập</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.realIeTransDate"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin tích hợp</span>
+					</div>
+					<div class="text-right margin-row-title">
+						<i data-toggle="collapse" data-target="#impNoteIntegrationInfo"
+							class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<div class="padding-width18 collapse in" id="impNoteIntegrationInfo">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tình
+								trạng PM tài chính</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.keySearch"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin hủy phiếu</span>
+					</div>
+					<div class="text-right margin-row-title">
+						<i data-toggle="collapse" data-target="#impNoteRejectInfo"
+							class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+					</div>
+				</div>
+			</div>
+			<div class="padding-width18 collapse in" id="impNoteRejectInfo">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người
+								thực hiện</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.cancelByName"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lý do</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.cancelReasonName"></label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày thực
+								hiện</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.cancelDate"></label>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ghi chú</label>
+							<div class="col-md-8">
+								<label class="control-label"
+									ng-bind="caller.stockTrans.cancelDescription"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<div ng-show="caller.showTabTwoNoteDetail">
+	<div class="wrap">
+		<div class="fleftdetail col-md-8">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Danh
+							sách hàng hóa</span>
+					</div>
+				</div>
+				<div id="goodsListForNoteGrid"
+					kendo-grid="caller.goodsListForNoteGrid" k-editable="false"
+					k-options="caller.goodsListForNoteGridOptions"></div>
+			</div>
+
+		</div>
+		<div class="frightdetail col-md-8">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin chi tiết hàng hóa</span>
+					</div>
+				</div>
+				<div class="clearfix" style="margin-top: 20px;">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Hàng hóa</label>
+						<div class="col-md-8">
+							<label class="control-label" id="goodsCodeAndNameForNote"></label>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Tình trạng</label>
+						<div class="col-md-8">
+							<label class="control-label"
+								ng-bind="caller.stockTransDetailSerialSearch.goodsStateName"></label>
+						</div>
+					</div>
+				</div>
+				<div id="goodsDetailForNoteGrid"
+					kendo-grid="caller.goodsDetailForNoteGrid" k-editable="false"
+					k-options="caller.goodsDetailForNoteGridOptions"></div>
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-show="caller.showTabThreeNoteDetail">
+
+	<div class="portlet light">
+		<div class="caption">
+			<div class="caption-subject bold lowercase">Danh sách người kí</div>
+		</div>
+		<div ng-repeat="ls in caller.list">
+			<combo-data-sign model-label="{{ls.oderName}}"
+				caller="signVofficeController" page-size="10"
+				combo-user-id="user{{$index}}"
+				combo-source-user-link="userRoleServiceRest/userRole/getForAutoCompleteSysUser"
+				combo-role-id="role{{$index}}"
+				combo-source-role-link="signVofficeRsServiceRest/signVoffice/getRoleByEmail"
+				combo-user-name="fullName" combo-user-value="sysUserId"
+				combo-user-code="email" combo-role-name="sysRoleName"
+				combo-role-value="sysRoleId" combo-role-adorg="adOrgId"
+				model-user-id="ls.sysUserId" model-user-name="ls.fullName"
+				model-user-code="ls.email" model-role-id="ls.sysRoleId"
+				model-role-name="ls.sysRoleName" model-ad-org-id="ls.adOrgId">
+			</combo-data-sign>
+
+
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="portlet light pull-right">
+		<button type="button"
+			class="btn btn-qlk padding-search-right closeQLK "
+			ng-click="caller.closeDetail()" translate>Đóng</button>
+	</div>
+</div>

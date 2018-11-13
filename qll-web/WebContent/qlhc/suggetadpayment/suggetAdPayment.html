@@ -1,0 +1,17 @@
+<div ng-controller="suggetAdPayment as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+<!-- <div > -->
+<div class="btn-toolbar margin-bottom-10 margin-top" >
+<!--<div data-ng-include="'erp/apcommon/ap_action_header.html'" id="topBarContract" onload="vm.hideAButton()"></div>	-->
+<div>
+			<div class="btn-group" style="margin-left: 10px">	
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.save()" ng-disabled="vm.disabledButtom">
+					<div class="action-button save"  uib-tooltip="Lưu" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+
+			<input type="file" style="display:none" id="importFile" name="importFile" ng-model="fileUpload" onchange="angular.element(this).scope().uploadFile()" />
+    </div> 
+</div>
+	<div data-ng-include="'qlhc/suggetadpayment/suggetAdPaymentForm.html'" kendo-validator="vm.validator"></div>	
+</div>
+

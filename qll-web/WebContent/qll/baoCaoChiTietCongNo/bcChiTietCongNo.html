@@ -1,0 +1,186 @@
+<!-- <style>
+	#bcCongNoGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#bcCongNoGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style> -->
+<div data-ng-controller="bcChiTietCongNoController as vm"
+	id="CongNoControl">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoCongno"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demoCongno" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<!-- <div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Mã nhân
+										viên</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="maNvId"
+											ng-model="vm.CongNoSearch.maNv" />
+									</div>
+								</div> -->
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Đối
+										tượng nhận nợ</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="doiTuongNhanNoId"
+											ng-model="vm.CongNoSearch.doiTuongNhanNo" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Số PXK</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="soPxkId"
+											ng-model="vm.CongNoSearch.soPxk" />
+									</div>
+								</div>
+
+							</div>
+							<!-- <div class="clearfix">
+								
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Đơn vị</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="donViId"
+											ng-model="vm.CongNoSearch.donVi" />
+									</div>
+								</div>
+
+							</div> -->
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Mã vật
+										tư</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maVatTuId" ng-model="vm.CongNoSearch.maVatTu" />
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Tên vật
+										tư</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="tenVatTuId" ng-model="vm.CongNoSearch.tenVatTu" />
+									</div>
+								</div>
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+								<label class="col-md-4 control-label " translate>Ngày
+									chứng từ : Từ ngày </label>
+								<div class="col-md-4">
+									<input name="ngayChungTuFrom" id="ngayChungTuFrom"
+										ng-model="vm.CongNoSearch.ngayChungTuFrom"
+										class="form-control width100" k-format="'dd/MM/yyyy'" 
+										data-required-msg="Ngày tạo không được để trống"
+										min-year="1000" data-minyear-msg="Ngày tạo không hợp lệ"
+										data-date-msg="Ngày tạo không hợp lệ"
+										ng-change="vm.checkErr()" date-time /> <span
+										data-for="ngayChungTuFrom" id='err1'
+										class="k-invalid-msg"></span>
+<!-- 										 <span style="color: red">{{vm.listMess.errMessage1}}</span>
+ -->									<!-- <span style="color: red">{{vm.errMessage2}}</span> -->
+									<!--  <span id="errorcreatedDateFromChange" class="k-invalid-msg" style="color: red" >Ngày không hợp lệ</span>  -->
+								</div>
+
+
+								<label class="col-md-1 control-label" translate>đến</label>
+								<div class="col-md-3 position-relative">
+									<input name="ngayChungTuTo" id="ngayChungTuTo"
+										ng-model="vm.CongNoSearch.ngayChungTuTo" date-time
+										style="width: 100%;" data-date-msg="Ngày đến không hợp lệ"
+										k-format="'dd/MM/yyyy'" min-year="1000"
+										data-minyear-msg="Ngày đến không hợp lệ"
+										ng-change="vm.checkErr()" /> <span
+										data-for="ngayChungTuTo" id='err2' class="k-invalid-msg"></span>
+									<!-- <span style="color: red">{{vm.listMess.errMessage}}</span> -->
+									<!-- <span id="errorcreatedDateToChange" class="k-invalid-msg" style="color: red" >Ngày không hợp lệ</span> -->
+								</div>
+
+
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.clearSearchDate()"></i>
+								</div>
+							</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Mã trạm</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="maTramId" ng-model="vm.CongNoSearch.maTram" />
+									</div>
+								</div>
+
+							</div>
+							<div class="clearfix">
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Hạng
+										mục</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											id="hangMucId" ng-model="vm.CongNoSearch.hangMuc" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button type="button" id="findCongNo"
+								class="btn  btn-qlk padding-search-right searchQLK" translate
+								ng-click="vm.doSearch()">Tìm kiếm</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="congNoCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#bcCongNoCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="bcCongNoCollapse" class="collapse in ">
+			<div id="bcCongNoGrid" kendo-grid="vm.bcCongNoGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

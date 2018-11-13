@@ -1,0 +1,70 @@
+
+<form class="form-horizontal row padding10"  role="form" name="cntContractMap" id="cntContractMap" kendo-validator="validator" k-options="validatorOptions">
+			<div class = "border-gray">
+				<div class="clearfix">
+					<div class="form-group row">
+						<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req" translate>Hợp đồng nhập</label>
+						<div class="col-md-8">
+							<div class="input-icon right ">
+								<i class="fa fa-search directive"
+									ng-click="caller.openContractGroup()" style="cursor: pointer;"></i>
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternContractOptions" kendo-auto-complete
+									name="name1" required data-required-msg="Giá trị không được bỏ trống" 
+									ng-model="caller.cntContractMap.name" maxlength="200"
+									id="name1" />
+							</div>
+							<!-- <span data-for='name' class='k-invalid-msg'></span> -->
+						</div>
+						</div>
+						<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req" translate>Hợp đồng từ KTTS tập đoàn</label>
+						<div class="col-md-8">
+							<div class="input-icon right ">
+								<i class="fa fa-search directive"
+									ng-click="caller.openContractMapGroup()" style="cursor: pointer;"></i>
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternContractKttsOptions" kendo-auto-complete
+									name="codeKttsMap" required data-required-msg="Giá trị không được bỏ trống" 
+									ng-model="caller.cntContractMap.contractCodeKtts" maxlength="200"
+									id="codeKttsMap" />
+							</div>
+							<span data-for='codeKttsMap' class='k-invalid-msg'></span>
+						</div>
+					</div>	
+					</div>
+				</div>
+		</div>
+		<br>
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right" style="padding-right: 0px;">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+							<button type="button" id="savepopupApp" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Map HĐ</button>
+						</div>
+					</div>
+				</div>
+			<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			   document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if(e.keyCode===13&& !$('#cancel:focus').length&& !$('#savepopupApp:focus').length){
+         				$("#savepopupApp").click();
+         				break;
+						}
+         		}
+         	} 
+			
+		
+			
+			  
+	</script>  
+</form>

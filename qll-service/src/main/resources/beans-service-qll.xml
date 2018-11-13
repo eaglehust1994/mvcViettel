@@ -1,0 +1,620 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+	<!-- Beans definition for module EST -->
+	
+	
+	<!-- <jaxrs:server address="/authenServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.asset.rest.AssetAuthenRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server> -->
+
+	<!-- <jaxrs:server id="tblCauHinhTienServiceRest" address="/tblCauHinhTienServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblCauHinhTienServiceClass" class="com.viettel.qll.rest.TblCauHinhTienRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDanhMucServiceRest" address="/tblDanhMucServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDanhMucServiceClass" class="com.viettel.qll.rest.TblDanhMucRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDlDauVaoDayMayServiceRest" address="/tblDlDauVaoDayMayServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDlDauVaoDayMayServiceClass" class="com.viettel.qll.rest.TblDlDauVaoDayMayRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDlHaTangTramServiceRest" address="/tblDlHaTangTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDlHaTangTramServiceClass" class="com.viettel.qll.rest.TblDlHaTangTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDmKiCaNhanServiceRest" address="/tblDmKiCaNhanServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDmKiCaNhanServiceClass" class="com.viettel.qll.rest.TblDmKiCaNhanRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="tblDmMaLoiServiceRest" address="/tblDmMaLoiServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDmMaLoiServiceClass" class="com.viettel.qll.rest.TblDmMaLoiRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="tblDonGiaThueBaoServiceRest" address="/tblDonGiaThueBaoServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDonGiaThueBaoServiceClass" class="com.viettel.qll.rest.TblDonGiaThueBaoRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDonGiaTramServiceRest" address="/tblDonGiaTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDonGiaTramServiceClass" class="com.viettel.qll.rest.TblDonGiaTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDutCapLoiCqServiceRest" address="/tblDutCapLoiCqServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDutCapLoiCqServiceClass" class="com.viettel.qll.rest.TblDutCapLoiCqRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	
+	<jaxrs:server id="tblLuongDayMayServiceRest" address="/tblLuongDayMayServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLuongDayMayServiceClass" class="com.viettel.qll.rest.TblLuongDayMayRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblLuongNvTramServiceRest" address="/tblLuongNvTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLuongNvTramServiceClass" class="com.viettel.qll.rest.TblLuongNvTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblLuongTungTramServiceRest" address="/tblLuongTungTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLuongTungTramServiceClass" class="com.viettel.qll.rest.TblLuongTungTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblMngWorksdayServiceRest" address="/tblMngWorksdayServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblMngWorksdayServiceClass" class="com.viettel.qll.rest.TblMngWorksdayRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblNgayCongServiceRest" address="/tblNgayCongServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblNgayCongServiceClass" class="com.viettel.qll.rest.TblNgayCongRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	
+	<jaxrs:server id="tblPhatDutCapServiceRest" address="/tblPhatDutCapServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatDutCapServiceClass" class="com.viettel.qll.rest.TblPhatDutCapRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="tblPhatKhacServiceRest" address="/tblPhatKhacServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatKhacServiceClass" class="com.viettel.qll.rest.TblPhatKhacRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatKpiServiceRest" address="/tblPhatKpiServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatKpiServiceClass" class="com.viettel.qll.rest.TblPhatKpiRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	
+	<jaxrs:server id="tblPhatXuLySuCoServiceRest" address="/tblPhatXuLySuCoServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatXuLySuCoServiceClass" class="com.viettel.qll.rest.TblPhatXuLySuCoRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhiBanHangServiceRest" address="/tblPhiBanHangServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhiBanHangServiceClass" class="com.viettel.qll.rest.TblPhiBanHangRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server> -->
+	
+<jaxrs:server id="commonServiceRest" address="/commonServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/commonServiceClass" class="com.viettel.Common.rest.CommonRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>	
+<jaxrs:server id="taskGroupRsServiceRest" address="/taskGroupRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="taskGroupRsServiceClass" class="com.viettel.qll.rest.TaskGroupRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	
+
+<jaxrs:server id="taskRsServiceRest" address="/taskRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="taskRsServiceClass" class="com.viettel.qll.rest.TaskRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+
+	
+<jaxrs:server id="sysUserServiceRest" address="/service/sysUserServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="sysUserServiceClass" class="com.viettel.qll.rest.SysUserRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+<jaxrs:server id="sysGroupServiceRest" address="/service/sysGroupServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="sysGroupServiceClass" class="com.viettel.qll.rest.SysGroupRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	
+<jaxrs:server id="tblKpiScoreServiceRest" address="/service/tblKpiScoreServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblKpiScoreServiceClass" class="com.viettel.qll.rest.TblKpiScoreRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	
+<jaxrs:server id="tblTimeWorkRsServiceRest" address="/tblTimeWorkRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblTimeWorkRsServiceClass" class="com.viettel.qll.rest.TblTimeWorkRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	
+<jaxrs:server id="tblKhBckqcvRsServiceRest" address="/tblKhBckqcvRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblKhBckqcvRsServiceClass" class="com.viettel.qll.rest.TblKhBckqcvRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	
+<jaxrs:server id="tblKhQlvcRsServiceRest" address="/tblKhQlvcRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblKhQlvcRsServiceClass" class="com.viettel.qll.rest.TblKhQlvcRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	
+<jaxrs:server id="commonRsServiceRest" address="/commonRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="/commonRsServiceRest" class="com.viettel.qll.rest.CommonRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+<jaxrs:server id="tblQlCvPtkFileRsServiceRest" address="/tblQlCvPtkFileRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="/tblQlCvPtkFileRsServiceRest" class="com.viettel.qll.rest.TblQlCvPtkFileRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+<jaxrs:server id="/tblGanNhiemVuRsServiceRest" address="/tblGanNhiemVuRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/tblGanNhiemVuRsServiceClass" class="com.viettel.qll.rest.TblGanNhiemVuRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>	
+<jaxrs:server id="/tblQlCvPtkRsServiceRest" address="/tblQlCvPtkRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/tblQlCvPtkRsServiceClass" class="com.viettel.qll.rest.TblQlCvPtkRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+<jaxrs:server id="tblDanhMucServiceRest" address="/tblDanhMucServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDanhMucServiceClass" class="com.viettel.qll.rest.TblDanhMucRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+<jaxrs:server id="tblDmKiDonViServiceRest" address="/tblDmKiDonViServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDmKiDonViServiceClass" class="com.viettel.qll.rest.TblDmKiDonViRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+<jaxrs:server id="tblQltsThucXuatTheoKyServiceRest" address="/tblQltsThucXuatTheoKyServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblQltsThucXuatTheoKyServiceClass" class="com.viettel.qll.rest.TblQltsThucXuatTheoKyRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+	<jaxrs:server id="tblDlHaTangTramServiceRest" address="/tblDlHaTangTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDlHaTangTramServiceClass" class="com.viettel.qll.rest.TblDlHaTangTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="TblQltsCongNoVatTuServiceRest" address="/TblQltsCongNoVatTuServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="TblQltsCongNoVatTuServiceClass" class="com.viettel.qll.rest.TblQltsCongNoVatTuRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatFcServiceRest" address="/tblPhatFcServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatFcServiceClass" class="com.viettel.qll.rest.TblPhatFcRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDutCapLoiCqServiceRest" address="/tblDutCapLoiCqServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDutCapLoiCqServiceClass" class="com.viettel.qll.rest.TblDutCapLoiCqRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatKpiServiceRest" address="/tblPhatKpiServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatKpiServiceClass" class="com.viettel.qll.rest.TblPhatKpiRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatXuLySuCoServiceRest" address="/tblPhatXuLySuCoServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatXuLySuCoServiceClass" class="com.viettel.qll.rest.TblPhatXuLySuCoRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatCdtServiceRest" address="/tblPhatCdtServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatCdtServiceClass" class="com.viettel.qll.rest.TblPhatCdtRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatKhacServiceRest" address="/tblPhatKhacServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatKhacServiceClass" class="com.viettel.qll.rest.TblPhatKhacRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+<jaxrs:server id="tblNhanVienServiceRest" address="/tblNhanVienServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblNhanVienServiceClass" class="com.viettel.qll.rest.TblNhanVienRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDmThongTinLoiDayMayServiceRest"
+		address="/tblDmThongTinLoiDayMayServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDmThongTinLoiDayMayServiceClass"
+				class="com.viettel.qll.rest.TblDmThongTinLoiDayMayRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblNgayCongServiceRest" address="/tblNgayCongServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblNgayCongServiceClass" class="com.viettel.qll.rest.TblNgayCongRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblLoiDongAoServiceRest" address="/tblLoiDongAoServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLoiDongAoServiceClass" class="com.viettel.qll.rest.TblLoiDongAoRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblDonGiaTramServiceRest" address="/tblDonGiaTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDonGiaTramServiceClass" class="com.viettel.qll.rest.TblDonGiaTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblQuaTrinhTlServiceRest" address="/tblQuaTrinhTlServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblQuaTrinhTlServiceClass" class="com.viettel.qll.rest.TblQuaTrinhTlRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+<jaxrs:server id="tblLoiLapLaiServiceRest" address="/tblLoiLapLaiServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLoiLapLaiServiceClass" class="com.viettel.qll.rest.TblLoiLapLaiRsServiceImpl" />
+		</jaxrs:serviceBeans>
+		</jaxrs:server>
+<jaxrs:server id="tblPhatPakhServiceRest" address="/tblPhatPakhServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatPakhServiceClass" class="com.viettel.qll.rest.TblPhatPakhRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhatRoiMangServiceRest" address="/tblPhatRoiMangServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhatRoiMangServiceClass" class="com.viettel.qll.rest.TblPhatRoiMangRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblUsersServiceRest" address="/tblUsersServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblUsersServiceClass" class="com.viettel.qll.rest.TblUsersRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		 <jaxrs:server id="tblKdcQuyLuongServiceRest" address="/tblKdcQuyLuongServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblKdcQuyLuongServiceClass" class="com.viettel.qll.rest.TblKdcQuyLuongRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server> 
+		<jaxrs:server id="tblKdcLuongCoDongServiceRest" address="/tblKdcLuongCoDongServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblKdcLuongCoDongServiceClass" class="com.viettel.qll.rest.TblKdcLuongCoDongRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="tblDonGiaThueBaoServiceRest" address="/tblDonGiaThueBaoServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblDonGiaThueBaoServiceClass" class="com.viettel.qll.rest.TblDonGiaThueBaoRsServiceImpl" />
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="tblKHuyenKhoServiceRest" address="/tblKHuyenKhoServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblKHuyenKhoServiceClass" class="com.viettel.qll.rest.TblKHuyenKhoRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="tblDmKiCaNhanServiceRest" address="/tblDmKiCaNhanServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDmKiCaNhanServiceClass" class="com.viettel.qll.rest.TblDmKiCaNhanRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblPhiBanHangServiceRest" address="/tblPhiBanHangServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblPhiBanHangServiceClass" class="com.viettel.qll.rest.TblPhiBanHangRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+<jaxrs:server id="tblDlDauVaoDayMayServiceRest" address="/tblDlDauVaoDayMayServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblDlDauVaoDayMayServiceClass" class="com.viettel.qll.rest.TblDlDauVaoDayMayRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server><!-- 	Vật tư cấp a-->	
+	<jaxrs:server id="tblNgaycongServiceRest" address="/tblNgaycongServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblNgaycongServiceClass" class="com.viettel.qll.rest.TblNgayCongRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+		<jaxrs:server id="tblTypeAPxkServiceRest" address="/tblTypeAPxkServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblTypeAPxkServiceClass" class="com.viettel.qll.rest.TblTypeAPxkRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+<jaxrs:server id="tblRolesRsServiceRest" address="/tblRolesRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblRolesRsServiceClass" class="com.viettel.qll.rest.TblRolesRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="tblRoleUserRsServiceRest" address="/tblRoleUserRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="tblRoleUserRsServiceClass" class="com.viettel.qll.rest.TblRoleUserRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="lichSuDangNhapServiceRest" address="/lichSuDangNhapServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="lichSuDangNhapServiceClass" class="com.viettel.qll.rest.LichSuDangNhapRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="lsThaoTacRsServiceRest" address="/lsThaoTacRsServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="lsThaoTacRsServicClass" class="com.viettel.qll.rest.LsThaoTacRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>	<jaxrs:server id="tblLuongNvTramServiceRest" address="/tblLuongNvTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLuongNvTramServiceClass" class="com.viettel.qll.rest.TblLuongNvTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+		<jaxrs:server id="tblLuongTungTramServiceRest" address="/tblLuongTungTramServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLuongTungTramServiceClass" class="com.viettel.qll.rest.TblLuongTungTramRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="tblLuongDayMayServiceRest" address="/tblLuongDayMayServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="tblLuongDayMayServiceClass" class="com.viettel.qll.rest.TblLuongDayMayRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="kqHdTkRsServiceRest" address="/kqHdTkRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="kqHdTkRsServiceClass" class="com.viettel.qll.rest.KqHdTkRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="/qlCvPtkRsServiceRest" address="/qlCvPtkRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/qlCvPtkRsServiceClass" class="com.viettel.qll.rest.QlCvPtkRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<!-- auth service for mobile -->
+	<jaxrs:server address="/service/SysUserRestService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean class="com.viettel.qll.webservice.SysUserWsRsService" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	
+
+</beans>

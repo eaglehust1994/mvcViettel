@@ -1,0 +1,131 @@
+
+
+<div data-ng-controller="GNVController as vm" id="GanNvControl">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div id="demoOrderChange1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label " translate>Số hợp đồng:</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text" 
+												k-options="caller.patternOptionsSoHdCdt" kendo-auto-complete
+												name="SoHdCdtPopUp" ng-model="caller.listTaskSearch.soHdCdt" 
+												maxlength="200" id="SoHdCdtPopUp" />
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Ngày
+										nhận HSHC : Từ </label>
+									<div class="col-md-4">
+										<input name="createdDateFromChange" id="createdDateFromChange"
+											ng-model="caller.listTaskSearch.ngayNhanHshcFrom"
+											class="form-control width100" k-format="'dd/MM/yyyy'"
+											min-year="1000" data-minyear-msg="Ngày tạo không hợp lệ"
+											data-date-msg="Ngày tạo không hợp lệ"
+											 date-time /> <span
+											data-for="createdDateFromChange" id="err1"
+											class="k-invalid-msg"></span>
+									</div>
+
+									<label class="col-md-1 control-label" translate>đến</label>
+									<div class="col-md-3 position-relative">
+										<input name="createdDateToChange" id="createdDateToChange"
+											ng-model="caller.listTaskSearch.ngayNhanHshcTo" date-time
+											style="width: 100%;" data-date-msg="Ngày đến không hợp lệ"
+											k-format="'dd/MM/yyyy'" min-year="1000"
+											data-minyear-msg="Ngày đến không hợp lệ"
+											ng-change="vm.checkErr()" /> <span
+											data-for="createdDateToChange" id='err2'
+											class="k-invalid-msg"></span>
+									</div>
+
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã vị trí :</label>
+									<div class="col-md-8">
+										
+										<div class="demo-section k-content">
+									
+									       <select id="maViTriPopup10" k-ng-model="caller.listTaskSearch.listMaViTri"
+									      
+									       ></select>
+									   </div>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>CNKV :</label>
+									<div class="col-md-8">
+										<select ng-model="caller.listTaskSearch.cnkv"
+											class=" form-control width100">
+											<option value="" selected="selected">~~Chọn~~</option>
+											<option value="CNKV1">CNKV1</option>
+											<option value="CNKV2">CNKV2</option>
+											<option value="CNKV3">CNKV3</option>
+											<option value="CNKV4">CNKV4</option>
+											<option value="CNKV5">CNKV5</option>
+											<option value="TTKT">TTKT</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix form-actions margin-top">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<button type="button" id="timqlCvPtk"
+											class="btn  btn-qlk padding-search-right searchQLK" translate
+											ng-click="caller.getListTask()">Tìm kiếm</button>
+											
+									</div>
+								</div>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="listTaskCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#listTaskCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="listTaskCollapse" class="collapse in ">
+			<div id="listTaskGrid" kendo-grid="caller.listTaskGrid" k-editable="false"
+				k-options="caller.listTaskGridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("input").change(function() {
+		$(this).val($.trim($(this).val()));
+	});
+</script>

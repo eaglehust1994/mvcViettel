@@ -1,0 +1,100 @@
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<i class="icon-equalizer font-red-sunglo"></i> <span class="caption-subject bold lowercase" translate>Tìm kiếm</span>
+		</div>
+	</div>
+	<div class="portlet-body form">
+		<form class="form-horizontal">
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Số hợp đồng</label>
+					<div class="col-md-8">
+						<input class="form-control" id="contractCode" ng-model="vm.criteria.contractCode" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Dự án</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<i class="fa fa-search" ng-click="vm.showProjectNameForm()"></i>
+							<input class="form-control" name="investProjectName" id="investProjectName" ng-model="vm.criteria.investProjectName">
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Đối tác</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<i class="fa fa-search" ng-click="vm.showPartnerNameForm()"></i> <input kendo-auto-complete k-options="vm.PartnerNameOptions"
+								class="form-control width100" name="partnerName" id="partnerName" ng-model="vm.criteria.partnerName" />
+						</div>
+					</div>
+
+
+
+
+
+				</div>
+				<div class="form-group col-md-6">
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã công trình</label>
+					<div class="col-md-8">
+						<input class="form-control" name="constrtCode" id="constrtCode" ng-model="vm.criteria.constrtCode">
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label ">Tên công trình</label>
+					<div class="col-md-8">
+						</i> <input class="form-control width100" name="constrtName" id="constrtName" ng-model="vm.criteria.constrtName" required>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Loại Công trình</label>
+					<div class="col-md-8">
+						<select class="form-control" id="constrType" style="width: 100%" name="constrType"
+								kendo-drop-down-list
+								k-data-text-field="'constrTypeName'"
+								k-data-value-field="'constrTypeId'"
+								k-data-source="vm.constrTypes"
+								ng-model="vm.criteria.constrType">
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tỉnh thành</label>
+					<div class="col-md-8">
+						<select class="form-control" id="provinceId" style="width: 100%" name="provinceId"
+								kendo-drop-down-list
+								k-data-text-field="'provinceName'"
+								k-data-value-field="'provinceId'"
+								k-data-source="vm.provinces"
+								ng-model="vm.criteria.provinceId">
+						</select>
+
+					</div>
+				</div>
+
+
+				<div class="clearfix form-actions">
+					<div class="row">
+						<div class="col-md-12"  style ="text-align: center;">
+						  
+							<button type="button" class="btn green" translate ng-click="vm.doSearch()">Tìm kiếm</button>
+							<button type="button" class="btn default" translate ng-click="vm.resetSearch()">Làm lại</button>
+						</div>
+					</div>
+				</div>
+
+		</form>
+		</div>
+	</div>

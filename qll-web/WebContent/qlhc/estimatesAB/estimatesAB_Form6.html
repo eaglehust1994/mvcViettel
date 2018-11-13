@@ -1,0 +1,287 @@
+<!-- THONG TIN CHUNG BEGIN -->
+<div class="portlet light bordered">
+	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span class="caption-subject bold lowercase"
+					translate>Thông tin chung</span>
+	  	</div>
+ 	</div>
+			<div class="portlet-body" >
+				<form action="#" class="form-horizontal">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Số Hợp Đồng</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="code"
+									id="code" ng-model="vm.estimatesAB3.contractCode"
+									readonly="readonly" /> 
+									<span data-for='code' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày ký HĐ</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="contractDateSign"
+									id="contractDateSign"
+									ng-model="vm.estimatesAB3.contractDateSign" 
+									readonly="readonly" /> <span
+									data-for='contractDateSign' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+				
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã công trình</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="constrtCode" id="constrtCode"
+									ng-model="vm.estimatesAB3.constrtCode" 
+									readonly="readonly" /> <span
+									data-for='constructId' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tên công trình</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="constructName" id="constructName"
+									ng-model="vm.estimatesAB3.constructName" readonly="readonly" /> <span
+									data-for='constructName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Địa	chỉ công trình</label>
+								<div class="col-md-10 input-width">
+									<input class="form-control width100" name="constructAddress" id="constructAddress"
+										ng-model="vm.estimatesAB3.constructAddress" readonly="readonly" /> <span
+										data-for='constructAddress' class='k-invalid-msg'></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label">Mã trạm/tuyến</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="stationcode" id="stationcode"
+									ng-model="vm.estimatesAB3.stationcode" readonly="readonly" /> <span
+									data-for='constructName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label">Trạng thái ký CA</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="statusCA" id="statusCA"
+									ng-model="vm.estimatesAB6.statusCA" readonly="readonly" /> <span
+									data-for='constructName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+				</div>
+			</form>
+		</div>
+</div>
+<!-- THONG TIN CHUNG END -->
+<!-- THANH PHAN KY BEGIN -->
+<div class="portlet light bordered" disable-all="vm.disableAll">
+	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Thành phần ký</span>
+	  	</div>
+ 	</div>
+ 	<div class="portlet-body">
+				<form action="#" class="form-horizontal" >						
+						<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thủ trưởng chủ đầu tư</label>
+								<div class="col-md-8">
+								<select class="form-control" id="amonitorId" style="width: 100%"
+									name="amonitorId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listAmonitorConstruction"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.adirectorId" required
+									data-required-msg="Thủ trưởng chủ đầu tư không được để trống"></select>
+								<span data-for="amonitorId" class="k-invalid-msg"></span>
+							</div>
+							
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giám đốc nhà thầu</label>
+							<div class="col-md-8">
+								<select class="form-control" id="ConstructorId" style="width: 100%"
+									name="ConstructorId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listContractorsConstruction"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.bdirectorId" required
+									data-required-msg="Giám đốc nhà thầu không được để trống"></select>
+								<span data-for="ConstructorId" class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<!-- <div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Chủ đầu tư phòng Hạ Tầng</label>
+							<div class="col-md-8">
+								<select class="form-control" id="AHEADCONSTRUCTID" style="width: 100%"
+									name="aHeadConstructId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listThanhPhanKy"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.aheadConstructId" required
+									data-required-msg="Chủ đầu tư phòng Hạ Tầng không được để trống"></select>
+								<span data-for="aHeadConstructId" class="k-invalid-msg"></span>
+							</div>
+						</div> -->
+						 <Search-Grid-Popup searchtype="codePerSon" model-label="Chủ đầu tư phòng Hạ Tầng" req="req"
+							caller="vm" popup-id="establish_detailed_aheadConstructId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="establish_detailed_txtaheadConstructId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.estimatesAB6.aheadConstructId"
+							model-name="vm.item.aheadConstructName">
+						</Search-Grid-Popup> 
+						<!-- <div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Chủ đầu tư phòng Tài Chính</label>
+							<div class="col-md-8">
+								<select class="form-control" id="AHEADFINANCEID" style="width: 100%"
+									name="aHeadFinanceId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listThanhPhanKy"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.aheadFinanceId" required
+									data-required-msg="Chủ đầu tư phòng Tài Chính không được để trống"></select>
+								<span data-for="aHeadFinanceId" class="k-invalid-msg"></span>
+							</div>
+						</div> -->
+						 <Search-Grid-Popup searchtype="codePerSon" model-label="Chủ đầu tư phòng Tài Chính" req="req"
+							caller="vm" popup-id="establish_detailed_aheadFinanceId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="establish_detailed_txtaheadFinanceId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.estimatesAB6.aheadFinanceId"
+							model-name="vm.item.aheadFinanceName"></Search-Grid-Popup> 
+						<!-- <div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Kế toán nhà thầu</label>
+							<div class="col-md-8">
+								<select class="form-control" id="BHEADACCOUNTID" style="width: 100%"
+									name="bHeadAccountId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listThanhPhanKy"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.bheadAccountId" required
+									data-required-msg="Kế toán nhà thầu không được để trống"></select>
+								<span data-for="bHeadAccountId" class="k-invalid-msg"></span>
+							</div>
+						</div> -->
+						 <Search-Grid-Popup searchtype="codePerSon" model-label="Kế toán nhà thầu" req="req"
+							caller="vm" popup-id="establish_detailed_bheadAccountId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="establish_detailed_txtbheadAccountId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.estimatesAB6.bheadAccountId"
+							model-name="vm.item.bheadAccountName"></Search-Grid-Popup> 
+						<!-- <div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Phòng tổng hợp CĐT</label>
+							<div class="col-md-8">
+								<select class="form-control" id="AHEADTECHNICALID" style="width: 100%"
+									name="aHeadTechnicalId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listThanhPhanKy"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.aheadTechnicalId" required
+									data-required-msg="Phòng tổng hợp CĐT không được để trống"></select>
+								<span data-for="aHeadTechnicalId" class="k-invalid-msg"></span>
+							</div>
+						</div> -->
+						 <Search-Grid-Popup searchtype="codePerSon" model-label="Phòng tổng hợp CĐT" req="req"
+							caller="vm" popup-id="establish_detailed_aheadTechnicalId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="establish_detailed_txtaheadTechnicalId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.estimatesAB6.aheadTechnicalId"
+							model-name="vm.item.aheadTechnicalName"></Search-Grid-Popup> 
+						<!-- <div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Đội thi công nhà thầu</label>
+							<div class="col-md-8">
+								<select class="form-control" id="BHEADCONSTRUCTID" style="width: 100%"
+									name="bHeadConstructId" kendo-drop-down-list
+									k-data-text-field="'fullName'"
+									k-data-value-field="'userId'"
+									k-data-source="vm.listThanhPhanKy"
+									ng-disabled="vm.disableEstimate6"
+									ng-model="vm.estimatesAB6.bheadConstructId" required
+									data-required-msg="Đội thi công đối tác không được để trống"></select>
+								<span data-for="bHeadConstructId" class="k-invalid-msg"></span>
+							</div>
+						</div> -->
+						 <Search-Grid-Popup searchtype="codePerSon" model-label="Đội thi công nhà thầu" req="req"
+							caller="vm" popup-id="establish_detailed_bheadConstructId"
+							popup-type="gridplus" template = "views/popup/PersonalEvaluation.html"
+							popup-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-id="establish_detailed_txtbheadConstructId"
+							combo-source-link="CatEmployeeRsServiceRest/catEmployee/getAllEmployee"
+							combo-name="fullName" combo-value="id" combo-code="value"
+							 combo-grid="vm.gridCustom"
+							model-id="vm.estimatesAB6.bheadConstructId"
+							model-name="vm.item.bheadConstructName"></Search-Grid-Popup> 
+					</div>
+				</div>				
+			</form>
+		</div>
+<!-- THANH PHAN KY END -->
+<!-- NOI DUNG BEGIN -->
+<div class="portlet light bordered">
+ 	<div class="portlet-title">
+	  	<div class="caption">
+	  	<i class=""></i>
+	    <span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Nội dung</span>
+	  	</div>
+ 	</div>
+		<br/>
+		<div class="portlet-body" >
+			<form action="#" class="form-horizontal" >
+				<div class="form-body">
+					<div class="clearfix">
+						<div class="form-group col-md-6"  disable-all="vm.disableAll">
+							<label class="col-md-4 control-label req">File ký CA(.pdf)</label>
+							<div class="col-md-8" >
+								<input type="file" id="file" name="file" accept="application/pdf" onchange="angular.element(this).scope().uploadFile(this.files)" ng-disabled="vm.disableEstimate6"/>
+							</div>
+							
+						</div>
+						<div class="form-group col-md-6">
+							<div class="col-md-8">
+								<a href='{{vm.pathFile}}{{vm.estimatesAB6.documentPath}}'>{{vm.estimatesAB6.documentName}}</a>
+							</div>
+						</div>
+					</div>	
+				</div>
+				</div>
+			</form>
+		</div>	
+<!-- NOI DUNG END -->			
+						

@@ -1,0 +1,55 @@
+
+<!-- saved from url=(0063)http://104.199.131.150:68/pmtc2.0/app/popup/donViForm.view.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-utf8"></head><body><div class="modal-body" id="stockP">
+	    <div class="portlet light clearfix">
+			<div class="col-md-10">
+				<label class="col-md-3 control-label" translate>Mã/tên hàng hóa</label>
+				<div class="col-md-9">
+			        <input id="filterTextGoods" autofocus ng-model="caller.searchGridGoods.name" class="k-textbox input-menu-button form-control search-tree" placeholder="Nhập mã hoặc tên hàng hóa"/>
+				</div>
+			</div>
+			<div class="col-md-2">
+            	<button id="find" type="button" uib-tooltip="Tìm kiếm" class="btn btn-qlk padding-search-right searchQLK"
+					ng-click="caller.searchOnGoodsPopup()" translate><i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm
+				</button>
+            </div>
+		</div>
+
+
+    <!-- BEGIN PORTLET-->
+        <div class="portlet-body">
+            <div id="gridView" kendo-grid k-options="data" k-ng-delay="data" 
+            	 k-on-change="caller.onRowChange(dataItem, popupId)"
+            	 k-editable="false" k-cache="false"
+            	 >
+	        </div>
+        </div>
+    <!-- END PORTLET-->
+</div>
+
+<div class="clearfix form-actions margin-top">
+	<div class="row" style="margin-right: 0px" ng-show="false">
+		<div class="col-md-12 text-right">
+			<button type="button" uib-tooltip="Đóng"
+				class="btn btn-qlk padding-search-right closeQLK"
+				id="cancel" ng-click="cancel()" translate>Đóng</button>
+			
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+       document.onkeydown= keyDown;
+        function keyDown(e){
+   		switch(e.keyCode) {
+   			case 27:
+   				$("#cancel").click();
+   				break;
+   			case 13:
+   				$("#find").click();
+   				break;
+   		}
+   	} 
+        
+
+</script> 
+</body></html>

@@ -1,0 +1,47 @@
+<div>
+	<div class="btn-group margin-left-button"
+		ng-controller="DsbgvtController as menu">
+		<button type="button"
+			class="btn btn-default padding-button border-radius-left margin-left-button box-shadow"
+			ng-click="vm.add()" ng-disabled="vm.disabledButtom">
+			<div class="action-button add" uib-tooltip="Thêm mới" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button" ng-show="vm.showDetail"
+			class="btn btn-default padding-button box-shadow"
+			ng-click="vm.save()" ng-disabled="vm.disabledButtom">
+			<div class="action-button save" uib-tooltip="Lưu" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button box-shadow"
+			ng-click="vm.edit()">
+			<div class="action-button view" uib-tooltip="Xem bảng/Chi tiết"
+				translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button border-radius-right box-shadow"
+			ng-click="vm.multiDelete()" ng-disabled="vm.disabledButtom">
+			<div class="action-button del" uib-tooltip="Xóa" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+	</div>
+
+	<div class="btn-group">
+		<button type="button"
+			class="btn btn-default padding-button border-radius-left box-shadow"
+			ng-click="vm.exportFile()">
+			<div class="action-button pdf" uib-tooltip="Export PDF" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button border-radius-right box-shadow"
+			ng-click="vm.exportFileDoc()">
+			<div class="action-button doc" uib-tooltip="Export DOC" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+	</div>
+
+	<div class="btn-group">
+		<button type="button"
+			class="btn btn-default padding-button border-radius-right box-shadow"
+			ng-click="vm.signCA()">
+			<div class="action-button signature" uib-tooltip="Ký CA" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+	</div>
+</div>

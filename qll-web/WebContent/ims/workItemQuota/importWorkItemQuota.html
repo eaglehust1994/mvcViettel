@@ -1,0 +1,57 @@
+                                                                                             <hr>
+<form class="form-horizontal row" role="form" name="shipment"
+	id="shipment" kendo-validator="validator" k-options="validatorOptions">
+	<div class="">
+		<div class="caption margin-top10">
+			<span class="caption-subject bold lowercase" translate>Import bằng file excel</span>
+		</div>
+		<div class="padding-width18">
+			<div class="border-gray ">
+				<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div>
+									<file-input list-file-type="xls,xlsx" model="caller.dataList"
+										size="100000000" caller="caller" input-id="filePackage"
+										model-label="File import" 
+										msg="Không được bỏ trống file"></file-input>
+	
+								</div>
+								<input class="col-md-2" ng-click="caller.submit()" type="submit"
+									value="Tải lên">
+								<div class="form-group col-md-4" align="right">
+									<a href="" ng-click="caller.getExcelTemplate()"><u>Tải biểu mẫu</u></a>
+								</div>
+							</div>
+							<div class="form-group col-md-7" align="right">
+								<i style="color: gray;margin-right: 50px;">Dung lượng <= 100MB, Định dạng
+									xls,xlsx</i>
+							</div>
+						</div>
+					</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<hr>
+	<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+		      document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if (e.keyCode == 13&& !$('#cancel:focus').length&& !$('#saveStockCell:focus').length) {
+         				$("#saveStockCell").click();
+         				break;
+						}
+         		}
+         	} 
+       
+	</script>  
+</form>

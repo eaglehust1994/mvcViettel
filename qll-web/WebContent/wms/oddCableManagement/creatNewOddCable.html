@@ -1,0 +1,115 @@
+
+<form class="form-horizontal row" role="form" name="createOddCablePopup"
+	id="createOddCablePopup" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body padding10">
+		<div class="clearfix">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate required>Hàng hóa</label>
+		                <div class="col-md-10">
+							<input kendo-auto-complete k-options="caller.goodsOptions" required 
+								ng-blur="focusOut()"
+								data-required-msg="Hàng hoá không được để trống" maxlength="200"
+								header-template="caller.headerTemplate" id="goodsName" name="goodsName" 
+								class=" form-control width100" type="text"  ng-model="caller.oddCableManagementSearch.name"/>
+							<span data-for='goodsName' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	<!-- 	<p></p> -->
+		<div class="clearfix">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Chiều dài tối thiểu</label>
+					<div class="col-md-8">
+						<input class="form-control" type="text" name="amountMinimum" maxlength="15"
+							ng-blur="focusOut()"
+							id="amountMinimum" ng-model="data.amountMinimum" required
+							data-required-msg="Chiều dài tối thiểu không được để trống"/> 
+							<span data-for='amountMinimum' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Đơn vị tính</label>
+					<div class="col-md-8">
+						<label style="margin-top: 6px;" 
+									ng-bind="caller.oddCableManagementSearch.goodsUnitName"></label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="row">
+				<div class="col-md-12">
+					<label class="col-md-8 control-label"></label>
+					<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" style="margin-left: 55px;" ng-click="caller.cancel()" translate>Huỷ bỏ</button>
+					<button type="button" class="btn btn-qlk padding-search-right saveQLK" id="saveOddId" ng-click="save()" translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(document).on("keypress", function (e) {
+			switch(e.keyCode) {
+				case 27:
+					$("#cancel").click();
+					break;
+				case 13:
+					if($(':focus').size()===0){
+						$( "#saveOddId" ).click(function( event ) {
+							event.stopPropagation();
+							});
+							break;
+					}
+					if(e.keyCode===13&&!$('#saveOddId:focus').length){
+						$("#saveOddId").click();
+						break;
+					}
+			}
+		});
+		
+		$('#amountMinimum').keypress(function(event) {
+			var $this = $(this);
+			if ((event.which != 46 || $this.val().indexOf('.') != -1) &&
+			   ((event.which < 48 || event.which > 57) &&
+			   (event.which != 0 && event.which != 8))) {
+				   event.preventDefault();
+			}
+
+			var text = $(this).val();
+			if ((event.which == 46) && (text.indexOf('.') == -1)) {
+				setTimeout(function() {
+					if ($this.val().substring($this.val().indexOf('.')).length > 3) {
+						$this.val($this.val().substring(0, $this.val().indexOf('.') + 3));
+					}
+				}, 1);
+			}
+
+			if ((text.indexOf('.') != -1) &&
+				(text.substring(text.indexOf('.')).length > 2) &&
+				(event.which != 0 && event.which != 8) &&
+				($(this)[0].selectionStart >= text.length - 2)) {
+					event.preventDefault();
+			}      
+		});
+
+		$('#amountMinimum').bind("paste", function(e) {
+		var text = e.originalEvent.clipboardData.getData('Text');
+		if ($.isNumeric(text)) {
+			if ((text.substring(text.indexOf('.')).length > 3) && (text.indexOf('.') > -1)) {
+				e.preventDefault();
+				$(this).val(text.substring(0, text.indexOf('.') + 3));
+		   }
+		}
+		else {
+				e.preventDefault();
+			 }
+		});
+	</script>
+</form>
+<br />

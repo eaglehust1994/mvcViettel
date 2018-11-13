@@ -1,0 +1,86 @@
+<div class="portlet light bordered">
+       <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Thông tin chung</span>
+			</div>
+			</div>
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Số hợp đồng</label>
+                <div class="col-md-8">
+                   <input  ng-model="vm.item.contractCode" name="contractNo" id="contractCode" ng-disabled="vm.vohieuhoa"
+                   		class="form-control" readonly="readonly"  />         
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Tên hợp đồng</label>
+                <div class="col-md-8">            
+                   <input  ng-model="vm.item.contractName" name="contractName" id="contractName" ng-disabled="vm.vohieuhoa"
+                   		class="form-control" readonly="readonly"  />       
+                </div>
+            </div>
+        </div>
+        
+        <div class="clearfix">
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Mã công trình</label>
+                <div class="col-md-8">
+                   <input  ng-model="vm.item.constrtCode" class="form-control" name="constrtCode" id="constrtCode" ng-disabled="vm.vohieuhoa"  readonly="readonly"  />
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label">Tên công trình</label>
+                <div class="col-md-8">
+                        <input ng-model="vm.item.constrtName" class="form-control" name="constrtName" id="constrtName" ng-disabled="vm.vohieuhoa"  readonly="readonly"  />  
+                </div>
+            </div>
+        </div>
+        
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Địa chỉ công trình</label>
+					<div class="col-md-10">
+						<input type="text" class="form-control" name="constrtAddress" id="constrtAddress" ng-disabled="vm.vohieuhoa"  required readonly="" data-required-msg="Không để trống trường này !"
+							ng-model="vm.item.constrtAddress">
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div ng-show="vm.showDetail" class="clearfix" >
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label req">Địa điểm ký</label>
+                <div class="col-md-8">            
+                   <input  ng-model="vm.dataItem.signPlace" name="signPlace" id="signPlace" ng-maxlength="200"  ng-disabled="vm.vohieuhoa"
+                   		class="form-control" required data-required-msg="Không để trống trường này !" />  
+                   		<span data-for="signPlace" class="k-invalid-msg"></span>     
+                </div>
+            </div>
+            
+            <div class="form-group col-md-6">
+                <label class="col-md-4 control-label req">Ngày ký</label>
+                <div class="col-md-8">
+                <input class="form-control width100" kendo-date-picker name="signdate" id="signdate" required data-required-msg="Không để trống trường này !" ng-disabled="vm.vohieuhoa"
+                          		k-options="vm.datePickerConfig2" k-format="'dd/MM/yyyy'"
+                          		ng-model="vm.dataItem.signDate"/>
+                          		<span data-for="signdate" class="k-invalid-msg"></span>
+                </div>
+                <script>
+						$(function() {
+							var validTo = $("#signdate");
+							validTo.kendoMaskedTextBox({
+								mask : "00/00/0000"
+							});
+	
+							validTo.kendoDatePicker({
+								format : "dd/MM/yyyy"
+							});
+	
+							validTo.closest(".k-datepicker").add(
+									validTo).removeClass("k-textbox");
+						});
+					</script>
+            </div>
+        </div>
+     </div>

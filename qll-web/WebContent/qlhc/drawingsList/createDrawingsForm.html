@@ -1,0 +1,185 @@
+<div class="btn-toolbar margin-bottom-10 margin-top">
+	<div class="btn-group margin-left-button">
+		<button type="button"
+			class="btn btn-default padding-button  border-radius-left margin-left-button box-shadow"
+			ng-click="vm.goBack()" uib-tooltip="Xem bảng/Chi tiết">
+			<div class="action-button view" 
+				translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button border-radius-right  box-shadow"
+			ng-click="vm.saveAll()" uib-tooltip="Lưu">
+			<div class="action-button save"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+
+	</div>
+</div>
+<div class="portlet light bordered">
+
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" 
+				translate>Thông tin chung</span>
+		</div>
+	</div>
+	<div class="portlet-body form">
+		<form class="form-horizontal">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Số hợp đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<div class="input-icon right">
+								<input class="form-control width100 ng-pristine ng-valid ng-touched"
+									name="contractCode" id="contractCode" type="text"
+									ng-model="vm.item.contractCode" readonly="">
+							</div>
+							<span data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Ngày ký HĐ</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<div class="input-icon right">
+								<input class="form-control width100 ng-pristine ng-valid ng-touched"
+									name="contractNo" id="contractNo" type="text"
+									ng-model="vm.item.signed_date" readonly="">
+							</div>
+							<span data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<div class="input-icon right">
+								<input class="form-control width100 ng-pristine ng-valid ng-touched"
+									name="contractNo" id="contractNo" type="text"
+									ng-model="vm.item.constrtCode" readonly="">
+							</div>
+							<span data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100 ng-pristine ng-valid ng-touched"
+								name="contractNo" id="contractNo" type="text"
+								ng-model="vm.item.constrtName" readonly=""> <span
+								data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Địa chỉ công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<div class="input-icon right">
+								<input class="form-control width100 ng-pristine ng-valid ng-touched"
+									name="contractNo" id="contractNo" type="text"
+									ng-model="vm.item.constrtAddress" readonly="">
+							</div>
+							<span data-for="value" class="k-invalid-msg"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+	<p>
+	<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" 
+				translate>Thành phần ký</span>
+		</div>
+	</div>
+	<div class="portlet-body form">
+		<form class="form-horizontal">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Giám sát thi công</label>
+					<div class="col-md-8">
+						<select class="form-control" id="amonitorId" style="width: 100%"
+							name="amonitorId" kendo-drop-down-list
+							required data-required-msg="Trường này không được để trống"
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.amonitorId" ng-model="vm.bean.amonitorId"
+							data-required-msg="Không được để trống"></select>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Đại diện pháp luật
+						của nhà thầu thi công</label>
+					<div class="col-md-8">
+						<select class="form-control" id="bdirectorId" style="width: 100%"
+							name="bdirectorId" kendo-drop-down-list
+							required data-required-msg="Trường này không được để trống"
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.bdirectorId" ng-model="vm.bean.bdirectorId"
+							data-required-msg="Không được để trống"></select>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Người lập</label>
+					<div class="col-md-8">
+						<select class="form-control" id="creator" style="width: 100%"
+							name="creator" kendo-drop-down-list
+							required data-required-msg="Trường này không được để trống"
+							k-data-text-field="'fullName'" k-data-value-field="'userId'"
+							k-data-source="vm.creator" ng-model="vm.bean.creatorId"
+							data-required-msg="Không được để trống"></select>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+	<p>
+	<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" 
+				translate>Bản vẽ hoàn công</span>
+		</div>
+	</div>
+	<div class="btn-group">
+		<button type="button"
+			class="btn btn-default padding-button border-radius-left margin-left-button box-shadow"
+			ng-click="vm.add($event)" ng-disabled="vm.disabledButtom">
+			<div class="action-button add" uib-tooltip="Thêm mới" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button"
+			class="btn btn-default padding-button border-radius-right box-shadow"
+			ng-click="vm.remove()" ng-disabled="vm.disabledButtom">
+			<div class="action-button del" uib-tooltip="Xóa" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<!-- <button type="button" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.remove()" ng-disabled="vm.disabledButtom">
+					<div class="action-button deletes"  uib-tooltip="Xóa nhiều" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button> -->
+	</div>
+	<div kendo-grid="vm.createDrawingGrid"
+		k-options="vm.gridCreateDrawingOptions" id="createDrawingMainGrid"></div>
+		<script>
+                $(document).ready(function() {
+                    var tooltip = $("#createDrawingMainGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#createDrawingMainGrid").find("td").click(false);
+                });
+            </script>
+
+</div>

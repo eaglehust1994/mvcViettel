@@ -1,0 +1,51 @@
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div class="btn-group margin-left-button">
+			<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" uib-tooltip="Thêm mới" ng-click="vm.add()">
+				<div class="action-button add"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button box-shadow" uib-tooltip="Xem bảng/Chi tiết" ng-click="vm.showGrid()">
+				<div class="action-button view"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button box-shadow" uib-tooltip="Lưu" ng-click="vm.save()" ng-disabled="vm.hideSave">
+				<div class="action-button save"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" uib-tooltip="Xóa"  ng-click="vm.remove()" ng-disabled="vm.hideSave">
+				<div class="action-button del"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+
+		</div>
+		<div class="btn-group">
+			<button type="button" class="btn btn-default padding-button border-radius-left box-shadow" uib-tooltip="Export DOC" ng-click="vm.exportFiledoc()">
+				<div class="action-button doc"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button border-radius-right box-shadow" uib-tooltip="Export PDF" ng-click="vm.exportFilepdf()">
+				<div class="action-button pdf"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button border-radius box-shadow"
+				ng-click="vm.signCA()" translate="" id="btnCopyPayroll"
+				ng-disabled="vm.disabledButtom" uib-tooltip="Ký CA" >
+				<div class="action-button signature" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+	</div>

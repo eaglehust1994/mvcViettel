@@ -1,0 +1,709 @@
+function getApMessage_Statement(gettextCatalog) {
+	return  {
+    	noDataGrid: gettextCatalog.getString("Không có dữ liệu trên trang hiện tại"),
+    	lineRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	recordRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	deleteSuccess: gettextCatalog.getString("Xóa thành công!"),
+    	deleteError: gettextCatalog.getString("Có lỗi xảy ra trong quá trình xóa!"),
+    	saveSuccess: gettextCatalog.getString("Lưu thay đổi thành công!"),
+    	duplicateCode: gettextCatalog.getString("Số chứng từ gốc đã tồn tại!"),
+    	createError: gettextCatalog.getString("Lỗi xuất hiện khi tạo Tờ trình!"),
+    	updateError: gettextCatalog.getString("Lỗi xuất hiện khi cập nhật !"),
+    	needShowDetail : gettextCatalog.getString("Cần hiển thị ở chế độ Chi Tiết!"),
+    	positionLast: gettextCatalog.getString("Đã ở bản ghi cuối"),
+    	positionFirst: gettextCatalog.getString("Đã ở bản ghi đầu"),
+	};
+}
+
+function getApMessage_AdvanceRequest(gettextCatalog) {
+	return  {
+		positionLast: gettextCatalog.getString("Đã ở bản ghi cuối"),
+    	positionFirst: gettextCatalog.getString("Đã ở bản ghi đầu"),
+    	noDataGrid: gettextCatalog.getString("Không có dữ liệu trên trang hiện tại"),
+    	lineRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	recordRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	deleteSuccess: gettextCatalog.getString("Xóa thành công!"),
+    	deleteError: gettextCatalog.getString("Có lỗi xảy ra trong quá trình xóa!"),
+    	saveSuccess: gettextCatalog.getString("Lưu thay đổi thành công!"),
+    	duplicateCode: gettextCatalog.getString("Mã của Đề nghị thanh toán đã tồn tại!"),
+    	createError: gettextCatalog.getString("Lỗi xuất hiện khi tạo Đề nghị thanh toán!"),
+    	updateError: gettextCatalog.getString("Lỗi xuất hiện khi cập nhật Đề nghị thanh toán!"),
+    	needShowDetail : gettextCatalog.getString("Cần hiển thị ở chế độ Chi Tiết!"),
+    	/*positionLast: gettextCatalog.getString("Đã ở bản ghi cuối"),*/
+    	
+	};
+}
+
+
+function getApMessage_Construction(gettextCatalog) {
+	return  {
+    	noDataGrid: gettextCatalog.getString("Không có dữ liệu trên trang hiện tại"),
+    	lineRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	recordRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	deleteSuccess: gettextCatalog.getString("Xóa thành công!"),
+    	deleteError: gettextCatalog.getString("Có lỗi xảy ra trong quá trình xóa!"),
+    	saveSuccess: gettextCatalog.getString("Lưu thay đổi thành công!"),
+    	duplicateCode: gettextCatalog.getString("Mã của Danh mục công trinh đã tồn tại!"),
+    	createError: gettextCatalog.getString("Lỗi xuất hiện khi tạo Danh mục công trinh!"),
+    	updateError: gettextCatalog.getString("Lỗi xuất hiện khi cập nhật Danh mục công trinh!"),
+	};
+}
+
+function getApMessage_ConstructionPhase(gettextCatalog) {
+	return  {
+    	noDataGrid: gettextCatalog.getString("Không có dữ liệu trên trang hiện tại"),
+    	lineRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	recordRequired: gettextCatalog.getString("Bạn cần chọn một bản ghi trước"),
+    	deleteSuccess: gettextCatalog.getString("Xóa thành công!"),
+    	deleteError: gettextCatalog.getString("Có lỗi xảy ra trong quá trình xóa!"),
+    	saveSuccess: gettextCatalog.getString("Lưu thay đổi thành công!"),
+    	duplicateCode: gettextCatalog.getString("Mã của Danh mục công trinh đã tồn tại!"),
+    	createError: gettextCatalog.getString("Lỗi xuất hiện khi tạo Danh mục công trinh!"),
+    	updateError: gettextCatalog.getString("Lỗi xuất hiện khi cập nhật Danh mục công trinh!"),
+	};
+}
+
+function getGridConfigColumnStatement(gettextCatalog) {
+	return [
+	    {   
+	    	title: "<input type='checkbox' name='gridchkselectall' ng-click='vm.chkSelectAll();' ng-model='vm.chkAll' />",
+	        template: "<input type='checkbox' name='gridcheckbox' />",
+	        width: 35
+	    },
+	    {
+	        title: gettextCatalog.getString("Đơn vị"),
+	        field: "adOrgName",
+	        width: 180,
+	    }, {
+	        title: gettextCatalog.getString("Loại chứng từ"),
+	        field: "documentTypeName",
+	        width: 280
+	    }, {
+	        title: gettextCatalog.getString("Loại tờ trình"),
+	        field: "statementCategoryName",
+	        width: 280
+	    }, {
+	        title: gettextCatalog.getString("Người yêu cầu"),
+	        field: "bpartnerName",
+	        width: 180
+	    }, {
+	        title: gettextCatalog.getString("Phòng/ban"),
+	        field: "departmentName",
+	        width: 180
+	    }, {
+	        title: gettextCatalog.getString("Số chứng từ "),
+	        field: "documentNo",
+	        width: 200
+	    }, {
+	        title: gettextCatalog.getString("Ngày lập "),
+	        field: "transDate",
+	        width: 200
+	    }, {
+	        title: gettextCatalog.getString("Số chứng từ gốc "),
+	        field: "hardCopyDocumentNo",
+	        width: 300
+	    }, {
+	        title: gettextCatalog.getString("Ngày lập gốc "),
+	        field: "hardCopyDate",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Mã hiệu văn bản "),
+	        field: "documentCode",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Số tài chính"),
+	        field: "financeNumber",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Nội dung  "),
+	        field: "description",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Tiền tệ   "),
+	        field: "currencyName",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Tổng tiền đề nghị "),
+	        field: "requestAmount",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Tổng tiền được duyệt "),
+	        field: "approvedAmount",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Tờ trình cha "),
+	        field: "parentId",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Trình ký VOffice"),
+	        field: "vOffice",
+	        template: "#if(vOffice == 'Y'){#<input type = 'checkbox' data-bind checked />#} else {#<input type = 'checkbox' data-bind />#}#",
+	        width: 200
+	    },{
+	        title: gettextCatalog.getString("Chi các hoạt động tài trợ, quỹ phúc lợi "),
+	        field: "isSponsor",
+	        template: "#if(isSponsor == 'Y'){#<input type = 'checkbox' data-bind checked />#} else {#<input type = 'checkbox' data-bind />#}#",
+	        width: 500
+	    },{
+	        title: gettextCatalog.getString("Đã kết thúc "),
+	        field: "isFinish",
+	        template: "#if(isFinish == 'Y'){#<input type = 'checkbox' data-bind checked />#} else {#<input type = 'checkbox' data-bind />#}#",
+	        width: 300
+	    },{
+	        title: gettextCatalog.getString("Trạng thái tài liệu "),
+//	        field: "status",
+	        template: "# if(status == 'DR'){ #" + "#= 'Nháp' #" + "# } " +
+			    		"else if (status == 'PO') { # " + "#= 'Hoàn thành' #"+ "#} #",		    		
+	        width: 300
+	    },{
+	        title: "Trạng thái duyệt ",
+//	        field: "approveStatus",
+	        template: "# if(approveStatus == 0){ #" + "#= 'Chưa duyệt' #" + "# } " +
+				"else if (approveStatus==1) { # " + "#= 'Đã duyệt' #" + "# } " +
+				"else if (approveStatus==2) {#" + "#=  'Từ chối' #" + "#} #",
+	        width: 180,
+	    },{
+	        title: gettextCatalog.getString("Người tạo"),
+	        field: "createdBy",
+	        width: 200
+	    },{
+	        title: gettextCatalog.getString("Người cập nhật"),
+	        field: "updateBy",
+	        width: 200
+	    }];
+}
+
+function getGridConfigColumnConstruction(gettextCatalog) {
+	return [  {
+		title: gettextCatalog.getString("Đơn vị"),
+		field : "adOrgName",
+		width : 180,
+	}, {
+		title: gettextCatalog.getString("Mã"),
+		field : "value",
+		width : 80,
+	},{
+		title: gettextCatalog.getString("Tên"),
+		field : "name",
+		width : 180
+	}, {
+		title: gettextCatalog.getString("Nhóm công trình"),
+		field : "constructionGroupName",
+		width : 200
+	}, {
+		title: gettextCatalog.getString("Mã công trình tích hợp"),
+		field : "integrationConstructionCode",
+		width : 250
+	}, {
+		title: gettextCatalog.getString("Mã tài sản"),
+		field : "aAssetId",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Điểm đầu"),
+		field : "startPoint",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Địa chỉ điểm đầu"),
+		field : "startLocation",
+		width : 200
+	}, {
+		title: gettextCatalog.getString("Điểm cuối"),
+		field : "endPoint",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Địa chỉ điểm cuối"),
+		field : "endLocation",
+		width : 200
+	}, {
+		title: gettextCatalog.getString("Mô tả"),
+		field : "description",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Dự án"),
+		field : "cProjectId",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Hợp đồng"),
+		field : "cContractId",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Tổng giá trị đầu tư"),
+		field : "amount",
+		width : 250
+	}, {
+		title: gettextCatalog.getString("Người tạo"),
+		field : "createdBy",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Người cập nhật"),
+		field : "updateBy",
+		width : 150
+	},{
+		title: gettextCatalog.getString("Hiệu lực"),
+		field : "isactive",
+		template: "<input type='checkbox' data-bind='checked: checked' />",
+		width : 100
+	} ];
+}
+
+
+function getGridConfigColumnSharedOrgConstruction(gettextCatalog) {
+	return [{
+        title: gettextCatalog.getString("Công trình"),
+        field: "constructionId",
+        width: 80,
+    }, {
+        title: gettextCatalog.getString("Đơn vị"),
+        field: "adOrgName",
+        width: 180,
+    }, {
+        title: gettextCatalog.getString("Hiệu lực"),
+        field: "isactive",
+        template: "<input type='checkbox' data-bind='checked: checked' />",
+        width: 100,
+    }];
+}
+
+function getGridConfigColumnSharedOrgConstructionPhase(gettextCatalog) {
+	return [{
+        title: gettextCatalog.getString("Hạng mục công trình"),
+        field: "constructionphaseId",
+        width: 80,
+    }, {
+        title: gettextCatalog.getString("Đơn vị"),
+        field: "adOrgName",
+        width: 180,
+    }, {
+        title: gettextCatalog.getString("Hiệu lực"),
+        field: "isactive",
+        template: "<input type='checkbox' data-bind='checked: checked' />",
+        width: 100,
+    }, {
+        title: gettextCatalog.getString("Người tạo"),
+        field: "createdBy",
+        width: 180,
+    }, {
+        title: gettextCatalog.getString("Người cập nhật"),
+        field: "updateBy",
+        width: 180,
+    }];
+}
+
+function getGridConfigColumnAdOrgPopup(gettextCatalog) {
+	return [/*{
+		title: gettextCatalog.getString("ID"),
+		field: "cconstructionGroupId",
+		width: 150,
+	},*/{
+		title: gettextCatalog.getString("Mã"),
+		field: "value",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Tên"),
+		field: "name",
+		width: 180
+	}, {
+		title: gettextCatalog.getString("Mô tả"),
+		field: "description",
+		width: 180
+	}];
+}
+
+function getGridConfigColumnParnerPopup(gettextCatalog) {
+	return [{
+		title: gettextCatalog.getString("ID"),
+		field: "partnerId",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Mã"),
+		field: "value",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Tên"),
+		field: "name",
+		width: 180
+	}, {
+		title: gettextCatalog.getString("Mô tả"),
+		field: "description",
+		width: 180
+	}];
+}
+
+function getGridConfigColumnParentStatementPopup(gettextCatalog) {
+	return [{
+		title: gettextCatalog.getString("ID"),
+		field: "cstatementId",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Loại chứng từ"),
+		field: "documentTypeName",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Số chứng từ"),
+		field: "documentNo",
+		width: 180
+	}, {
+		title: gettextCatalog.getString("Mô tả"),
+		field: "description",
+		width: 180
+	},
+	{
+		title : gettextCatalog
+				.getString("Ngày lập"),
+		field : "transDate",
+		width : 180
+	},{
+       title: gettextCatalog.getString("Tổng tiền được duyệt "),
+       field: "approvedAmount",
+       width: 300
+    }﻿];
+}
+
+function getGridConfigColumnDepartmentPopup(gettextCatalog) {
+	return [{
+		title: gettextCatalog.getString("ID"),
+		field: "departmentId",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Mã"),
+		field: "value",
+		width: 150,
+	},{
+		title: gettextCatalog.getString("Tên"),
+		field: "name",
+		width: 180
+	}, {
+		title: gettextCatalog.getString("Mô tả"),
+		field: "description",
+		width: 180
+	}];
+}
+
+function getGridConfigColumnConstructionPhase(gettextCatalog) {
+	return [  {
+		title: gettextCatalog.getString("Đơn vị"),
+		field : "adOrgName",
+		width : 180,
+	}, {
+		title: gettextCatalog.getString("Mã"),
+		field : "value",
+		width : 80,
+	},{
+		title: gettextCatalog.getString("Tên"),
+		field : "name",
+		width : 180
+	}, {
+		title: gettextCatalog.getString("Nhóm công trình"),
+		field : "cConstructionGroupId",
+		width : 180
+	}, {
+		title: gettextCatalog.getString("Tạm tính"),
+		field : "isTemplate",
+		template: "<input type='checkbox' data-bind='checked: checked' />",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Mô tả"),
+		field : "description",
+		width : 150
+	}, {
+		title: gettextCatalog.getString("Hiệu lực"),
+		field : "isactive",
+		template: "<input type='checkbox' data-bind='checked: checked' />",
+		width : 100
+	} ];
+}
+
+function getGridConfigColumnCAdvanceReq(gettextCatalog) {
+	return [
+	{   
+	    title: "<input type='checkbox' name='gridchkselectall' ng-click='vm.chkSelectAll();' ng-model='vm.chkAll' />",
+        template: "<input type='checkbox' name='gridcheckbox' />",
+        width: 35
+	},
+	{
+        title: "Đơn vị",
+        field: "adOrgName",
+        width: 180,
+    }, {
+        title: "Loại chứng từ",
+        field: "cDocumentTypeName",
+        width: 180
+    }, {
+        title: "Loại đề nghị",
+       /* field: "requestType",*/
+        template: "# if(requestType == 0){ #" + "#= 'Chuyển tiền cho đối tác' #" + "# } " +
+        		"else if (requestType==1) { # " + "#= 'Chuyển tiền nội bộ' #" + "# } " +
+        		"else if (requestType==2) { # " + "#= 'Chuyển tiền lương nội bộ' #" + "# } " +
+        		"else if (requestType==3) { # " + "#= 'Thanh toán tiền lương' #" + "# } " +
+        		"else if (requestType==4) {#" + "#=  'Chuyển tiền tạm ứng' #" + "#} #",
+        width: 180
+    }, {
+        title: "Đơn vị chi trả",
+        field: "paymentOrgName",
+        width: 200
+    },{
+        title: "Phòng/ban",
+        field: "cdepartmentName",
+        width: 180,
+    },{
+        title: "Người yêu cầu ",
+        field: "cbpartnerName",
+        width: 180,
+    },{
+        title: "Tháng lương",
+        field: "salaryName",
+        width: 180,
+    },{
+        title: "Bảng lương",
+        field: "payrollName",
+        width: 180,
+    },{
+        title: "Số chứng từ",
+        field: "documentNo",
+        width: 180,
+    },{
+        title: "Ngày chứng từ",
+        field: "transDate",
+        width: 180,
+    },{
+        title: "Tờ trình",
+        field: "cstatementId",
+        width: 180,
+    },{
+        title: "Nội dung ",
+        field: "description",
+        width: 180,
+    },{
+        title: "Tổng tiền đề nghị",
+        field: "requestAmount",
+        width: 280,
+    },{
+        title: "Tổng tiền được duyệt",
+        field: "approvedAmount",
+        width: 280,
+    },{
+        title: "Tiền tệ",
+        field: "currencyName",
+        width: 180,
+    },{
+        title: "Tỷ giá ",
+        field: "currencyRate",
+        width: 180,
+    },{
+        title: "Trạng thái chi",
+        //field: "paymentStatus",
+        template: "# if(paymentStatus == 0){ #" + "#= 'Chưa chi' #" + "# } " +
+		"else if (paymentStatus==1) { # " + "#= 'Chi chưa đủ' #" + "# } " +
+		"else if (paymentStatus==2) {#" + "#=  'Chi đủ' #" + "#} #",
+        width: 280,
+    },{
+        title: "Trạng thái tài liệu",
+//        field: "docStatus",
+        template: "# if(docStatus == 'DR'){ #" + "#= 'Nháp' #" + "# } " +
+					"else if (docStatus == 'PO') { # " + "#= 'Hoàn thành' #"+ "#} #",	
+        width: 280,
+    },{
+        title: "Người tạo",
+        field: "createdBy", 
+        width: 180,
+    },{
+        title: "Người cập nhật ",
+        field: "updatedBy",
+        width: 180,
+    },{
+        title: "Trạng thái duyệt ",
+//        field: "approveStatus",
+        template: "# if(approveStatus == 0){ #" + "#= 'Chưa duyệt' #" + "# } " +
+			"else if (approveStatus==1) { # " + "#= 'Đã duyệt' #" + "# } " +
+			"else if (approveStatus==2) {#" + "#=  'Từ chối' #" + "#} #",
+        width: 180,
+    }];
+}
+ function getGridConfigColumnGlAllocationFormula(gettextCatalog) {
+		return [{
+			title : "<input type='checkbox' name='gridchkselectall' ng-click='vm.chkSelectAll();' ng-model='vm.chkAll' />",
+			template : "<input type='checkbox' name='gridcheckbox' />",
+			width : 35
+		},{
+            title: gettextCatalog.getString("Đơn vị"),
+            field: "adOrgName",
+            width: 180,
+        },{
+            title: gettextCatalog.getString("Mã"),
+            field: "documentNo",
+            width: 80,
+        }, {
+            title: gettextCatalog.getString("Mô tả"),
+            field: "description",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Ghi chú"),
+            field: "note",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Tài khoản nguồn"),
+            field: "caccountSourceName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Dự án"),
+            field: "cprojectName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Nguồn kinh phí"),
+            field: "cbudgetName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Khoản mục"),
+            field: "ccostTypeName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Vụ việc"),
+            field: "csalesRegionName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Cost center"),
+            field: "ccostCenterName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Profit center"),
+            field: "cprofitCenterName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Tài khoản đích"),
+            field: "caccountDestinationName",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Cách tính tỉ lệ"),
+            template : "# if(rateMethod == '1'){#" + "#= 'Tự nhập' #" + "#} else if(rateMethod =='2'){#" + "#= 'Theo tài khoản khác' #" + "#}#",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Loại số liệu"),
+            emplate : "# if(amountType == 'NET'){#" + "#= 'Phát sinh' #" + "#} else if(amountType == 'NET_DR'){#" + "#= 'Phát sinh nợ' #" + "#}  else if(amountType == 'NET_CR'){#" + "#= 'Phát sinh có' #" + "#}#",
+            field: "amountType",
+            width: 180
+        }, {
+            title: gettextCatalog.getString("Tỉ lệ"),
+            field: "rate",
+            width: 180
+        },{
+			title : gettextCatalog.getString("Phân bố dự án theo manmonth"),
+			field : "projectBaseOnManmonth",
+			template: "#if(projectBaseOnManmonth == 'Y'){#<input type = 'checkbox' data-bind checked />#} else {#<input type = 'checkbox' data-bind />#}#",
+			width : 200
+		},{
+            title: gettextCatalog.getString("Người tạo"),
+            field: "createdBy",
+            width: 100
+        },{
+            title: gettextCatalog.getString("Người cập nhật"),
+            field: "updateBy",
+            width: 100
+        }];
+ }
+ 
+function getGridConfigColumnCAdvanceReq(gettextCatalog) {
+	return [
+	{   
+	    title: "<input type='checkbox' name='gridchkselectall' ng-click='vm.chkSelectAll();' ng-model='vm.chkAll' />",
+        template: "<input type='checkbox' name='gridcheckbox' />",
+        width: 35
+	},
+	{
+        title: "Đơn vị",
+        field: "adOrgName",
+        width: 180,
+    }, {
+        title: "Loại chứng từ",
+        field: "cDocumentTypeName",
+        width: 180
+    }, {
+        title: "Loại đề nghị",
+        //field: "requestType",
+        template: "# if(requestType == 0){ #" + "#= 'Chuyển tiền cho đối tác' #" + "# } " +
+        		"else if (requestType==1) { # " + "#= 'Chuyển tiền nội bộ' #" + "# } " +
+        		"else if (requestType==2) { # " + "#= 'Chuyển tiền lương nội bộ' #" + "# } " +
+        		"else if (requestType==3) { # " + "#= 'Thanh toán tiền lương' #" + "# } " +
+        		"else if (requestType==4) {#" + "#=  'Chuyển tiền tạm ứng' #" + "#} #",
+        width: 180
+    }, {
+        title: "Đơn vị chi trả",
+        field: "paymentOrgName",
+        width: 200
+    },{
+        title: "Phòng/ban",
+        field: "cdepartmentName",
+        width: 180,
+    },{
+        title: "Người yêu cầu ",
+        field: "cbpartnerName",
+        width: 180,
+    },{
+        title: "Tháng lương",
+        field: "salaryName",
+        width: 180,
+    },{
+        title: "Bảng lương",
+        field: "payrollName",
+        width: 180,
+    },{
+        title: "Số chứng từ",
+        field: "documentNo",
+        width: 180,
+    },{
+        title: "Ngày chứng từ",
+        field: "transDate",
+        width: 180,
+    },{
+        title: "Tờ trình",
+        field: "cstatementId",
+        width: 180,
+    },{
+        title: "Nội dung ",
+        field: "description",
+        width: 180,
+    },{
+        title: "Tổng tiền đề nghị",
+        field: "requestAmount",
+        width: 280,
+    },{
+        title: "Tổng tiền được duyệt",
+        field: "approvedAmount",
+        width: 280,
+    },{
+        title: "Tiền tệ",
+        field: "currencyName",
+        width: 180,
+    },{
+        title: "Tỷ giá ",
+        field: "currencyRate",
+        width: 180,
+    },{
+        title: "Trạng thái chi",
+        //field: "paymentStatus",
+        template: "# if(paymentStatus == 0){ #" + "#= 'Chưa chi' #" + "# } " +
+		"else if (paymentStatus==1) { # " + "#= 'Chi chưa đủ' #" + "# } " +
+		"else if (paymentStatus==2) {#" + "#=  'Chi đủ' #" + "#} #",
+        width: 280,
+    },{
+        title: "Trạng thái tài liệu",
+//        field: "docStatus",
+        template: "# if(docStatus == 'DR'){ #" + "#= 'Nháp' #" + "# } " +
+					"else if (docStatus == 'PO') { # " + "#= 'Hoàn thành' #"+ "#} #",	
+        width: 280,
+    },{
+        title: "Người tạo",
+        field: "createdBy", 
+        width: 180,
+    },{
+        title: "Người cập nhật ",
+        field: "updatedBy",
+        width: 180,
+    },{
+        title: "Trạng thái duyệt ",
+//        field: "approveStatus",
+        template: "# if(approveStatus == 0){ #" + "#= 'Chưa duyệt' #" + "# } " +
+			"else if (approveStatus==1) { # " + "#= 'Đã duyệt' #" + "# } " +
+			"else if (approveStatus==2) {#" + "#=  'Từ chối' #" + "#} #",
+        width: 180,
+    }];
+}

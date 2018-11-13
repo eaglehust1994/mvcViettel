@@ -1,0 +1,138 @@
+<div data-ng-controller="estimateTableDetailController as vm">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+			<div class="btn-group">
+				<button type="button"
+					class="btn btn-default padding-button border-radius-left margin-left-button box-shadow "
+					ng-click="vm.showGrid()" uib-tooltip="Xem bảng/Chi tiết">
+					<div class="action-button view " 
+						translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				
+				<button type="button"
+					class="btn btn-default padding-button box-shadow "
+					ng-click="vm.add()" ng-hide="vm.hide" uib-tooltip="Thêm mới" >
+					<div class="action-button add" translate ng-hide="vm.hide">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+
+				<button type="button"
+					class="btn btn-default padding-button box-shadow"
+					ng-click="vm.save()" uib-tooltip="Lưu" ng-disabled="vm.disabledButtom" ng-hide="vm.hideSave">
+					<div class="action-button save"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button"
+					class="btn btn-default padding-button border-radius-right box-shadow"
+					ng-click="vm.remove()"uib-tooltip="Xóa"  ng-disabled="vm.disabledButtom" ng-hide="vm.hideRemove">
+					<div class="action-button del"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+			</div>
+			
+			<div class="btn-group">
+		       	<button id="button" type="button" uib-tooltip="Trình duyệt" class="btn btn-default padding-button border-radius-left box-shadow" ng-click="vm.sendBrowse()" ng-hide="vm.appro">
+		        		<div class="action-button approval"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		      	</button> 
+		        	
+				<button id="button" type="button" uib-tooltip="Phê duyệt" class="btn btn-default padding-button  box-shadow" ng-click="vm.pheDuyet()" ng-hide="vm.doAppro" >
+		        		<div class="action-button approve"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		        </button>
+		         <button id="button" type="button" uib-tooltip="Hủy trình duyệt" class="btn btn-default padding-button  border-radius-right box-shadow" ng-click="vm.cancelApprovalBtn()" ng-hide="" >
+		        		<div class="action-button cancelAproval"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		        </button>
+			</div>
+	        
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+					<span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>THÔNG TIN CHUNG</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+		<form action="#" class="form-horizontal">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Số hợp đồng</label>
+							<div class="col-md-8">
+								<input class="form-control" name="contractCode" id="contractCode"
+									ng-model="vm.item.contractCode" readonly="readonly">
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày ký HĐ</label>
+							<div class="col-md-8">
+								<input class="form-control" id="signed_date" name="signed_date"
+									ng-model="vm.item.signed_date" readonly="readonly">
+							</div>
+						</div>
+					</div>
+		
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Mã công trình</label>
+						<div class="col-md-8">
+								<input class="form-control" id="constrtCode" name="constrtCode"
+									ng-model="vm.item.constrtCode" readonly="readonly">
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Tên công trình</label>
+							<div class="col-md-8">
+								<input class="form-control" id="constrtName" name="constrtName"
+									ng-model="vm.item.constrtName" readonly="readonly">
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Địa chỉ công trình</label>
+							<div class="col-md-10 input-width" style="">
+								<input type="text" class="form-control" name="constrtAddress" id="constrtAddress" ng-model="vm.item.constrtAddress" readonly="readonly"/>
+						    	</div>
+					    	</div>
+				     	</div>
+				 </div>
+				</form>
+			<div ng-show="!vm.showDetail">
+			
+			<div kendo-grid="vm.estimateWorkTables" k-options="vm.gridOptions" id="estimateWorkTablesEva"  k-on-change="vm.onGridTableEstimateListDetail(kendoEvent, { selected: selected }, data)">
+				<!-- <div k-detail-template>
+					<div data-ng-include="'qlhc/estimateTableDetail/estimateTableDetail.html'"></div>
+				</div> -->
+			</div>
+			<script>
+                $(document).ready(function() {
+                    var tooltip = $("#estimateWorkTablesEva").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#estimateWorkTablesEva").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#estimateWorkTablesEva").find("td").click(false);
+                });
+            </script>
+		</div>
+		<div ng-show="vm.showDetail" class="">
+			<div data-ng-include="'qlhc/estimateTableDetail/estimateTableDetail.html'"></div>
+		</div>
+		</div>
+	</div>
+	<hr class="line-Hr">
+	
+</div>

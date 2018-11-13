@@ -1,0 +1,111 @@
+
+<form class="form-horizontal row" role="form" name="popUpExId"
+	id="popUpExId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div style="margin: 10px 20px;" class="form-group col-md-12 ">
+			<button ng-click="caller.advancedSearch()"
+				ng-show="caller.showAdvancedSearch" class="form-group col-md-12 "
+				aria-hidden="true">Xuất theo ngày</button>
+			<button ng-click="caller.advancedSearch()"
+				ng-show="!caller.showAdvancedSearch" class="form-group col-md-12"
+				aria-hidden="true">Xuất theo tháng</button>
+		</div>
+		<div class="form-body " ng-show="!caller.showAdvancedSearch"
+			aria-hidden="true">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Xuất
+					báo cáo theo tháng</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix text-center">
+						<div class="form-group col-md-12">
+							<label class="col-md-4 control-label " translate>Chọn
+								tháng xuất b/c:</label>
+							<div class="col-md-8">
+								<select class=" form-control width100"
+									ng-model="caller.exportHD.thangGhiNhanQuyLuongTqt">
+									<option value="">~~Chọn~~</option>
+									<option value="01/{{caller.date}}">01/{{caller.date}}</option>
+									<option value="02/{{caller.date}}">02/{{caller.date}}</option>
+									<option value="03/{{caller.date}}">03/{{caller.date}}</option>
+									<option value="04/{{caller.date}}">04/{{caller.date}}</option>
+									<option value="05/{{caller.date}}">05/{{caller.date}}</option>
+									<option value="06/{{caller.date}}">06/{{caller.date}}</option>
+									<option value="07/{{caller.date}}">07/{{caller.date}}</option>
+									<option value="08/{{caller.date}}">08/{{caller.date}}</option>
+									<option value="09/{{caller.date}}">09/{{caller.date}}</option>
+									<option value="10/{{caller.date}}">10/{{caller.date}}</option>
+									<option value="11/{{caller.date}}">11/{{caller.date}}</option>
+									<option value="12/{{caller.date}}">12/{{caller.date}}</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+							ng-click="caller.cancel11()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right excelQLK"
+							style="width: auto;" id="saveChange11"
+							ng-click="caller.xuatBCTHCon()" translate>Xuất báo cáo</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-body " ng-show="caller.showAdvancedSearch"
+			aria-hidden="true">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Xuất
+					báo cáo theo ngày</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix text-center">
+						<div class="form-group col-md-12">
+							<label class="col-md-3 control-label " translate>Từ ngày
+								:</label>
+							<div class="col-md-4">
+								<input name="ngayGuiPtkHshc1" id="ngayGuiPtkHshc1"
+									ng-model="caller.exportHD.ngayGuiPtkHshcFrom"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg="Ngày từ không hợp lệ"
+									data-date-msg="Ngày từ không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayGuiPtkHshc1" id='err11' class="k-invalid-msg"></span>
+							</div>
+							<label class="col-md-1 control-label" translate>đến</label>
+							<div class="col-md-4 position-relative">
+								<input name="ngayGuiPtkHshcTo" id="ngayGuiPtkHshcTo"
+									ng-model="caller.exportHD.ngayGuiPtkHshcTo" date-time
+									style="width: 100%;" data-date-msg="Ngày đến không hợp lệ"
+									k-format="'dd/MM/yyyy'" min-year="1000"
+									data-minyear-msg="Ngày đến không hợp lệ"
+									ng-change="vm.checkErr()" /><span data-for="ngayGuiPtkHshcTo"
+									id='err11' class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button type="button"
+								class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+								ng-click="cancel()" translate>Hủy bỏ</button>
+							<button type="button"
+								class="btn btn-qlk padding-search-right excelQLK"
+								style="width: auto;" id="saveChange11"
+								ng-click="caller.xuatBCTHCon()" translate>Xuất báo cáo</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+</form>

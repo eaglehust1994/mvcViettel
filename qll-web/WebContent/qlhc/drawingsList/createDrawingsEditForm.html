@@ -1,0 +1,163 @@
+<div ng-controller="createDrawingsEditController as vm" >
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div class="btn-group margin-left-button">
+			<button type="button"
+				class="btn btn-default padding-button border-radius-left box-shadow"
+				ng-click="vm.editDraw()" uib-tooltip="Xem bảng/Chi tiết">
+				<div class="action-button view" 
+					translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button border-radius-right box-shadow"
+				ng-click="vm.save()" ng-disabled="hideSaveDraw" uib-tooltip="Lưu">
+				<div class="action-button save"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+
+		</div>
+		<div class="btn-group">
+		<button type="button"
+			class="btn btn-default padding-button border-radius box-shadow"
+			ng-click="vm.signCA()" ng-disabled="hideSignCA" uib-tooltip="Ký CA">
+			<div class="action-button signature"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+	</div>
+	</div>
+	<div  style="padding-bottom: 1%" disable-all="vm.disableAll">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" 
+					translate>Thông tin chung</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<form class="form-horizontal">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Số hợp đồng</span></label>
+						<div class="col-md-8">
+							<div class="input-icon right">
+								<div class="input-icon right">
+									<input class="form-control width100 ng-pristine ng-valid ng-touched"
+										name="contractCode" id="contractCode" type="text"
+										ng-model="vm.item.contractCode" readonly="">
+								</div>
+								<span data-for="value" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Ngày ký HĐ</label>
+						<div class="col-md-8">
+							<div class="input-icon right">
+								<div class="input-icon right">
+									<input class="form-control width100 ng-pristine ng-valid ng-touched"
+										name="contractNo" id="contractNo" type="text"
+										ng-model="vm.item.signed_date" readonly="">
+								</div>
+								<span data-for="value" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Mã công trình</label>
+						<div class="col-md-8">
+							<div class="input-icon right">
+								<div class="input-icon right">
+									<input class="form-control width100 ng-pristine ng-valid ng-touched"
+										name="contractNo" id="contractNo" type="text"
+										ng-model="vm.item.constrtCode" readonly="">
+								</div>
+								<span data-for="value" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Tên công trình</label>
+						<div class="col-md-8">
+							<div class="input-icon right">
+								<input class="form-control width100 ng-pristine ng-valid ng-touched"
+									name="contractNo" id="contractNo" type="text"
+									ng-model="vm.item.constrtName" readonly=""> <span
+									data-for="value" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Địa chỉ công trình</label>
+						<div class="col-md-8">
+							<div class="input-icon right">
+								<div class="input-icon right">
+									<input class="form-control ng-pristine ng-valid ng-touched"
+										name="contractNo" id="contractNo" type="text"
+										ng-model="vm.item.constrtAddress" readonly="">
+								</div>
+								<span data-for="value" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" 
+					translate>Thành phần ký</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<form class="form-horizontal">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Giám sát thi công</label>
+						<div class="col-md-8">
+							<select class="form-control" id="amonitorId" style="width: 100%"
+								name="amonitorId" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'userId'"
+								k-data-source="vm.amonitorId" ng-model="vm.edit.amonitorId"
+								data-required-msg="KhÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"></select>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Đại diện pháp luật
+							của nhà thầu thi công</label>
+						<div class="col-md-8">
+							<select class="form-control" id="bdirectorId" style="width: 100%"
+								name="bdirectorId" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'userId'"
+								k-data-source="vm.bdirectorId" ng-model="vm.edit.bdirectorId"
+								data-required-msg="KhÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"></select>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label">Người lập</label>
+						<div class="col-md-8">
+							<select class="form-control width100" id="creator"
+								name="creator" kendo-drop-down-list
+								k-data-text-field="'fullName'" k-data-value-field="'userId'"
+								k-data-source="vm.creator" ng-model="vm.edit.creatorId"
+								data-required-msg="KhÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng"></select>
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" 
+					translate>Bản vẽ hoàn công</span>
+			</div>
+
+		</div>
+		<div kendo-grid="vm.createDrawingEditGrid"
+			k-options="vm.gridEditDrawingOptions" id="createDrawingEditMainGrid"></div>
+
+	</div>
+	</div>
+</div>

@@ -1,0 +1,279 @@
+<div data-ng-controller="deliveryorderController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+	<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#creExt1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="creExt1" class="collapse in from-search">
+
+						<div class="clearfix position-relative">
+							<div class="search_plus">
+								<i class="fa fa-search-plus" aria-hidden="true" ng-hide="vm.showAdvancedSearch"
+									ng-click="vm.advancedSearch()" uib-tooltip="Mở rộng" ></i>
+								<i class="fa fa-search-minus" aria-hidden="true"  ng-hide="!vm.showAdvancedSearch"
+									ng-click="vm.advancedSearch()" uib-tooltip="Thu gọn"></i>
+
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text" id="orderCodeExNote"
+										ng-model="vm.orderSearch.keySearch" />
+
+								</div>
+							</div>
+
+							<multi-select model-label="Kho yêu cầu xuất" caller="vm"
+								template-url="views/popup/gridViewMulti.html" domain="true"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId7"
+								popup-type="gridplus"
+								popup-source-link="stockRsServiceRest/getStocksForAutocomplete"
+								combo-id="orderStock8"
+								combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+								combo-name="name" combo-value="stockId" combo-code="code"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.orderSearch.listStockId" model-name="vm.orderSearch.stockName"
+								ng-model="vm.orderSearch.stockName"> </multi-select>
+
+						</div>
+
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Ngày
+									tạo: Từ ngày </label>
+								<div class="col-md-4">
+									<input kendo-date-picker date-time k-format="'dd/MM/yyyy'" name="creExtFromDate"
+										id="creExtFromDate" style="width: 100%;"
+										ng-model="vm.orderSearch.createdDateFrom"
+										class="form-control width100" required 
+										data-required-msg="Ngày tạo không được để trống"
+										min-year="1000" data-minyear-msg="Ngày tạo từ không hợp lệ"
+										 ng-change="vm.validateDate('checkErr1')" />
+										<span data-for="creExtFromDate" class="k-invalid-msg"></span>
+										<span style="color:red">{{vm.errMessage1}}</span>
+								</div>
+								
+								<label class="col-md-1 control-label" translate>đến</label>
+								<div class="col-md-3 position-relative">
+									<input kendo-date-picker name="creExtToDate"
+										id="creExtToDate" class="form-control width100"
+										ng-model="vm.orderSearch.createdDateTo"
+										k-format="'dd/MM/yyyy'" min-year="1000" date-time data-minyear-msg="Ngày tạo đến không hợp lệ"
+										 ng-change="vm.validateDate('checkErr')" /> <span
+										data-for="creExtToDate" class="k-invalid-msg"></span>
+										<span style="color:red">{{vm.errMessage}}</span>
+								</div>
+								
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.cancelTime()"></i>
+								</div>
+							</div>
+							
+							<auto-search model-label="Người tạo" caller="vm"
+								template-url="wms/popup/gridViewCreator.html"
+								header-template="vm.userHeaderTemplate" template-auto="vm.userTemplate"
+								page="1" page-size="10" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplusUser"
+								popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+								combo-id="orderCreator"
+								combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+								combo-name="fullName" combo-value="sysUserId" combo-code="employeeCode"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCreator"
+								model-id="vm.orderSearch.createdBy" model-name="vm.orderSearch.createdByName"
+								ng-model="vm.orderSearch.createdByName"> </auto-search>
+
+
+						</div>
+
+
+						<div class="clearfix">
+							<div class="form-group col-md-6" id="listCreExtNoteStatus"> 
+								<label class="col-md-4 control-label " translate>Trạng
+									thái yêu cầu</label>
+								<div class="col-md-8 position-relative">
+									<select id="creExtNoteStatus" kendo-multi-select
+										ng-model="vm.orderSearch.listStatus">
+										<option value="1" selected>1.Chưa tạo phiếu</option>
+										<option value="2">2.Đã tạo phiếu</option>
+										<option value="3">3.Đã nhập/xuất</option>
+										<option value="4">4.Đã hủy</option>
+										<option value="5">5.Đã từ chối</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.cancelInput ('reqStatList')"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6" id="listCreExtNoteBusinessTypes">
+								<label class="col-md-4 control-label " translate>Loại
+									yêu cầu</label>
+								<div class="col-md-8">
+									<select kendo-multi-select
+										id="requirementTypeCreExpNote" style="width: 100%"
+										name="requirementTypeCreExpNote" k-data-source="vm.businessTypes" 
+										k-data-text-field="'name'" k-data-value-field="'code'"
+										ng-model="vm.orderSearch.listBussinessType">
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"
+										ng-click="vm.cancelInput ('reqList')"></i>
+								</div>
+							</div>
+						</div>
+
+						<div ng-show="vm.showAdvancedSearch" id="searchdemo"
+							class="collapse in from-search">
+							<div class="clearfix" id="searchdemo">
+								<div class="form-group col-md-6" id="listCreExtNoteSignCA">
+									<label class="col-md-4 control-label " translate>Tình
+										trạng ký CA</label>
+									<div class="col-md-8 position-relative">
+										<select id="creExtNoteSignCA" kendo-multi-select
+											ng-model="vm.orderSearch.listSignState">
+											<option value="1" selected>1.Chưa trình ký</option>
+											<option value="2">2.Đã trình ký</option>
+											<option value="3">3.Đã ký</option>
+											<option value="4">4.Đã từ chối</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cancelInput ('signStatusList')"></i>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị
+										tạo</label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartmentCreate('depOpenCreate')"></i>
+										</div>
+										<input kendo-auto-complete k-options="vm.deprtOptions" 
+											class=" form-control width100" type="text" id = "creExtNoteCreDept"
+											ng-blur="vm.changeDataAuto('creExtNoteCreDept')"
+											ng-model="vm.orderSearch.createdDeptedName" />
+
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cancelCreptedDepted()"></i>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Thông
+										tin khác</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.orderSearch.otherKey"
+											placeholder="Mã hợp đồng, mã dự án/đề tài, mã công trình, mã đối tác" />
+									</div>
+
+								</div>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị
+										nhận</label>
+									<div class="col-md-8">
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartmentTo('depOpenTo')"></i>
+										</div>
+										<input kendo-auto-complete k-options="vm.deprtOptions1"
+											class=" form-control width100" type="text" id="creExtNoteToDept"
+											ng-blur="vm.changeDataAuto('creExtNoteToDept')"
+											ng-model="vm.orderSearch.deptReceiveName" />
+
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cancelDeptReceive()"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findCreExt"
+										class="btn btn-qlk padding-search-right searchQLK btn-focus" translate
+										ng-click="vm.doSearch()">Tìm kiếm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase" id="creExtNoteCount" ></label><label class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#creExt2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+
+		<div id="creExt2" class="collapse in from-search">
+
+			<div id="creExpNoteGrid" kendo-grid="vm.creExpNoteGrid" k-editable="false"
+				k-options="vm.creExpNoteGridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">	
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 13:
+                    				$("#findCreExt").click();
+                    				break;
+                    		}
+                    	} 
+                         
+						 
+	$("#listCreExtNoteSignCA").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+	$("#listCreExtNoteStatus").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+	$("#listCreExtNoteBusinessTypes").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	});
+						</script> 

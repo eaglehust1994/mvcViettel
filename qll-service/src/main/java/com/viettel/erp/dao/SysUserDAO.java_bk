@@ -1,0 +1,70 @@
+/*
+ * Copyright (C) 2011 Viettel Telecom. All rights reserved.
+ * VIETTEL PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
+ */
+package com.viettel.erp.dao;
+
+import java.util.List;
+
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
+import org.hibernate.type.LongType;
+import org.hibernate.type.StringType;
+import org.springframework.stereotype.Repository;
+
+import com.viettel.erp.bo.SysUserBO;
+import com.viettel.erp.dto.SysUserDTO;
+import com.viettel.service.base.dao.BaseFWDAOImpl;
+
+/**
+ * @author TruongBX3
+ * @version 1.0
+ * @since 08-May-15 4:07 PM
+ */
+@Repository("sysUserDAO")
+public class SysUserDAO extends BaseFWDAOImpl<SysUserBO, Long> {
+
+    public SysUserDAO() {
+        this.model = new SysUserBO();
+    }
+
+    public SysUserDAO(Session session) {
+        this.session = session;
+    }
+    
+    public List<SysUserDTO> getForAutoComplete(SysUserDTO obj) {
+    	String sql = "SELECT USER_ID userId"	
+				+" ,LOGIN_NAME loginName"
+				+" ,FULL_NAME fullName"
+				+" FROM SYS_USER"
+				+" WHERE STATUS = '1' ";
+		
+		StringBuilder stringBuilder = new StringBuilder(sql);
+		obj.setIsSize(true);
+		stringBuilder.append(obj.getIsSize() ? " AND ROWNUM <=10" : "");
+//		System.out.println("TEST + "+ obj +" = "+ obj.getName() + "  " + obj.getAddress());
+		stringBuilder.append(StringUtils.isNotEmpty(obj.getName()) ? " AND (upper(LOGIN_NAME) LIKE upper(:loginName)" + (StringUtils.isNotEmpty(obj.getFullName()) ? " OR upper(FULL_NAME) LIKE upper(:fullName)" : "") + ")" : (StringUtils.isNotEmpty(obj.getFullName()) ? "AND upper(FULL_NAME) LIKE upper(:fullName)" : ""));
+		stringBuilder.append(" ORDER BY LOGIN_NAME");
+		
+		SQLQuery query = getSession().createSQLQuery(stringBuilder.toString());
+		
+		query.addScalar("userId", LongType.INSTANCE);
+		query.addScalar("loginName", StringType.INSTANCE);
+		query.addScalar("fullName", StringType.INSTANCE);
+	
+		query.setResultTransformer(Transformers.aliasToBean(SysUserDTO.class));
+
+		if (StringUtils.isNotEmpty(obj.getName())) {
+			query.setParameter("loginName", "%" + obj.getName() + "%");
+		}
+		
+		if (StringUtils.isNotEmpty(obj.getFullName())) {
+			query.setParameter("fullName", "%" + obj.getFullName() + "%");
+		}
+
+		return query.list();
+	}
+    
+}

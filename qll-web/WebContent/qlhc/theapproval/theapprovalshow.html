@@ -1,0 +1,17 @@
+<div ng-controller="listControllertheApproval as vm" >
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button  border-radius margin-left-button box-shadow"
+				ng-click="vm.clickApproval()" ng-disabled="disabledButtom" uib-tooltip="Trình Duyệt">
+				<div class="action-button save"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+	</div>
+
+	<hr class="line-Hr">
+	<form class="form-horizontal row" role="form">
+		<div data-ng-include="'qlhc/theapproval/theapproval.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</form>
+</div>

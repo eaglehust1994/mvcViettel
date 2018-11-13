@@ -1,0 +1,134 @@
+<form class="form-horizontal row" role="form" name="shipmentGoods"
+	id="shipmentGoods" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="portlet light ">
+		<div class="margin-bottom row" >
+			<div class="caption col-md-12">
+				<span class="text-header-popup bold lowercase lowercase" translate>Thông
+					tin lô hàng</span>
+			</div>
+		</div>
+		<div class="padding-width18">
+			<div >
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Mã lô hàng</label>
+					<label class="control-label" style="font-weight: bold;">{{data.code}}</label>
+					</div>
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req"  translate >Tổng nguyên
+							giá lô hàng</label>
+						<div class="col-md-7">
+							<input parsecurrency value-model="data.totalOriginMoney"  class=" form-control width100" type="text" required id="totalOriginMoney1" style="text-align:right;"
+							data-required-msg="Tổng nguyên giá lô hàng không được để trống" name="totalOriginMoney" ng-blur="caller.dso(data.totalOriginMoney)" 
+								ng-model="data.totalOriginMoneyDisplay" />
+							<span id ="msg" data-for='totalOriginMoney' class='k-invalid-msg'></span>
+							<span style="color: gray;">{{caller.docso.totalOriginMoney}}</span>
+						</div>
+						<label class="col-md-1 control-label"  translate >VNĐ</label>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portlet light ">
+		<div class=" margin-bottom row">
+			<div class="caption col-md-12">
+				<span class="text-header-popup bold lowercase" translate>Import
+					bằng file excel</span>
+			</div>
+		</div>
+		<div class="padding-width18">
+			<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-8">
+							<label class="col-md-2 control-label" translate>File Import</label>
+							<div class="col-md-6">
+								<input class=" form-control width100" type="file" id="file"
+												/>
+												<span style="color:gray">Dung lượng &#60;&#61; 100MB, định dạng xls,xlsx</span>
+							</div>
+			
+							<div class="col-md-4">
+								<input class="col-md-4" style="height: 25px;" ng-click="caller.submit()" type="submit" id="btnFileGoods"
+									value="Tải lên">
+							</div>
+						</div>
+			
+						<div class="form-group col-md-4">			
+							<a href="javascript:void(0);" id="linkFileGoods" style="text-decoration:underline;float:right;" ng-click="caller.getExcelTemplate()">Tải
+									file biểu mẫu</a>
+						</div><BR>		
+					</div>
+			</div>
+		</div>
+	</div>
+	<div class="portlet light ">
+		<div class="row ">
+			<div class=" col-md-12">
+				<span class="text-header-popup bold lowercase" translate>Danh
+					sách hàng hóa của lô hàng</span>
+					<span style="margin-left: 43%;" ng-bind="caller.totalEstimatePriceSum| number:2"></span>
+					<span style="margin-left: 29%;" ng-bind="caller.totalTotalOriginPrice | number:2"></span>
+					</div>
+	</div>
+	</div>
+	<div class="padding-width18">
+		<div class="border-gray">
+			<div id="shipmentGoodsDetailGrid"
+				kendo-grid="caller.shipmentGoodsDetailGrid"
+				k-options="caller.gridGoodsDetailOptions"
+				k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="col-md-4"></div>
+		<div class="col-md-4"></div>
+		<div class="portlet light" align="right">
+			<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel1" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+			<button type="button" class="btn btn-qlk margin_right10 padding-search-right saveQLK" ng-click="caller.saveShipment()" id="savGoods" translate>Ghi lại</button>
+		</div>
+	</div>
+</form>
+<script>
+$('#totalOriginMoney1').keypress(function(event) {
+    var $this = $(this);
+    if ((event.which != 46 || $this.val().indexOf('.') != -1) &&
+       ((event.which < 48 || event.which > 57) &&
+       (event.which != 0 && event.which != 8))) {
+           event.preventDefault();
+    }
+
+    var text = $(this).val();
+	if(text.length>=15){
+	event.preventDefault();
+	}
+    if ((event.which == 46) && (text.indexOf('.') == -1)) {
+        setTimeout(function() {
+            if ($this.val().substring($this.val().indexOf('.')).length > 3) {
+                $this.val($this.val().substring(0, $this.val().indexOf('.') + 3));
+            }
+        }, 1);
+    }
+
+    if ((text.indexOf('.') != -1) &&
+        (text.substring(text.indexOf('.')).length > 2) &&
+        (event.which != 0 && event.which != 8) &&
+        ($(this)[0].selectionStart >= text.length - 2)) {
+            event.preventDefault();
+    }      
+});
+
+$('#totalOriginMoney1').bind("paste", function(e) {
+var text = e.originalEvent.clipboardData.getData('Text');
+if ($.isNumeric(text)) {
+    if ((text.substring(text.indexOf('.')).length > 3) && (text.indexOf('.') > -1)) {
+        e.preventDefault();
+        $(this).val(text.substring(0, text.indexOf('.') + 3));
+   }
+}
+else {
+        e.preventDefault();
+     }
+});
+</script>

@@ -1,0 +1,175 @@
+<div disable-all="vm.disableCreatTwo" style="padding-bottom: 1%">
+	<form class="form-horizontal row" role="form" name="groundhandover"
+		id="groundhandover">
+		<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Bên
+						giao</span>
+				</div>
+			</div>
+
+			<div class="portlet-body form">
+				<div class="clearfix">
+					<combo-box-second id="thutruong" searchtype=""
+						model-label="Thủ trưởng " req="req"
+						msg="Thủ trưởng không được để trống" caller="vm"
+						popup-id="ground_handover_adirectorId" popup-type="grid"
+						popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+						combo-id="ground_handover_txtAdirectorId"
+						combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+						combo-name="fullName" combo-value="id" combo-code="value"
+						combo-search="vm.getroledirectora" combo-grid="vm.gridCommon"
+						model-id="vm.groundhandover.adirectorId"
+						model-name="vm.groundhandover.adirectorName"> </combo-box-second>
+					<combo-box-second searchtype="" model-label="Giám sát" caller="vm"
+						req="req" msg="Giám sát không được để trống"
+						popup-id="ground_handover_amonitorId" popup-type="grid"
+						popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+						combo-id="ground_handover_txtAmonitorId"
+						combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+						combo-name="fullName" combo-value="id" combo-code="value"
+						combo-search="vm.getrolemonitor" combo-grid="vm.gridCommon"
+						model-id="vm.groundhandover.amonitorId"
+						model-name="vm.groundhandover.amonitorName"> </combo-box-second>
+				</div>
+				<div class="clearfix">
+					<combo-box-second searchtype="" model-label="Phụ trách giám sát"
+						req="req" msg="Phụ trách giám sát không được để trống" caller="vm"
+						popup-id="ground_handover_ainChargeMonitorId" popup-type="grid"
+						popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+						combo-id="ground_handover_txtAinChargeMonitorId"
+						combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+						combo-name="fullName" combo-value="id" combo-code="value"
+						combo-search="vm.getroleinChargeMonitor"
+						combo-grid="vm.gridCommon"
+						model-id="vm.groundhandover.ainChargeMonitorId"
+						model-name="vm.groundhandover.ainChargeMonitorName">
+					</combo-box-second>
+				</div>
+			</div>
+		</div>
+		<p></p>
+<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Bên
+					nhận</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+
+
+				<combo-box-second searchtype="" model-label="Giám đốc" caller="vm"
+					req="req" msg="Giám đốc không được để trống"
+					popup-id="ground_handover_bdirectorId" popup-type="grid"
+					popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+					combo-id="ground_handover_txtBdirectorId"
+					combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+					combo-name="fullName" combo-value="id" combo-code="value"
+					combo-search="vm.getroledirectorb" combo-grid="vm.gridCommon"
+					model-id="vm.groundhandover.bdirectorId"
+					model-name="vm.groundhandover.bdirectorName"> </combo-box-second>
+
+				<combo-box-second searchtype="" model-label="Kỹ thuật thi công"
+					req="req" msg="Kỹ thuật thi công không được để trống" caller="vm"
+					popup-id="ground_handover_binChargeConstructId" popup-type="grid"
+					popup-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+					combo-id="ground_handover_txtBinChargeConstructId"
+					combo-source-link="QualityCableMeaReportRsServiceRest/getListEmployeeByRole"
+					combo-name="fullName" combo-value="id" combo-code="value"
+					combo-search="vm.getrolebinChargeConstruct"
+					combo-grid="vm.gridCommon"
+					model-id="vm.groundhandover.binChargeConstructId"
+					model-name="vm.groundhandover.binChargeConstructName">
+				</combo-box-second>
+			</div>
+		</div>
+</div>
+		<p></p>
+<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Nội
+					dung bàn giao</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Hiện
+							trạng mặt bằng</label>
+						<div class="col-md-10">
+							<textarea class="form-control width100"
+								name="groundCurrentStatus" id="groundCurrentStatus"
+								ng-model="vm.groundhandover.groundCurrentStatus" required maxlength="1000"
+								data-required-msg="Hiện trạng mặt bẳng không được để trống"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Các
+							mốc chuẩn</label>
+						<div class="col-md-10">
+							<textarea class="form-control width100" name="benchmark"
+								id="benchmark" ng-model="vm.groundhandover.benchmark" required maxlength="1000"
+								data-required-msg="Các mốc chuẩn không được để trống"></textarea>
+						</div>
+					</div>
+				</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<form action="#" class="form-horizontal">
+
+	<div class="portlet light bordered" ng-show="vm.disabledPheDuyet">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class=""></i> <span
+					class="caption-subject font-red-sunglo  bold uppercase" translate>Phê
+					duyệt</span>
+			</div>
+		</div>
+		<br />
+		<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phê duyệt</label>
+					<div class="col-md-8">
+						<select class="form-control" id="monitoring" style="width: 100%"
+							name="monitoring" kendo-drop-down-list
+							ng-model="vm.approDTO.statusCa">
+							<option value=2 selected="selected">Đã duyệt</option>
+							<option value=3>Từ chối duyệt</option>
+						</select>
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+
+						<label class="col-md-2 control-label" translate>Nhận
+							xét/Lý do từ chối duyệt</label>
+						<div class="col-md-10 input-width" style="">
+							<input type="text" class="form-control width100"
+								name="constrtAddress" id="constrtAddress"
+								ng-model="vm.approDTO.comments" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END FORM-->
+		</div>
+	</div>
+</form>
+

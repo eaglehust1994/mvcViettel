@@ -1,0 +1,50 @@
+<style>
+.hover {
+	background-color: Silver;
+}
+
+.appFile1 {
+	color: red;
+}
+
+.k-button.k-upload-button {
+	width: 100%;
+	border: 1px dotted;
+}
+</style>
+<form class="form-horizontal row" role="form" name="shipment"
+	id="shipment" kendo-validator="validator" k-options="validatorOptions">
+	<div class="portlet-title margin-top15">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Tải ảnh lên</span>
+		</div>
+	</div>
+	
+	<div class="padding-width18">
+		<div class="border-gray">
+			<div>
+				<center>Kéo thả các file vào đây hoặc click để chọn file</center>
+			</div>
+			<div class="clearfix">
+				<div class="col-md-12">
+					<input class="file-input" name="files" type="file" kendo-upload
+						id="files" tabindex="10" k-select="caller.onSelectFile2" />
+				</div>
+			</div>
+			<center>
+				<span style="color: gray">Dung lượng &#60;&#61; 10MB, định
+					dạng .png,.jpg</span>
+			</center>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="portlet light" align="right">
+			<button type="button"
+				class="btn btn-qlk padding-search-right closeQLK" id="cancel11"
+				tabindex="12" ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button" id="sav"
+				class="btn btn-qlk margin_right10 padding-search-right saveQLK"
+				ng-click="save()" tabindex="11" translate>Ghi lại</button>
+		</div>
+	</div>
+</form>

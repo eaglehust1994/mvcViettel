@@ -1,0 +1,125 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 60%;
+	height: 400px;
+}
+
+.fright {
+	float: right;
+	width: 40%;
+	height: 400px;
+}
+
+.paddinger {
+	padding-top: 10px;
+}
+</style>
+<form class="form-horizontal row" role="form">
+	<div class="form-body wrap">
+		<div class="fleft">
+			<div class="portlet light bordered">
+				<div class="portlet-title background-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin chi phí</span>
+					</div>
+				</div>
+				<p></p>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label req" translate>Tổng chi
+							phí</label>
+						<div class="col-md-8">
+							<input class=" form-control width100" type="text" name="totalFee" id="totalFee"
+								ng-model="data.totalFee" />
+						</div>
+					</div>
+					<div class="form-group col-md-6"></div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-12">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Ghi chú</label>
+							<div class="col-md-10">
+								<textarea class=" form-control width100" type="text" id="feeDescription" name="feeDescription"
+									ng-model="data.feeDescription"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet-title background-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin thuế</span>
+					</div>
+				</div>
+				<div id="shipmentPrice1Grid" kendo-grid="caller.shipmentPrice1Grid"
+					k-editable="false" k-options="caller.gridPrice1Options"
+					k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+		</div>
+		<div class="fright">
+			<div class="portlet light bordered">
+				<div class="portlet-title background-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin tổng hợp</span>
+					</div>
+				</div>
+				<p></p>
+				<div class="clearfix">
+					<div class="col-md-12">
+						<label class="col-md-4 control-label" translate>Mã lô hàng</label>
+						<div class="col-md-8">
+							<input class=" form-control width100" type="text" readonly
+								name="code" id="code" ng-model="data.code" />
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="col-md-12 paddinger">
+						<label class="col-md-4 control-label" translate>Tổng
+							nguyên giá trị lô hàng</label>
+						<div class="col-md-8">
+							<input class=" form-control width100" type="text" readonly
+								name="totalOriginMoney" id="totalOriginMoney"
+								ng-model="data.totalOriginMoney" /> <span>{{vm.docso.totalOriginMoney}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="col-md-12 paddinger">
+						<label class="col-md-4 control-label" translate>Tổng tiền
+							thuế</label>
+						<div class="col-md-8">
+							<input class=" form-control width100" type="text" readonly
+								id="totalTax" name="totalTax" ng-model="data.totalTax" /> <span>{{vm.docso.totalTax}}</span>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix ">
+					<div class="col-md-12 paddinger">
+						<label class="col-md-4 control-label" translate>Tổng giá
+							trị lô hàng</label>
+						<div class="col-md-8">
+							<input class=" form-control width100" type="text" readonly
+								ng-model="data.totalMoney" /> <span>{{vm.docso.totalMoney}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<div class="portlet light" align="right">
+	<button type="button" class="btn red btn-outline padding-search-right"
+		ng-click="cancel()" translate>Hủy bỏ</button>
+	<button type="button" class="btn blue btn-outline padding-search-right"
+		ng-click="caller.nextStep()" translate>Tiếp</button>
+</div>

@@ -1,0 +1,42 @@
+<uib-tabset class="tabbable-custom" level2> 
+	<uib-tab active="vm.tabs[0].active" heading="Bảng diễn giải khối lượng xây lắp hoàn thành">
+		<div kendo-grid="vm.WorkItemGrid" k-options="vm.WorkItemGridOptions" id="WorkItemGrid"></div>
+
+
+		<div>
+		
+
+		<div>
+		&nbsp; 
+			<button type="button" class="btn default" translate=""
+				ng-click="vm.Import()">
+				<span class="ng-scope">Import</span>
+			</button>
+</div>
+	</div>
+	</uib-tab> 
+		
+	<uib-tab active="vm.tabs[1].active" heading="Khối lượng VT, TB do A cấp">
+		<div kendo-grid="vm.AmaterialGrid" k-options="vm.gridOptions2" id="AmaterialGrid"></div>
+<div>
+		&nbsp; 
+			<button type="button" class="btn default" translate=""
+				ng-click="vm.ImportMerList()">
+				<span class="ng-scope">Import</span>
+			</button>
+</div>
+	</uib-tab>
+	
+	
+	<!--  <uib-tab ng-show="vm.Contract" active="vm.tabs[2].active" heading="Khối lượng xây lắp do nhà thầu thi công">
+		<div kendo-grid="vm.IContractGrid" k-options="vm.gridOptions3" id="IContractGrid"></div>
+
+	</uib-tab>
+	
+	 <uib-tab ng-show="vm.Contract" active="vm.tabs[3].active" heading="Các công việc phát sinh ngoài HĐ">
+		<div kendo-grid="vm.OContractGrid" k-options="vm.gridOptions4" id="OContractGrid"></div>
+
+	</uib-tab>
+    -->	
+ 
+</uib-tabset>

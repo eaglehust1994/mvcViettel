@@ -1,0 +1,51 @@
+<div ng-controller="constrworklogstheapprovalcontroller as vm">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.save()" ng-disabled="vm.disabledButtom"  uib-tooltip="Lưu Lại">
+				<div class="action-button save" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+
+			<button type="button"
+				class="btn btn-default padding-button border-radius-left box-shadow"
+				ng-click="vm.exportFilePdf()" uib-tooltip="ExportPDF">
+				<div class="action-button pdf"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+
+			<button type="button"
+				class="btn btn-default padding-button  border-radius-right box-shadow"
+				ng-click="vm.ExportDoc()" uib-tooltip="ExportDOC">
+				<div class="action-button doc"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+		<div class="btn-group">
+			<div class="btn-group">
+				<button type="button"
+					class="btn btn-default padding-button border-radius-left box-shadow"
+					ng-click="vm.signCACreat()" translate="" id="btnCopyPayroll" uib-tooltip="Trình duyệt">
+					<div class="action-button approval" 
+						translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button"
+					class="btn btn-default padding-button box-shadow"
+					ng-click="vm.ApproBia()" translate="" id="btnCopyPayroll"
+					ng-disabled="isDisabled1" uib-tooltip="Phê duyệt">
+					<div class="action-button approve" 
+						translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button"
+				class="btn btn-default padding-button box-shadow border-radius-right"
+				ng-click="vm.cancelApprovalBtn()" uib-tooltip="Hủy trình duyệt">
+				<div class="action-button cancelAproval"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			</div>
+		</div>
+	</div>
+	<form class="form-horizontal row" role="form">
+		<div
+			data-ng-include="'qlhc/constrworklogstheapproval/constrworklogstheapproval.html'"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</form>
+</div>

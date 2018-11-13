@@ -1,0 +1,177 @@
+<style>
+#pdf {
+    background-image: url(style/img/pdf_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+#excel {
+    background-image: url(style/img/excel_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+#note {
+    background-image: url(style/img/note_icon.png);
+    background-repeat:no-repeat ;
+    background-size: 22px 22px;
+    background-position: 4px 2px;
+}
+</style>
+
+<div data-ng-controller="stockGoodsController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate></span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo22"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo22" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<auto-search model-label="Kho" caller="vm"
+									template-url="views/popup/gridView.html" header-template="vm.headerTemplate"
+									template-auto="vm.template" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+									popup-source-link="appParamServiceRest/doSearch"
+									combo-id="ar_deposit_browser_txtAdOrgId"
+									combo-source-link="appParamServiceRest/getForAutoComplete"
+									combo-name="name" combo-value="code" combo-code="name"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-id="vm.stockGoodsSearch.keySearch01"
+									model-name="vm.stockGoodsSearch.keySearch01"> </auto-search>
+									
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng hàng hoá</label>
+								<div class="col-md-8">
+									<div class="col-md-4">
+										<label><input type="radio" id="goodsStateName" name="goodsStateName"
+											ng-model="vm.stockGoodsSearch.goodsStateName"
+											ng-checked="vm.stockGoodsSearch.goodsStateName == 2" value="2">
+											Tất cả</label>
+									</div>
+									<div class="col-md-5">
+										<label><input type="radio" id="goodsStateName" name="goodsStateName"
+											ng-model="vm.stockGoodsSearch.goodsStateName"
+											ng-checked="vm.stockGoodsSearch.goodsStateName == 1" value="1">
+											Bình thường</label>
+									</div>
+									<div class="col-md-3">
+										<label><input type="radio" id="goodsStateName" name="goodsStateName"
+											ng-model="vm.stockGoodsSearch.goodsStateName"
+											ng-checked="vm.stockGoodsSearch.goodsStateName == 0" value="0">
+											Hỏng</label>
+									</div>
+								</div>
+
+
+							</div>
+						</div>
+
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label " translate>Loại
+									hàng hoá</label>
+								<div class="col-md-8 position-relative">
+									<select kendo-multi-select class="form-control"
+										id="listGoodsType" style="width: 100%"
+										name="listGoodsType" ng-model="vm.stockGoodsSearch.listGoodsType">
+										<option value="1">1. Công dụng cụ</option>
+										<option value="2">2. Vật tư, thiết bị</option>
+										<option value="3">3. Linh kiện</option>
+									</select>
+								</div>
+								<div class="One_icon" ng-click="vm.cancelStock('deselect-all')">
+											<i class="fa fa-times" aria-hidden="true"></i>
+										</div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Xuất kèm
+									serial</label>
+								<div class="col-md-8">
+									<div class="col-md-4">
+										<label><input type="radio" id="goodsIsSerial" name="goodsIsSerial"
+											ng-model="vm.stockGoodsSearch.goodsIsSerial"
+											ng-checked="vm.stockGoodsSearch.goodsIsSerial == 0" value="0">
+											Không</label>
+									</div>
+									<div class="col-md-5">
+										<label><input type="radio" id="goodsIsSerial" name="goodsIsSerial"
+											ng-model="vm.stockGoodsSearch.goodsIsSerial"
+											ng-checked="vm.stockGoodsSearch.goodsIsSerial == 1" value="1">
+											Có</label>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix">
+							
+							<auto-search model-label="Hàng hoá" caller="vm"
+									template-url="views/popup/gridView.html" header-template="vm.headerTemplate"
+									template-auto="vm.template" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+									popup-source-link="appParamServiceRest/doSearch"
+									combo-id="ar_deposit_browser_txtAdOrgId"
+									combo-source-link="appParamServiceRest/getForAutoComplete"
+									combo-name="name" combo-value="code" combo-code="name"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-id="vm.stockGoodsSearch.keySearch02"
+									model-name="vm.stockGoodsSearch.keySearch02"> </auto-search>
+
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Thông
+									tin khác</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.stockGoodsSearch.keySearch2"
+										placeholder="Mã hợp đồng, mã lô hàng, mã dự án/đề tài" />
+								</div>
+							</div>
+
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="note" ng-click="vm.doSearch()"
+										class="btn green btn-outline padding-search" translate>Xem trước</button>
+									<button type="button" id="excel"
+										class="btn green btn-outline padding-search"
+										 translate>Xuất excel</button>
+									<button type="button" id="pdf"
+										class="btn green btn-outline padding-search"
+										translate>Xuất pdf</button>
+									<!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate></span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo44"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo44" class="collapse in from-search">
+			<div id="stockGoodsGrid" kendo-grid="vm.stockGoodsGrid" 
+			k-editable="false" k-options="vm.stockGoodsGridOptions" 
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</div>

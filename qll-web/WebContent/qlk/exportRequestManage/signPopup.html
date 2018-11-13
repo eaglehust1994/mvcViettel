@@ -1,0 +1,153 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+<style>
+.wrap {
+	overflow: auto;
+}
+
+.extend10{margin:15px 10px;}
+
+.fleft {
+	float: left;
+	width: 40%;
+	border-top: 1px solid #D3D3D3;
+}
+
+.fright {
+	float: right;
+	width: 60%;
+}
+
+
+.frightdetail {
+	width:100%;
+	padding-top: 100px; 
+    height: 100%;
+	border:0;
+}
+</style>
+</head><body>
+<div class="modal-body">
+    <!-- BEGIN PORTLET-->
+    	<div class="wrap">
+			<div class="fleft col-md-8">
+				<form class="form-horizontal row" role="form">
+					<div class="forms-body">
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									Danh sách yêu cầu trình kí
+								</div>
+							</div>
+							
+							<div style="margin-top:10px" id="SubNoteGrid" kendo-grid="caller.SubNoteGrid"
+									 k-editable="false" k-options="caller.SubNoteGridOptions"></div>
+							
+						</div>
+
+					</div>
+				</form>
+			</div>
+			
+			<div class="fright">
+				<form class="form-horizontal row" role="form">
+					<div class="form-body">
+						<div class="portlet light">
+							<div class="portlet-title">
+								<div class="caption">
+									Thông tin người ký cho yêu cầu: 
+				
+								</div>
+							</div>
+							
+						</div>
+						
+					
+						<div class="frightdetail">
+						<div class="clearfix extend10">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>1. Đơn vị yêu cầu</label>
+									<div class="col-md-8">
+										<input name="exkeware" class=" form-control width100" type="text"
+											ng-model="caller.exkeware"  maxlength="50"
+											data-required-msg="Thủ kho không được để trống"/>
+											 <span data-for='exkeware' class='k-invalid-msg'></span>
+									</div>
+									
+									<div class="One_icon" ng-click="cancelest('exkeware')">
+										<i class="fa fa-times" aria-hidden="true" ></i>
+									</div>
+								
+								</div>
+							
+							</div>
+							<div class="clearfix extend10">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>2. Đơn vị phê duyệt</label>
+									<div class="col-md-8">
+										<input  name="rec" class=" form-control width100" type="text"
+											ng-model="caller.rec" />
+									</div>
+									
+									<div class="One_icon" ng-click="cancelest('rec')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+								</div>
+							
+							</div>
+							
+								<div class="clearfix extend10">
+								<div class="form-group col-md-12">
+									<label class="col-md-4 control-label" translate>3. Đơn vị quản lý</label>
+									<div class="col-md-8">
+										<input name="finCharge" class=" form-control width100" type="text"
+											ng-model="caller.finCharge" />
+									</div>
+									<div class="One_icon" ng-click="cancelest('finCharge')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+								</div>
+							
+							</div>
+							
+						
+								
+						</div>
+							
+
+					</div>
+				
+				</form>
+
+			</div>
+		
+		
+			
+		</div>
+    
+    <!-- END PORTLET-->
+</div>
+<div class="modal-footer row">
+    <div class="col-md-12 text-right">
+    	<button type="button" id="cancel" class="btn red btn-outline border-find-footer" ng-click="cancel()">Hủy bỏ</button>
+		<button type="submit" id="submit" class="btn green btn-outline border-find-footer" ng-click="save()">Trình ký</button>
+	    
+	</div>
+</div>
+			 <script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#find").click();
+                    				break;
+                    		}
+                    	} 
+                         
+                         $("#gridView").delegate("tbody>tr", "dblclick", function(){
+                        	 $("#submit").click();});
+				</script> 
+</body></html>

@@ -1,0 +1,144 @@
+<style>
+	#viewHistoryDNGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#viewHistoryDNGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="viewHistoryDNController as vm">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoreson"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+
+					<!-- bat dau tim kiem -->
+					<div id="demoreson" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.viewHistoryDNSearch.keySearch" />
+											</div>
+
+										</div>
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Ngày đăng nhập: Từ  </label>
+									<div class="col-md-4">
+										<input kendo-date-picker date-time name="ngayXuatFrom111112"
+											id="ngayXuatFrom111112"
+											ng-model="vm.viewHistoryDNSearch.gioDangNhapFrom"
+											class="form-control width100"
+											data-required-msg="Ngày xuất không được để trống"
+											k-format="'dd/MM/yyyy'"
+											data-date-msg="Ngày xuất không hợp lệ"
+											ng-change="vm.validateDate('checkErr1')" min-year="1000"
+											data-minyear-msg="Ngày xuất không hợp lệ" /> <span
+											data-for="ngayXuatFrom111112" class="k-invalid-msg"> </span>
+									</div>
+									<label class="col-md-1 control-label" translate>đến</label>
+									<div class="col-md-3 position-relative">
+										<input kendo-date-picker date-time name="ngayXuatTo111113"
+											id="ngayXuatTo111113"
+											ng-model="vm.viewHistoryDNSearch.gioDangNhapTo"
+											class="form-control width100" k-format="'dd/MM/yyyy'"
+											data-date-msg="Ngày xuất không hợp lệ"
+											ng-change="vm.validateDate('checkErr')" min-year="1000"
+											data-minyear-msg="Ngày xuất không hợp lệ" /> <span
+											data-for="ngayXuatTo111113" class="k-invalid-msg"></span>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Địa chỉ
+										IP:</label>
+									<div class="col-md-8">
+										<input type="text" class=" form-control width100" name="ipAdd"
+											ng-model="vm.viewHistoryDNSearch.ipDangNhap" maxlength="200"
+											id="ipAdd" />
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="clearfix"></div>
+					<div class="clearfix form-actions margin-top">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button type="button" id="viewHistoryDNid"
+									ng-click="vm.doSearch()"
+									class="btn btn-qlk padding-search-right searchQLK" translate>Tìm
+									kiếm</button>
+							</div>
+						</div>
+					</div>
+					<!-- end tìm kiếm -->
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm :</span>&nbsp;<label class="control-label bold lowercase"
+					id="viewHistoryDNGridCount11"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#viewHistoryDN111"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="viewHistoryDN111" class="collapse in ">
+
+			<div ng-show="vm.showDetail" id="sign"></div>
+			<div id="viewHistoryDNGrid" kendo-grid="vm.viewHistoryDNGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	document.onkeydown = keyDown;
+	function keyDown(e) {
+		switch (e.keyCode) {
+		case 13:
+			$("#viewHistoryDNid").click();
+			break;
+		}
+	}
+	$("input").change(function() {
+		$(this).val($.trim($(this).val()));
+	});
+</script>

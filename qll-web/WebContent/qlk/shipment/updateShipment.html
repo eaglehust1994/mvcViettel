@@ -1,0 +1,85 @@
+<style>
+.formater {
+	margin-left: 23%;
+}
+</style>
+<form class="form-horizontal row" role="form" name="reason" id="reason"
+	kendo-validator="validator" k-options="validatorOptions">
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin lô hàng</span>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Mã lô hàng</label>
+				<div class="col-md-8">
+					<input class=" form-control width100" type="text" id="code"
+						readonly="readonly" name="code" ng-model="data.code" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Import
+					bằng file excel</span>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-8">
+				<label class="col-md-2 control-label" translate>File Import</label>
+				<div class="col-md-6">
+					<input class=" form-control width100" type="file"
+						ng-model="vm.reasonSearch.keySearch" />
+				</div>
+
+				<div class="col-md-4">
+					<button type="button"
+						class="btn green btn-outline padding-search-right"
+						ng-click="vm.UpFile()" translate>Tải file lên</button>
+				</div>
+			</div>
+
+			<div class="form-group col-md-4">
+				<a><label class="col-md-12 control-label" translate>Tải
+						file biểu mẫu lên</label></a>
+			</div>
+		</div>
+
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption col-md-8">
+				<span class="caption-subject bold lowercase" translate>Danh
+					sách hàng hóa của lô hàng</span>
+			</div>
+			<div class="form-group col-md-4">
+				<div class="col-md-12">
+					<input kendo-auto-complete k-options="caller.addGroupOptions" placeholder="Nhập nhanh: Mã hàng, tên hàng để bổ sung"
+						ng-model="data.useGroupName" class="form-control width100" name="groupAdd" id="groupAdd" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="shipmentUpdateGrid" kendo-grid="caller.shipmentUpdateGrid"
+		k-editable="false" k-options="caller.gridUpdateOptions"
+		k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+	<div class="clearfix">
+		<div class="col-md-4"></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button"
+				class="btn blue btn-outline padding-search-right ng-scope"
+				ng-click="saveDetail()" translate>Ghi lại</button>
+		</div>
+	</div>
+</form>

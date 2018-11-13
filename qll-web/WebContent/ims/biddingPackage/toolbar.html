@@ -1,0 +1,22 @@
+
+<div class=" pull-left ">
+	<button class="btn btn-qlk padding-search-right addQLK"
+		ng-click="vm.add()" uib-tooltip="Tạo mới" translate>Tạo mới</button>
+    <button class="btn btn-qlk padding-search-right addQLK"
+		ng-click="vm.import()" uib-tooltip="Import file excel" translate>Import</button>
+</div>
+
+<div class="btn-group pull-right margin_top_button margin_right10">
+	<i data-toggle="dropdown" uib-tooltip="Cài đặt" aria-expanded="false"><i
+		class="fa fa-cog" aria-hidden="true"></i></i> <i
+		class="action-button excelQLK" uib-tooltip="Xuất file excel"
+		ng-click="vm.exportFile()" aria-hidden="true"></i>
+	<div class="dropdown-menu hold-on-click dropdown-checkboxes"
+		role="menu">
+		<label
+			ng-repeat="column in vm.appParamGrid.columns| filter: vm.gridColumnShowHideFilter">
+			<input type="checkbox" checked="column.hidden"
+			ng-click="vm.showHideColumn(column)"> {{column.title}}
+		</label>
+	</div>
+</div>

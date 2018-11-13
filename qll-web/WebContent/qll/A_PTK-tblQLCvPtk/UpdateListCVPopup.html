@@ -1,0 +1,41 @@
+
+<form class="form-horizontal row" role="form" name="changeGoods"
+	id="changeGoods111" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body " >
+			<div class="caption row margin-top10">
+				<span class="caption-subject bold lowercase" translate>Import
+					file excel</span>
+			</div>
+			<div class="padding-width18" id="process">
+				<div class="border-gray">
+					<div class="clearfix" >
+						<div class="form-group col-md-12" >
+							<div>
+								<file-input list-file-type="xls,xlsx" model="caller.dataList"
+									size="104857600" caller="caller" input-id="fileChange"
+									model-label="File import" msg="Không được để trống file"></file-input>
+
+							</div>
+							<button class="col-md-1"  ng-click="caller.submitUpdateCV()" id="upfile">Tải
+								lên</button>
+							<div class="col-md-1" id="modalLoading" style="display: none;margin-left: 30px;height: 20px;" ></div>
+								
+							<div class="form-group col-md-4" align="right" id="hiden11">
+								<a id="templateLink" href=""
+									ng-click="caller.exportExcelGrid1()">Tải danh sách công việc</a>
+							</div>
+						</div>
+						<div class="form-group col-md-5" align="right" id="hiden12">
+							<i style="color: gray; margin-right: 0px 50px;">Dung lượng <=
+								100MB, định dạng xls,xlsx</i>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div id="modalLoading" style="width: 150px; height: 50px;position: relative;display: none;text-align: center;" ></div>
+</form>

@@ -1,0 +1,133 @@
+<style>
+.ext10{margin: 10px;}
+</style>
+<form class="form-horizontal row" role="form" kendo-validator="caller.validator" k-options="caller.validatorOptions">
+	<div class="form-body">
+		<div class="portlet light ">
+			<div class="row margin-bottom">
+				<div class="caption col-md-12">
+				<span class="text-header-popup bold lowercase lowercase ng-scope" translate="">Thông
+						tin phiếu xuất kho </span>
+				</div>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix position-relative ext10">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+								<div class="col-md-8">
+										<label class="control-label" ng-bind="caller.order.orderCode"></label>		
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị tạo
+									yêu cầu</label>
+								<div class="col-md-8">
+										<label class="control-label" ng-bind="caller.order.createdDeptedName"></label>		
+								</div>
+							</div>
+		
+						</div>
+						<div class="clearfix ext10">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã phiếu</label>
+								<div class="col-md-8">
+									<input readonly class=" form-control width100" type="text"
+										ng-model="caller.order.code"  />
+		
+								</div>
+							</div>
+									<!-- <auto-search model-label="Người nhận hàng" caller="caller"
+										template-url="views/popup/gridViewCreateUser.html"
+										header-template="caller.userHeaderTemplate"
+										template-auto="caller.userTemplate" page="1" page-size="20"
+										popup-id="ar_deposit_browser_adOrgId39COP12332" popup-type="gridplusUser"
+										req="req"
+										popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+										combo-id="recCUCOP2"
+										combo-source-link="sysUserServiceRest/user/sysAllUserswmsDropdown"
+										combo-name="fullName" combo-value="sysUserId"
+										combo-code="employeeCode" combo-search="caller.commonSearch"
+										combo-grid="caller.gridCreator"
+										model-id="caller.order.recieverId" model-name="caller.order.recieverName"
+										ng-model="caller.order.recieverName"> </auto-search> -->
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Người nhận hàng</label>
+								<div class="col-md-8">
+									<input readonly class=" form-control width100" type="text"
+										ng-model="caller.order.recieverName"  />
+		
+								</div>
+							</div>
+									
+						</div>
+						<div class="clearfix ext10">
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+											<label class="col-md-2 control-label" translate>Ghi chú</label>
+											<div class="col-md-10">
+												<textarea class="form-control" name="description" id="description"
+												maxlength="500"
+												ng-model="caller.order.description"></textarea>
+									</div>
+								</div>
+							</div>	
+						</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<div class="margin-top">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Danh sách hàng hóa của phiếu</span>
+						</div>
+					</div>
+<div class="portlet light" disable-all="caller.disableImport">
+					<!-- <div class="margin-top">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Danh sách hàng hóa của phiếu</span>
+						</div>
+					</div> -->
+					<div class="padding-width18">
+							<div class="clearfix border-gray">
+								<div class="clearfix ex10" >
+									<div class="form-group col-md-8">
+										<file-input list-file-type="xls,xlsx" model="caller.dataList"
+											size="100000" caller="caller" input-id="fileExNote"
+											model-label="File import"
+											msg="Không được để trống file"></file-input>
+										<input class="col-md-2" ng-click="caller.submit()"
+											 type="submit" value="Tải lên">
+									
+									</div>
+									<div class="form-group col-md-4" align="right">
+										<a id="templateLink" href="javascript:void(0);"
+									ng-click="caller.getExcelTemplate()">Tải file biểu mẫu</a>
+									</div>
+								</div>
+								<div class="form-group col-md-4" align="right" style="margin-left: 27px;">
+								<span style="color: gray;">Dung lượng &lt;= 100MB, định dạng
+									xls,xlsx</span>
+							</div>
+							</div>
+						</div>	
+			</div>
+<div class="portlet light">
+	<div class="padding-width18">
+				<div class="border-gray">
+						<div id="goodsListGrid" kendo-grid="caller.goodsListGrid"
+							k-editable="true" k-options="caller.goodsListGridOptions"></div>
+				</div>
+	</div>		
+</div>	
+<div class="portlet light" align="right">
+	<button type="button"
+				  class="btn btn-qlk   padding-search-right btn pull-right  saveQLK"
+		ng-click="caller.create()" translate>Tạo phiếu</button>
+		
+	<button type="button"
+				class="btn btn-qlk  margin_right10  padding-search-right btn pull-right  closeQLK"
+		ng-click="caller.close()"  translate>Hủy bỏ</button>
+	
+</div>

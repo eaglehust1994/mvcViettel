@@ -1,0 +1,318 @@
+
+<div data-ng-controller="catAssetListController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+			<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption"><span
+						class="caption-subject bold lowercase" translate>Thông
+						Tin Tìm Kiếm Tài Sản</span>
+				</div>
+			</div>
+				<div class="clearfix">
+				<!-- <search-box-second 
+						searchtype="adOrg" 
+						model-label="Đơn vị sử dụng" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_usingAdOrgId" 
+						popup-type="tree" 
+						popup-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+						combo-id="cat_asset_criteria_txtUsingAdOrgId" 
+						combo-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+						combo-name="name" 
+						combo-value="groupId" 
+						combo-code="value" 
+						combo-search="vm.useGroupSearch" 
+						combo-grid="vm.gridCommon" 
+						model-id="vm.criteria.useGroupId" 
+						model-name="vm.criteria.useGroupName">
+					</search-box-second> -->
+					 <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Đơn vị sử dụng</label>
+                        <div class="col-md-8">
+                            <input kendo-auto-complete k-options="vm.sysUserGroupOptions"
+                                   ng-model="vm.criteria.useGroupName"
+                                   class="form-control width100" name="groupCode"  />
+                        </div>
+                    </div>
+                     <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Mã tài sản</label>
+                         <div class="col-md-8">
+					<input class=" form-control width100" type="text"  ng-model="vm.criteria.lotaCode"/>
+							</div>
+				</div>
+				<div class="clearfix">
+				<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Nguồn hình thành</label>
+						<div class="col-md-8">
+							<select class="form-control" id="voucherType" style="width: 100%" name="voucherType"
+							kendo-drop-down-list 
+							k-data-text-field="'name'"
+							k-data-value-field="'id'"
+							k-data-source="vm.voucherType"
+							ng-model="vm.criteria.voucherType" 
+							></select>
+						</div>
+					</div>
+					<!-- <search-box-second 
+						searchtype="adOrg" 
+						model-label="Đơn vị hạch toán" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_acctAdOrgId" 
+						popup-type="tree" 
+						popup-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+						combo-id="cat_asset_criteria_txtAcctAdOrgId" 
+						combo-source-link="longTermAssetServiceRest/getSysGroupForAutoComplete" 
+						combo-name="name" 
+						combo-value="groupId" 
+						combo-code="value" 
+						combo-search="vm.commonSearch" 
+						combo-grid="vm.gridCommon" 
+						model-id="vm.criteria.groupId" 
+						model-name="vm.criteria.groupName">
+					</search-box-second> -->
+					 <div class="form-group col-md-6">
+                        <label class="col-md-4 control-label" translate>Đơn vị hạch toán</label>
+                        <div class="col-md-8">
+                            <input kendo-auto-complete k-options="vm.sysGroupOptions"
+                                   ng-model="vm.criteria.groupName"
+                                   class="form-control width100" name="groupCode"  />
+                        </div>
+                    </div>
+					</div>
+				<div class="clearfix">
+					<search-box-second 
+						model-label="Mã trạm" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_stationId" 
+						popup-type="grid" 
+						popup-source-link="longTermAssetServiceRest/getStationForAutoComplete" 
+						combo-id="cat_asset_criteria_txtStationId" 
+						combo-source-link="longTermAssetServiceRest/getStationForAutoComplete" 
+						combo-name="stationCode" 
+						combo-value="id" 
+						combo-code="stationCode" 
+						combo-search="vm.commonSearch" 
+						combo-grid="vm.gridCommon" 
+						model-id="vm.criteria.stationId" 
+						model-name="vm.criteria.stationCode">
+					</search-box-second>
+					
+					<search-box-second 
+						model-label="Mã công trình" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_constructionId" 
+						popup-type="grid" 
+						popup-source-link="longTermAssetServiceRest/getConstrConstructionsForAutoComplete" 
+						combo-id="cat_asset_criteria_txtConstructionId" 
+						combo-source-link="longTermAssetServiceRest/getConstrConstructionsForAutoComplete" 
+						combo-name="constrtName" 
+						combo-value="constructId" 
+						combo-code="constrtCode" 
+						combo-search="vm.searchConstruct" 
+						combo-grid="vm.gridCommon" 
+						model-id="vm.criteria.constructId" 
+						model-name="vm.criteria.constructName">
+					</search-box-second>
+				</div>
+				<div class="clearfix">
+					<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Phân loại tài sản</label>
+						<div class="col-md-8">
+							<select class="form-control" id="type" style="width: 100%" name="type"
+							kendo-drop-down-list 
+							k-data-text-field="'name'"
+							k-data-value-field="'id'"
+							k-data-source="vm.type"
+							ng-model="vm.criteria.lotaType" 
+							></select>
+						</div>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Nguồn vốn</label>
+						<div class="col-md-8">
+							<select class="form-control" id="source" style="width: 100%" name="source"
+							kendo-drop-down-list 
+							k-data-text-field="'name'"
+							k-data-value-field="'id'"
+							k-data-source="vm.createdSource"
+							ng-model="vm.criteria.createdSource" 
+							></select>
+						</div>
+					</div>
+				</div>
+					
+				<div class="clearfix">
+					<combo-box-second 
+						searchtype="assetCode" 
+						model-label="Nhóm tài sản" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_assetGroup" 
+						popup-type="grid" 
+						popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-id="cat_asset_criteria_txtAssetGroup" 
+						combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-name="text" 
+						combo-value="catAssetCodeId" 
+						combo-code="caacCode" 
+						combo-search="vm.assetGroupSearch" 
+						combo-grid="vm.gridCommon" 
+						model-code="vm.criteria.assetGroupCode"
+						model-id="vm.criteria.assetGroupId" 
+						model-name="vm.criteria.assetGroupName">
+					</combo-box-second>
+					
+					<combo-box-second 
+						searchtype="assetCode" 
+						model-label="Loại tài sản" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_lotaType" 
+						popup-type="grid" 
+						popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-id="cat_asset_criteria_txtLotaType" 
+						combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-name="text" 
+						combo-value="catAssetCodeId" 
+						combo-code="caacCode" 
+						combo-search="vm.lotaTypeSearch" 
+						combo-grid="vm.gridCommon" 
+						model-code="vm.criteria.assetTypeCode"
+						model-id="vm.criteria.assetTypeId" 
+						model-name="vm.criteria.assetTypeName">
+					</combo-box-second>
+				</div>
+				<div class="clearfix">
+					<combo-box-second 
+						searchtype="assetSource" 
+						model-label="Dòng tài sản" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_assetSource" 
+						popup-type="grid" 
+						popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-id="cat_asset_criteria_txtAssetSource" 
+						combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-name="text" 
+						combo-value="catAssetCodeId" 
+						combo-code="caacCode" 
+						combo-search="vm.catAssetSourceSearch" 
+						combo-grid="vm.gridCommon" 
+						model-code="vm.criteria.assetSourceCode"
+						model-id="vm.criteria.assetSourceId" 
+						model-name="vm.criteria.assetSourceName">
+					</combo-box-second>
+					
+					<combo-box-second 
+						searchtype="catAsset" 
+						model-label="Tên tài sản" 
+						caller="vm" 
+						popup-id="cat_asset_criteria_assetName" 
+						popup-type="grid" 
+						popup-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-id="cat_asset_criteria_txtAssetName" 
+						combo-source-link="catAssetCodeServiceRest/filterCatAssetCodeAutocomplete" 
+						combo-name="text" 
+						combo-value="catAssetCodeId" 
+						combo-code="caacCode" 
+						combo-search="vm.catAssetCodeSearch" 
+						combo-grid="vm.gridCommon" 
+						model-code="vm.criteria.assetNameCode"
+						model-id="vm.criteria.assetNameId" 
+						model-name="vm.criteria.assetNameName">
+					</combo-box-second>
+				</div>
+				<div class="clearfix">
+					<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Bàn giao đưa vào SD từ ngày</label>
+						<div class="col-md-8">
+								<input class="width100" kendo-date-picker name="dateUsingFrom" id="dateUsingFrom" k-format="'dd/MM/yyyy'" ng-model="vm.criteria.dateUsingFrom" />
+						</div>
+						<script>
+							$(function() {
+								var dateUsingFrom = $("#dateUsingFrom");
+								dateUsingFrom.kendoMaskedTextBox({
+									mask : "00/00/0000"
+								});
+
+								dateUsingFrom.kendoDatePicker({
+									format : "dd/MM/yyyy"
+								});
+
+								dateUsingFrom.closest(".k-datepicker").add(dateUsingFrom).removeClass("k-textbox");
+							});
+						</script>
+					</div>
+					
+					<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Đến ngày</label>
+						<div class="col-md-8">
+								<input class="width100" kendo-date-picker name="dateUsingTo" id="dateUsingTo" k-format="'dd/MM/yyyy'" ng-model="vm.criteria.dateUsingTo" />
+						</div>
+						<script>
+							$(function() {
+								var dateUsingTo = $("#dateUsingTo");
+								dateUsingTo.kendoMaskedTextBox({
+									mask : "00/00/0000"
+								});
+
+								dateUsingTo.kendoDatePicker({
+									format : "dd/MM/yyyy"
+								});
+
+								dateUsingTo.closest(".k-datepicker").add(dateUsingTo).removeClass("k-textbox");
+							});
+						</script>
+					</div>
+					
+				</div>
+				<div class="clearfix">
+					
+					<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Trạng thái hình thành tài sản</label>
+						<div class="col-md-8">
+							<select class="form-control" id="status" style="width: 100%" name="status"
+							kendo-drop-down-list 
+							k-data-text-field="'name'"
+							k-data-value-field="'id'"
+							k-data-source="vm.status"
+							ng-model="vm.criteria.lotaStatus"
+							></select>
+						</div>
+					</div>
+					<div class="form-group  col-md-6">
+						<label class="col-md-4 control-label" translate>Trạng thái đồng bộ</label>
+						<div class="col-md-8">
+							<select class="form-control" id="isSentErp" style="width: 100%" name="isSentErp"
+							kendo-drop-down-list 
+							k-data-text-field="'name'"
+							k-data-value-field="'id'"
+							k-data-source="vm.isSentErp"
+							ng-model="vm.criteria.isSentErp" 
+							translate
+							></select>
+						</div>
+					</div>
+					
+				</div>
+				<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<button type="button" class="btn green btn-outline padding-search" ng-click="vm.cancelDoSearch()" translate>Hủy bỏ</button>
+							<button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.doSearch()" translate>Tìm kiếm</button>
+							<!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+	<div class="portlet-title">
+				<div class="caption"><span
+						class="caption-subject bold lowercase" translate> Danh Sách Tài Sản</span>
+				</div>
+			</div>
+	<div id="catAssetGrid" kendo-grid="vm.catAssetGrid" k-editable="false" k-options="vm.gridOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+</div>
+</div>

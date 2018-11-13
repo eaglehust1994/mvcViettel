@@ -1,0 +1,57 @@
+<br/>
+<div data-ng-controller="listAssetHandOver as vm">
+
+    <div ng-show="vm.showSearch">
+        <form class="form-horizontal row" role="form">
+            <div class="form-body">
+                <div class="portlet light bordered">
+                    <div class="portlet-title">
+                        <div class="caption"><span
+                                class="caption-subject bold lowercase" translate>Thông tin tìm kiếm biên bản</span>
+                        </div>
+                    </div>
+                    <!--Begin search content-->
+                    <div class="clearfix">
+                        <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Mã biên bản bàn giao</label>
+                            <div class="col-md-8">
+                                <input  type="text" class="form-control" name="hanoOverCode" id="handoverCode" maxlength="50" ng-model="vm.searchForm.handoverCode" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearFix">
+                        <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Ngày bàn giao từ</label>
+                            <div class="col-md-8">
+                                <input  class="width100 form-control date" kendo-date-picker name="fromHandoverDate" id="fromHandoverDate" data-k-ng-model="vm.searchForm.fromHandoverDate" k-format="'dd/MM/yyyy'"  data-date-msg="Ngày không đúng định dạng!" data-required-msg="Ngày bàn giao từ không được để trống" />
+                            </div>
+                        </div>
+                        <div class="form-group  col-md-6">
+                            <label class="col-md-4 control-label" translate>Ngày bàn giao đến</label>
+                            <div class="col-md-8">
+                                <input class="width100 form-control date" kendo-date-picker name="toHandoverDate" id="toHandoverDate" data-k-ng-model="vm.searchForm.toHandoverDate" k-format="'dd/MM/yyyy'"  data-date-msg="Ngày không đúng định dạng!" data-required-msg="Ngày bàn giao từ không được để trống" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix form-actions margin-top">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="button" class="btn green btn-outline padding-search" ng-click="vm.canceldoSearch()" translate>Hủy bỏ</button>
+                                <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.doSearch()" translate>Tìm kiếm</button>
+                                <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption"><span
+                    class="caption-subject bold lowercase" translate>Danh sách biên bản bàn giao</span>
+            </div>
+        </div>
+    </div>
+    <div id="catHandOverGrid" kendo-grid="vm.grid" k-editable="false" k-options="vm.gridOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+</div>

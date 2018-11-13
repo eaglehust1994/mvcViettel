@@ -1,0 +1,90 @@
+
+<form class="form-horizontal row" role="form" name="addHdId"
+	id="addHdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin cập nhật</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+				<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người lập :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.dnQtCdtNguoiLap" disabled="disabled"/>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người nhận bàn giao :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.dnQtCdtNguoiNhanBg" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Nội dung PS có trong thiết kế :</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+									type="text" ng-model="caller.addCvPopup.dnQtCdtNoiDungPsCtk"></textarea>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Nội dung PS không có trong thiết kế :</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+									ng-model="caller.addCvPopup.dnQtCdtKtk" ></textarea>
+							</div>
+						</div>
+					</div>
+							
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm:</label>
+							<div class="col-md-8">
+								<input name="ngayDnQtCdt" id="ngayDnQtCdt"
+									ng-model="caller.addCvPopup.dnQtCdtNgay"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayDnQtCdt" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giá trị :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addCvPopup.dnQtCdtGt" />
+							</div>
+						</div>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+		
+	
+		
+		
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange1"
+							ng-click="caller.saveCV()" translate>Ghi lại</button>
+						
+					</div>
+				</div>
+			</div>
+	</div>
+</form>

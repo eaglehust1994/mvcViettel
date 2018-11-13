@@ -1,0 +1,161 @@
+
+<form class="form-horizontal row padding10"  role="form" name="appParam" id="appParam" kendo-validator="validator" k-options="validatorOptions">
+		<div class = "border-gray">
+		<div class="caption margin-top10">
+				<span class="caption-subject bold lowercase ng-scope" translate="">
+					Thông tin chung
+				</span>
+			</div>
+		<div class = "portlet light bordered">
+		<div class="clearfix" >
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Đơn vị</label>
+					<div class="col-md-8">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openGroup()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text"
+								k-options="caller.patternGroupOptions" kendo-auto-complete
+								name="workItemQuotaId1" required data-required-msg="Giá trị không được bỏ trống" 
+								ng-model="caller.workItemQuota.sysGroupName" maxlength="200"
+								id="workItemQuotaId1" />
+						</div>
+						<span data-for='workItemQuotaId1' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				
+				
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Loại công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openConstruction()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text"
+								k-options="caller.patternConstructOptions" kendo-auto-complete
+								name="constructionType1" required data-required-msg="Giá trị không được bỏ trống" 
+								ng-model="caller.workItemQuota.catConstructionTypeName" maxlength="200"
+								id="constructionType1" />
+								<span data-for='constructionType1' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Hạng mục</label>
+					<div class="col-md-8">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openWorkItemType()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text"
+								k-options="caller.patternWorkItemTypeOptions" kendo-auto-complete
+								name="workItemType1" required data-required-msg="Giá trị không được bỏ trống" 
+								ng-model="caller.workItemQuota.catWorkItemTypeName" maxlength="200"
+								id="workItemType1"/>
+								<span data-for='workItemType1' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Đơn giá</label>
+					<div class="col-md-8">
+						<input class="form-control" ng-blur="focusOut()" name="price" id="price" maxlength="38"  
+						ng-model="caller.workItemQuota.price" ng-keydown = "caller.checkNum()"   
+						required data-required-msg="Giá trị không được bỏ trống"   />
+						<span data-for='price' class='k-invalid-msg'></span>
+						  <!-- <span style="color:red">{{caller.listApp.mess1}}</span>  -->
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Ngày công</label>
+					<div class="col-md-8" >
+						<input class="form-control" name="workday" ng-blur="focusOut()" id="workday" maxlength="38" 
+						ng-model="caller.workItemQuota.workDay" ng-keydown = "caller.checkNum()" 
+						required data-required-msg="Giá trị không được bỏ trống"  />
+						<span data-for='workday' class='k-invalid-msg'></span>
+						<!--  <span style="color:red">{{caller.listApp.mess2}}</span> -->
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ghi chú</label>
+					<div class="col-md-8">
+						<input class="form-control" ng-blur="focusOut()" name="description" id="description" maxlength="38"  
+						ng-model="caller.workItemQuota.description"  />
+						<span data-for='description' class='k-invalid-msg'></span>
+						<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		</div>
+		<br>
+		<div class = "border-gray">
+			<div class="caption margin-top10">
+				<span class="caption-subject bold lowercase ng-scope" translate="">
+					Danh sách công việc
+				</span>
+			</div>
+			<div class="portlet light bordered">
+				<div class="portlet-title background-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>
+						Kết quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase" id="appCount">{{caller.taskCount}}</label>
+						<label class="control-label bold lowercase">&nbsp;bản ghi</label>
+						
+					</div>
+					<div class="text-right margin-row-title">
+						<i data-toggle="collapse" data-target="#taskGrid"
+							class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+					</div>
+				</div>
+				<div id="demoapp2" class="collapse in from-search">
+								<div class="clearfix position-relative">
+					<div id="taskGrid" kendo-grid="caller.taskGrid" k-editable="true"
+					k-options="caller.gridTaskOptions" k-rebind="caller.gridTaskOptions"
+					k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+					</div>
+					</div>
+			</div>
+		</div>
+		
+		<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancel" ng-click="caller.cancel()" translate>Hủy bỏ</button>
+							<button type="button" id="savepopupApp" class="btn btn-qlk padding-search-right saveQLK" ng-click="save()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+			<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+			   document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if(e.keyCode===13&& !$('#cancel:focus').length&& !$('#savepopupApp:focus').length){
+         				$("#savepopupApp").click();
+         				break;
+						}
+         		}
+         	} 
+			
+		
+			
+			  
+	</script>  
+</form>

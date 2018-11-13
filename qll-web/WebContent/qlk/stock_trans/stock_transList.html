@@ -1,0 +1,107 @@
+
+<div data-ng-controller="stock_transController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo11"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo11" class="collapse in from-search">
+						<div class="clearfix position-relative">
+
+							<auto-search model-label="Kho" caller="vm"
+								template-url="views/popup/gridView.html"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId12"
+								popup-type="gridplus"
+								popup-source-link="stockRsServiceRest/doSearch"
+								combo-id="ar_deposit_browser_txtAdOrgId"
+								combo-source-link="stockRsServiceRest/getForAutoCompleteStock"
+								combo-name="name" combo-value="code" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.stock_transSearch.keySearch2"
+								model-name="vm.stock_transSearch.keySearch2"> </auto-search>
+
+							<auto-search model-label="Thủ kho xuất" caller="vm"
+								template-url="views/popup/gridView.html"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="ar_deposit_browser_adOrgId13"
+								popup-type="gridplus"
+								popup-source-link="appParamServiceRest/doSearch"
+								combo-id="ar_deposit_browser_txtAdOrgId"
+								combo-source-link="stockRsServiceRest/getForAutoCompleteStock"
+								combo-name="name" combo-value="code" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.stock_transSearch.exportstock"
+								model-name="vm.stock_transSearch.exportstock"> </auto-search>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Thời
+									gian: Từ ngày</label>
+								<div class="col-md-4">
+									<input class="form-control width100" title="startDate"
+										id="startDate11" required
+										data-date-msg="Thời gian từ ngày không hợp lệ"
+										data-required-msg="Thời gian từ ngày không được để trống"
+										name="startDate" ng-model="vm.stock_transSearch.startDate" />
+										<span data-for="startDate" class="k-invalid-msg"></span>
+								</div>
+
+								<label class="col-md-1 control-label" translate> đến </label>
+
+								<div class="col-md-3">
+									<input class="form-control width100" id="endDate11" 
+									data-date-msg="Thời gian đến ngày không hợp lệ"
+										name="endDate" ng-model="vm.stock_transSearch.endDate" />
+										<span data-for="endDate" class="k-invalid-msg"></span>
+								</div>
+
+								<div class="One_icon" ng-click="vm.cancelstocktrans('date')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+
+							</div>
+
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="note"
+										class="btn btn-qlk padding-search-right  noteQLK"
+										ng-click="vm.doSearch()" translate>Xem trước</button>
+									<button type="button" id="excel"
+										class="btn btn-qlk padding-search-right  excelQLK"
+										ng-click="vm.exportexcel()" translate>Xuất excel</button>
+									<button type="button" id="pdf"
+										class="btn btn-qlk padding-search-right  pdfQLK"
+										ng-click="vm.exportpdf()" translate>Xuất pdf</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate></span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo12"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo12" class="collapse in from-search">
+			<div id="stock_transGrid" kendo-grid="vm.stock_transGrid"
+				k-editable="false" k-options="vm.gridOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</div>

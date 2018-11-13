@@ -1,0 +1,78 @@
+
+       <div class="portlet light bordered">
+	       <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Đại diện chủ đầu tư</span>
+			</div>
+			</div>
+	        <div class="clearfix" style="padding-top: 1%;">
+	           <div class="form-group col-md-6">
+	              <label class="col-md-4 control-label" translate=""><span class="ng-scope">Thủ trưởng đơn vị</span></label>
+	                 <div class="col-md-8">
+	                    <select id="cbb1" name="cbb1" kendo-drop-down-list ng-disabled="vm.vohieuhoa" 
+	                    	required data-required-msg="Trường này không được để trống"
+				            k-data-text-field="'fullName'"
+				            k-data-value-field="'id'"
+				            k-data-source="vm.technical"
+				            ng-model="vm.bean.adirectorId"
+				            style="width: 100%">
+				        </select>
+				        <span data-for="cbb1" class="k-invalid-msg"></span>
+	                 </div>
+	            </div>
+	            <div class="form-group col-md-6">
+		            <label class="col-md-4 control-label ">Phụ trách giám sát thi công</label>
+			            <div class="col-md-8">
+				            <select id="cbb2" name="cbb2" kendo-drop-down-list ng-disabled="vm.vohieuhoa" 
+				            required data-required-msg="Trường này không được để trống"
+				            k-data-text-field="'fullName'"
+				            k-data-value-field="'id'"
+				            k-data-source="vm.giamsatthicong"
+				            ng-model="vm.bean.ainchargemonitorid"
+				            style="width: 100%">
+				        </select>
+				        <span data-for="cbb2" class="k-invalid-msg"></span>
+			            </div>
+	            </div>
+	         </div>
+        </div>
+
+       <div class="portlet light bordered">
+	       <div class="portlet-title">
+			<div class="caption">
+				 <span class="caption-subject bold lowercase"   translate>Đại diện nhà thầu thi công</span>
+			</div>
+			</div>
+	        <div class="clearfix" style="padding-top: 1%;">
+	           <div class="form-group col-md-6">
+	              <label class="col-md-4 control-label" translate=""><span class="ng-scope">Giám đốc</span></label>
+	                 <div class="col-md-8">
+	                   <select id="cbb3" name="cbb3" kendo-drop-down-list ng-disabled="vm.vohieuhoa"
+	                   		required data-required-msg="Trường này không được để trống"
+				            k-data-text-field="'fullName'"
+				            k-data-value-field="'id'"
+				            k-data-source="vm.giamdocnhathau"
+				            ng-model="vm.bean.bdirectorId"
+				            style="width: 100%">
+				        </select>
+				        <span data-for="cbb3" class="k-invalid-msg"></span>
+	                 </div>
+	            </div>
+	            <div class="form-group col-md-6">
+		            <label class="col-md-4 control-label ">Phụ trách thi công trực tiếp</label>
+		            <div class="col-md-8">
+			            <select id="cbb4" name="cbb4" kendo-drop-down-list ng-disabled="vm.vohieuhoa"
+			            	required data-required-msg="Trường này không được để trống"
+				            k-data-text-field="'fullName'"
+				            k-data-value-field="'id'"
+				            k-data-source="vm.phutracthicong"
+				            ng-model="vm.bean.binchargeConstructId"
+				            style="width: 100%">
+				        </select>
+				        <span data-for="cbb4" class="k-invalid-msg"></span>
+		            </div>
+	            </div>
+	         </div>
+        </div>
+  
+        

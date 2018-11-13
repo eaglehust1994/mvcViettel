@@ -1,0 +1,44 @@
+<div data-ng-controller="viewstockInTradeController as vm">
+	<div ng-show="vm.showSearch">
+
+		<div class="form-body">
+			<div class="portlet light">
+				<div id="demo1" class="collapse in from-search">
+					<div class="clearfix position-relative">
+						<div class="form-group col-md-12">
+							<label class="col-md-5 control-label" translate>Hàng hóa</label>
+							<div class="col-md-7">
+								<label class="control-label pull-left"
+									ng-bind="caller.detailTradeSearch.goodsName"></label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix position-relative">
+						<div class="form-group col-md-12">
+							<label class="col-md-5 control-label" translate>Kho</label>
+							<div class="col-md-7">
+								<label class="control-label pull-left"
+									ng-bind="caller.detailTradeSearch.stockName"></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="collapse in from-search">
+				<div id="viewDetailGrid" kendo-grid="caller.viewDetailGrid"
+					k-editable="false" k-options="caller.detailGridOptions"></div>
+			</div>
+		</div>
+
+	</div>
+	<div class="clearfix form-actions margin-top">
+		<div class="row" style="margin-right: 0px">
+			<div class="col-md-12 text-center">
+				<button type="button"
+					class="btn green btn-outline padding-search pull-right" id="cancel"
+					ng-click="cancel()" translate>Đóng</button>
+			</div>
+		</div>
+	</div>
+</div>
+</div>

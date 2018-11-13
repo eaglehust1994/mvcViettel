@@ -1,0 +1,13 @@
+package com.viettel.Common.CommonBussiness;
+
+import java.util.List;
+
+
+import com.viettel.Common.CommonDTO.SysUserQLKDTO;
+import com.viettel.service.base.dto.DataListDTO;
+
+public interface SysUserQLKBusiness {
+
+    long count();
+    
+}

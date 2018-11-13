@@ -1,0 +1,65 @@
+<form class="form-horizontal row padding-height-20" role="form" name="stockTrade" id="stockTrade"
+	kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body ">
+		<div class="clearfix">
+			<div class="form-group col-md-12 text-left">
+				<label class="col-md-3 control-label req" translate>Thời gian: từ ngày </label>
+				<div class="col-md-4">
+					<input name="createFromStockTrade" id="createFromStockTrade"
+						ng-model="caller.stockTradeSearch.createFromStockTrade" style="width: 100%;" required
+						data-required-msg="Ngày tạo từ không được để trống"
+						data-date-msg="Ngày tạo từ không hợp lệ" />
+				</div>
+				<script>
+					var now = new Date();
+					var day = now.getDate();
+					var month = now.getUTCMonth();
+					var year = now.getFullYear();
+					$("#createFromStockTrade").kendoDatePicker({
+						value : day +"/"+ month +"/"+ year,
+						animation : {
+							close : {
+								effects : "zoom:out",
+								duration : 300
+							}
+						}
+					});
+				</script>
+				<label class="col-md-1 control-label" translate>đến</label>
+				<div class="col-md-4 position-relative">
+					<input name="createToStockTrade" id="createToStockTrade"
+						ng-model="caller.stockTradeSearch.createToStockTrade" style="width: 100%;" required
+						data-required-msg="Ngày tạo đến không được để trống"
+						data-date-msg="Ngày tạo đến không hợp lệ" />
+
+				</div>
+				<script>
+					$("#createToStockTrade").kendoDatePicker({
+						animation : {
+							close : {
+								effects : "zoom:out",
+								duration : 300
+							}
+						}
+					});
+				</script>
+				<div class="One_icon">
+					<i class="fa fa-times" aria-hidden="true"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button" class="btn green btn-outline padding-search"
+						id="cancel" ng-click="cancel()" translate>Hủy bỏ</button>
+					<button type="button"
+						class="btn green btn-outline padding-search-right"
+						ng-click="save()" translate>Xuất file</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+<br />

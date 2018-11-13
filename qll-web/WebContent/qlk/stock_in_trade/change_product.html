@@ -1,0 +1,162 @@
+<div data-ng-controller="changeProductController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Mã yêu
+										cầu</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.orderChangeGoodsSearch.keySearch" />
+									</div>
+								</div>
+								<auto-search model-label="Kho thay đổi" caller="vm"
+									template-url="views/popup/gridView.html"
+									header-template="vm.headerTemplate"
+									template-auto="vm.templateStock" page="1" page-size="20"
+									popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+									popup-source-link="appParamServiceRest/doSearch"
+									combo-id="stockExt"
+									combo-source-link="appParamServiceRest/getForAutoComplete"
+									combo-name="name" combo-value="code" combo-code="name"
+									combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+									model-id="vm.orderChangeGoodsSearch.stockId"
+									model-name="vm.orderChangeGoodsSearch.stockName"
+									ng-model="vm.orderChangeGoodsSearch.stockId"> </auto-search>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Ngày
+									tạo : từ ngày </label>
+								<div class="col-md-4">
+									<input name="createFromChangeProduct"
+										id="createFromChangeProduct" style="width: 100%;"
+										ng-model="vm.orderChangeGoodsSearch.createdDateFrom" required
+										data-required-msg="Ngày tạo không được để trống"
+										data-date-msg="Ngày tạo không hợp lệ" />
+								</div>
+								<script>
+									/* var now = new Date();
+									var day = now.getDate();
+									var month = now.getUTCMonth();
+									var year = now.getFullYear();
+																	
+									$('#createFromChangeProduct').kendoDatePicker({
+										value : day +"/"+ month +"/"+ year,
+										format: "dd/MM/yyyy",
+										animation : {
+											close : {
+												effects : "zoom:out",
+												duration : 300
+											}
+										}
+									}); */
+								</script>
+								<label class="col-md-1 control-label" translate>đến</label>
+								<div class="col-md-3 position-relative">
+									<input name="createToChangeProduct" id="createToChangeProduct"
+										ng-model="vm.orderChangeGoodsSearch.createdDateTo"
+										style="width: 100%;" required
+										data-required-msg="Ngày tạo không được để trống"
+										data-date-msg="Ngày tạo không hợp lệ" />
+
+								</div>
+								<script>
+									$("#createToChangeProduct")
+											.kendoDatePicker({
+												format : "dd/MM/yyyy",
+												animation : {
+													close : {
+														effects : "zoom:out",
+														duration : 300
+													}
+												}
+											});
+								</script>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									tạo</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.orderChangeGoodsSearch.createdUserId" />
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label " translate>Trạng
+									thái</label>
+								<div class="col-md-8">
+									<select kendo-multi-select class="form-control" id="listStatus"
+										style="width: 100%" name="listStatus"
+										ng-model="vm.orderChangeGoodsSearch.listStatus">
+										<option value="1">1.Chưa được duyệt</option>
+										<option value="2">2.Đã duyệt và thục hiện</option>
+										<option value="3">3.Đã hủy</option>
+										<option value="4">4.Đã từ chối</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button"
+										class="btn green btn-outline padding-search-right"
+										ng-click="vm.doSearch()" translate>
+										<i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm
+									</button>
+									<!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết 
+					quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase"  ng-bind="vm.count"></label><label class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo1"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+
+	</div>
+	<div id="orderChangeGoodskGrid" kendo-grid="vm.orderChangeGoodskGrid"
+		k-editable="false" k-options="vm.gridOptions"></div>
+</div>
+</div>

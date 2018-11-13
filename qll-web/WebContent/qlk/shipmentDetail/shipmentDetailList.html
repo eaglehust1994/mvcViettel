@@ -1,0 +1,34 @@
+<div data-ng-controller="shipmentDetailController as vm">
+	<uib-tabset class="tabbable-custom"> <uib-tab
+		active="vm.tabs[0].active" heading="1.Thông tin chung">
+	<div class="clearfix">
+		<div data-ng-include="'qlk/shipmentDetail/shipmentDetailPopup.html'"></div>
+	</div>
+	</uib-tab> <uib-tab active="vm.tabs[1].active" heading="2.Map hàng hóa">
+	<div class="clearfix">
+		<div data-ng-include="'qlk/shipmentDetail/shipmentMapPopup.html'"></div>
+	</div>
+	</uib-tab> <uib-tab active="vm.tabs[2].active" heading="3.Định lượng kĩ thuật">
+	<div class="clearfix">
+		<div data-ng-include="'qlk/shipmentDetail/shipmentGoodsPopup.html'"></div>
+	</div>
+	</uib-tab> <uib-tab active="vm.tabs[3].active" heading="4.Định giá">
+	<div class="clearfix">
+		<div data-ng-include="'qlk/shipmentDetail/shipmentGoodsDetailPopup.html'"></div>
+	</div>
+	</uib-tab> <uib-tab active="vm.tabs[4].active" heading="5.KCS">
+	<div class="clearfix">
+		<div data-ng-include="'qlk/shipmentDetail/shipmentObjPopup.html'"></div>
+	</div>
+	</uib-tab> <uib-tab active="vm.tabs[5].active" heading="6.Nhập kho">
+	<div class="clearfix">
+		<div data-ng-include="'qlk/shipmentDetail/shipmentOrderPopup.html'"></div>
+	</div>
+	</uib-tab>
+	
+	
+	<i  class="pull-right action-button excelQLK" ng-click="vm.exportExcelGrid()" aria-hidden="true"></i> 
+	
+	</uib-tabset>
+	
+</div>

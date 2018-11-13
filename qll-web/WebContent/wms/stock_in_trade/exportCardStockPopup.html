@@ -1,0 +1,79 @@
+<form class="form-horizontal row padding-height-20" role="form"
+	name="stockTrade" id="stockTrade" kendo-validator="caller.validator"
+	k-options="caller.validatorOptions">
+	<div class="form-body ">
+		<div class="clearfix">
+			<div class="col-md-12" style="margin-top: 20px;">
+				<label class="col-md-3 control-label req" translate> Thời
+					gian: Từ ngày </label>
+				<div class="col-md-3" style="padding: 0px;">
+
+
+					<input date-time name="startDateFromExportCard"
+						id="startDateFromExportCard"
+						ng-model="caller.stockTradeSearch.startDate"
+						class="form-control width100" k-format="'dd/MM/yyyy'" required
+						data-required-msg="Ngày tạo không được để trống" min-year="1000"
+						data-minyear-msg="Ngày tạo không hợp lệ"
+						data-date-msg="Ngày tạo không hợp lệ"
+						ng-change="caller.validateDate()" /> <span
+						data-for="startDateFromExportCard" id="ex1" class="k-invalid-msg"></span>
+					<span style="color: red">{{caller.listMess.errMessage1}}</span> <span
+						style="color: red">{{caller.errMessage2}}</span>
+				</div>
+
+				<label class="col-md-1 control-label" translate>đến</label>
+				<div class="col-md-3 position-relative" style="padding: 0px;">
+
+
+					<input name="endDatefrom" id="endDatefrom"
+						ng-model="caller.stockTradeSearch.endDate" date-time
+						style="width: 100%;" data-date-msg="Ngày đến không hợp lệ"
+						k-format="'dd/MM/yyyy'" min-year="1000"
+						data-minyear-msg="Ngày đến không hợp lệ"
+						ng-change="caller.validateDate()" /> <span data-for="endDatefrom"
+						id='ex2' class="k-invalid-msg"></span> <span style="color: red">{{caller.listMess.errMessage}}</span>
+				</div>
+
+				<div>
+					<i class="fa fa-times" aria-hidden="true"
+						style="padding: 5px; font-size: large; color: red"
+						ng-click="caller.cancel()"></i>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix form-actions margin-top"
+			style="font-size: large;">
+			<div class="row" style="padding-top: 10px;">
+				<div class="col-md-11 text-right">
+					<button type="button" style="margin: 0px;"
+						class="btn btn-qlk  btn-outline padding-search closeQLK"
+						id="cancelEx" ng-click="caller.remove()" translate>Hủy bỏ</button>
+					<button id="xuatF" type="button"
+						class="btn btn-qlk btn-outline padding-search-right excelQLK"
+						ng-click="caller.exportCard()" style="width: 120px;" translate>Xuất
+						file</button>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</div>
+	</div>
+</form>
+<script>
+	document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancelEx").click();
+                    				break;
+                    			case 13:
+									if(!$('#cancelEx:focus').length){	
+                    				$("#xuatF").click();
+                    				break;
+								
+								}
+                    		}
+                    	} 
+
+</script>

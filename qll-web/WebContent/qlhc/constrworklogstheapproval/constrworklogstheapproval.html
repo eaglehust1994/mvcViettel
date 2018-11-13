@@ -1,0 +1,196 @@
+
+<form class="form-horizontal row scroll" role="form">
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase"
+				 translate>Thông tin chung</span>
+		</div>
+	</div>
+	<p></p>
+	<div class="form-body ">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Số Hợp Đồng</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="name" id="name"
+						ng-model="vm.item.contractCode" readonly="" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Ngày ký HĐ</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="name" id="name"
+						ng-model="vm.item.signed_date" readonly="" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Mã công trình</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constrtCode" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên công
+				trình</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constrtName" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" translate>Địa chỉ công
+					trình</label>
+				<div class="col-md-10 input-width">
+					<input class="form-control width100" name="description" id="description"
+						readonly="" ng-model="vm.item.constrtAddress">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Đơn vị sử
+				dụng</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.provinceName" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Đơn vị tư
+				vấn giám sát</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.supervisorName" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Nhà thầu thi
+				công</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constructorName" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+</div>
+<p></p>
+
+	<div class="form-body" disable-all="vm.disableAll">
+		<p></p>
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase"
+					 translate>Thông tin duyệt bìa nhật
+					ký công trình</span>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Thủ
+					trưởng chủ đầu tư</label>
+				<div class="col-md-8">
+					<select class="form-control" id="adirectorId2" style="width: 100%"
+						name="adirectorId2" kendo-drop-down-list ng-disabled="isDisabled" ng-change = "vm.ChangeData()"
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.aDirectorIdList" ng-model="vm.constrWorkLogsLabelDTO.adirectorId"
+						required data-required-msg="Trường không được để trống"></select>
+					<span data-for='adirectorId2' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Giám sát
+					thi công</label>
+				<div class="col-md-8">
+				<select class="form-control" id="monitoring1" style="width: 100%"
+						name="monitoring1" kendo-drop-down-list ng-disabled="isDisabled" ng-change = "vm.ChangeData()"
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.aMonitorIdList"
+						ng-model="vm.constrWorkLogsLabelDTO.amonitorId" required
+						data-required-msg="Trường không được để trống"></select> <span
+						data-for='monitoring1' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Giám đốc
+					nhà thầu thi công</label>
+				<div class="col-md-8">
+					<select class="form-control" id="bdirectorId1" style="width: 100%"
+						name="bdirectorId1" kendo-drop-down-list ng-disabled="isDisabled" ng-change = "vm.ChangeData()"
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.bDirectorIdList" ng-model="vm.constrWorkLogsLabelDTO.bdirectorId"
+						required data-required-msg="Trường không được để trống"></select>
+					<span data-for='bdirectorId1' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Kỹ thuật
+					thi công</label>
+				<div class="col-md-8">
+					<select class="form-control" id="bconstructId2" style="width: 100%"
+						name="bconstructId2" kendo-drop-down-list ng-disabled="isDisabled" ng-change = "vm.ChangeData()"
+						k-data-text-field="'fullName'" k-data-value-field="'id'"
+						k-data-source="vm.bConstructIdList"
+						ng-model="vm.constrWorkLogsLabelDTO.bconstructId" required
+						data-required-msg="Trường không được để trống"></select> <span
+						data-for='bconstructId2' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+	<div class="form-body" ng-show="isAppro">
+			<div class="portlet-title">
+				<div class="caption">
+					</i> <span class="caption-subject bold lowercase"
+						 translate>Phê duyệt</span>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Phê duyệt</label>
+					<div class="col-md-8">
+						<select class="form-control" id="monitoring" style="width: 100%"
+							name="monitoring" kendo-drop-down-list
+							ng-model="vm.approDTO.statusCa">
+							<option value=2>Duyệt</option>
+							<option value=3>Từ chối duyệt</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Nhận
+							xét/Lý do từ chối duyệt</label>
+						<div class="col-md-10 input-width">
+							<textarea class="form-control width100" name="description"
+								id="description" ng-model="vm.approDTO.comments"> </textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+</form>

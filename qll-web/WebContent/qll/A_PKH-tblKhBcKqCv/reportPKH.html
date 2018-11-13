@@ -1,0 +1,102 @@
+<!-- BEGIN PAGE HEADER-->
+
+
+	
+<!-- END PAGE HEADER-->
+<!-- BEGIN MAIN CONTENT -->
+<div ng-controller="tblKhBcKqCvController as vm">
+	<!-- BEGIN DASHBOARD STATS -->
+	<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Biểu đồ kế hoạch kinh doanh  </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div id="demoOrderChange1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+							
+								
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Tháng :</label>
+										<div class="col-md-8">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+												k-options="vm.patternOptionsMonth" kendo-auto-complete
+												name="pkhThang" ng-model="vm.khBcKqKdSearch.thang"
+												id="pkhThang" />
+											</div>
+
+										</div>
+									</div>
+									
+									<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Tên đơn vị :</label>
+									<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+													k-options="vm.patternOptionsMaDv" kendo-auto-complete
+													name="pkhMaDonVi" ng-model="vm.khBcKqKdSearch.tenDonVi"
+													id="pkhMaDonVi" />
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Biểu đồ
+										:</label>
+									<div class="col-md-8">
+										<select ng-model="vm.khBcKqKdSearch.chartType"
+											class=" form-control width100">
+											<option value="" selected="selected">~~Chọn~~</option>
+											<option value="SL">Sản lượng</option>
+											<option value="DT">Doanh thu</option>
+											<option value="HCQT">Hoàn công quyết toán</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>	
+		</form>
+	
+	
+	<div class="row margin_top30">
+		<div class="col-md-12">
+			<div class="col-md-12 background-header-deal">
+				<div class="col-md-8 text-left header-chart-line kpi">
+						<img src="assets/layouts/layout/img/input/KPI.png"/>
+						<p>Biểu đồ kết qủa kinh doanh</p>
+						<br>
+				</div>
+				<div class="col-md-4 text-right button-header ">
+					<a id="day" ng-click="vm.getChartDeptDay()" uib-tooltip="Biểu đồ ngày theo đơn vị ">Ngày</a>
+					<a id="month" ng-click="vm.getChartDeptMonth()" uib-tooltip="Biểu đồ tháng theo đơn vị ">Tháng</a>
+					<a id="THmonth" ng-click="vm.getChartMonth()" uib-tooltip="Biểu đồ tổng hợp tháng ">TH một tháng</a>
+					<!-- <a class="a-img"><img ng-click="vm.exportKpi()" src="assets/layouts/layout/img/input/Export_Excel.png"/></a> -->
+				</div>
+			</div>
+			<div class="col-md-12 border-dash" style="height:500px;width: 100%;" id="chartKD" ></div>
+		</div>
+		
+	</div>
+
+	<div class="scroll-to-top">
+	    <i class="icon-arrow-up"></i>
+	</div>
+	<!-- END PORTLET-->
+</div>
+
+<!-- END MAIN CONTENT -->
+<!-- BEGIN MAIN JS & CSS -->
+<!-- BEGIN MAIN JS & CSS -->

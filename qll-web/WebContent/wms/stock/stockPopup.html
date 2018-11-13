@@ -1,0 +1,152 @@
+<form class="form-horizontal row " role="form" name="stock" id="stock"
+	kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body" style="padding-left: 0px;width: 840px;">
+		<div class="clearfix" style="padding-top: 10px;"> 
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate="">Mã
+						kho</label>
+					<div class="col-md-8">
+						<input class="form-control" ng-blur="focusOut()" name="code" id="code" maxlength="50" 
+							data-ng-model="data.code" required
+							data-required-msg="Mã kho không được để trống" /> <span
+							data-for='code' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Tên kho</label>
+					<div class="col-md-8">
+						<input class="form-control" name="name" id="name" maxlength="200"
+							ng-model="data.name" required 
+							data-required-msg="Tên kho không được để trống" /> <span
+							data-for='name' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="row">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Đơn vị quản
+						lý</label>
+					<div class="col-md-8">
+						<div class="input-icon right ">
+							<i class="fa fa-search directive"
+								ng-click="caller.openDepartment()" style="cursor: pointer;"></i>
+							<input class=" form-control width100" type="text" required 
+							data-required-msg="Đơn vị quản lý không được để trống" k-options="caller.patternOptions1" kendo-auto-complete name="createdDeptImpReqMaStock"
+								ng-model="caller.stock.departmentName" maxlength="200" id="createdDeptImpReqMaStock" 
+								  />
+								 <span data-for='createdDeptImpReqMaStock' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="One_icon">
+						<i class="fa fa-times" aria-hidden="true"
+							ng-click="caller.cancelDept()"></i>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Loại
+						kho</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list class="form-control" id="type"
+							style="width: 100%" name="type" ng-model="data.type"
+							k-data-source="caller.dataAppParamType " k-option-label="'--Chọn--'"
+							k-data-value-field="'code'" k-data-text-field="'name'" required
+							data-required-msg="Loại kho không được để trống">
+							
+						</select> <span data-for='type' class='k-invalid-msg' id="typemsg"></span>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="row">
+				<auto-search model-label="Kho cha" caller="caller" req="req" id="test"
+							template-url="views/popup/gridView.html"
+							header-template="caller.headerTemplate" domain="true"
+							template-auto="caller.template" page="1" page-size="20"
+							popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+							popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+							combo-id="stockPopupStock"
+							combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+							combo-name="name" combo-value="stockId" combo-code="code"
+							combo-search="caller.commonSearch" combo-grid="caller.gridCommon"
+							model-id="data.parentId"
+							model-name="data.nameStock">
+						</auto-search>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req" translate>Mức
+						phân cấp</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list class="form-control" id="level"
+							style="width: 100%" name="level" ng-model="data.levelST"
+							k-data-source="caller.dataAppParamLevel " k-option-label="'--Chọn--'"
+							k-data-value-field="'code'" k-data-text-field="'name'" required
+							data-required-msg="Mức phân cấp không được để trống">
+							
+						</select> <span data-for='level' class='k-invalid-msg' id="levelmsg"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="row">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label  class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<textarea class="form-control width100" name="description" maxlength="2000"
+									id="description" type="text" ng-model="data.description"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="row padding-button-bottom text-right">
+					<div class="col-md-12 ">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+							ng-click="caller.cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" 
+							ng-click="save()" id="saveStockPopup" translate>Ghi lại</button>
+					</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		      $("input").change(function(){
+		       $(this).val($.trim($(this).val()));
+		      });
+		      document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+					if (e.keyCode == 13&& !$('#cancel:focus').length&& !$('#saveStockPopup:focus').length&&!$('#description:focus').length) {
+         				$("#saveStockPopup").click();
+         				break;
+						}
+         		}
+         	} 
+             /*  $('#saveStockPopup').click(function(){
+					 if($('#typemsg').text()!=""){
+						$('span.k-input.ng-scope').first().css('background-color','bisque');
+
+					 }
+						if($('#levelmsg').text()!=""){
+						$('span.k-input.ng-scope').last().css('background-color','bisque');
+						}
+				 
+  			}) */
+	</script>  
+</form>
+<br />

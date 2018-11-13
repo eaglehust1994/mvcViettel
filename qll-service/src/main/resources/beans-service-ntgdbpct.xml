@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<jaxrs:server id="EstimatesItemsChildRsServiceRest"
+		address="/EstimatesItemsChildRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="estimatesItemsChildRsServiceRestClass" class="com.viettel.erp.rest.EstimatesItemsChildRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="CategoryAcceptanceRsServiceRest"
+		address="/CategoryAcceptanceRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="CategoryAcceptanceRsServiceClass" class="com.viettel.erp.rest.CategoryAcceptanceRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="SettlementRightRsServiceRest" address="/SettlementRightRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="SettlementRightRsServiceClass" class="com.viettel.erp.rest.SettlementRightRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<!-- BEGIN PHONG -->
+	<jaxrs:server id="ConstructionAcceptanceRsServiceRest"
+		address="/ConstructionAcceptanceRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstructionAcceptanceRsServiceRestImpl"
+				class="com.viettel.erp.rest.ConstructionAcceptanceRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="DistanceUnloadConstrMinutesRsServiceRest"
+		address="/DistanceUnloadConstrMinutesRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="DistanceUnloadConstrMinutesRsServiceRestImpl"
+				class="com.viettel.erp.rest.DistanceUnloadConstrMinutesRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="DistanceUnloadListRsServiceRest"
+		address="/DistanceUnloadListRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="DistanceUnloadListRsServiceRestImpl" class="com.viettel.erp.rest.DistanceUnloadListRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<!-- END PHONG -->
+
+</beans>

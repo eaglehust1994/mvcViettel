@@ -1,0 +1,10 @@
+<div ng-controller="constructionListController as vm">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFile(e)" uib-tooltip="Export">
+					<div class="action-button excel"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+	</div>	
+<form class="form-horizontal row" role="form">
+		<div data-ng-include="'qlhc/constructionList/constructionListForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</form>
+</div>

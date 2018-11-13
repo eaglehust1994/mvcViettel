@@ -1,0 +1,18 @@
+<div ng-controller="listController as vm">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div class="btn-group margin-left-button"
+			ng-controller="MenuController as menu">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.creatWorkOrganizationPlan()" ng-disabled="vm.disabledButtom">
+				<div class="action-button save" uib-tooltip="Lưu" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			
+		</div>
+	</div>
+	  
+	<hr class="line-Hr">
+	<form class="form-horizontal row" role="form">
+		<div data-ng-include="'qlhc/constructionorganizationplan/constructionOrganizationPlan.html'"></div>
+	</form>
+</div>

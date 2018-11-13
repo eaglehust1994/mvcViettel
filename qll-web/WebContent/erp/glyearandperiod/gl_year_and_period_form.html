@@ -1,0 +1,107 @@
+
+	<form class="form-horizontal row" role="form">
+      <div class="form-body">
+         <div class="clearfix">
+            <div class="form-group col-md-6">
+               <label class="col-md-4 control-label req">Đơn vị</label>
+               <div class="col-md-8">
+                   <div class="input-icon right">
+                       <i class="fa fa-search" ng-click="vm.openUnitsForm()"></i>
+                       <input kendo-auto-complete="autoAdOrg" k-options="adOrgOptions"
+                              class="form-control width100" required ng-model="objectview.adOrgIdTextView"
+                              name="adOrgIdTextView" data-required-msg="Đơn vị không được để trống "/>
+                       <span data-for='adOrgIdTextView' class='k-invalid-msg'></span>
+                    </div>
+                   <span class='k-widget k-tooltip k-tooltip-validation'>{{modelValidation.errAdOrgId}}</span>
+               </div>
+            </div>
+
+            <div class="form-group col-md-6">
+               <label class="col-md-4 control-label req">Năm</label>
+               <div class="col-md-8">
+                  <input class="form-control" ng-model="model.year" type="number" required
+                         data-required-msg="Năm không được để trống" name="year" ng-disabled="isDisableYearAndStartDate()"
+                          />
+               </div>
+                <span data-for='year' class='k-invalid-msg'></span>
+            </div>
+         </div>
+
+          <div class="clearfix">
+              <div class="form-group form-control-custom">
+                  <label class="col-md-2 control-label">Mô tả</label>
+                  <div class="col-md-10">
+                      <input class="form-control" ng-model="model.description"/>
+                  </div>
+              </div>
+          </div>
+			
+          <div class="clearfix">
+              <div class="form-group col-md-6">
+                  <label class="col-md-4 control-label req">Ngày bắt đầu</label>
+                  <div class="col-md-4">
+                      <input name="startDate" id="startDate" kendo-date-picker k-options="datePickerOptions"
+                               ng-change="startDateChange()"
+                               required ng-model="model.startDate"
+                               data-required-msg="Ngày bắt đầu không hợp lệ" ng-disabled="isDisableYearAndStartDate()"/>
+                      <span data-for='startDate' class='k-invalid-msg'></span>
+                      <span class='k-widget k-tooltip k-tooltip-validation'>{{modelValidation.errStartDate}}</span>
+                  </div>
+              </div>
+
+              <div class="form-group col-md-6">
+                  <label class="col-md-4 control-label req">Ngày kết thúc</label>
+                  <div class="col-md-4">
+                      <input name="endDate" id="endDate" kendo-date-picker k-options="datePickerOptions"
+                               ng-change="endDateChange()"
+                               required ng-model="model.endDate"
+                               data-required-msg="Ngày kết thúc không hợp lệ" ng-disabled="isShowDetail()"/>
+                      <span data-for='endDate' class='k-invalid-msg'></span>
+                      <span class='k-widget k-tooltip k-tooltip-validation'>{{modelValidation.errEndDate}}</span>
+                  </div>
+              </div>
+          </div>
+			
+          <div class="clearfix">
+              <div class="form-group col-md-6">
+                  <div class="col-md-8 col-sm-offset-4">
+                      <label class="checkbox-inline"></label>
+                          <input type="checkbox" ng-model="model.isactive" ng-true-value="'true'"
+                                 ng-false-value="'false'"> Có hiệu lực
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="col-md-8 col-sm-offset-4">
+                        <button type="submit" class="btn blue col-md-12" ng-click="vm.create" ng-hide="isShowDetail()">
+                            Tạo kỳ
+                        </button>
+                    </div>
+                </div>
+          </div>
+			
+          <div class="clearfix">
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Người tạo</label>
+                    <div class="col-md-4">
+                        <input class="form-control" readonly/>
+                    </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="col-md-4 control-label">Người cập nhật</label>
+                    <div class="col-md-4 ">
+                        <input class="form-control" readonly/>
+                    </div>
+                </div>
+          </div>
+        </div>
+    </form>
+    <br/>
+
+    <div id="gridPeriod"></div>
+    <!--uib-tabset class="tabbable-custom">
+       <uib-tab heading="Kỳ tài chính">
+          <div ng-show="true">
+             <div id="gridPeriod" kendo-grid="gridPeriod" k-options="gridPeriodOptions"></div>
+          </div>
+       </uib-tab>
+    </uib-tabset-->

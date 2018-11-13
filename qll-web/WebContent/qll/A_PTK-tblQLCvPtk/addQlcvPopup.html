@@ -1,0 +1,780 @@
+
+<form class="form-horizontal row" role="form" name="addHdId"
+	id="addHdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin thêm mới</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>CNKV :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" 
+									k-options="caller.patternOptionsCnkvPop" kendo-auto-complete
+									name="chiNhanhCvAutoPopup" ng-model="caller.addQlcvPopup.tenDanhMuc" 
+									maxlength="200" id="chiNhanhCvAutoPopup" />
+									<span data-for="chiNhanhCvAutoPopup" class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Tỉnh :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternOptionsTinhPop" kendo-auto-complete
+									name="qlcvTinhAutoPopup" 
+									ng-model="caller.addQlcvPopup.tenTinh" maxlength="200"
+									id="qlcvTinhAutoPopup" />
+									<span data-for="qlcvTinhAutoPopup" class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã
+								xuất kho(MTT) :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.mttMaXuatKho" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã
+								vị trí(MTT) :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.mttMaViTri" />
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã
+								2G(MTT) :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.mttMa2g" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Mã
+								3G(MTT) :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.mttMa3g" />
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Số hợp đồng CĐT :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.soHdCdt" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Loại CT
+								:</label>
+							<div class="col-md-8">
+								<select ng-model="caller.addQlcvPopup.loaiCt"
+									class=" form-control width100">
+									<option value="" selected="selected">~~Chọn~~</option>
+									<option value="BTS">BTS</option>
+									<option value="Ngầm">Ngầm</option>
+									<option value="Công văn lẻ">Công văn lẻ</option>
+									<option value="Chi nhánh tỉnh">Chi nhánh tỉnh</option>
+									<option value="Cột bao">Cột bao</option>
+									<option value="Khác">Khác</option>
+								</select>
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Nội dung
+								(Hạng mục) :</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+									type="text" ng-model="caller.addQlcvPopup.noiDung"></textarea>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày gửi
+								HSHC lên công ty:</label>
+							<div class="col-md-8">
+								<input name="ngayGuiHshcPop" id="ngayGuiHshcPop"
+									ng-model="caller.addQlcvPopup.ngayGuiHshc"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg="Ngày gửi HSHC không hợp lệ"
+									data-date-msg="Ngày gửi HSHC không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayGuiHshcPop" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Số bill :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" 
+									ng-model="caller.addQlcvPopup.soBill" />
+							</div>
+						</div>	
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Ngày nhận
+								HSHC :</label>
+							<div class="col-md-8">
+								<input name="ngayNhanHshcPop" id="ngayNhanHshcPop"
+									ng-model="caller.addQlcvPopup.ngayNhanHshc"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày nhận HSHC không được để trống"
+									min-year="1000" data-minyear-msg="Ngày nhận HSHC không hợp lệ"
+									data-date-msg="Ngày nhận HSHC không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayNhanHshcPop" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label " translate>Ghi
+									chú  :</label>
+								<div class="col-md-10">
+									<textarea class=" form-control width100" maxlength="2000"
+										type="text" ng-model="caller.addQlcvPopup.ghiChu"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>			
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Giá trị theo sản lượng hạ tầng tạm tính</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Xây dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtSlHtTtXd" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Điện :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtSlHtTtDien" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtSlHtTtLapDung" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp BTS :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtSlHtTtLapBts" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Khác:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtSlHtTtKhac" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tổng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtSlHtTtTong" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Giá trị đề nghị QTK của CN</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Xây dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnXd" 
+									/>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Điện :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnDien" 
+									/>
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnLapDung" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp BTS :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnLapBts" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Khác:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnKhac" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tổng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnTong" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm:</label>
+							<div class="col-md-8">
+								<input name="ngayGtDnQtkCn" id="ngayGtDnQtkCn"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnNgay"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg="Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayGtDnQtkCn" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người lập :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtDnQtkCnNguoiLap" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Giá trị QTK chốt PTK</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Xây dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkXd" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Điện :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkDien" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkLapDung" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp BTS :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkLapBts" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Khác:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkKhac" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tổng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkTong" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm:</label>
+							<div class="col-md-8">
+								<input name="ngayGtQtkPtk" id="ngayGtQtkPtk"
+									ng-model="caller.addQlcvPopup.gtQtkPtkNgay"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayGtQtkPtk" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người chốt :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkNguoiChot" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thuộc định mức tờ trình:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.gtQtkPtkDmtt" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+						<label class="col-md-4 control-label " translate>Tháng QTK:</label>
+						<div class="col-md-8">
+							<select class=" form-control width100"
+								
+								ng-model="caller.addHdPop.gtQtkPtkThangQtk">
+								<option value="">~~Chọn~~</option>
+								<option value="01/{{caller.date}}">01/{{caller.date}}</option>
+								<option value="02/{{caller.date}}">02/{{caller.date}}</option>
+								<option value="03/{{caller.date}}">03/{{caller.date}}</option>
+								<option value="04/{{caller.date}}">04/{{caller.date}}</option>
+								<option value="05/{{caller.date}}">05/{{caller.date}}</option>
+								<option value="06/{{caller.date}}">06/{{caller.date}}</option>
+								<option value="07/{{caller.date}}">07/{{caller.date}}</option>
+								<option value="08/{{caller.date}}">08/{{caller.date}}</option>
+								<option value="09/{{caller.date}}">09/{{caller.date}}</option>
+								<option value="10/{{caller.date}}">10/{{caller.date}}</option>
+								<option value="11/{{caller.date}}">11/{{caller.date}}</option>
+								<option value="12/{{caller.date}}">12/{{caller.date}}</option>
+							</select>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" >
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tình trạng chuyển chứng từ 1:</label>
+							<div class="col-md-8">
+								<select ng-model="caller.addQlcvPopup.tinhTrangCct1"
+									class=" form-control width100">
+									<option value="" selected="selected">~~Chọn~~</option>
+									<option value="Lỗi">Lỗi</option>
+									<option value="Vướng">Vướng</option>
+									<option value="Chưa quyết toán khoán">Chưa quyết toán khoán</option>
+									<option value="Quyết toán khoán tạm tính">Quyết toán khoán tạm tính</option>
+									<option value="Phát sinh">Phát sinh</option>
+									<option value="Hoàn thành">Hoàn thành</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ghi chú hồ sơ lỗi :</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+									type="text" ng-model="caller.addQlcvPopup.ghiChuHsLoi"></textarea>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Quyết toán đối tác</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+				
+						<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm đối tác gửi:</label>
+							<div class="col-md-8">
+								<input name="ngayQtDt" id="ngayQtDt"
+									ng-model="caller.addQlcvPopup.qtDtNgay"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg="Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayQtDt" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giá trị đề nghị của đối tác :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtGtDnDt" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm thẩm đối tác:</label>
+							<div class="col-md-8">
+								<input name="ngayQtDtTdDt" id="ngayQtDtTdDt"
+									ng-model="caller.addQlcvPopup.qtDtNgayTdDt"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg="Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayQtDtTdDt" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Số hợp đồng của đối tác :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtSoHd" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Xây dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtXd" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Điện :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtDien" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp dựng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtLapDung" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lắp BTS :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtLapBts" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Khác:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtKhac" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tổng :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtTong" />
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thông tin của đối tác:</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+										type="text" ng-model="caller.addQlcvPopup.qtDtTtDt"></textarea>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người thẩm :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.qtDtNguoiTd" />
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Đề nghị quyết toán CDT</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người lập :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.dnQtCdtNguoiLap" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người nhận bàn giao :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.dnQtCdtNguoiNhanBg" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Nội dung PS có trong thiết kế :</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+									type="text" ng-model="caller.addQlcvPopup.dnQtCdtNoiDungPsCtk"></textarea>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Nội dung PS không có trong thiết kế :</label>
+							<div class="col-md-8">
+								<textarea class=" form-control width100" maxlength="2000"
+									ng-model="caller.addQlcvPopup.dnQtCdtKtk" ></textarea>
+							</div>
+						</div>
+					</div>
+							
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm:</label>
+							<div class="col-md-8">
+								<input name="ngayDnQtCdt" id="ngayDnQtCdt"
+									ng-model="caller.addQlcvPopup.dnQtCdtNgay"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayDnQtCdt" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giá trị :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.dnQtCdtGt" />
+							</div>
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+		
+		<div class="form-body" style=" margin-top:10px;">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thẩm định quyết toán CDT</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người chốt mail Viettel :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.tdQtCdtNguoiChotMvt" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Người thẩm CDT mail Viettel :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.tdQtCdtNguoiTdCdtMvt" />
+							</div>
+						</div>
+					</div>
+						
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm chốt:</label>
+							<div class="col-md-8">
+								<input name="ngaytdQtCdtChot" id="ngaytdQtCdtChot"
+									ng-model="caller.addQlcvPopup.tdQtCdtNgayChot"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngaytdQtCdtChot" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Giá trị :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.tdQtCdtGt" />
+							</div>
+						</div>
+					</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày/tháng/năm bản thẩm về:</label>
+							<div class="col-md-8">
+								<input name="ngaytdQtCdtBanTd" id="ngaytdQtCdtBanTd"
+									ng-model="caller.addQlcvPopup.tdQtCdtNgayBanTd"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngaytdQtCdtBanTd" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày chuyển tài chính:</label>
+							<div class="col-md-8">
+								<input name="ngaytdQtCdtCtc" id="ngaytdQtCdtCtc"
+									ng-model="caller.addQlcvPopup.tdQtCdtNgayCtc"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày gửi HSHC không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngaytdQtCdtCtc" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label " translate>Nội Dung  :</label>
+								<div class="col-md-10">
+									<textarea class=" form-control width100" maxlength="2000"
+										type="text" ng-model="caller.addQlcvPopup.tdQtCdtNoiDung"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-body" >
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tình trạng chuyển chứng từ 2 :</label>
+							<div class="col-md-8">
+								<select ng-model="caller.addQlcvPopup.tinhTrangCct2"
+									class=" form-control width100">
+									<option value="" selected="selected">~~Chọn~~</option>
+									<option value="Đã lập đề nghị QT chưa chuyển CDT">Đã lập đề nghị QT chưa chuyển CDT</option>
+									<option value="Đã chuyển CDT chưa thẩm định">Đã chuyển CDT chưa thẩm định</option>
+									<option value="Đã thẩm định chưa có đề nghị">Đã thẩm định chưa có đề nghị</option>
+									<option value="Đã chuyển tài chính">Đã chuyển tài chính</option>
+									<option value="Đã xuất hóa đớn trả CDT">Đã xuất hóa đớn trả CDT</option>
+									<option value="Hoàn thành">Hoàn thành</option>
+									
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Lưu tại kho :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addQlcvPopup.luuTaiKho" />
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label " translate>Ghi chú  :</label>
+								<div class="col-md-10">
+									<textarea class=" form-control width100" maxlength="2000"
+										type="text" ng-model="caller.addQlcvPopup.ghiChu2"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange1"
+							ng-click="caller.save()" translate>Ghi lại</button>
+						
+					</div>
+				</div>
+			</div>
+	</div>
+</form>

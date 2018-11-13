@@ -1,0 +1,120 @@
+<style>
+.k-select .k-link{
+margin-top: -3px; 
+}
+
+.k-list-filter>.k-icon{
+top: -5px;
+}
+</style>
+<div ng-controller="listReportCrStHandoverController as vm" k-options="vm.validatorOptions" kendo-validator="vm.validator">
+    <div class="fixmeCrSt">
+        <div class="">
+            <div class="btn-toolbar margin-bottom-10 margin-top">
+                <div>
+                    <div class="btn-group margin-left-button" ng-controller="MenuController as menu">
+                        <button type="button" uib-tooltip="Thêm mới" class="btn btn-default padding-button box-shadow" ng-click="vm.add()" ng-disabled="vm.disabledButtomAdd">
+					<div class="action-button add"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                        <button type="button" uib-tooltip="Xem bảng/Chi tiết" class="btn btn-default padding-button box-shadow" ng-click="vm.showGrid()">
+					<div class="action-button view"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                        <button type="button"  uib-tooltip="Lưu" class="btn btn-default padding-button box-shadow" ng-click="vm.save()" ng-disabled="vm.disabledButtomSave" ng-show="vm.showDetail">
+					<div class="action-button save"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                        <!--</div>
+			<div class="btn-group">-->
+                        <button type="button"  uib-tooltip="Xóa" class="btn btn-default padding-button   box-shadow" ng-click="vm.remove()" ng-show="!vm.showDetail" ng-disabled="vm.disabledButtom">
+					<div class="action-button del"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+
+                    </div>
+                    <div class="btn-group margin-left-button">
+                        <!--<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFile()">
+					<div class="action-button export"  uib-tooltip="ExportPDF" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+				<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.exportListFileDOC()">
+					<div class="action-button export"  uib-tooltip="ExportDOC" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>-->
+                        <button type="button" uib-tooltip="Export File PDF" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFile()" translate="" id="exportPDF" ng-show="!vm.showDetail">
+					<div class="action-button pdf"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                        <button type="button" uib-tooltip="Export File Doc" class="btn btn-default padding-button box-shadow" ng-click="vm.exportListFileDOC()" translate="" id="exportDOC" ng-show="!vm.showDetail">
+					<div class="action-button doc"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+                        <button type="button" uib-tooltip="Export File PDF" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFile()" translate="" id="exportPDF" ng-show="vm.showDetail">
+					<div class="action-button pdf"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                        <button type="button" uib-tooltip="Export File Doc" class="btn btn-default padding-button box-shadow" ng-click="vm.exportDoc()" translate="" id="exportDOC" ng-show="vm.showDetail">
+					<div class="action-button doc"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+                        <!--<button class=" btn green btn-outline padding-btn" ng-click="vm.exportDoc()" ng-show="vm.showDetail" translate="" id="exportDoc"><span class="ng-scope">Export Doc</span></button>
+				<button class=" btn green btn-outline padding-btn" ng-click="vm.exportFile()" translate="" id="exportPDF" ng-show="vm.showDetail"><span class="ng-scope">Export PDF</span></button>-->
+                    </div>
+                    <div class="btn-group margin-left-button">
+                        <button type="button" uib-tooltip="Trình duyệt" class="btn btn-default padding-button box-shadow" ng-click="vm.signCA()" translate="" id="signCA" ng-show="!vm.showPheduyet&&vm.showTrinhDuyet">
+					<div class="action-button approval"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                        <button type="button" uib-tooltip="Phê duyệt" class="btn btn-default padding-button box-shadow" ng-click="vm.pheDuyet()" translate="" id="pheDuyet">
+					<div class="action-button approve"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+					class="btn btn-default padding-button box-shadow border-radius-right"
+					ng-click="vm.cancelApprovalBtn()" uib-tooltip="Hủy trình duyệt">
+					<div class="action-button cancelAproval"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+    </div>
+	
+    <div ng-show="!vm.showDetail">
+
+        <div data-ng-include="'qlhc/listReportCrStHandover/searchForm.html'"></div>
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                    	<span class="caption-subject bold lowercase" 
+					translate>Danh sách</span>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <div kendo-grid="vm.reportCrStHandoverGrid" k-options="vm.options" id="reportCrStHandoverGrid"></div>
+                <script>
+                $(document).ready(function() {
+                    var tooltip = $("#reportCrStHandoverGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#reportCrStHandoverGrid").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#reportCrStHandoverGrid").find("td").click(false);
+                });
+            </script>
+            </div>
+        </div>
+
+    </div>
+    <div ng-show="vm.showDetail">
+        <div data-ng-include="'qlhc/reportCrStHandover/reportCrStHandover.html'" id="topBarContract" onload="vm.hideAButton()"></div>
+    </div>
+
+</div>

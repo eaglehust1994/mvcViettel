@@ -1,0 +1,369 @@
+<div data-ng-controller="createExportRequestManageController as vm">
+	<div ng-show="vm.showStepOne" class="portlet light bordered ">
+		<div class="portlet-title background-title ">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Tạo
+					mới yêu cầu xuất kho </span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demoreson"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demoreson" class="collapse in from-search row">
+			<div class="row border-popup-management">
+				<div class="col-md-3 border-right">
+					<form class="padding-height-20 form-horizontal row" role="form">
+						<div class="form-body">
+							<div class="caption">
+								<span class="bold lowercase" translate>Loại yêu cầu</span>
+							</div>
+							<div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForDepartment" ng-change=vm.checkbox()
+										ng-model="vm.value" value="1"><span
+										class="padding_radio" ng-bind="vm.businessTypes[0].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForConstruct" ng-change="vm.checkbox()"
+										ng-model="vm.value" value="2"> <span
+										class="padding_radio" ng-bind="vm.businessTypes[1].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForBHSC" ng-change="vm.checkbox()" ng-model="vm.value"
+										value="3"> <span class="padding_radio"
+										ng-bind="vm.businessTypes[2].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extAlternativeStock" ng-change="vm.checkbox()"
+										ng-model="vm.value" value="4"> <span
+										class="padding_radio" ng-bind="vm.businessTypes[3].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForGift" ng-change="vm.checkbox()" ng-model="vm.value"
+										value="5"> <span class="padding_radio"
+										ng-bind="vm.businessTypes[4].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForBorrow" ng-change="vm.checkbox()"
+										ng-model="vm.value" value="6"> <span
+										class="padding_radio" ng-bind="vm.businessTypes[5].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForPay" ng-change="vm.checkbox()" ng-model="vm.value"
+										value="7"> <span class="padding_radio"
+										ng-bind="vm.businessTypes[6].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForSale" ng-change="vm.checkbox()" ng-model="vm.value"
+										value="8"> <span class="padding_radio"
+										ng-bind="vm.businessTypes[7].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForProject" ng-change="vm.checkbox()"
+										ng-model="vm.value" value="9"> <span
+										class="padding_radio" ng-bind="vm.businessTypes[8].name"></span>
+								</div>
+								<div class="col-md-12 margin-top10">
+									<input style="float: left;" type="radio" name="extType"
+										id="extForSell" ng-change="vm.checkbox()" ng-model="vm.value"
+										value="10"> <span class="padding_radio"
+										ng-bind="vm.businessTypes[9].name"></span>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="form-horizontal  padding-height-20 col-md-9" role="form">
+					<div class="form-body ">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin chung</span>
+						</div>
+						<div class="padding-width18">
+							<div class="border-gray">
+								<div class="clearfix">
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label req" if translate>Mã
+											yêu cầu</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												ng-model="vm.addExtOrder.code" />
+										</div>
+									</div>
+									<auto-search model-label="Kho xuất" caller="vm"
+										template-url="views/popup/gridView.html"
+										header-template="vm.headerTemplate"
+										template-auto="vm.template" page="1" page-size="20"
+										popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+										popup-source-link="appParamServiceRest/doSearch"
+										combo-id="createStockExt"
+										combo-source-link="appParamServiceRest/getForAutoComplete"
+										combo-name="name" combo-value="code" combo-code="name"
+										combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+										model-id="vm.addExtOrder.stockId"
+										model-name="vm.addExtOrder.stockName"
+										ng-model="vm.addExtOrder.stock"> </auto-search>
+								</div>
+								<div class="clearfix">
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label req" translate>Người
+											nhận hàng</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												ng-model="vm.addExtOrder.user" />
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Ngày
+											nhận hàng dự kiến</label>
+										<div class="col-md-8">
+											<input name="receiveDate" id="receiveDate"
+												ng-model="vm.addExtOrder.receiveDate" style="width: 100%;"
+												required data-required-msg="Ngày tạo từ không được để trống"
+												data-date-msg="Ngày tạo từ không hợp lệ" />
+										</div>
+										<script>
+											$("#receiveDate").kendoDatePicker({
+												animation : {
+													close : {
+														effects : "zoom:out",
+														duration : 300
+													}
+												}
+											});
+										</script>
+									</div>
+								</div>
+								<div class="clearfix">
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Mã hợp
+											đồng</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												ng-model="vm.addExtOrder.contractCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Mã
+											phiếu nhập</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												ng-model="vm.addExtOrder.impCode" />
+										</div>
+									</div>
+								</div>
+								<div class="clearfix">
+									<div class="form-group col-md-12">
+										<div class="form-group col-md-12">
+											<label class="col-md-2 control-label" translate>Ghi
+												chú</label>
+											<div class="col-md-10">
+												<div class="input-icon right">
+													<textarea class="form-control width100" name="name"
+														id="name" type="text" ng-model="vm.addExtOrder.description"></textarea>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="">
+							<div class="caption margin-top10">
+								<span class="caption-subject bold lowercase" translate>Thông
+									tin theo từng loại yêu cầu</span>
+							</div>
+							<div class="padding-width18">
+								<div class="border-gray row">
+									<div class="form-group col-md-6"
+										ng-show="vm.showExtForDepartment">
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+												<input class=" form-control width100" type="text"
+													ng-model="vm.addExtOrder.extForDepartmentName" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6"
+										ng-show="vm.showExtForConstruct">
+										<label class="col-md-4 control-label req" translate>Công
+											trình</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForConstructCode" kendo-auto-complete
+												k-options="vm.extForConstructCodeOptions"
+												ng-model="vm.addExtOrder.extForConstructCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForBHSC">
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+												<input class=" form-control width100" type="text"
+													ng-model="vm.addExtOrder.extForDepartmentName" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6"
+										ng-show="vm.showExtAlternativeStock">
+										<label class="col-md-4 control-label req" translate>Kho
+											nhận</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extAlternativeStockCode" kendo-auto-complete
+												k-options="vm.extAlternativeStockCodeOptions"
+												ng-model="vm.addExtOrder.extAlternativeStockCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForGift">
+										<label class="col-md-4 control-label req" translate>Đối
+											tác</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForGiftCode" kendo-auto-complete
+												k-options="vm.extForGiftCodeOptions"
+												ng-model="vm.addExtOrder.extForGiftCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForBorrow">
+										<label class="col-md-4 control-label req" translate>Đối
+											tác</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForBorrowCode" kendo-auto-complete
+												k-options="vm.extForBorrowCodeOptions"
+												ng-model="vm.addExtOrder.extForBorrowCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForPay">
+										<label class="col-md-4 control-label req" translate>Đối
+											tác</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForPayCode" kendo-auto-complete
+												k-options="vm.extForPayCodeOptions"
+												ng-model="vm.addExtOrder.extForPayCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForSale">
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+												<input class=" form-control width100" type="text"
+													ng-model="vm.addExtOrder.extForDepartmentName" />
+											</div>
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForProject">
+										<label class="col-md-4 control-label req" translate>Mã
+											đề tài/dự án</label>
+										<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+												id="extForProjectCode" kendo-auto-complete
+												k-options="vm.extForProjectCodeOptions"
+												ng-model="vm.addExtOrder.extForProjectCode" />
+										</div>
+									</div>
+									<div class="form-group col-md-6" ng-show="vm.showExtForSell">
+										<label class="col-md-4 control-label req" translate>Đơn
+											vị nhận</label>
+										<div class="col-md-8">
+											<div class="input-icon right ">
+												<i class="fa fa-search directive"
+													ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+												<input class=" form-control width100" type="text"
+													ng-model="vm.addExtOrder.extForDepartmentName" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet light" align="right">
+			<button type="button"
+				class="btn red btn-outline padding-search-right"
+				ng-click="vm.cancel()" translate>Hủy bỏ</button>
+			<button type="button"
+				class="btn blue btn-outline padding-search-right"
+				ng-click="vm.nextStep()" translate>Tiếp</button>
+		</div>
+	</div>
+
+	<div ng-show="!vm.showStepOne">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Import
+								bằng file excel</span>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>File
+								import</label>
+							<div class="col-md-6">
+								<input class=" form-control width100" type="file"
+									ng-model="vm.reasonSearch.keySearch" />
+							</div>
+							<div class="col-md-2">
+								<button type="button" ng-click="vm.upload()" translate>Tải
+									lên</button>
+							</div>
+						</div>
+						<div class="form-group col-md-6" align="right">
+							<a href="url">Tải file biểu mẫu</a>
+						</div>
+					</div>
+
+				</div>
+				<div class="portlet light bordered">
+					<div class="portlet-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Danh
+								sách hàng hóa của yêu cầu</span>
+						</div>
+					</div>
+					<div id="creExReqMaGrid" kendo-grid="vm.creExReqMaGrid"
+						k-editable="false" k-options="vm.gridOptions"></div>
+				</div>
+			</div>
+		</form>
+		<div class="portlet light">
+			<button type="button"
+				class="btn blue btn-outline padding-search-right"
+				ng-click="vm.prevStep()" translate>Trước</button>
+			<button type="button"
+				class="btn green btn-outline padding-search-right btn pull-right"
+				ng-click="vm.sendToSign()" translate>Ghi lại</button>
+			<button type="button"
+				class="btn red btn-outline padding-search-right btn pull-right"
+				ng-click="vm.cancel()" translate>Hủy bỏ</button>
+		</div>
+	</div>
+</div>

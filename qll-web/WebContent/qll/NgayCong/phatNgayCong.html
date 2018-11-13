@@ -1,0 +1,178 @@
+<style>
+	#phatNgayCongGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#phatNgayCongGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="phatNgayCongController as vm">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoreson"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+
+					<!-- bat dau tim kiem -->
+					<div id="demoreson" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-label" translate>Tìm
+										kiếm nhanh</label>
+									<div class="col-md-10">
+										<div class="input-icon right">
+											<input class=" form-control width100" type="text"
+												id="keySearchFc" ng-model="vm.phatNgayCongSearch.keySearch" />
+										</div>
+
+									</div>
+									<!-- <div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div> -->
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							
+							<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Tháng
+									</label>
+									<div class="col-md-3">
+									<input type="date" name="bday" id="datephatNgayCong"min="2000-01-02"><br><br>
+								</div>
+									<!-- <div class="col-md-3">
+										<select id="exThangFc" style="width: 100%; height: 25px;"
+											name="exThangFc" ng-model="vm.phatNgayCongSearch.exThang">
+											<option value="">---Chọn---</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+									</div>
+									<label class="col-md-2 control-label" translate>Năm</label>
+									<div class="col-md-3 position-relative">
+										<select id="exNamFc" style="width: 100%; height: 25px;"
+											name="exNamFc" ng-model="vm.phatNgayCongSearch.exNam">
+											<option value="">---Chọn---</option>
+											<option value="2005">2005</option>
+											<option value="2006">2006</option>
+											<option value="2007">2007</option>
+											<option value="2008">2008</option>
+											<option value="2009">2009</option>
+											<option value="2010">2010</option>
+											<option value="2011">2011</option>
+											<option value="2012">2012</option>
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option value="2015">2015</option>
+											<option value="2016">2016</option>
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+										</select>
+									</div>
+								<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearSearchDate()"></i>
+									</div> -->
+								</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Họ và
+									tên</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.phatNgayCongSearch.hoVaTen" id="hoVaTen" />
+								</div>
+
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã nhân
+									viên</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.phatNgayCongSearch.maNv" id="maNv" />
+								</div>
+
+							</div>
+						</div>
+
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findFc" ng-click="vm.doSearch()"
+										class="btn btn-qlk padding-search-right searchQLK" translate>Tìm
+										kiếm</button>
+									<button type="button" id="importFc" ng-click="vm.importFile()"
+										class="btn btn-qlk padding-search-right TkQLK" translate>Import</button>
+									<button type="button" id="importFc" ng-click="vm.exportphatNgayCong()"
+										class="btn btn-qlk padding-search-right excelQLK" translate>Xuất Excel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end tìm kiếm -->
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm :</span>&nbsp;<label class="control-label bold lowercase"
+					id="phatNgayCongCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#ext2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="ext2" class="collapse in ">
+
+			<div ng-show="vm.showDetail" id="sign"></div>
+			<div id="phatNgayCongGrid" kendo-grid="phatNgayCongGrid" k-editable="false"
+				k-options="vm.phatNgayCongGridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	document.onkeydown = keyDown;
+	function keyDown(e) {
+		switch (e.keyCode) {
+		case 13:
+			$("#findNgayCong").click();
+			break;
+		}
+	}
+</script>

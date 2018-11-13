@@ -1,0 +1,44 @@
+
+		<div class="form-body">
+			<div class="portlet light">
+				<div id="demo1" class="collapse in from-search">
+					<div class="clearfix gF">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Hàng hóa</label>
+							<div class="col-md-10">
+								<label class="control-label" ng-bind="caller.ordergood.goodsCode"></label>
+								<label class="control-label">(</label>
+								<label class="control-label" ng-bind="caller.ordergood.goodsName"></label>
+								<label class="control-label">)</label>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix gF">
+						<div class="form-group col-md-12">
+							<label class="col-md-2 control-label" translate>Kho</label>
+							<div class="col-md-10">
+								<label class="control-label"
+									ng-bind="caller.ordergood.stockCode"></label>
+								<label class="control-label">(</label>
+								<label class="control-label" ng-bind="caller.ordergood.stockName"></label>
+								<label class="control-label">)</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="collapse in from-search">
+				<div id="viewDetailGrid" kendo-grid="caller.viewDetailGrid"
+					k-editable="false" k-options="caller.detailGridOptions"></div>
+			</div>
+		</div>
+
+	<div class="clearfix form-actions margin-top">
+		<div class="row" style="margin-right: 0px">
+			<div class="col-md-12 text-right">
+				<button type="button"
+					class="btn btn-qlk padding-search-right margin_right10 closeQLK" id="cancel"
+					ng-click="caller.close()" translate>Đóng</button>
+			</div>
+		</div>
+	</div>

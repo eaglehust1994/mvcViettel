@@ -1,0 +1,123 @@
+<style>
+.formater {
+	margin-left: 23%;
+}
+</style>
+<form class="form-horizontal row" role="form" name="stock2" id="stock2"
+	kendo-validator="validator" k-options="validatorOptions">
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>I. Bên giao</span>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label req" translate>Tên</label>
+				<div class="col-md-9">
+					<input class="form-control" name="onename" id="onename" maxlength="400" ng-model="caller.dataconfig.deliveryOneName" 
+					required data-required-msg="Tên không được để trống"   />
+					<span data-for='onename' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label req" translate>Địa chỉ</label>
+				<div class="col-md-9">
+					<input class="form-control" name="oneaddress" id="oneaddress" maxlength="400" ng-model="caller.dataconfig.deliveryOneAddress" 
+					required data-required-msg="Địa chỉ không được để trống"   />
+					<span data-for='oneaddress' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label req" translate>Thông tin đại diện</label>
+				<div class="col-md-9">
+					<input class="form-control" name="onerepresent" id="onerepresent" maxlength="400" ng-model="caller.dataconfig.deliveryOneRepresent" 
+					required data-required-msg="Thông tin đại diện không được để trống"   />
+					<span data-for='onerepresent' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>II. Bên giao (số 2)</span>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" translate>Tên</label>
+				<div class="col-md-9">
+					<input class="form-control" name="twoname" id="twoname" maxlength="400" ng-model="caller.dataconfig.deliveryTwoName" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" translate>Địa chỉ</label>
+				<div class="col-md-9">
+					<input class="form-control" name="twoaddress" id="twoaddress" maxlength="400" ng-model="caller.dataconfig.deliveryTwoAddress" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" translate>Thông tin đại diện</label>
+				<div class="col-md-9">
+					<input class="form-control" name="tworepresent" id="tworepresent" maxlength="400" ng-model="caller.dataconfig.deliveryTwoRepresent" />
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption col-md-8">
+				<span class="caption-subject bold lowercase" translate>III. Bên vận tải</span>
+			</div>
+		</div>
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" translate>Tên</label>
+				<div class="col-md-9">
+					<input class="form-control" name="tranfername" id="tranfername" maxlength="400" ng-model="caller.dataconfig.tranferName" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" translate>Địa chỉ</label>
+				<div class="col-md-9">
+					<input class="form-control" name="tranferaddress" id="tranferaddress" maxlength="400" ng-model="caller.dataconfig.tranferAddress" />
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<label class="col-md-3 control-label" translate>Thông tin đại diện</label>
+				<div class="col-md-9">
+					<input class="form-control" name="tranferrepresent" id="tranferrepresent" maxlength="400" ng-model="caller.dataconfig.tranferRepresent" />
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="col-md-4"></div>
+		<div class="col-md-4"></div>
+		<div class="col-md-4">
+			<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button"
+				class="btn blue btn-outline padding-search-right ng-scope"
+				ng-click="saveConfig()" translate>Ghi lại</button>
+		</div>
+	</div>
+</form>

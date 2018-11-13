@@ -1,0 +1,64 @@
+
+<div ng-controller="stockGoodController as caller">
+	<div class="clearfix from-search" style="padding-top: 20px;">
+		<div id="demo1" class="col-md-10 ">
+
+			<div class="row col-md-12" style="padding:0px;">
+				<div class="col-md-2" style="text-align: right;">
+					<label>Hàng hóa</label>
+				</div>
+				<div class="col-md-10">
+					<label ng-bind="caller.stockDetail.goodsCode"></label> (<label
+						ng-bind="caller.stockDetail.goodsName"></label>)
+				</div>
+
+			</div>
+			<div class="row col-md-12" style="padding:0px;">
+				<div class="col-md-2" style="text-align: right; font-style: normal;">
+					<label>Kho</label>
+				</div>
+				<div class="col-md-10">
+					<label ng-bind="caller.stockDetail.stockCode"></label> (<label
+						ng-bind="caller.stockDetail.stockName"></label>)
+				</div>
+
+			</div>
+		</div>
+		<div class="col-md-2 " style="padding: 0px;">
+			<div class="row">
+				<div class="pull-right btn padding-search-right excelDBQLK" ng-click="caller.exportExcelGridStock()"></div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+
+		<div id="viewGoodDetailGrid" kendo-grid="caller.stockGoodDetailGrid"
+			k-editable="false" k-options="caller.stockGoodDetailGridOptions"></div>
+
+	</div>
+
+</div>
+
+<div class="clearfix">
+	<div class="col-md-12 text-right margin_bottom30"
+		style="margin: 0px; padding-bottom: 10px">
+		<button type="button"
+			class="btn btn-qlk padding-search-right closeQLK" id="closeDetail"
+			ng-click="caller.cancelDetail()" translate>Ðóng</button>
+	</div>
+</div>
+<script>
+	document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 13:
+									
+                    				$("#closeDetail").click();
+                    				break;
+								
+								
+								
+                    		}
+                    	}
+
+</script>

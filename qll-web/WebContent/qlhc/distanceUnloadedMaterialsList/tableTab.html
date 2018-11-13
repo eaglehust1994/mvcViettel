@@ -1,0 +1,211 @@
+<uib-tabset class="tabbable-custom" level2> 
+	<uib-tab active="vm.tabs[0].active" heading="Vận chuyển bằng ô tô (cơ
+				giới)">
+				<div class="clearfix">
+						<button type="button"
+							class="btn btn-default padding-button box-shadow"
+							ng-click="vm.add1()" ng-disabled="vm.disabledButtom" uib-tooltip="Thêm mới">
+							<div class="action-button add" 
+								translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</button>
+						<button type="button"
+							class="btn btn-default padding-button box-shadow"
+							ng-click="vm.remove1()" ng-disabled="vm.disabledButtom" uib-tooltip="Xóa">
+							<div class="action-button del"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</button>
+			</div>
+		<div class="clearfix" disable-all="vm.disableAll">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label">Vật tư tập kết tại</label>
+				<div class="col-md-8">
+					<input class="form-control width100"
+						name="carGatherPlace" id="carGatherPlace" maxlength="1000"
+						ng-model="vm.criteria.carGatherPlace" data-required-msg="Vật tư tập kết tại không được để trống">
+						<span data-for="carGatherPlace" class="k-invalid-msg"></span>
+						
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label ">Vận chuyển đến</label>
+				<div class="col-md-8">
+					<input
+						class="form-control width100"
+						name="carDesPlace" id="carDesPlace" maxlength="1000"
+						ng-model="vm.criteria.carDesPlace" data-required-msg="Vận chuyển đến không được để trống" >
+						<span data-for="carDesPlace" class="k-invalid-msg"></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-2">
+				<label class="col-md-12 control-label">Nội dung</label>
+			</div>
+			<div class="form-group col-md-10"></div>
+		</div>
+		<div class="clearfix">	
+			<div class="form-group col-md-12">
+				<div class="col-md-12">
+					<div kendo-grid="vm.OtogridName" k-options="vm.Otogrid" id="OtogridName"></div>
+					<script>
+                $(document).ready(function() {
+                    var tooltip = $("#OtogridName").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#OtogridName").find("td").click(false);
+                });
+            </script>
+					<div class="clearfix">
+						
+					</div>
+				</div>
+			</div>
+		</div>
+	</uib-tab> 
+		
+	<uib-tab active="vm.tabs[1].active" heading="Vận chuyển bằng xe cút kít, xe súc vật, thủ công (khuân, vác)">
+		<div class="clearfix">
+						<button type="button"
+							class="btn btn-default padding-button box-shadow"
+							ng-click="vm.add2()" ng-disabled="vm.disabledButtom" uib-tooltip="Thêm mới">
+							<div class="action-button add" 
+								translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</button>
+						<button type="button"
+							class="btn btn-default padding-button box-shadow"
+							ng-click="vm.remove2()" ng-disabled="vm.disabledButtom" uib-tooltip="Xóa">
+							<div class="action-button del"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</button>
+			</div>
+		<div class="clearfix" disable-all="vm.disableAll">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label">Vật tư tập kết tại</label>
+				<div class="col-md-8">
+					<input class="form-control width100 ng-pristine ng-valid k-valid ng-touched" maxlength="1000"
+						name="wheelbarrowGatherPlace" id="wheelbarrowGatherPlace" data-required-msg="Vật tư tập kết tại không được để trống"
+						ng-model="vm.criteria.wheelbarrowGatherPlace">
+						<span data-for="wheelbarrowGatherPlace" class="k-invalid-msg"></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label ">Vận chuyển đến</label>
+				<div class="col-md-8">
+					<input
+						class="form-control width100 width100 ng-pristine ng-untouched ng-invalid " maxlength="1000"
+						name="wheelbarrowDesPlace" id="wheelbarrowDesPlace" data-required-msg="Vận chuyển đến không được để trống" 
+						ng-model="vm.criteria.wheelbarrowDesPlace">
+						<span data-for="wheelbarrowDesPlace" class="k-invalid-msg"></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-2">
+				<label class="col-md-12 control-label">Nội dung</label>
+			</div>
+			<div class="form-group col-md-10"></div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="col-md-12">
+					<div kendo-grid="vm.cutKitgridName" k-options="vm.cutKitgrid" id="cutKitgridName"></div>
+				</div>
+				<script>
+                $(document).ready(function() {
+                    var tooltip = $("#cutKitgridName").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#cutKitgridName").find("td").click(false);
+                });
+            </script>
+			</div>
+		</div>
+	</uib-tab>
+	<uib-tab active="vm.tabs[2].active" heading="Bốc dỡ thủ công">
+		<div class="clearfix">
+						<button type="button"
+							class="btn btn-default padding-button box-shadow"
+							ng-click="vm.add3()" ng-disabled="vm.disabledButtom" uib-tooltip="Thêm mới">
+							<div class="action-button add" 
+								translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</button>
+						<button type="button"
+							class="btn btn-default padding-button box-shadow"
+							ng-click="vm.remove3()" ng-disabled="vm.disabledButtom" uib-tooltip="Xóa">
+							<div class="action-button del"  translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+						</button>
+			</div>
+		<div class="clearfix" disable-all="vm.disableAll">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label">Vật tư tập kết tại</label>
+				<div class="col-md-8">
+					<input class="form-control width100 ng-pristine ng-valid k-valid ng-touched" maxlength="1000"
+						name="handmadeGatherPlace" id="handmadeGatherPlace" data-required-msg="Vật tư tập kết tại không được để trống"
+						ng-model="vm.criteria.handmadeGatherPlace">
+						<span data-for="handmadeGatherPlace" class="k-invalid-msg"></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label ">Vận chuyển đến</label>
+				<div class="col-md-8">
+					<input
+						class="form-control width100 width100 ng-pristine ng-untouched ng-invalid " maxlength="1000"
+						name="handmadeDesPlace" id="handmadeDesPlace" data-required-msg="Vận chuyển đến không được để trống" 
+						ng-model="vm.criteria.handmadeDesPlace">
+						<span data-for="handmadeDesPlace" class="k-invalid-msg"></span>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-2">
+				<label class="col-md-12 control-label">Nội dung</label>
+			</div>
+			<div class="form-group col-md-10"></div>
+		</div>
+		<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="col-md-12">
+				<div kendo-grid="vm.bocVacgridName" k-options="vm.bocVacgrid" id="bocVacgridName"></div>
+			</div>
+			<script>
+                $(document).ready(function() {
+                    var tooltip = $("#bocVacgridName").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#bocVacgridName").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#bocVacgridName").find("td").click(false);
+                });
+            </script>
+		</div>
+		</div>
+	</uib-tab>
+</uib-tabset>

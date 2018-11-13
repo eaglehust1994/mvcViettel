@@ -1,0 +1,27 @@
+<div ng-controller="INSP_List_CONGTRINHController as vm">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.add()" ng-disabled="vm.disabledButtom">
+					<div class="action-button add" uib-tooltip="Thêm mới" translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.changeSite()">
+					<div class="action-button view" uib-tooltip="Xem bảng/Chi tiết" translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-click="vm.remove()" ng-disabled="vm.disabledButtom">
+					<div class="action-button del" uib-tooltip="Xóa" translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button" class="btn btn-default padding-button box-shadow  border-radius-right" ng-click="vm.multiDelete()" ng-disabled="vm.disabledButtom">
+					<div class="action-button deletes"  uib-tooltip="Xóa nhiều" translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button" class="btn btn-default padding-button box-shadow" ng-click="vm.exportFile()">
+					<div class="action-button export" uib-tooltip="Export" translate="">&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		</button>
+		<button type="button" class="btn btn-success btn-outline-success" translate
+						ng-click="vm.goTo('SUBMIT_FOR_SIGN')">Ký CA
+		</button>
+	</div>
+
+	 <hr class="line-Hr">	
+			<div data-ng-include="'qlhc/inspectionList/formfull.html'"
+				kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</div>
+

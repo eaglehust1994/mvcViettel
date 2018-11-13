@@ -1,0 +1,106 @@
+<div data-ng-controller="stock_transController as vm" id="stock_transId">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo11"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo11" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<multi-select model-label="Kho" caller="vm" focus-e="true" domain="true"
+								template-url="views/popup/gridViewMulti.html" 
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="10" popup-id="stockTransMulti" popup-type="gridplus"
+								popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+								combo-id="stockTransMulti" combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+								combo-name="name" combo-value="stockId" combo-code="name" model-Id="vm.stock_transSearch.listStockId"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-name="vm.stock_transSearch.keySearch2"/>
+							</multi-select>
+
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Thủ kho xuất</label>
+								<div class="col-md-8">
+									<input kendo-auto-complete k-options="vm.goodsOptions"
+									header-template="vm.headerTemplate1" template-auto="vm.template"
+									 class="form-control width100"
+													name="loginName" id="loginName"
+										ng-model="vm.stock_transSearch.loginName" />
+								</div>
+								<div class="One_icon" ng-click="vm.cancelstocktrans('loginName')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Thời gian: Từ ngày </label>
+								<div class="col-md-3">
+									<input kendo-date-picker class="form-control width100" required data-date-msg="Ngày tạo không hợp lệ"
+										name="startDate11" ng-model="vm.stock_transSearch.startDate" 
+										data-required-msg="Ngày tạo không được để trống" k-format="'dd/MM/yyyy'"
+										id="startDate11" ng-change="vm.checkErr1()" date-time
+										date-time min-year="1000" data-minyear-msg="Ngày tạo không hợp lệ"/>
+										<span data-for="startDate11" class="k-invalid-msg"></span>
+										<span style="color:red">{{vm.errMessage1}}</span>
+										<span id="errorStockTrans" class="k-invalid-msg" style="color: red" >Ngày tạo không hợp lệ</span>
+								</div>
+								
+								<label class="col-md-2 control-label" translate>đến</label>
+									<div class="col-md-3 position-relative">
+										<input kendo-date-picker class="form-control width100" data-date-msg="Ngày đến không hợp lệ"
+											name="endDate11" ng-model="vm.stock_transSearch.endDate" k-format="'dd/MM/yyyy'"
+											id="endDate11" ng-change="vm.checkErr()" date-time
+											date-time min-year="1000" data-minyear-msg="Ngày đến không hợp lệ"/>
+											<span data-for="endDate11" class="k-invalid-msg" ></span>
+											<span style="color:red">{{vm.errMessage}}</span>
+											<span id="errorStockTrans" class="k-invalid-msg" style="color: red" >Ngày đến không hợp lệ</span>
+									</div>
+								<div class="One_icon" ng-click="vm.cancelstocktrans('date')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="doSearchTrans"
+										class="btn btn-qlk padding-search-right  noteQLK"
+										ng-click="vm.doSearch()" translate>Xem trước</button>
+									<button type="button" id="excel"
+										class="btn btn-qlk padding-search-right  excelQLK"
+										ng-click="vm.exportexcel()" translate>Xuất excel</button>
+									<button type="button" id="pdf"
+										class="btn btn-qlk padding-search-right  pdfQLK"
+										ng-click="vm.exportpdf()" translate>Xuất pdf</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate></span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo12"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo12" class="collapse in from-search">
+			<div id="stock_transGrid" kendo-grid="vm.stock_transGrid"
+				k-editable="false" k-options="vm.gridOptions"
+				k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+		</div>
+	</div>
+</div>

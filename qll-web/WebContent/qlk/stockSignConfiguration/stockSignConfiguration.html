@@ -1,0 +1,521 @@
+<div data-ng-controller="stockSignConfigurationController as vm">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate></span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#collapseBusinessType"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="collapseBusinessType" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="search_plus">
+								<i class="fa fa-question-circle" aria-hidden="true"
+									ng-click="vm.edit()"></i>
+							</div>
+							<div class="form-group col-md-10">
+								<label class="col-md-6 control-label req" translate>Loại
+									nghiệp vụ cần trình ký</label>
+								<div class="col-md-4">
+									<!-- <select kendo-drop-down-list class="form-control"
+											id="ssconfig" style="width: 100%" name="ssconfig"
+											ng-model="vm.appParamSearch.name"
+											change="vm.onStockCategoryChange"
+											k-data-source="vm.dataStockSignConfigurationType"
+											k-data-value-field="'appParamId'" k-data-text-field="'name'"
+											required
+											data-required-msg="Loại nghiệp vụ cần trình ký không được để trống">
+											<option value="">--Chọn--</option>
+									</select> <span data-for='apply' class='k-invalid-msg'></span>		  -->
+									<span>{{vm.stockSignList.businessType}}</span>
+									<select kendo-drop-down-list="vm.applySelect"
+										class="form-control" id="businessType" style="width: 100%"
+										name="businessType" ng-model="vm.Search.businessType">
+										<option value="1" >Yêu cầu nhập kho</option>
+										<option value="2">Yêu cầu xuất kho</option>
+										<option value="3">Phiếu nhập kho</option>
+										<option value="4">Phiếu xuất kho</option>
+										<option value="5">Yêu cầu thay đổi hàng hóa trong kho</option>
+									</select> 
+								</div>
+							</div> 
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="">
+		<div class="wrap">
+			<div class="fleftdetail col-md-7">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="form-group col-md-12">
+							<div class="caption col-md-4">
+								<span class="caption-subject bold lowercase" translate>Danh sách kho</span>
+							</div>
+							<div class="col-md-8">
+								<div class="input-menu search-tree-sum">
+									<input id="filterText" ng-keyup="vm.doSearchRole()"
+										type="text" ng-model="vm.stockSearch.keySearch"
+										class="k-textbox input-menu-button form-control search-tree"
+										placeholder="Nhập mã,tên kho" /> <span
+										class="input-menu-btn"> <a href="javascript:;"> <i
+											class="icon-magnifier icon-search-tree"></i>
+									</a>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div id="stockListGridABC" kendo-grid="vm.stockListGridABC"
+						k-editable="false" k-options="vm.stockListGridOptions"></div>
+				</div>
+
+			</div>
+			<div class="frightdetail col-md-10">
+				<div class="portlet light">
+					<div class="portlet-title">
+						<div class="caption col-sm-6">
+							<span class="caption-subject bold " style="margin-left: 0px"
+								translate>Danh sách người ký của kho: {{vm.selectedStore.storeName}} </span>
+						</div>
+						<div class="caption-subject col-sm-6">
+							<span class="col-sm-5 bold" style="margin-left: 0px"></span>
+						</div>
+					</div>
+				</div>
+				<!-- Yêu cầu nhập kho -->
+				<div id="1" ng-show="vm.Search.businessType==1">
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>1.Đơn vị phê duyệt</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="UnitApproval" id="UnitApproval"
+									ng-model="vm.SignData.UnitApproval" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.UnitApproval">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Yêu cầu xuất kho -->
+				<div id="2" ng-show="vm.Search.businessType==2">
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>1.Đơn vị yêu cầu</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="UnitRequest" id="UnitRequest"
+									ng-model="vm.SignData.UnitRequest" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.UnitRequest">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>2.Đơn vị phê duyệt</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="UnitApproval" id="UnitApproval"
+									ng-model="vm.SignData.UnitApproval" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.UnitApproval">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>					
+				</div>
+				<!--Phiếu nhập kho -->
+				<div id="3" ng-show="vm.Search.businessType==3">
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>1.Người lập phiếu</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="Creater" id="Creater"
+									ng-model="vm.SignData.Creater" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.Creater">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>2.Người giao hàng</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="Shipper" id="Shipper"
+									ng-model="vm.SignData.Shipper" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.Shipper">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>3.Thủ kho</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="Storekeepers" id="Storekeepers"
+									ng-model="vm.SignData.Storekeepers" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.Storekeepers">
+									<option value="0">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>4.Đơn vị phê duyệt</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="UnitApproval" id="UnitApproval"
+									ng-model="vm.SignData.UnitApproval" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.UnitApproval">
+									<option value="0">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!--Phiếu xuất kho -->
+				<div id="4" ng-show="vm.Search.businessType==4">
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>1.Người lập phiếu</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="Creater" id="Creater"
+									ng-model="vm.SignData.Creater" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.Creater">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>2.Người nhận hàng</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="Receiver" id="Receiver"
+									ng-model="vm.SignData.Receiver" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.Receiver">
+									<option value="0">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>3.Thủ kho</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="Storekeepers" id="Storekeepers"
+									ng-model="vm.SignData.Storekeepers" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.Storekeepers">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>4.Đơn vị nhận</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="ReceiverUnit" id="ReceiverUnit"
+									ng-model="vm.SignData.ReceiverUnit" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.ReceiverUnit">
+									<option value="">Ban giám đốc dự án</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>5.Đơn vị phê duyệt</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="UnitApproval" id="UnitApproval"
+									ng-model="vm.SignData.UnitApproval" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.UnitApproval">
+									<option value="0">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Yêu cầu thay đổi hàng hóa trong kho -->
+				<div id="5" ng-show="vm.Search.businessType==5">
+					<div class="clearfix" style="margin-top: 20px;">
+						<div class="form-group col-md-6">
+							<label class="col-md-12 control-label" style="margin-left: 0px"
+								translate>1.Đơn vị phê duyệt</label>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<div class="col-md-12" style="margin-left: 10px">
+								<input name="UnitApproval" id="UnitApproval"
+									ng-model="vm.SignData.UnitApproval" style="width: 100%;">
+							</div>
+						</div>
+						<div class=" col-md-6">
+							<div class="col-md-4" style="padding-left: 0px;">
+								<label class="control-label" translate>Vai trò</label>
+							</div>
+							<div class="col-sm-8" style="padding-left: 0px;">
+								<select kendo-drop-down-list="vm.orgnizationSelect"
+									class="form-control" id="role" style="width: 100%;" name="role"
+									ng-model="vm.SignDataCombobox.UnitApproval">
+									<option value="">Ban giám đốc</option>
+									<option value="01">01</option>
+									<option value="02">02</option>
+									<option value="03">03</option>
+									<option value="04">04</option>
+									<option value="05">05</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="portlet light ">
+		<div class="portlet-title">
+			<button type="button" disabled
+				class="btn btn-qlk padding-search-right saveQLK pull-right"
+				ng-click="vm.save()" translate>Ghi lại</button>
+		</div>
+	</div>
+</div>

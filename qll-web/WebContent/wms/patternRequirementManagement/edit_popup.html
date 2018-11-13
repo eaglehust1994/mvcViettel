@@ -1,0 +1,89 @@
+
+<form class="form-horizontal row" role="form" name="editPopup" id="editPopup" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-body">
+		<div class="portlet light ">
+			<div class="row">
+				<div class="caption col-md-12" style="margin-bottom:10px">
+					<span class="text-header-popup bold lowercase lowercase ng-scope" translate="">Thông tin chung</span>
+				</div>
+			</div>	
+
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Tên mẫu</label>
+							<div class="col-md-8">
+								<input class="form-control" id="sampleName" name="sampleName"
+									ng-blur="focusOut()"
+									maxlength="1000" ng-model="data.name" required
+									data-required-msg="Tên mẫu không được để trống" /> 
+									<span data-for='sampleName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Người tạo</label>
+							<div class="col-md-8">
+								<input class="form-control" name="createdUserName" id="createdUserName" maxlength="50" ng-model="data.createdUserName" required
+									data-required-msg="Người tạo không được để trống" disabled="disabled" /> <span
+									data-for='createdUserName' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class="clearfix ">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Ghi chú</label>
+								<div class="col-md-10">
+									<textarea class="form-control" name="description"
+										id="descriptionEdit" maxlength="1000" ng-model="data.description"></textarea>
+									<span data-for='description' class='k-invalid-msg'></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="portlet light ">
+			<div class="row">
+				<div class="caption col-md-6" style="margin-top:5px">
+					<span class="text-header-popup bold lowercase lowercase ng-scope" translate="">Danh sách hàng hóa của mẫu</span>
+				</div>
+				<div class="caption col-md-6">
+					<div class="caption col-md-4" style="margin-top:5px">
+						<span class="caption-subject bold lowercase" translate>Bổ sung hàng hóa</span>
+					</div>
+					<div class="col-md-8 margin-bottom pull-right" >
+						<input ng-model="caller.goodsEdit.keySearch" id="orderGoods"  
+							kendo-auto-complete k-options="caller.patternOptions" class="form-control width100" />
+					</div>
+				</div>
+			</div>	
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div id="detailEditGrid" kendo-grid="caller.detailEditGrid" k-editable="true"
+						k-options="caller.detailEditGrid">
+					</div>
+					<!-- <div id="patternGrid" kendo-grid="caller.patternGrid"
+						k-options="caller.gridPatternOptions"></div> -->
+				</div>
+			</div>						
+		</div>
+		
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button" class="btn btn-qlk padding-search-right closeQLK" id="cancelEditId"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" class="btn btn-qlk padding-search-right saveQLK" id="saveEditId"
+						ng-click="save()" translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

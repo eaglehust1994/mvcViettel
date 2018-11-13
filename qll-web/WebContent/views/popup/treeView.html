@@ -1,0 +1,68 @@
+
+<!-- saved from url=(0063)http://104.199.131.150:68/pmtc2.0/app/popup/donViForm.view.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252"></head><body><div class="modal-body">
+    <form class="form-horizontal" role="form">
+            <div class="row popup-margintop paddingPopupTree">
+                <div class="col-md-5 ">
+                    <label class="col-md-3 control-label text-center">Mã</label>
+                    <div class="col-md-9">
+                        <input class="form-control-popup" value="" ng-model="searchGrid.value">
+                    </div>
+                </div>
+                <div class="col-md-5 paddingPopupTree">
+                        <label class="col-md-3 control-label text-center">Tên</label> 
+                        <div class="col-md-9">
+                            <input class="form-control-popup" value="" ng-model="searchGrid.name">
+                        </div>
+                </div>
+                <div class="col-md-2 text-right ">
+                       <button type="button" class="btn green border-button-tree" ng-click="searchAdOrg(popupId,searchType)">Tìm kiếm</button>
+                 </div>
+            </div>
+
+    </form>
+
+    <!-- BEGIN PORTLET-->
+    <div class="portlet light bordered">
+        <div class="portlet-body">
+            <div id="treeview" kendo-tree-view="tree"
+		         k-data-source="data"
+		         k-selectable="true"		      
+		         k-on-change="caller.onChangePopupForm(dataItem, popupId)">
+		    </div>
+		   
+        </div>
+    </div>
+    
+    <!-- END PORTLET-->
+
+    <script>
+    	var lastSelected;
+        
+        function updateChks(){
+        	var checkboxes = $('#treeview input:checkbox');
+            var selected = checkboxes.filter(':checked');
+            if (selected.length == 0) {
+            	lastSelected = null;
+            }
+            if (selected.length == 1) {
+            	lastSelected = selected[0];
+            }
+            if (selected.length > 1) {
+            	if(lastSelected) {
+            		lastSelected.checked=false;
+            	}
+            	lastSelected = checkboxes.filter(':checked')[0];
+            }
+        }
+
+        $('#treeview').on('click', 'input:checkbox', updateChks);
+    </script>
+</div>
+<div class="modal-footer row">
+	<div class="col-md-12 text-right">
+		<button type="submit" class="btn green btn-outline border-find-footer" ng-click="save()">Ghi lại</button>
+	    <button type="button" class="btn green btn-outline border-find-footer" ng-click="cancel()">Hủy</button>
+	</div>
+   
+</div></body></html>

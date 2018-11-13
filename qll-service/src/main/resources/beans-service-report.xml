@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+	<!--Truong Reprort -->
+	<jaxrs:server id="qualityCableMeaResultRsServiceRest"
+		address="/qualityCableMeaResultRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="qualityCableMeaResultRsServiceClass"
+				class="com.viettel.erp.rest.QualityCableMeaResultRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!--Begin Danh sach Bao cao -->
+	<jaxrs:server id="QualityCableMeaReportRsServiceRest"
+		address="/QualityCableMeaReportRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="QualityCableMeaReportRsServiceClass"
+				class="com.viettel.erp.rest.QualityCableMeaReportRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!--End Danh sach Bao cao -->
+	<!--Load dropdown Nhan Vien -->
+	<jaxrs:server id="CatEmployeeRsServiceRest" address="/CatEmployeeRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="CatEmployeeRsServiceClass" class="com.viettel.erp.rest.CatEmployeeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!-- End -->
+	<!--Danh sach ban giao Thiet bi A thua -->
+	<jaxrs:server id="AMaterialRecoveryListRsServiceRest"
+		address="/AMaterialRecoveryListRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AMaterialRecoveryListRsServiceClass"
+				class="com.viettel.erp.rest.AMaterialRecoveryListRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!--End Danh sach ban giao Thiet bi A thua -->
+
+	<!--Begin Danh sach BB thu hoi VTTB -->
+	<jaxrs:server id="AMaterialRecoveryMinutesRsServiceRest"
+		address="/AMaterialRecoveryMinutesRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="AMaterialRecoveryMinutesRsServiceClass"
+				class="com.viettel.erp.rest.AMaterialRecoveryMinutesRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!-- End BB thu hoi VTTB -->
+	<!-- Truong Reprort -->
+
+
+</beans>

@@ -1,0 +1,154 @@
+<div data-ng-controller="stock_goods_kpiController as vm" id="stock_goods_kpiId">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demo21"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demo21" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<multi-select model-label="Kho" caller="vm" focus-e="true"
+								template-url="views/popup/gridViewMulti.html" domain="true"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="10" popup-id="kpiStockGoods" popup-type="gridplus"
+								popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+								combo-id="kpiStockGoods" combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+								combo-name="name" combo-value="stockId" combo-code="name" model-Id="vm.stock_goods_kpiSearch.listStockId"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"/>
+							</multi-select>
+
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Loại
+									KPI</label>
+								<div class="col-md-8 margin_top">
+									<input style="float: left;" id="typeKPI1" name="typeKpi"
+										type="radio" ng-model="vm.stock_goods_kpiSearch.typeKpi"
+										checked="vm.stock_goods_kpiSearch.typeKpi == 1" value="1"
+										class="ng-pristine ng-untouched ng-valid"> <span
+										class="padding_radio">Theo thời gian</span> <input
+										style="float: left;" type="radio" id="typeKPI2" name="typeKpi"
+										ng-model="vm.stock_goods_kpiSearch.typeKpi"
+										ng-checked="vm.stock_goods_kpiSearch.typeKpi == 2" value="2"
+										class="ng-pristine ng-untouched ng-valid"> <span
+										class="padding_radio">Theo số lượng</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6" id="listTypeGoods3">
+								<label class="col-md-4 control-label " translate>Loại
+									hàng hoá</label>
+								<div class="col-md-8">
+									<select id="listGoodsTypeR" multiple="multiple"
+										name="listGoodsType" style="width: 100%"
+										ng-model="vm.stock_goods_kpiSearch.listGoodsType">
+									</select>
+								</div>
+								<div class="One_icon"
+									ng-click="vm.cancelstockkpi('listGoodsTypeR')">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng hàng hoá</label>
+								<div class="col-md-8 margin_top">
+									<input style="float: left;" id="goodsState" name="goodsState"
+										type="radio" ng-model="vm.stock_goods_kpiSearch.goodsState"
+										ng-checked="vm.stock_goods_kpiSearch.goodsState == 2"
+										value="2" class="ng-pristine ng-untouched ng-valid"> <span
+										class="padding_radio"> Tất cả</span> <input
+										style="float: left; margin-left: 45px;" type="radio"
+										id="goodsState" name="goodsState"
+										ng-model="vm.stock_goods_kpiSearch.goodsState"
+										ng-checked="vm.stock_goods_kpiSearch.goodsState == 1"
+										value="1" class="ng-pristine ng-untouched ng-valid"> <span
+										class="padding_radio"> Bình thường</span> <input
+										style="float: left; margin-left: 10px;" type="radio"
+										id="goodsState" name="goodsState"
+										ng-model="vm.stock_goods_kpiSearch.goodsState"
+										ng-checked="vm.stock_goods_kpiSearch.goodsState == 0"
+										value="0" class="ng-pristine ng-untouched ng-valid"> <span
+										class="padding_radio"> Hỏng</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix position-relative">
+
+							<auto-search model-label="Hàng hóa" caller="vm"
+								template-url="views/popup/gridViewGoodsPopup.html" 
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="20" popup-id="goodsTotal1231" popup-type="gridplusGoods"
+								popup-source-link="stockRsServiceRest/doSearchGoodsInPopup"
+								combo-id="goodsTotal12123" combo-source-link="orderGoodsServiceRest/orderGoods/getForAutoComplete"
+								combo-name="name" combo-value="code" combo-code="name"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommonGoods"
+								model-name="vm.stock_goods_kpiSearch.name"/>
+							</auto-search>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Thông
+									tin khác</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text" id="other" data-maxtextlength="501" data-maxtextlength-msg="Bạn không được phép nhập quá 501 ký tự"
+										placeholder="Mã hợp đồng, mã lô hàng, mã dự án/đề tài"
+										name="keySearch" ng-model="vm.stock_goods_kpiSearch.keySearch" />
+										<span style="color:red">{{vm.mess}}</span>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="doSearchKPI"
+										class="btn btn-qlk padding-search-right  noteQLK"
+										ng-click="vm.doSearch()" translate>Xem trước</button>
+									<button type="button" id="excel"
+										class="btn btn-qlk padding-search-right  excelQLK"
+										ng-click="vm.exportexcelkpi()" translate>Xuất excel</button>
+									<button type="button" id="pdf"
+										class="btn btn-qlk padding-search-right  pdfQLK"
+										ng-click="vm.exportpdfKpi()" translate>Xuất pdf</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate></span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#demo2211"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="demo2211" class="collapse in from-search">
+			<div ng-show="dataAvailable1" id="stock_goods_kpiGrid"
+				kendo-grid="vm.stock_goods_kpiGrid" k-editable="false"
+				k-options="vm.gridOptions"></div>
+			<div ng-show="dataAvailable2" id="stock_goods_kpiGrid1"
+				kendo-grid="vm.stock_goods_kpiGrid1" k-editable="false"
+				k-options="vm.gridOptions1"></div>
+		</div>
+	</div>
+
+</div>
+</div>
+
+<script type="text/javascript">
+	 $("#listTypeGoods3").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+</script>

@@ -1,0 +1,117 @@
+<p></p>
+<div class="portlet light bordered">
+<div class="portlet-title">
+	<div class="caption">
+		<span class="caption-subject bold lowercase" 
+			 translate>Thành phần</span>
+	</div>
+</div>
+<div class="form-body" disable-all="vm.disableAll">
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req" translate>Đại diện
+				chủ đầu tư</label>
+			<div class="col-md-8">
+				<select class="form-control" id="monitoring" style="width: 100%"
+					name="monitoring" kendo-drop-down-list
+					k-data-text-field="'fullName'" k-data-value-field="'id'"
+					k-data-source="vm.monitoring"
+					ng-model="vm.constrOrgPlan.representInvestorId" required
+					data-required-msg="Trường không được để trống"></select> <span
+					data-for='monitoring' class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req" translate>Đại diện
+				nhà thầu XL</label>
+			<div class="col-md-8">
+				<select class="form-control" id="monitoring1" style="width: 100%"
+					name="monitoring1" kendo-drop-down-list
+					k-data-text-field="'fullName'" k-data-value-field="'id'"
+					k-data-source="vm.monitoring1"
+					ng-model="vm.constrOrgPlan.representContractorId" required
+					data-required-msg="Trường không được để trống"></select> <span
+					data-for='monitoring1' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<!-- File phương án tổ chức thi công -->
+<p></p>
+<div class="portlet light bordered">
+<div class="portlet-title">
+	<div class="caption">
+		<span class="caption-subject bold lowercase" 
+			 translate>File phương án tổ chức thi công</span>
+	</div>
+</div>
+<p></p>
+<p></p>
+
+<div class="clearfix" disable-all="vm.disableAll">
+	<div class="form-group col-md-6">
+		<label class="col-md-4 control-label " translate>File Chính</label>
+		<div class="col-md-8">
+			<form id='upload-file-form'>
+				<input id='upload_file_create' type='file' name='uploadfilecreate'
+					accept='.pdf' />
+			</form>
+		</div>
+	</div>
+</div>
+
+<p></p>
+<div class="clearfix" disable-all="vm.disableAll">
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Các File Phụ</label>
+			<div class="col-md-8">
+				<input id='multi_upload_file' type="file" ng-file-model="vm.files"
+					multiple name='multiuploadfile' accept='.pdf' />
+			</div>
+		</div>
+	</div>
+</div>
+<p></p>
+</div>
+<div ng-show="showListFile">
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" 
+				 translate>Danh sách file phụ đính kèm</span>
+		</div>
+	</div>
+	<p></p>
+	<div class="btn-group">
+		<button type="button"
+				class="btn btn-default padding-button border-radius box-shadow"
+				ng-click="vm.mulDeleteFile()" ng-disabled="vm.disabledButtom" style="margin: 0px 0 0 16px"> 
+				<div class="action-button del" uib-tooltip="Xóa File" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>
+	
+	<div class="clearfix">
+		<div id="gridTable" kendo-grid="vm.gridViewFile" k-editable="false"
+			k-on-change="vm.onChange()" k-options="vm.gridOptionFile"></div>
+			<script>
+                $(document).ready(function() {
+                    var tooltip = $("#gridTable").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+          	              var target = e.target; // element for which the tooltip is shown
+          	              return $(target).text();
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#gridTable").find("td").click(false);
+                });
+            </script>
+	</div>
+</div>
+</div>
+
+

@@ -1,0 +1,250 @@
+<form class="form-horizontal row" role="form"
+	kendo-validator="ctrl.validator"
+	ng-controller="CrDistanceUploadMaterialsController as vm">
+
+	<div class="form-body">
+
+		<div class="btn-toolbar margin-bottom-10 margin-top">
+			<div data-ng-include="'erp/apcommon/ap_action_header.html'"
+				kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			</div>
+		</div>
+		<hr class="line-Hr">
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b> Thông tin chung</b>
+			</h4>
+			<br>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Số hợp đồng</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="contract_no" class="form-control width100"
+							name="soHopDong" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label">Ngày kí hợp đồng</label>
+					<div class="col-md-7">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="contract_date_sign" class="form-control width100"
+							name="soHopDong" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã Công Trình</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="construction_code" class="form-control width100"
+							name="soHopDong" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label">Tên Công Trình</label>
+					<div class="col-md-7">
+						<input kendo-combo-box k-options="ctrl.statusOptions"
+							ng-model="construction_name" class="form-control width100" />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ
+							công trình</label>
+						<div class="col-md-10 input-width">
+							<input class="form-control" name="description" id="description"
+								ng-model="vm.report.description">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tại</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="tai" class="form-control width100" name="soHopDong" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label">Nội dụng công việc
+						phát sinh</label>
+					<div class="col-md-7">
+						<input kendo-combo-box k-options="ctrl.statusOptions"
+							ng-model="content_work_arising" class="form-control width100" />
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+		<br>
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b> Đại diện chủ đầu tư</b>
+			</h4>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label red">Thủ trưởng đơn vị</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<i class="fa fa-search"></i> <input kendo-auto-complete
+								k-options="ctrl.adOrgIdOptions" ng-model="thutruongdonvi"
+								class="form-control width100" name="donVi" /> <span
+								data-for='donVi' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label red">Phụ trách giám
+						sát thi công </label>
+					<div class="col-md-7">
+						<div class="input-icon right">
+							<i class="fa fa-search"></i> <input kendo-auto-complete
+								k-options="ctrl.adOrgIdOptions"
+								ng-model="supervision_construction"
+								class="form-control width100" name="donVi" /> <span
+								data-for='donVi' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+		<br>
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b>Đại diện nhà thầu thi công</b>
+			</h4>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label red">Giám đốc</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<i class="fa fa-search"></i> <input kendo-auto-complete
+								k-options="ctrl.adOrgIdOptions" ng-model="giamdoc"
+								class="form-control width100" name="donVi" /> <span
+								data-for='donVi' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label red">Phụ trách thi
+						công trực tiếp </label>
+					<div class="col-md-7">
+						<div class="input-icon right">
+							<i class="fa fa-search"></i> <input kendo-auto-complete
+								k-options="ctrl.adOrgIdOptions" ng-model="direct_construction"
+								class="form-control width100" name="donVi" /> <span
+								data-for='donVi' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+		<br>
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b>Vận chuyển bằng ô tô (cơ giới)</b>
+			</h4>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Vật tư tập kết tại</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="car_materials_gatherplace"
+							class="form-control width100" name="soHopDong" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label">Vận chuyển đến</label>
+					<div class="col-md-7">
+						<input kendo-combo-box k-options="ctrl.statusOptions"
+							ng-model="car_materials_desplace" class="form-control width100" />
+					</div>
+				</div>
+			</div>							
+				<div kendo-grid="vm.inoutGrid" k-options="vm.VanChuyenOto">
+					<div k-detail-template grid-detail>
+						<div kendo-validator="vm.validator"
+							k-options="vm.validatorOptions"></div>
+					</div>
+				</div>
+				
+						&nbsp;&nbsp;
+						<button type="button" ng-click="ctrl.btnExchangeRateDifference()"
+							class=" btn btn-primary">Bổ sung</button>
+						&nbsp;&nbsp;&nbsp;
+						<button type="button" ng-click="ctrl.btnExchangeRateDifference()"
+							class=" btn btn-primary">Xóa</button>						
+			<br>
+			<br>
+		</div>
+		<br>
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b>Vận chuyển bằng xe cút kít, xe súc vật</b>
+			</h4>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Vật tư tập kết tại</label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="wheelbarrrow_materials_gatherplace"
+							class="form-control width100" name="soHopDong" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label">Vận chuyển đến </label>
+					<div class="col-md-7">
+						<input kendo-combo-box k-options="ctrl.statusOptions"
+							ng-model="wheelbarrrow_materials_desplace"
+							class="form-control width100" />
+					</div>
+				</div>
+			</div>
+			<div kendo-grid="vm.inoutGrid" k-options="vm.VanChuyenXeCutKit">
+					<div k-detail-template grid-detail>
+						<div kendo-validator="vm.validator"
+							k-options="vm.validatorOptions"></div>
+					</div>
+				</div>
+			<br>
+		</div>
+		<br>
+		<div style="border: 0.5px solid black">
+			<h4>
+				<b>Bốc dỡ thi công</b>
+			</h4>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Vật tư tập kết tại </label>
+					<div class="col-md-8">
+						<input kendo-auto-complete k-options="ctrl.adOrgIdOptions"
+							ng-model="upload_materials_gatherplace"
+							class="form-control width100" name="soHopDong" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-5 control-label">Vận chuyển đến </label>
+					<div class="col-md-7">
+						<input kendo-combo-box k-options="ctrl.statusOptions"
+							ng-model="upload_materials_desplace"
+							class="form-control width100" />
+					</div>
+				</div>
+			</div>
+			<div kendo-grid="vm.inoutGrid" k-options="vm.BocDoThuCong">
+					<div k-detail-template grid-detail>
+						<div kendo-validator="vm.validator"
+							k-options="vm.validatorOptions"></div>
+					</div>
+				</div>
+			<br>
+		</div>
+	</div>
+</form>

@@ -1,0 +1,174 @@
+<form class="form-horizontal row" role="form" name="shipment"
+	id="shipment" kendo-validator="validator" k-options="validatorOptions">
+	<p></p>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req" translate>Mã lô
+				hàng</label>
+			<div class="col-md-8">
+				<input class=" form-control width100" type="text" required
+					data-required-msg="Mã lô hàng không được để trống" id="code"
+					name="code" ng-model="data.code" /> <span data-for="code"
+					class="k-invalid-msg"></span>
+			</div>
+		</div>
+
+			<auto-search model-label="Mã hợp đồng" caller="caller"
+				template-url="views/popup/gridView.html" req="req"
+				header-template="caller.headerTemplate"
+				template-auto="caller.template" page="1" page-size="20"
+				popup-id="i_cnt_contractId" popup-type="gridplus"
+				searchType="searchICntCntract"
+				popup-source-link="iCntContractRsServiceRest/iCntContract/doSearch"
+				combo-id="i_cnt_txtContractId"
+				combo-source-link="iCntContractRsServiceRest/iCntContract/getForAutoComplete"
+				combo-name="code" combo-value="contractId" combo-code="contractId"
+				combo-search="caller.commonSearch" combo-grid="caller.gridCommon2"
+				model-id="data.contractId" model-name="data.contractCode">
+			</auto-search>
+
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req" translate>Loại lô
+				hàng</label>
+			<div class="col-md-8">
+				<select kendo-drop-down-list="applySelect" class="form-control"
+					id="type" style="width: 100%" name="type" required
+					data-required-msg="Loại lô hàng không được để trống"
+					ng-model="caller.Search.businessType">
+					<option value="">---Chọn---</option>
+					<option value="1">Lô hàng nội</option>
+					<option value="2">Lô hàng ngoại</option>
+				</select> <span data-for="type" class="k-invalid-msg"></span>
+			</div>
+		</div>
+		
+			<auto-search model-label="Mã đề tài/dự án" caller="caller"
+				template-url="views/popup/gridView.html" req="req"
+				header-template="caller.headerTemplate"
+				template-auto="caller.template" page="1" page-size="20"
+				popup-id="i_proj_invest_projectId" popup-type="gridplus"
+				searchType="searchIProInvesPro"
+				popup-source-link="iProjInvestProjectRsServiceRest/iProjInvestProject/doSearch"
+				combo-id="i_proj_invest_txtprojectId"
+				combo-source-link="iProjInvestProjectRsServiceRest/iProjInvestProject/getForAutoComplete"
+				combo-name="code" combo-value="projInvestProjectId"
+				combo-code="projInvestProjectId" combo-search="caller.commonSearch"
+				combo-grid="caller.gridCommon" model-id="data.projInvestProjectId"
+				model-name="data.projectCode"> </auto-search>
+	
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req" translate>Người
+				giao hàng</label>
+			<div class="col-md-8">
+				<input class=" form-control width100" type="text" id="shiper"
+					name="shiper"
+					data-required-msg="Người giao hàng không được để trống" required
+					ng-model="data.shiper" /> <span data-for="shiper"
+					class="k-invalid-msg"></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label req" translate>Ngày giao
+				hàng</label>
+			<div class="col-md-8">
+				<input kendo-date-picker class="form-control width100"
+					name="shiperDate" ng-model="data.shiperDate"
+					k-format="'dd/MM/yyyy'" id="shiperDate" required
+					data-required-msg="Ngày giao hàng không được để trống"
+					data-date-msg="Ngày giao hàng không hợp lệ" /> <span
+					data-for='shiperDate' class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<script>
+			$(function() {
+				var transDate = $("#shiperDate");
+				transDate.kendoMaskedTextBox({
+					mask : "00/00/0000"
+				});
+				transDate.closest(".k-datepicker").add(transDate).removeClass(
+						"k-textbox");
+			});
+		</script>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" translate>Địa điểm giao
+				hàng</label>
+			<div class="col-md-8">
+				<input class=" form-control width100" type="text" id="shipPlace"
+					name="shipPlace" ng-model="data.shipPlace" />
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label" translate>Số tờ khai</label>
+			<div class="col-md-8">
+				<input class=" form-control width100" type="text"
+					id="customsProcedure" name="customsProcedure"
+					ng-model="data.customsProcedure" />
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" translate>Ghi chú</label>
+				<div class="col-md-10">
+					<div class="input-icon right">
+						<textarea class="form-control width100" name="description"
+							id="description" type="text" ng-model="data.description"></textarea>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Danh
+					sách file đính kèm</span>
+			</div>
+		</div>
+		<p></p>
+		<div>
+			<center>
+				Kéo thả các file vào đây hoặc click để chọn file
+				</centre>
+		</div>
+		<br>
+		<div class="clearfix">
+			<div class="col-md-6">
+				<input name="files" type="file" kendo-upload
+					k-async="{ saveUrl: 'save', removeUrl: 'remove', autoUpload: true }"
+					k-select="caller.onSelect" />
+			</div>
+			<div class="col-md-6"></div>
+		</div>
+		<!-- <div><link rel="de" type="assets/layouts/layout/css" href="DropDragBox.css">
+			<div ng-file-drop ng-model="files" class="drop-box"
+        		ng-multiple="false" allow-dir="false"
+       	 		ng-accept="'.txt'" ng-show="!fileUploadFinished"                 
+        		drag-over-class="{accept:'dragover', reject:'dragover-err', delay:100}" ng-hide="fileUploadFinished">Drop Images or PDFs files here
+        	</div>
+		</div>
+		<div ng-no-file-drop>File Drag/Drop is not supported for this browser</div> -->
+		<div id="shipmentFileGrid" kendo-grid="caller.shipmentFileGrid"
+			k-options="caller.gridFileOptions"
+			k-on-change="onGridChange(kendoEvent, { selected: selected }, data)"></div>
+	</div>
+	<hr>
+	<div class="clearfix">
+		<div class="col-md-12 text-right margin_bottom30">
+			<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Hủy bỏ</button>
+			<button type="button"
+				class="btn blue btn-outline padding-search-right ng-scope"
+				ng-click="save()" translate>Ghi lại</button>
+		</div>
+	</div>
+</form>

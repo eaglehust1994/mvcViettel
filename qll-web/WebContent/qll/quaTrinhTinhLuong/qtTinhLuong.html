@@ -1,0 +1,122 @@
+
+<div data-ng-controller="qtTinhLuongController as vm" id="qtTinhLuongControl">
+	<div ng-show="vm.showSearch">
+		<!-- 			<p class="text-brecum">{{vm.String}}</p>
+ -->
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demoOrderChange" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.qtTinhLuongSearch.keySearch" />
+											</div>
+
+										</div>
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị</label>
+									<div class="col-md-8">
+									<div class="input-icon right ">
+										<i class="fa fa-search directive"
+											ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+										<!--  -->
+										<input class=" form-control width100" type="text"
+											k-options="vm.patternOptions" kendo-auto-complete
+											name="qtTinhLuongAuto" 
+											ng-model="vm.qtTinhLuongSearch.tenDanhMuc" maxlength="200"
+											id="qtTinhLuongAuto" />
+									</div>
+									<!-- <select id="tenTinhIdki" style="width: 100%; height: 25px;"
+										name="tenTinhIdki" ng-model="vm.qlNhanVienSearch.donVi">
+									</select> -->
+
+								</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã trạm </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="maTramId"
+											ng-model="vm.qtTinhLuongSearch.maTram" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearmaNv()"></i>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Mã
+										quá trình tính lương </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text" id="maQTTLId"
+											ng-model="vm.qtTinhLuongSearch.maQttl" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearmaTram()"></i>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix form-actions margin-top">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button type="button" id="timqtTinhLuong"
+									class="btn  btn-qlk padding-search-right searchQLK" translate
+									ng-click="vm.doSearch()">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="qtTinhLuongCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#qtTinhLuongCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="qtTinhLuongCollapse" class="collapse in ">
+			<div id="qtTinhLuongGrid" kendo-grid="vm.qtTinhLuongGrid" k-editable="false"
+				k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

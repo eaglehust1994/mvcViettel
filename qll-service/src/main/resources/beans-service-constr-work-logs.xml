@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+
+	<!-- ChuongNV -->
+	<jaxrs:server id="ConstrWorkLogsRsServiceRest" address="/ConstrWorkLogsRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrWorkLogsRsServiceClass" class="com.viettel.erp.rest.ConstrWorkLogsRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="ConstrOrganizationPlanRsServiceRest"
+		address="/ConstrOrganizationPlanRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrOrganizationPlanRsServiceClass"
+				class="com.viettel.erp.rest.ConstrOrganizationPlanRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="ConstrGroundHandoverRsServiceRest"
+		address="/ConstrGroundHandoverRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrGroundHandoverRsServiceClass"
+				class="com.viettel.erp.rest.ConstrGroundHandoverRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="ApprovalSignManagementRsServiceRest"
+		address="/ApprovalSignManagementRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ApprovalSignManagementRsServiceClass"
+				class="com.viettel.erp.rest.ApprovalSignManagementRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="ConstrWorkLogsLabelRsServiceRest"
+		address="/ConstrWorkLogsLabelRsServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="ConstrWorkLogsLabelRsServiceClass" class="com.viettel.erp.rest.ConstrWorkLogsLabelRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+
+	<!-- End ChuongNV -->
+
+</beans>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+	<!-- Beans definition for module EST -->
+	<!-- minhpvn -->
+	<jaxrs:server id="estimatesDetailAnalystServiceRest"
+		address="/estimatesDetailAnalystServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="estimatesDetailAnalystServiceClass"
+				class="com.viettel.erp.rest.EstimatesDetailAnalystRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+
+	<jaxrs:server id="bMaterialAcceptanceServiceRest" address="/bMaterialAcceptanceServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="bMaterialAcceptanceServiceClass" class="com.viettel.erp.rest.BMaterialAcceptanceRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<!-- MINHPVN -->
+
+	<jaxrs:server id="abComplementWorkDescribeServiceRest"
+		address="/abComplementWorkDescribeServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="abComplementWorkDescribeServiceClass"
+				class="com.viettel.erp.rest.AbComplementWorkDescribeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!-- MINHPVN -->
+
+	<!--b accept mer list -->
+	<jaxrs:server id="bMaterialAcceptMerListServiceRest"
+		address="/bMaterialAcceptMerListServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="bMaterialAcceptMerListServiceClass"
+				class="com.viettel.erp.rest.BMaterialAcceptMerListRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<!-- minhpvn -->
+</beans>

@@ -1,0 +1,37 @@
+<div class="portlet-title">
+	<div class="caption">
+		<span class="caption-subject bold lowercase" translate>Phê duyệt</span>
+	</div>
+</div>
+<div class="portlet-body form">
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label req" translate>Phê duyệt</label>
+				<div class="col-md-4">
+					<!-- <input kendo-combo-box k-options="vm.approvalOptions"
+						ng-model="vm.mApproval.statusCa"
+						class="form-control width100" /> -->
+					<select kendo-drop-down-list id="statusCaWork" name="statusCaWork"
+						ng-model="vm.mApproval.statusCa" class="form-control width100" >
+						<option value="1">Phê duyệt</option>
+						<option value="2">Từ chối</option>
+					</select>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" translate>Nhận xét/ Lý do từ chối duyệt</label>
+				<div class="col-md-10">
+					<div class="input-icon right">
+						<input class="form-control width100 height300" name="comments" id="comments"
+							ng-model="vm.mApproval.comments" />
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

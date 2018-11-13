@@ -1,0 +1,105 @@
+<div data-ng-controller="ProposalEvaluation as vm">
+
+    <div style="margin-top:10px;">
+        <div class="btn-group margin-left-button">
+
+            <button type="button" uib-tooltip="Xem hồ sơ" class="btn btn-default padding-button border-radius-left box-shadow" ng-show="Constant.isAuthorizedForConstrCompleteRecordMap" ng-click="vm.goTo('CONSTR_COMPLETE_RECORD_MAP')">
+				<div class="action-button XemHshs"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Phân quyền" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForHshcAuthentication" ng-click="vm.goTo('HSHC_AUTHENTICATION')" ng-disabled="vm.disabledButtom">
+				<div class="action-button phanquyen"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" uib-tooltip="Giao nhiệm vụ giám sát" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForMonitorMissionAssign" ng-click="vm.goTo('MONITOR_MISSION_ASSIGN')" ng-disabled="vm.disabledButtom">
+				<div class="action-button GNVGS"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Phương án tổ chức thi công" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForListWorkOrganizationPlan" ng-click="vm.goTo('LIST_WORK_ORGANIZATION_PLAN')" ng-disabled="vm.disabledButtom">
+				<div class="action-button PATCTC"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+
+            <button type="button" uib-tooltip="Bàn giao vật tư thiết bị A cấp" class="btn btn-default padding-button box-shadow " ng-show="Constant.isAuthorizedForDs_bg_vt_tb_a_c" ng-click="vm.goTo('DS_BG_VT_TB_A_C')" ng-disabled="vm.disabledButtom">
+				<div class="action-button BGVTA"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Bàn giao mặt bằng thi công" class="btn btn-default padding-button box-shadow " ng-show="Constant.isAuthorizedForGroundHandover" ng-click="vm.goTo('GROUND_HANDOVER')" ng-disabled="vm.disabledButtom">
+				<div class="action-button BGMBTC"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Nghiệm thu chất lượng vật tư B cấp" class="btn btn-default padding-button box-shadow " ng-show="Constant.isAuthorizedForAcceptanceBList" ng-click="vm.goTo('ACCEPTANCE_B_LIST')" ng-disabled="vm.disabledButtom">
+				<div class="action-button NTVTB"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Nhật ký công trình" class="btn btn-default padding-button box-shadow border-radius-right" ng-show="Constant.isAuthorizedForCreateMemoryWork" ng-click="vm.creatmemorywork()" ng-disabled="vm.disabledButtom">
+				<div class="action-button NKCT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+
+
+            <button type="button" uib-tooltip="Quản lý công việc xây lắp" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-show="Constant.isAuthorizedForConstrList" ng-click="vm.goTo('CONSTR_LIST')" ng-disabled="vm.disabledButtom">
+				<div class="action-button QLXL"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Bản vẽ hoàn công" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForDrawingsList" ng-click="vm.goTo('DRAWINGS_LIST')" ng-disabled="vm.disabledButtom">
+				<div class="action-button BVHC"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Nghiệm thu công việc xây dựng" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForAcceptanceOfConstructionJobs" ng-click="vm.goTo('ACCEPTANCE_OF_CONSTRUCTION_JOBS')">
+				<div class="action-button NTCVXD"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Biên bản hiện trường và phát sinh khối lượng công việc" class="btn btn-default padding-button box-shadow " ng-show="Constant.isAuthorizedForSceneGenerateWork" ng-click="vm.goTo('SCENE_GENERATE_WORK')">
+				<div class="action-button BBHT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" uib-tooltip="Biên bản hiện trường và phát sinh của công trình" class="btn btn-default padding-button box-shadow  border-radius-right" ng-show="Constant.isAuthorizedForSceneGenerateConstruct" ng-click="vm.goTo('SCENE_GENERATE_CONSTRUCT')">
+				<div class="action-button BBHTCT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Nghiệm thu công việc vận chuyển" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-show="Constant.isAuthorizedForDistanceUnloadedMaterialsList" ng-click="vm.goTo('distanceUnloadedMaterialsList')">
+				<div class="action-button NTCVVC"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Biên bản báo cáo chất lượng đo tuyến cáp" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForListReportResult" ng-click="vm.goTo('List_Report_Result')">
+				<div class="action-button KQDL"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Thu hồi vật tư thiết bị A cấp thừa" class="btn btn-default padding-button box-shadow  border-radius-right" ng-show="Constant.isAuthorizedForReportRetrieveListA" ng-click="vm.goTo('Report_Retrieve_List_A')" ng-disabled="vm.disabledButtom">
+				<div class="action-button THVTAT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Nghiệm thu hoàn thành bộ phận công trình" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-show="Constant.isAuthorizedForAcceptancePhaseWork" ng-click="vm.goTo('Acceptance_Phase_Work')">
+				<div class="action-button NTHTBPCT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Phiếu yêu cầu ngiệm thu công trình" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForDanhSachPhieuYcNghiemThu" ng-click="vm.goTo('DANH_SACH_PHIEU_YC_NGHIEM_THU')">
+				<div class="action-button PYCNTCT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+ <!--            <button id="construction_acceptance" type="button" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForConstracceptance" ng-click="vm.constracceptance()">
+				<div class="action-button NTVTB"  uib-tooltip="Nghiệm thu đưa vào sử dụng công trình" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button> -->
+
+
+             <button type="button" uib-tooltip="Biên bản nghiệm thu đưa vào sử dụng" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForConstracceptance" ng-click="vm.goTo('INSP_CONGTRINH')">
+				<div class="action-button NTDVSD"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			 <button type="button" uib-tooltip="Xác nhận thi công dở dang" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForConstrincomplete" ng-click="vm.goTo('INSP_INCOMPLETE')">
+				<div class="action-button XNTCDD"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button> 
+              
+
+            <button type="button" uib-tooltip="Nghiệm thu hoàn thành công trình theo hợp đồng Tilt và Azimuth" class="btn btn-default padding-button box-shadow" ng-show="Constant.isAuthorizedForConstructionTitaziList" ng-click="vm.goTo('CONSTRUCTION_TITAZI_LIST')">
+				<div class="action-button TiltAzimuth"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Biên bản xác nhận khối lượng hoàn thành CT" class="btn btn-default padding-button  box-shadow" ng-show="Constant.isAuthorizedForListCworkComplete" ng-click="vm.goTo('LIST_CWORK_COMPLETE')">
+				<div class="action-button BBKLHTCT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Biên bản bàn giao hiện trạng" class="btn btn-default padding-button border-radius-right  box-shadow" ng-show="Constant.isAuthorizedForListCurrentStateHandover" ng-click="vm.goTo('LIST_CURRENT_STATE_HANDOVER')" ng-disabled="vm.previous">
+				<div class="action-button BBBGHT"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			
+			<button type="button" uib-tooltip="Import công việc hợp đồng" class="btn margin-left-button btn-default border-radius-left padding-button  box-shadow"  ng-click="vm.importCVHD()" ng-disabled="vm.previous">
+				<div class="action-button ImportCVHD"  translate>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            <button type="button" uib-tooltip="Import chiết tính công việc hợp đồng" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.importCTHD()">
+				<div class="action-button ImportCTCVHD"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			
+        </div>
+        
+    </div>
+
+    <!-- SEARCH SCREEN -->
+    <div ng-show="!vm.showSearch">
+        <input type="hidden" name="type" ng-init="vm.checktype.checktype = 0" ng-model="vm.checktype.checktype" id="type" />
+        <div data-ng-include="'qlhc/ProposalEvaluation/searchForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions" />
+    </div>
+    <div kendo-grid="vm.ProposalEvaluation" k-options="vm.gridOptions" id="proposalEvaluationGrid">
+
+    </div>
+</div>

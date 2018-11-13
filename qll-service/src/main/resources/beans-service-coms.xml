@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<!-- Beans definition for module webservice -->
+	<jaxrs:server id="CatStationTypeRsService" address="/catStationTypeRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catStationTypeRsService" class="com.viettel.coms.rest.CatStationTypeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="CatTaskRsService" address="/catTaskRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catTaskRsService" class="com.viettel.coms.rest.CatTaskRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="CatConstructionTypeRsService" address="/catConstructionTypeRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catConstructionTypeRsService" class="com.viettel.coms.rest.CatConstructionTypeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="CatConstructionDeployRsService" address="/catConstructionDeployRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catConstructionDeployRsService" class="com.viettel.coms.rest.CatConstructionDeployRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="CatConstructionFeeRsService" address="/catConstructionFeeRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catConstructionFeeRsService" class="com.viettel.coms.rest.CatConstructionFeeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	<jaxrs:server id="CatStationRsService" address="/catStationRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="catStationRsService" class="com.viettel.coms.rest.CatStationRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="CatPoleRsService" address="/catPoleRsService">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+			<jaxrs:serviceBeans>
+			<bean id="catPoleRsService" class="com.viettel.coms.rest.CatPoleRsServiceImpl" />	
+		</jaxrs:serviceBeans>
+		</jaxrs:server>
+	<jaxrs:server id="CatWorkItemTypeRsService" address="/catWorkItemTypeRsService">	
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>	
+		<jaxrs:serviceBeans>
+		<bean id="catWorkItemTypeRsService" class="com.viettel.coms.rest.CatWorkItemTypeRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	<jaxrs:server id="catLineRsService" address="/catLineRsService">	
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>	
+		<jaxrs:serviceBeans>
+		<bean id="catLineRsService" class="com.viettel.coms.rest.CatLineRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+
+	
+
+</beans>

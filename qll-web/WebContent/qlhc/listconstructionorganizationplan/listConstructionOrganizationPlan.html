@@ -1,0 +1,117 @@
+<div class="form-body">
+
+<form class="form-horizontal row" role="form">
+<div class="portlet light bordered">
+	<div class="portlet-title">
+		<div class="caption">
+			 <span
+				class="caption-subject bold lowercase" 
+				 translate>Thông tin chung</span>
+		</div>
+	</div>
+	<div class="form-body">
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Số Hợp Đồng</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="name" id="name"
+						ng-model="vm.item.contractCode" readonly="" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label " translate>Tên hợp
+					đồng</label>
+				<div class="col-md-8">
+					<input class="form-control width100" name="name" id="name"
+						ng-model="vm.item.contractName" readonly="" /> <span
+						data-for='name' class='k-invalid-msg'></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Mã công
+				trình</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constrtCode" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+		<div class="form-group col-md-6">
+			<label class="col-md-4 control-label " translate>Tên công
+				trình</label>
+			<div class="col-md-8">
+				<input class="form-control width100" name="name" id="name"
+					ng-model="vm.item.constrtName" readonly="" /> <span
+					data-for='name' class='k-invalid-msg'></span>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group col-md-12">
+			<div class="form-group col-md-12">
+				<label class="col-md-2 control-label" translate>Địa chỉ công
+					trình</label>
+				<div class="col-md-10 input-width">
+					<input class="form-control width100" name="description" id="description"
+						readonly="" ng-model="vm.item.constrtAddress">
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</form>
+	<form class="form-horizontal row" role="form">
+		<div
+			data-ng-include="'qlhc/listconstructionorganizationplan/constructionOrganizationPlan.html'"
+			ng-show="isDisabled"></div>
+	</form>
+
+	<!-- Danh Sach -->
+	<p></p>
+	<div class="portlet light bordered" ng-show="showList">
+	
+		<div class="portlet-title">
+			<div class="caption">
+				 <span
+					class="caption-subject bold lowercase" 
+					 translate>Danh sách phương án tổ chức thi công</span>
+			</div>
+		</div>
+		<div class="clearfix">
+			<div id="IdTable1" kendo-grid="vm.reportGrid1" k-editable="false"
+				k-on-change="vm.onChange()" 
+				k-options="vm.gridOptions"></div>
+				<script>
+                $(document).ready(function() {
+                    var tooltip = $("#IdTable1").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#IdTable1").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#IdTable1").find("td").click(false);
+                });
+            </script>
+		</div>
+	</div>
+</div>
+

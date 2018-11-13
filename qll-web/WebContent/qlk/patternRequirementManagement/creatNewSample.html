@@ -1,0 +1,114 @@
+
+<form class="form-horizontal row" role="form" name="createPopup"
+	id="createPopup" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin chung</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="portlet light bordered">
+				<div class="clearfix position-relative">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label req" translate>Tên
+							mẫu</label>
+						<div class="col-md-10">
+							<input class="form-control" name="sampleName" id="sampleName"
+								maxlength="50" ng-model="data.name" required
+								data-required-msg="Tên mẫu không được để trống" /> <span
+								data-for='name' class='k-invalid-msg'></span>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix position-relative">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<textarea class="form-control" name="description"
+								id="description" maxlength="500" ng-model="data.description"></textarea>
+							<span data-for='description' class='k-invalid-msg'></span>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+
+				<div class="caption col-md-6 ">
+					<span class="caption-subject bold lowercase" translate>Danh
+						sách hàng hóa của mẫu</span>
+				</div>
+
+				<!-- <auto-search pull-right model-label="Danh sách hàng hóa"
+						caller="caller" template-url="views/popup/gridView.html"
+						header-template="caller.headerTemplate1"
+						template-auto="caller.templateGoods" page="1" page-size="20"
+						popup-id="Goods_AutoComplete" popup-type="gridplus"
+						popup-source-link="goodsRsServiceRest/doSearchActiveGoods"
+						combo-id="findGoods"
+						combo-source-link="goodsRsServiceRest/getForAutoCompleteGoods"
+						combo-name="name" combo-value="goodsId" combo-code="name"
+						combo-search="caller.commonSearch"
+						combo-grid="caller.gridCommonGoods"
+						model-id="caller.SearchOrderPattern.goodsId"						
+						model-name="caller.SearchOrderPattern"> </auto-search> -->
+
+				<div class="caption col-md-2 ">
+					<span class="caption-subject bold lowercase" translate>Danh
+						sách hàng hóa</span>
+				</div>
+				<div class="input-icon right col-md-4 ">
+					<i class="fa fa-search directive"
+						ng-click="caller.openDepartment()" style="cursor: pointer;"></i> <input
+						class=" form-control width100" type="text"
+						placeholder="Nhập mã hàng, tên hàng và ấn enter để bổ sung" ng-model="caller.stockSearch.stockName" />
+				</div>
+				<div class="One_icon">
+					<i class="fa fa-times" aria-hidden="true"
+						ng-click="caller.cancelDept()"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="creatNewSample" kendo-grid="caller.gridOptionsCreat"
+		k-editable="false" k-options="caller.gridOptionsCreat"
+		k-on-change="caller.onGridChange(kendoEvent, { selected: selected }, data)">
+	</div>
+	<div class="clearfix form-actions margin-top">
+		<div class="row">
+			<div class="col-md-12 text-center">
+				<button type="button"
+					class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+					ng-click="cancel()" translate>Hủy bỏ</button>
+				<button type="button"
+					class="btn btn-qlk padding-search-right saveQLK" id="save"
+					ng-click="save()" translate>Ghi lại</button>
+
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			/* case 13:
+				$("#save").click();
+				break; */
+			}
+		}
+	</script>
+</form>
+

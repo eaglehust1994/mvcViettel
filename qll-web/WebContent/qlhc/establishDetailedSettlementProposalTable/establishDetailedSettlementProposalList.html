@@ -1,0 +1,142 @@
+<div data-ng-controller="establishDetailedSettlementProposalController as vm">
+
+    <div class="btn-toolbar margin-bottom-10 margin-top">
+        <div class="btn-toolbar margin-bottom-10 margin-top">
+            <div class="btn-group">
+                <!--<button type="button" class="btn btn-default padding-button border-radius-left margin-left-button box-shadow" ng-click="vm.undo()" ng-hide="vm.hideButtom">
+					<div class="action-button clear"  uib-tooltip="Quay lại" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>-->
+                <button type="button" uib-tooltip="Thêm mới" class="btn btn-default padding-button margin-left-button box-shadow border-radius-left" ng-click="vm.add()" ng-disabled="vm.hideAdd">
+					<div class="action-button add"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                <button type="button" uib-tooltip="Xem bảng / chi tiết" class="btn btn-default padding-button " ng-click="vm.showGrid()" ng-hide="vm.hideEdit">
+					<div class="action-button view"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+                <button type="button" uib-tooltip="Lưu" class="btn btn-default padding-button box-shadow" ng-click="vm.save()" ng-disabled="vm.hideSave">
+					<div class="action-button save"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+
+
+                <button type="button" uib-tooltip="Xóa" class="btn btn-default padding-button  box-shadow border-radius-right" ng-click="vm.remove()" ng-disabled="vm.hideRemove">
+					<div class="action-button del"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+				</button>
+            </div>
+
+            <div class="btn-group">
+                <button id="button" type="button" uib-tooltip="Trình duyệt" class="btn btn-default padding-button border-radius-left box-shadow" ng-click="vm.sendBrowse()">
+		        		<div class="action-button approval"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		      	</button>
+
+                <button id="button" type="button" uib-tooltip="Phê duyệt" class="btn btn-default padding-button box-shadow" ng-click="vm.pheDuyet()" ng-hide="vm.hidePheDuyet">
+		        		<div class="action-button approve"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		        </button>
+		        <button type="button" uib-tooltip="Hủy trình duyệt" class="btn btn-default padding-button border-radius-right box-shadow" ng-click="vm.cancelApprovalBtn()">
+				<div class="action-button cancelAproval"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+            </div>
+
+            <div class="btn-group">
+                <button id="button" type="button" uib-tooltip="Giao thẩm định" class="btn btn-default padding-button border-radius-left box-shadow" ng-click="vm.showPopupAppraisalAssignment()">
+		        		<div class="action-button giaothamdinh"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		      	</button>
+
+                <button id="button" type="button" uib-tooltip="Từ chối thẩm định" class="btn btn-default padding-button  box-shadow" ng-click="vm.fail()">
+		        		<div class="action-button tuchoithamdinh"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		        </button>
+
+                <button id="button" type="button" uib-tooltip="Thẩm định" class="btn btn-default padding-button  border-radius-right box-shadow" ng-click="vm.goToTD()">
+		        		<div class="action-button thamdinh"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+		        </button>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="vm.showDetail">
+        <div class="portlet light bordered">
+            <div class="portlet-title">
+                <div class="caption">
+                   	<span class="caption-subject bold lowercase" style="margin: 0px 0 0 16px;font-size: 16px;"
+					translate>Thông tin chung</span>
+                </div>
+            </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form action="#" class="form-horizontal">
+                    <div class="clearfix">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-4 control-label" translate>Số hợp đồng</label>
+                            <div class="col-md-8">
+                                <input class="form-control width100" name="contractCode" id="contractCode" ng-model="vm.item.contractCode" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-4 control-label" translate>Tên hợp đồng</label>
+                            <div class="col-md-8">
+                                <input class="form-control width100" id="contractName" name="contractName" ng-model="vm.item.contractName" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="form-group col-md-6">
+                            <label class="col-md-4 control-label" translate>Mã công trình</label>
+                            <div class="col-md-8">
+                                <input class="form-control width100" name="constrtCode" id="constrtCode" ng-model="vm.item.constrtCode" readonly="readonly">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="col-md-4 control-label" translate>Tên công trình</label>
+                            <div class="col-md-8">
+                                <input class="form-control width100" id="constrtName" name="constrtName" ng-model="vm.item.constrtName" readonly="readonly">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="clearfix">
+                        <div class="form-group col-md-12">
+                            <div class="form-group col-md-12">
+                                <label class="col-md-2 control-label" translate>Địa chỉ công trình</label>
+                                <div class="col-md-10">
+                                    <input class="form-control width100" id="constrtAddress" name="constrtAddress" ng-model="vm.item.constrtAddress" readonly="readonly">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <hr class="line-Hr">
+        <div style="height: 260px" kendo-grid="vm.tableEstimateListDetail" k-options="vm.gridOptions" id="estimateWorkTables" k-on-change="vm.onGridTableEstimateListDetail(kendoEvent, { selected: selected }, data)"></div>
+        <script>
+                $(document).ready(function() {
+                    var tooltip = $("#estimateWorkTables").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+	          	              if ($(target).hasClass('statusColumn')) {//check column status
+	          	            	var dataItem = $("#estimateWorkTables").data("kendoGrid").dataItem(e.target.closest("tr"));
+	          	              	var status = dataItem.statusCa;
+	          	              	if(status===3){ // check co pjai tu choi hay ko
+	          	              		var content=dataItem.comments;
+	          	              	} else {
+	          	              	var content=$(target).text();
+	          	              	}
+	          	              	return content;
+	          	              } else {
+	          	            	return $(target).text();
+	          	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#estimateWorkTables").find("td").click(false);
+                });
+            </script>
+    </div>
+
+    <div ng-show="!vm.showDetail">
+        <div data-ng-include="'qlhc/establishDetailedSettlementProposalTable/establishDetailedSettlementProposalTable.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+    </div>
+
+</div>

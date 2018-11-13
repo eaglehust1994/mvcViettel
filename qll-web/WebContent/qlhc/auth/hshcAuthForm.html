@@ -1,0 +1,64 @@
+<form class="form-horizontal row" role="form">
+	<div style="border: 0.5px solid black">
+		<div class="portlet-title">
+		<div class="caption">
+			<span class="caption-subject bold lowercase" translate>Gán chức vụ trong bộ HSHC</span>
+		</div>
+	</div>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req">Đơn vị</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list class="form-control"
+							style="width: 100%" name="unit" id="unit"
+							ng-model="vm.hshcAuth.unit" value="101">
+							<option value="101" selected>Chủ đầu tư</option>
+							<option value="102">Đối tác</option>
+							<option value="103">Tư vấn thiết kế</option>
+							<option value="104">Tư vấn giám sát</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req">Chức vụ</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list class="form-control"
+							style="width: 100%" name="position" id="position"
+							ng-model="vm.hshcAuth.position" value="105">
+							<option value="105" selected>Giám sát thi công</option>
+							<option value="106">Phụ trách giám sát</option>
+							<option value="107">Đại diện pháp nhân</option>
+							<option value="108">Kỹ thuật thi công</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label req">Nhân sự</label>
+					<div class="col-md-8">
+						<input class="form-control" name="hr" id="hr"
+							ng-model="vm.hshcAuthForm.hr" required
+							data-required-msg="Nhân sự không được để trống" /> <span
+							data-for='name' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6"></div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label"></label>
+					<div class="col-md-8 line-height">
+						<input ng-model="vm.hshcAuthForm.isPiority" name="isPiority"
+							id="isMornitor" type="checkbox" checked="checked" /> <b>Ưu
+							tiên</b>
+					</div>
+				</div>
+				<div class="form-group col-md-6"></div>
+			</div>
+		</div>
+	</div>
+</form>
+
+

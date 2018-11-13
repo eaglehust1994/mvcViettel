@@ -1,0 +1,145 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 60%;
+	height: 400px;
+}
+
+.fright {
+	float: right;
+	width: 40%;
+	height: 400px;
+}
+
+.paddinger {
+	padding-top: 10px;
+}
+</style>
+<form class="form-horizontal row" role="form">
+	<div class="clearfix">
+		<div class="form-group col-md-4">
+			<button type="button"
+				class="btn green btn-outline padding-search-right"
+				ng-click="vm.goods()" translate>Thông tin về giá và thuế</button>
+			<button type="button"
+				class="btn green btn-outline padding-search-right"
+				ng-click="vm.goods1()" translate>Thông tin giá</button>
+		</div>
+		<div class="form-group col-md-4"></div>
+		<div class="form-group col-md-4"></div>
+	</div>
+	<div ng-show="vm.showGoods">
+		<div class="form-body wrap">
+			<div class="fleft">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin chi phí</span>
+						</div>
+					</div>
+					<p></p>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tổng chi phí</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" readonly
+									id="totalFee" name="totalFee"
+									ng-model="vm.shipmentDetail.totalFee" /> <span>{{vm.docso.totalFee}}</span>
+							</div>
+						</div>
+						<div class="form-group col-md-6"></div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Ghi chú</label>
+								<div class="col-md-10">
+									<textarea class=" form-control width100" type="text" readonly
+										id="feeDescription" name="feeDescription"
+										ng-model="vm.shipmentDetail.feeDescription"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin thuế</span>
+						</div>
+					</div>
+					<div id="shipmentGoodsDetailGrid"
+						kendo-grid="vm.shipmentGoodsDetailGrid" k-editable="false"
+						k-options="vm.gridGoodsDetailOptions"
+						k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+				</div>
+			</div>
+
+			<div class="fright">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông tin tổng hợp</span>
+						</div>
+					</div>
+					<p></p>
+					<div class="clearfix">
+						<div class="col-md-12">
+							<label class="col-md-4 control-label" translate>Tổng nguyên giá lô hàng</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" readonly
+									name="totalOriginMoney" id="totalOriginMoney"
+									ng-model="vm.shipmentDetail.totalOriginMoney" /> <span>{{vm.docso.totalOriginMoney}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="col-md-12 paddinger">
+							<label class="col-md-4 control-label" translate>Tổng tiền thuế</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" readonly
+									id="totalTax" name="totalTax"
+									ng-model="vm.shipmentDetail.totalTax" /> <span>{{vm.docso.totalTax}}</span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix paddinger">
+						<div class="col-md-12">
+							<label class="col-md-4 control-label" translate>Tổng gía trị lô hàng</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text" readonly
+									ng-model="vm.shipmentDetail.totalMoney" /> <span>{{vm.docso.totalMoney}}</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div ng-show="vm.showGoods1">
+		<div class="form-body">
+			<div class="portlet light bordered">
+				<div class="portlet-title background-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Không có kết quả hiển thị</span>
+					</div>
+				</div>
+				<div id="shipmentGoodsDetail1Grid"
+					kendo-grid="vm.shipmentGoodsDetail1Grid" k-editable="false"
+					k-options="vm.gridGoodsDetail1Options"
+					k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)"></div>
+			</div>
+		</div>
+	</div>
+	
+</form>
+<div class="clearfix">
+		<div class="col-md-12 text-right margin_bottom30">
+			<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Đóng</button>
+		</div>
+	</div>

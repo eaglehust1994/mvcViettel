@@ -1,0 +1,29 @@
+.k-grid-header th.columns-title {
+    text-align      : center !important;
+    white-space     : normal !important;
+    font-weight     : bold !important;
+    vertical-align  : middle !important;
+
+}
+div[data-tree-model] {
+    height: 20px;
+}
+div[data-tree-model] li i, div[data-tree-model] li span {
+    pointer-events: auto;
+    cursor: pointer;
+}
+div[data-tree-model] li .selected {
+    text-decoration: underline;
+    padding: 1px 5px;
+}
+div[data-tree-model] li {
+    float: left;
+    display: inline;
+}
+div[data-tree-model] li span{
+    font-size: 14px;
+}
+.label-error{
+	color:red;
+	height:10px
+}

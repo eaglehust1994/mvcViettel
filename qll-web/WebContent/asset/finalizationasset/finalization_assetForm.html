@@ -1,0 +1,326 @@
+<div id="finalizationFormDetail" data-ng-controller="finalizationassetcontroller as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="light">
+	
+		<div class="portlet light">
+			<div class="portlet-title">
+				<div class="caption">
+					<i class="icon-equalizer font-red-sunglo"></i> 
+					<span class="caption-subject bold lowercase" translate>Thông tin tài sản</span>
+				</div>
+			</div>
+		
+			<div class="portlet-body form">
+				<form class="form-horizontal row" role="form" id="finalizationForm">
+					<div class="form-body margin-top">
+						<div class="clearfix" ng-hide="vm.item.hide">
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Mã trạm</label>
+								<div class="col-md-8">
+									<input class="form-control" name="stationCode" id="stationCode" ng-model="vm.item.stationCode" readonly="readonly">
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Công trình</label>
+								<div class="col-md-8">
+									<input class="form-control" id="constructName" name="constructName" ng-model="vm.item.constructName" readonly="readonly">
+								</div>
+							</div>
+						</div>
+
+						<div class="clearfix">
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị hạch toán</label>
+								<div class="col-md-8">
+									<input class="form-control" id="groupName" name="groupName" ng-model="vm.item.groupName" readonly="readonly">
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị sử dụng</label>
+								<div class="col-md-8">
+									<input class="form-control" id="useGroupName" name="useGroupName" ng-model="vm.item.useGroupName" readonly="readonly">
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Nhóm tài sản</label>
+								<div class="col-md-8">
+									<input class="form-control" id="assetGroupName" name="assetGroupName" ng-model="vm.item.assetGroupName" readonly="readonly">
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Loại tài sản</label>
+								<div class="col-md-8">
+									<input class="form-control" id="assetTypeName" name="assetTypeName" ng-model="vm.item.assetTypeName" readonly="readonly">
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Dòng tài sản</label>
+								<div class="col-md-8">
+									<input class="form-control" id="assetSourceName" name="assetSourceName" ng-model="vm.item.assetSourceName" readonly="readonly">
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Tên tài sản</label>
+								<div class="col-md-8">
+									<input class="form-control" id="assetNameName" name="assetNameName" ng-model="vm.item.assetNameName" readonly="readonly">
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<search-box-asset 
+								searchtype="lotaAssetCode" 
+								model-label="Mã tài sản" 
+								caller="vm" 
+								popup-id="finalizationasset_lotaCode" 
+								popup-type="grid" 
+								popup-source-link="longTermAssetServiceRest/getForAutoComplete" 
+								combo-id="finalizationasset_txtLotaCode" 
+								combo-source-link="longTermAssetServiceRest/getForAutoComplete" 
+								combo-name="lotaCode" 
+								combo-value="longTermAssetId" 
+								combo-code="lotaCode" 
+								combo-search="vm.commonSearch" 
+								combo-grid="vm.gridCommon" 
+								model-id="vm.item.longTermAssetId" 
+								model-name="vm.item.lotaCode">
+							</search-box-asset>
+						
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Nguyên giá Tài Sản (VNĐ)</label>
+								<div class="col-md-8">
+									<input class="form-control" id="originalPrice" name="originalPrice" ng-model="vm.item.originalPrice" readonly="readonly">
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Số biên bản bàn giao</label>
+								<div class="col-md-8">
+									<input class="form-control" id="handoverCode" name="handoverCode" ng-model="vm.item.handoverCode" readonly="readonly">
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày bàn giao đưa vào SD</label>
+								<div class="col-md-8">
+									<input class="form-control" id="depreciationStartDate" name="depreciationStartDate" ng-model="vm.item.depreciationStartDate" readonly="readonly">
+								</div>
+							</div>
+						</div>
+						
+						<div class="clearfix">
+							<!-- Chưa có thông tin -->
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>File đình kèm BBBG</label>
+								<div class="col-md-8">
+									<input class="form-control" id="attachName" name="attachName" ng-model="vm.item.attachName" readonly="readonly">
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Nguồn vốn</label>
+								<div class="col-md-8">
+									<select class="form-control" id="createdSource" name="createdSource" style="width: 100%" disabled
+										kendo-drop-down-list 
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="vm.createdSource"
+										ng-model="vm.item.createdSource">
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label req" translate>Nguồn hình thành</label>
+								<div class="col-md-8">
+									<select class="form-control" id="voucherType" name="voucherType" style="width: 100%" disabled
+										kendo-drop-down-list 
+										k-data-text-field="'name'"
+										k-data-value-field="'id'"
+										k-data-source="vm.voucherType"
+										ng-model="vm.item.voucherType">
+									</select>
+								</div>
+							</div>
+							<div class="margin-bottom-asset col-md-6">
+								<label class="col-md-4 control-label" translate>Trạng thái hình thành TS</label>
+								<div class="col-md-8">
+									<label><input type="radio" id="lotaStatus" name="lotaStatus" ng-checked="vm.item.lotaStatus == 0" value="0" disabled> Tạm tăng</label>
+									<label><input type="radio" id="lotaStatus" name="lotaStatus" ng-checked="vm.item.lotaStatus == 1" value="1" disabled> Đã quyết toán</label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+				<uib-tabset class="tabbable-custom">
+					<uib-tab active="vm.tabs[0].active" heading="Danh sách chi phí hình thành tài sản">
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<table class="table table-bordered margin-top" style="margin-bottom: 0px;">
+									<thead>
+										<tr>
+											<th>STT</th>
+											<th>Hạng mục chi phí</th>
+											<th>Giá trị (VNĐ)</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center">1</td>
+											<td>Chi phí vật tư thiết bị</td>
+											<td class="text-right">{{vm.merEntityValue}}</td>
+											<td class="text-center">
+												<button type="button" class="btn btn-link" ng-click="vm.showPopup('merEntity')">Chi tiết</button>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-center">2</td>
+											<td>Chi phí xây lắp</td>
+											<td class="text-right">{{vm.constructionAcceptanceValue}}</td>
+											<td class="text-center">
+												<button type="button" class="btn btn-link" ng-click="vm.showPopup('constructionAcceptance')">Chi tiết</button>
+											</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td></td>
+											<td class="text-center">TỔNG</td>
+											<td class="text-right">{{vm.totalCost}}</td>
+											<td></td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</uib-tab>
+					<uib-tab active="vm.tabs[1].active" heading="Danh sách chi phí phân bổ">
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<table id="tblFinalizationDis" class="table table-bordered margin-top" style="margin-bottom: 0px;">
+									<thead>
+										<tr>
+											<th>STT</th>
+											<th>Hạng mục chi phí</th>
+											<th>Giá trị (VNĐ)</th>
+											<th>Số chứng từ</th>
+											<th>Ngày chứng từ</th>
+											<th>File đính kèm</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td class="text-center">{{vm.countRow}}<input type="hidden" class="id" /></td>
+											<td>
+												<select class="type" style="padding: 2.6px 5px; border: 1px solid #c2cad8; with: 100%;">
+													<option value="3">Chi phí tư vấn đầu tư xây dựng</option>
+													<option value="4">Chi phí QLDA</option>
+													<option value="5">Chi phí bồi thường, hỗ trợ, tái định cư</option>
+													<option value="6">Chi phí khác</option>
+												</select>
+											</td>
+											<td>
+												<input type="text" class="form-control value text-right" onkeypress="return event.charCode >= 48 && event.charCode <= 57" onchange="changeCurrency(this)" />
+											</td>
+											<td>
+												<input type="text" class="form-control code" maxlength="50" />
+											</td>
+											<td>
+												<input class="form-control date" kendo-date-picker data-date-msg="Ngày không đúng định dạng!" id="firstItem" name="inputDate" k-format="'dd/MM/yyyy'" />
+												<span data-for="inputDate" class="k-invalid-msg"></span>
+												<script>
+													$(function() {
+														var inputDate = $("input[name='inputDate']");
+														inputDate.kendoMaskedTextBox({
+															mask : "00/00/0000"
+														});
+
+														inputDate.kendoDatePicker({
+															format : "dd/MM/yyyy"
+														});
+
+														inputDate.closest(".k-datepicker").add(inputDate).removeClass("k-textbox");
+													});
+												</script>
+												<!--<input type="date" class="form-control date" />-->
+											</td>
+											<td>
+												<div class="input-group">
+													<input type="file" accept=".doc, .xls, .pdf" class="file" style="display: none;" onchange="angular.element(this).scope().changeDisFile(this)" />
+													<input type="text" class="form-control att" placeholder="Chọn file..." readonly onclick="angular.element(this).scope().txtChoseDisFile(this)" />
+													<span class="input-group-btn">
+														<button class="btn btn-default btn-sm" type="button" style="padding-bottom: 3px; padding-top: 2px;" onclick="angular.element(this).scope().choseDisFile(this)">Browser</button>
+													</span>
+												</div>
+											</td>
+											<td class="text-center" style="width: 80px;">
+												<div class="btn-group">
+													<button type="button" class="btn btn-link btn-xs" onclick="addDisRow(this);">
+														<span class="glyphicon glyphicon-plus"></span>
+													</button>
+													<button type="button" class="btn btn-link btn-xs" onclick="removeDisRow(this);">
+														<span class="glyphicon glyphicon-remove"></span>
+													</button>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td></td>
+											<td class="text-center">TỔNG</td>
+											<td class="text-right">{{vm.totalDis}}</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</uib-tab>
+				</uib-tabset>
+				<form class="form-horizontal row" role="form">
+					<div class="form-body">
+						<div class="clearfix">
+							<div class="row pull-right">
+								<div class="col-md-12">
+									<button type="button" class="btn default" translate ng-click="vm.cancel()">Hủy bỏ</button>
+									<button id="btnSave" type="button" class="btn green" style="pointer-events: none;" translate ng-click="vm.save()">Ghi lại</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="loading-effect">
+	<img src="assets/layouts/layout/img/loading-img.gif" />
+</div>
+<style>
+	.loading-effect {
+		display: none;
+		position: absolute;
+		top: 0px;
+		bottom: 0px;
+		left: 0px;
+		right: 0px;
+		background-color: rgba(216, 216, 224, 0.35);
+		z-index: +99;
+	}
+	.loading-effect img{
+		top: 50%;
+		left: 50%;
+		position: absolute;
+	}
+	.input-icon.right>.form-control {
+		padding-left: inherit;
+	}
+</style>

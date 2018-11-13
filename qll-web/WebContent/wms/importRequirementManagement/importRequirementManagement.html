@@ -1,0 +1,269 @@
+<div ng-controller="impReqManaController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div ng-show="vm.showSearch">
+	<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#impReqCollapse"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="impReqCollapse" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="search_plus" >
+								<i class="fa fa-search-plus" aria-hidden="true" id="impReqAdvancedSearch" ng-hide="vm.showAdvancedSearch"
+									ng-click="vm.advancedSearch()" uib-tooltip="Mở rộng"></i>
+									<i class="fa fa-search-minus" aria-hidden="true" id="impReqAdvancedSearch" ng-hide="!vm.showAdvancedSearch"
+									ng-click="vm.advancedSearch()" uib-tooltip="Thu gọn"></i>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text" id="importOrderCode"
+										ng-model="vm.orderSearch.keySearch" />
+								</div>
+							</div>
+							<!-- <div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Kho nhập</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.reasonSearch.keySearch" />
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true"></i>
+								</div>
+							</div> -->
+							<multi-select model-label="Kho nhập" caller="vm" 
+								template-url="views/popup/gridViewMulti.html"  domain="true"
+								header-template="vm.headerTemplate" template-auto="vm.template"
+								page="1" page-size="10" popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+								popup-source-link="stockRsServiceRest/getStocksForAutocomplete"
+								combo-id="orderImportStock" combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+								combo-name="name" combo-value="stockId" combo-code="code" model-Id="vm.orderSearch.listStockId"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-name="vm.orderSearch.stockName"/>
+							</multi-select>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label req" translate>Ngày
+									tạo: Từ ngày </label>
+								<div class="col-md-4 position-relative">
+									<input kendo-date-picker date-time k-format="'dd/MM/yyyy'" name="impReqManaCreateFromDate"
+										id="impReqManaCreateFromDate"
+										ng-model="vm.orderSearch.createdDateFrom" style="width: 100%;" 
+										min-year="1000" data-minyear-msg="Ngày tạo từ không hợp lệ" 
+										required data-required-msg="Ngày tạo từ không được để trống" date-time
+										data-date-msg="Ngày tạo từ không hợp lệ" ng-change="vm.checkErr1()"/>
+										<span data-for='impReqManaCreateFromDate' class='k-invalid-msg'></span>
+										<span style="color:red">{{vm.errMessage1}}</span>
+								</div>
+								<!-- <script>
+									$("#impReqManaCreateFromDate")
+											.kendoDatePicker({
+												animation : {
+													close : {
+														effects : "zoom:out",
+														duration : 300
+													}
+												},
+												format: "dd/MM/yyyy",
+												parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+																	"dd/MM/yyyy HH:mm:ss",
+																	"yyyy/MM/dd HH:mm:ss","yyyy-MM-dd'T'HH:mm:ss.SSSZ", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "EEE, dd MMM yyyy HH:mm:ss zzz"],
+											});
+								</script> -->
+								<label class="col-md-1 control-label" translate>đến</label>
+								<div class="col-md-3 position-relative">
+									<input kendo-date-picker date-time k-format="'dd/MM/yyyy'" name="impReqManaCreateToDate"
+										id="impReqManaCreateToDate"
+										ng-model="vm.orderSearch.createdDateTo" style="width: 100%;" 
+										min-year="1000" data-minyear-msg="Ngày tạo đến không hợp lệ" date-time
+										data-date-msg="Ngày tạo đến không hợp lệ" ng-change="vm.checkErr()"/>
+										<span data-for='impReqManaCreateToDate' class='k-invalid-msg'></span>
+										<span style="color:red">{{vm.errMessage}}</span>
+								</div>
+								<!-- <script>
+									$("#impReqManaCreateToDate")
+											.kendoDatePicker({
+												animation : {
+													close : {
+														effects : "zoom:out",
+														duration : 300
+													}
+												},
+												format: "dd/MM/yyyy",
+												parseFormats : [ "yyyy-MM-dd HH:mm:ss",
+																	"dd/MM/yyyy HH:mm:ss",
+																	"yyyy/MM/dd HH:mm:ss","yyyy-MM-dd'T'HH:mm:ss.SSSZ", "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", "EEE, dd MMM yyyy HH:mm:ss zzz"],
+											});
+								</script> -->
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchDate()"></i>
+								</div>
+							</div>
+							<auto-search model-label="Người tạo" caller="vm"
+								template-url="views/popup/gridViewCreateUser.html"
+								header-template="vm.userHeaderTemplate" template-auto="vm.userTemplate"
+								page="1" page-size="10" popup-id="ar_deposit_browser_adOrgId"
+								popup-type="gridplusUser"
+								popup-source-link="sysUserServiceRest/user/sysAllUserswms"
+								combo-id="orderCreator"
+								combo-source-link="sysUserServiceRest/sysUserwms/getForAutoComplete"
+								combo-name="fullName" combo-value="sysUserId" combo-code="employeeCode"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCreator"
+								model-id="vm.orderSearch.createdBy" model-name="vm.orderSearch.createdByName"
+								ng-model="vm.orderSearch.createdByName"> </auto-search>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6" id="listImpRequirementStatus">
+								<label class="col-md-4 control-label " translate>Trạng
+									thái yêu cầu</label>
+								<div class="col-md-8 position-relative">
+									<select kendo-multi-select 
+										id="requirementStatus" style="width: 100%"
+										name="requirementStatus" ng-model="vm.orderSearch.listStatus">
+										<option value="1">1.Chưa tạo phiếu</option>
+										<option value="2">2.Đã tạo phiếu</option>
+										<option value="3">3.Đã nhập/xuất</option>
+										<option value="4">4.Đã hủy</option>
+										<option value="5">5.Đã từ chối</option>
+									</select>
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchStatus()"></i>
+								</div>
+							</div>
+							<div class="form-group col-md-6" id="listImpRequirementBussinessType">
+								<label class="col-md-4 control-label " translate>Loại
+									yêu cầu</label>
+								<div class="col-md-8">
+									<select id="requirementType" style="width: 100%"
+							name="requirementType" kendo-multi-select k-data-source="vm.businessTypes" 
+							k-data-text-field="'name'" k-data-value-field="'code'"
+							k-ng-model="vm.orderSearch.listBussinessType"></select>	
+								</div>
+								<div class="One_icon">
+									<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchBusinessType()"></i>
+								</div>
+							</div>
+						</div>
+						<div ng-show="vm.showAdvancedSearch">
+							<div class="clearfix">
+								<div class="form-group col-md-6" id="listImpRequirementSignStateCA">
+									<label class="col-md-4 control-label " translate>Trạng
+										thái ký CA</label>
+									<div class="col-md-8">
+										<select kendo-multi-select 
+											id="signStateCA" style="width: 100%" name="signStateCA"
+											ng-model="vm.orderSearch.listSignState">
+											<option value="1">1.Chưa trình ký</option>
+											<option value="2">2.Đã trình ký</option>
+											<option value="3">3.Đã ký</option>
+											<option value="4">4.Đã từ chối</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchSignState()"></i>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị
+										tạo</label>
+									<div class="col-md-8">
+										<!-- 		<input class=" form-control width100" type="text" ng-model="vm.orderSearch.createdDeptedId"/>-->
+										<div class="input-icon right ">
+											<i class="fa fa-search directive"
+												ng-click="vm.openDepartment()" style="cursor: pointer;"></i>
+											<input class=" form-control width100" type="text"
+												ng-model="vm.orderSearch.createdDeptedName" id="createdDeptImpReqMa" ng-blur="vm.checkCreatedDept()"/>
+										</div>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true" ng-click="vm.clearSearchCreatedDeptName()"></i>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Thông
+										tin khác</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.orderSearch.otherKey"
+											placeholder="Mã hợp đồng, mã dự án/đề tài, mã công trình, mã đối tác" />
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findImpReq" 
+										class="btn btn-qlk padding-search-right searchQLK" translate
+										ng-click="vm.doSearch()">Tìm kiếm</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+	</form>
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm:  </span>&nbsp;<label class="control-label bold lowercase" id="importRegCount">{{vm.count}}</label><label class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#impReqCollapse1"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="impReqCollapse1" class="collapse in ">
+		<div id="imReqMaGrid" kendo-grid="vm.imReqMaGrid" k-editable="false"
+			k-options="vm.imReqMaGridOptions"></div>
+		</div>
+		
+	</div>
+</div>
+<script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 13:
+                    				$("#findImpReq").click();
+                    				break;
+                    		}
+                    	} 
+                         
+$("#listImpRequirementStatus").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+	$("#listImpRequirementBussinessType").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	}); 
+	$("#listImpRequirementSignStateCA").keypress(function(event) {
+		var keycode = (event.keyCode ? event.keyCode : event.which);
+		if (keycode != '9' && keycode != '16') {
+			event.preventDefault();
+		}
+	});
+						 
+						</script>

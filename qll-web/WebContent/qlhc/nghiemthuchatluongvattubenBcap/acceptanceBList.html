@@ -1,0 +1,151 @@
+
+
+<form class="form-horizontal row" role="form">
+	<div class="form-body" ng-controller="acceptanceBListController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+		<!-- BEGIN DIV MENU -->
+		<p></p>
+		<div class = "">
+		
+			
+<!-- 			<button type="button" -->
+<!-- 				class="btn btn-default padding-button  border-radius-left box-shadow" -->
+<!-- 				ng-click="vm.hide()"> -->
+<!-- 				<div class="action-button clear" uib-tooltip="Quay lại" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div> -->
+<!-- 			</button> -->
+<!-- ng-show="!vm.hienthi"  -->
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow "
+				ng-click="vm.show()" ng-disabled="vm.disabledButtom" uib-tooltip="Thêm mới" >
+				<div class="action-button add" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.update()" ng-disabled="vm.disable" uib-tooltip="Xem bảng/Chi tiết">
+				<div class="action-button view" 
+					translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button ng-show="vm.hienthi" type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.addAll()" uib-tooltip="Lưu" >
+				<div class="action-button save" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button  type="button"
+				class="btn btn-default padding-button  box-shadow"
+				ng-click="vm.removeBMA()" ng-disabled="vm.disabledButtom" uib-tooltip="Xóa">
+				<div class="action-button del"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>	
+		</div>
+		<div class="btn-group">
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.exportPDF()" uib-tooltip="Export PDF">
+				<div class="action-button pdf"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+				class="btn btn-default padding-button box-shadow"
+				ng-click="vm.exportDOC()" uib-tooltip="Export DOC">
+				<div class="action-button doc"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>			
+			<button type="button" class="btn btn-default padding-button  box-shadow" ng-click="vm.trinhDuyet()" uib-tooltip="Trình duyệt">
+				<div class="action-button approval"   translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button" class="btn btn-default padding-button  box-shadow" ng-click="vm.pheduyet()" uib-tooltip="Phê duyệt" >
+				<div class="action-button approve"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+			<button type="button"
+					class="btn btn-default padding-button box-shadow border-radius-right"
+					ng-click="vm.cancelApprovalBtn()" uib-tooltip="Hủy trình duyệt">
+					<div class="action-button cancelAproval"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+			</button>
+		</div>	
+
+
+		
+		</div>
+		<!-- END DIV MENU -->
+
+		<p></p>
+
+		<!-- BEGIN DIV THONG TIN CHUNG -->
+		<div class="portlet light bordered" style="border: 0.5px red">
+			<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase"
+						translate>Thông tin chung</span>
+				</div>
+			</div>
+			<div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label red">Số hợp đồng <span
+						style="color: red"></span></label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="soHopDong"
+							ng-model="vm.item.contractCode" readonly />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên hợp đồng <span
+						style="color: red"></span></label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="tenHopDong"
+							ng-model="vm.item.contractName" readonly />
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã công trình</label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="maCongTrinh"
+							ng-model="vm.item.constrtCode" readonly />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên công trình <span
+						style="color: red"></span></label>
+					<div class="col-md-8">
+						<input class="form-control width100" name="tenCongTrinh"
+							ng-model="vm.item.constrtName" readonly>
+
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Địa chỉ công trình <span
+						style="color: red"></span></label>
+					<div class="col-md-8">
+						<input class="form-control width100"  name="diaChiCongTrinh"
+							ng-model="vm.item.constrtAddress" readonly  /> <span
+							data-for='soChungTu' class='k-invalid-msg'></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END DIV THONG TIN CHUNG -->
+		<p></p>
+
+		<!-- BEGIN DIV DANH SÁCH -->
+		<div ng-show="!vm.hienthi">
+			<div
+				data-ng-include="'qlhc/nghiemthuchatluongvattubenBcap/mainB.html'"></div>
+		</div>
+		<!-- END DIV DANH SÁCH -->
+
+	<div id="loading">
+  		<img id="loading-img" alt="Loading...">
+	</div>
+
+		<!--begin bang con  -->
+		<div ng-show="vm.hienthi">
+			<div
+				data-ng-include="'qlhc/nghiemthuchatluongvattubenBcap/detailB.html'"></div>
+		</div>
+		<!--end bang con  -->
+
+
+	</div>
+
+</form>

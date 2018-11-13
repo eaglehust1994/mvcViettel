@@ -1,0 +1,56 @@
+<style>
+.wrap {
+	width: 100%;
+	margin-top:10px;
+	overflow: auto;
+}
+
+.fleftDepartMent {
+	float: left;
+	width: 30%;
+	height: 700px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.frightDepartMent {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	padding-top: 10px;
+	height: 700px;
+	width: 70%;
+	background: #FFFFFF;
+}
+</style>
+<div class="wrap">
+		<div class="portlet light">
+				<div id="gridView" kendo-grid="caller.gridUsers"
+				 k-on-change="caller.onRowChange(dataItem)"
+				 k-editable="false" k-options="caller.gridUserOptions"></div>
+	    </div>
+</div>
+<div class="modal-footer row">
+  <div ng-show="false" class="col-md-12 text-right">
+    	<button type="submit" id="cancel" class="btn red btn-outline border-find-footer" ng-click="cancel()">Hủy bỏ</button>
+	</div>
+</div>
+			 <script type="text/javascript">
+                        document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+                    				$("#find").click();
+                    				break;
+                    		}
+                    	} 
+                         
+                         
+                         
+                         /* filterTree */
+						</script> 

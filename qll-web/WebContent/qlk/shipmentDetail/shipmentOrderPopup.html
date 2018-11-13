@@ -1,0 +1,153 @@
+
+<form class="form-horizontal row" role="form">
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin yêu cầu nhập kho</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly
+							name="code" id="code" ng-model="vm.order.code" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày tạo</label>
+					<div class="col-md-8">
+						<input kendo-date-picker class="form-control width100"
+							name="createdDate" ng-model="vm.order.createdDate"
+							readonly="readonly" k-format="'dd/MM/yyyy'" id="createdDate" />
+					</div>
+				</div>
+				<script>
+					$(function() {
+						var transDate = $("#createdDate");
+						transDate.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+						transDate.closest(".k-datepicker").add(transDate)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người tạo</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly
+							id="createdBy" name="createdBy" ng-model="vm.order.createdBy" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Trạng thái</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list="statusSelect" class="form-control"
+							id="status" style="width: 100%" name="status" readonly
+							ng-model="vm.order.status">
+							<option value="1">1.Chưa tạo phiếu</option>
+							<option value="2">2.Đã tạo phiếu</option>
+							<option value="3">3.Đã nhập/xuất</option>
+							<option value="4">4.Đã hủy</option>
+							<option value="5">5.Đã từ chối</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<textarea class=" form-control width100" type="text" readonly
+								id="description" name="description"
+								ng-model="vm.order.description"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="portlet light bordered">
+			<div class="portlet-title background-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông
+						tin phiếu nhập kho</span>
+				</div>
+			</div>
+			<p></p>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã yêu cầu</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly name="codeStock" id="codeStock"
+							ng-model="vm.stock.code" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày tạo</label>
+					<div class="col-md-8">
+						<input kendo-date-picker class="form-control width100"
+							name="createdDateStock" ng-model="vm.stock.createdDate" readonly="readonly"
+							k-format="'dd/MM/yyyy'" id="createdDateStock" />
+					</div>
+				</div>
+				<script>
+					$(function() {
+						var transDate = $("#createdDateStock");
+						transDate.kendoMaskedTextBox({
+							mask : "00/00/0000"
+						});
+						transDate.closest(".k-datepicker").add(transDate)
+								.removeClass("k-textbox");
+					});
+				</script>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người tạo</label>
+					<div class="col-md-8">
+						<input class=" form-control width100" type="text" readonly
+							ng-model="vm.stock.createdByName" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Trạng thái</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list="statusSelectStock" class="form-control"
+							id="statusStock" style="width: 100%" name="statusStock" readonly
+							ng-model="vm.stock.status">
+							<option value="1">1.Chưa tạo phiếu</option>
+							<option value="2">2.Đã tạo phiếu</option>
+							<option value="3">3.Đã nhập/xuất</option>
+							<option value="4">4.Đã hủy</option>
+							<option value="5">5.Đã từ chối</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Ghi chú</label>
+						<div class="col-md-10">
+							<textarea class=" form-control width100" type="text" readonly id="descriptionStock" name="descriptionStock"
+								ng-model="vm.stock.description"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix">
+		<div class="col-md-12 text-right margin_bottom30">
+			<button type="button"
+				class="btn red btn-outline padding-search-right ng-scope"
+				ng-click="cancel()" translate>Đóng</button>
+		</div>
+	</div>
+	</div>
+</form>

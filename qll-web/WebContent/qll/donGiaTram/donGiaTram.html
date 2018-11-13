@@ -1,0 +1,171 @@
+
+<div data-ng-controller="donGiaTramController as vm" id="changeControl">
+	<div ng-show="vm.showSearch">
+		<!-- 			<p class="text-brecum">{{vm.String}}</p>
+ -->
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+					<div id="demoOrderChange" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.donGiaTramSearch.keySearch" />
+											</div>
+
+										</div>
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req"
+										uib-tooltip="T1:Loại 1,T2:Loại 2,T3:Loại 3,T4:Loại 4"
+										translate>Loại trạm </label>
+									<div class="col-md-8">
+										<select id="loaiTram1" style="width: 100%; height: 25px;"
+											name="loaiTram1" ng-model="vm.donGiaTramSearch.loaiTram">
+											<option value="1">T1</option>
+											<option value="2">T2</option>
+											<option value="3">T3</option>
+											<option value="4">T4</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cleartenTinh()"></i>
+									</div>
+								</div>
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req"
+										uib-tooltip="V1:Vùng 1,V2:Vùng 2,V3:Vùng 3,V4:Vùng 4"
+										translate>Vùng </label>
+									<div class="col-md-8" style="heigth: 25px;">
+										<select id="vung1" style="width: 100%; height: 25px;"
+											name="vung1" ng-model="vm.donGiaTramSearch.vungLuong">
+											<option value="1">V1</option>
+											<option value="2">V2</option>
+											<option value="3">V3</option>
+											<option value="4">V4</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearVung1()"></i>
+									</div>
+								</div>
+
+
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+
+									<label class="col-md-4 control-label req "
+										uib-tooltip="L1:Loại 1,L2:Loại 2,L3:Loại 3,L4:Loại 4"
+										translate>Loại địa hình </label>
+									<div class="col-md-8">
+										<select id="loaiDH1" style="width: 100%; height: 25px;"
+											name="loaiDH1" ng-model="vm.donGiaTramSearch.diaHinh">
+											<option value="1">L1</option>
+											<option value="2">L2</option>
+											<option value="3">L3</option>
+											<option value="4">L4</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearloaiDH1()"></i>
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req" translate>Đơn
+										giá </label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="number" id="donGia1"
+											ng-model="vm.donGiaTramSearch.donGia" />
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.cleardonGia1()"></i>
+									</div>
+								</div>
+
+							</div>
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label req"
+										uib-tooltip="0 - 61 tỉnh; 1 - Hà nội" translate>Phân
+										loại tỉnh </label>
+									<div class="col-md-8">
+										<select id="loaiDH1" style="width: 100%; height: 25px;"
+											name="loaiDH1" ng-model="vm.donGiaTramSearch.pl">
+											<option value="0">0</option>
+											<option value="1">1</option>
+										</select>
+									</div>
+									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearmaTinh()"></i>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+					<div class="clearfix form-actions margin-top">
+						<div class="row">
+							<div class="col-md-12 text-center">
+								<button type="button" id="findOrderChange"
+									class="btn  btn-qlk padding-search-right searchQLK" translate
+									ng-click="vm.doSearch()">Tìm kiếm</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm: </span>&nbsp;<label class="control-label bold lowercase"
+					id="donGiaCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#donGiaTramCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="donGiaTramCollapse" class="collapse in ">
+			<div id="donGiaTramGrid" kendo-grid="vm.donGiaTramGrid"
+				k-editable="false" k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>

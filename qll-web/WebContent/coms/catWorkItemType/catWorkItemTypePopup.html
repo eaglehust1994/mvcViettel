@@ -1,0 +1,80 @@
+
+<form class="form-horizontal row padding10" role="form"
+	name="catWorkItemType" id="catWorkItemType" kendo-validator="validator"
+	k-options="validatorOptions" style="width: 575px;">
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-5 control-label req" translate>Tên loại hạng mục công trình</label>
+			<div class="col-md-7">
+				<input class="form-control" ng-blur="focusOut()" name="name"
+					id="name" maxlength="200" ng-model="caller.catWorkItemType.name"
+					required data-required-msg="Tên loại hạng mục không được để trống" />
+				<span data-for='parType' class='k-invalid-msg'></span>
+				<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-5 control-label req" translate>Mã loại hạng mục công trình</label>
+			<div class="col-md-7" >
+				<input class="form-control" ng-blur="focusOut()" name="code"
+					id="name" maxlength="200" ng-model="caller.catWorkItemType.code"
+					required data-required-msg="Mã hạng mục không được để trống" />
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-5 control-label req" translate>Loại công trình</label>
+			<div class="col-md-7">
+				<input id="catConstructionType" kendo-auto-complete k-options="caller.constructionTypeOptions" maxlength="50" tabindex="5"
+				header-template="caller.headerTemplate3" name="catConstructionTypeName" required data-required-msg="Loại công trình không được để trống"
+				 class="form-control width100" id="proj" ng-blur="caller.changeDataAuto('proj')"
+								name="catConstructionTypeName" ng-model="caller.catWorkItemType.catConstructionType"/>
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-5 control-label " translate>Ghi chú</label>
+			<div class="col-md-7">
+				<textarea class="form-control" name="description" id="description" rows="3"
+					maxlength="1000" ng-model="caller.catWorkItemType.description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="savepopupApp"
+						class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+						translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("input").change(function() {
+			$(this).val($.trim($(this).val()));
+		});
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				if (e.keyCode === 13 && !$('#cancel:focus').length
+						&& !$('#savepopupApp:focus').length) {
+					$("#savepopupApp").click();
+					break;
+				}
+			}
+		}
+	</script>
+</form>

@@ -1,0 +1,339 @@
+<div style="padding-bottom: 1%" disable-all="vm.buttonInactive.all">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin chung</span>
+			</div>
+		</div>
+		<div class="form-body">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Số hợp đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input type="hidden" name="constructId"
+								ng-model="vm.constrObj.constructId" id="constructId" /> <input
+								class="form-control width100" name="shd" id="shd" type="text"
+								ng-model="vm.constrObj.contractCode" readonly />
+						</div>
+						<span data-for='value' class='k-invalid-msg' />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Đối tác</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="partner" id="partner"
+								type="text" ng-model="vm.constrObj.doitac" readonly />
+						</div>
+						<span data-for='value' class='k-invalid-msg' />
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Mã công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constructionNo"
+								id="constructionNo" type="text" ng-model="vm.constrObj.mact"
+								readonly />
+						</div>
+						<span data-for='value' class='k-invalid-msg' />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tên công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constructionName"
+								id="constructionName" type="text" ng-model="vm.constrObj.tenct"
+								readonly />
+						</div>
+						<span data-for='value' class='k-invalid-msg' />
+					</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Loại công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constructionType"
+								id="constructionType" type="text" ng-model="vm.constrObj.loaict"
+								readonly />
+						</div>
+						<span data-for='value' class='k-invalid-msg' />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Tỉnh thành</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="city" id="city"
+								type="text" ng-model="vm.constrObj.tinhthanh" readonly />
+						</div>
+						<span data-for='value' class='k-invalid-msg' />
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<div class="form-body">
+		<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Lọc
+						hồ sơ công trình</span>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Loại hồ sơ</label>
+					<div class="col-md-8">
+
+						<select class="form-control width100" id="status"
+							style="width: 100%" name="status" kendo-drop-down-list
+							k-data-text-field="'fileInvoiceName'"
+							k-data-value-field="'catFileInvoiceId'"
+							k-data-source="vm.invoice" ng-model="vm.invoice.catFileInvoiceId"></select>
+					</div>
+				</div>
+				<div class="form-group col-md-6"></div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Người ký</label>
+					<div class="col-md-8">
+
+						<input class="form-control width100" id="inputXemhshc"
+							kendo-auto-complete ng-keyup="vm.onSuggest()"
+							k-ng-model="employee.fullName" k-value-primitive="false"
+							k-data-text-field="'fullName'" k-data-source="employees"
+							style="width: 100%;" />
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Trạng thái</label>
+					<div class="col-md-8">
+						<select class="form-control width100" id="status"
+							style="width: 100%" name="status" kendo-drop-down-list
+							k-data-text-field="'statusName'" k-data-value-field="'status'"
+							k-data-source="vm.statuss" ng-model="vm.statuss.status"></select>
+
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày tạo từ
+						ngày</label>
+					<div class="col-md-8">
+						<input class="form-control width100" style="width: 100%;"
+							kendo-date-picker name="createDateFrom" id="createDateFrom"
+							ng-model="vm.form.createDateFromfd" k-format="'dd/MM/yyyy'" /> <span
+							data-for='createDateFrom' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Ngày tạo
+						đến ngày</label>
+					<div class="col-md-8">
+						<input class="form-control width100" style="width: 100%;"
+							kendo-date-picker name="createDateTo" id="createDateTo"
+							ng-model="vm.form.createDateTotd" k-format="'dd/MM/yyyy'" /> <span
+							data-for='createDateTo' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				<div class="clearfix form-actions col-md-12">
+				<div class="row pull-right col-md-12 center">
+					<div class="col-md-12" style="text-align: center;">
+						<button type="button" class="btn green" translate
+							ng-click="vm.filter()">Lọc hồ sơ</button>
+					</div>
+				</div>
+			</div>
+			</div>
+		</div>
+
+	</div>
+	<div style="padding-bottom: 1%">
+		<div class="portlet light bordered">
+
+			<div class="portlet-title">
+
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Danh
+						sách hồ sơ hoàn công đã tạo</span>
+				</div>
+			</div>
+
+			<div class="clearfix" style="margin: 4px 0 6px 0px;">
+				<div style="margin-left: 20px" class="btn-group">
+					<button type="button"
+						class="btn btn-default padding-button border-radius-left box-shadow"
+						ng-click="vm.exportFile()" uib-tooltip="Export PDF" >
+						<div class="action-button pdf" translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</button>
+					<button type="button"
+						class="btn btn-default padding-button border-radius-right box-shadow"
+						ng-click="vm.exportFileDoc()" uib-tooltip="Export DOC">
+						<div class="action-button doc"  translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</button>
+					<button type="button"
+						class="btn btn-default padding-button border-radius-right box-shadow"
+						ng-click="vm.exportFileExcell()" uib-tooltip="Export danh sách hồ sơ">
+						<div class="action-button excel"
+							 translate>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+					</button>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="outer">
+					<div class="innerheader">
+						<table id="tableheader">
+							<thead>
+								<tr>
+									<th width="5%">STT</th>
+									<th width="5%" class="k-header ng-scope k-with-icon"><input
+										type='checkbox' id="checkBoxAllHS" name='gridchkselectall'
+										ng-click='vm.chkSelectAll();' ng-model='vm.chkAll' /></th>
+									<th width="15%">Tên hồ sơ</th>
+									<th width="10%">Mã hồ sơ</th>
+									<th width="12%">Người tạo</th>
+									<th width="12%">Ngày tạo</th>
+									<th width="10%">Trạng thái hồ sơ</th>
+									<th width="15%">Người ký</th>
+									<th width="12%">Chức vụ</th>
+									<th width="12%">Ngày ký</th>
+									<th width="12%">Trạng thái ký</th>
+									<th width="15%">Nhận xét</th>
+								</tr>
+							</thead>
+						</table>
+					</div>
+					<div class="inner">
+						<table id="recodeMapDatatable">
+							<div ng-show="vm.mapDatatableLength">
+								<tbody ng-show="vm.mapDatatableLength">
+									<tr>
+										<td>Không có hồ sơ nào được tạo</td>
+									</tr>
+								</tbody>
+
+							</div>
+							<tbody ng-repeat="record in vm.mapDatatable">
+								<tr ng-repeat="signer in record.constrCompleteRecordMapSubDTO">
+									<td width="5%" style="text-align: center"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0">{{record.stt}}</td>
+									<td width="5%" style="text-align: center"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0"><input type="checkbox"
+										ng-click='vm.countChecked();' name="checkItem"
+										id="{{record.dataTableIdValue}}"
+										value="{{record.dataTableName}}" ng-click="select()"></td>
+									<td width="15%"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0">{{record.invoiceName}}</td>
+									<td width="10%"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0">{{record.code}}</td>
+									<td width="12%"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0">{{record.loginName}}</td>
+									<td width="12%" style="text-align: center"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0">{{record.createdDateStr}}</td>
+									<td width="10%" style="text-align: center"
+										rowspan="{{record.constrCompleteRecordMapSubDTO.length}}"
+										ng-hide="$index>0">{{record.statusName}}</td>
+									<td width="15%">{{signer.employeeFullname}}</td>
+									<td width="12%">{{signer.roleName}}</td>
+									<td width="12%" style="text-align: center">{{signer.signApprovalDate}}</td>
+									<td width="12%" style="text-align: left">{{signer.signApprovalStatus}}</td>
+									<td width="15%">{{signer.signComments}}</td>
+								</tr>
+
+							</tbody>
+
+						</table>
+					</div>
+					<div
+						style="width: 97.7%; height: 10px; background-color: gray; margin-left: 10px; background-color: #DDDDDD"></div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<br /> <br />
+
+	<div class="form-body">
+		<div class="clearfix">
+			<div class="portlet light bordered">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Danh
+							sách bộ hồ sơ chuẩn</span>
+					</div>
+				</div>
+			
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label">Loại hồ sơ</label>
+					<div class="col-md-8">
+						<select kendo-drop-down-list class="form-control width100"
+							style="width: 100%" name="typeConstruction" id="typeConstruction"
+							ng-change="vm.onChange()" ng-model="vm.criteria.typeConstruction"
+							value="0">
+							<option value="0">Tất cả</option>
+							<option value="1">Xây dựng tuyến cáp ngầm</option>
+							<option value="2">Xây dựng tuyến cáp treo</option>
+							<option value="3">Xây mới BTS</option>
+							<option value="4">Lắp đặt thiết bị BTS 2G, 3G</option>
+
+							<option value="5">Lắp đặt thiết bị VIBA</option>
+							<option value="6">Swap thiết bị trạm BTS</option>
+							<option value="7">Chỉnh TITLE - AZIMUTH</option>
+							<option value="8">Kéo điện Ac, Hạ bình biến áp</option>
+
+							<option value="9">Đi dây nhà máy NO</option>
+							<option value="10">Nâng cột ANTEN</option>
+							<option value="11">Nâng độ cao cột ANTEN</option>
+							<option value="12">Lắp DUGN cột ANTEN</option>
+							<option value="13">Thi công tiếp địa</option>
+							<option value="14">Lắp thêm cell</option>
+
+							<option value="15">Căn chỉnh cột ANTEN</option>
+							<option value="16">Hàn nối</option>
+							<option value="17">Bảo dưỡng trạm BTS</option>
+							<option value="18">Tháo dỡ thu hồi trạm</option>
+							<option value="19">Khảo sát</option>
+							<option value="20">Tư vấn thiết kế</option>
+							<option value="21">Tư vấn giám sát</option>
+							<option value="22">Khác</option>
+						</select>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<input type="checkbox" ng-change="vm.onChange()"
+						ng-model="vm.isShowNotExist" name="isShowExist" /> <label
+						class="col-md-5 control-label">Chỉ hiện các hồ sơ còn
+						thiếu</label>
+				</div>
+			</div>
+
+			<div id="invoiceGrid" kendo-grid="vm.invoiceGrid"
+				k-options="vm.invoiceGridOptions"></div>
+
+</div>
+		</div>
+	</div>
+</div>

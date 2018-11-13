@@ -1,0 +1,61 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleftDepartMent {
+	float: left;
+	width: 30%;
+	height: 700px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.frightDepartMent {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	height: 700px;
+	width: 70%;
+	background: #FFFFFF;
+}
+
+.k-treeview .k-minus {
+	background:
+		url('http://icons.iconarchive.com/icons/icojam/blue-bits/16/math-minus-icon.png')
+		center center;
+}
+
+.k-treeview .k-plus {
+	background:
+		url('http://icons.iconarchive.com/icons/icojam/blue-bits/16/math-add-icon.png')
+		center center;
+}
+</style>
+
+<div id="gridView" kendo-grid="gridView" k-options="gridOptions"
+		k-ng-delay="gridOptions" k-on-change="onRowChange(dataItem)"
+		k-editable="false" k-cache="false"></div>
+
+<script type="text/javascript">
+	document.onkeydown = keyDown;
+	function keyDown(e) {
+		switch (e.keyCode) {
+		case 27:
+			$("#cancel").click();
+			break;
+		case 13:
+			$("#find").click();
+			break;
+		}
+	}
+
+	$("#gridView").delegate("tbody>tr", "dblclick", function() {
+		$("#submit").click();
+	});
+
+	/* filterTree */
+</script>

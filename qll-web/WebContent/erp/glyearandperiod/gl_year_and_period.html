@@ -1,0 +1,17 @@
+<div ng-controller="GlYearAndPeriodController as vm" ng-init="init()">
+	<div>
+		<div class="action-button them-moi" ng-click="vm.showAdd()"> </div>
+        <div class="action-button xoa" ng-click="vm.remove()"> </div>
+		<div class="action-button luu" ng-click="vm.save()"> </div>
+        <div class="action-button dang-bang" ng-click="vm.showGrid()">  </div>
+	</div>
+	<br>
+		<div kendo-grid="gridYear" k-options="gridYearOptions" ng-show="isShow('showGrid')">
+			<div k-detail-template grid-detail>
+				<div data-ng-include="'erp/glyearandperiod/gl_year_and_period_form.html'" kendo-validator="vm.validator" k-options="validatorOptions"></div>
+			</div>
+		</div>
+	<div ng-show="isShow('showAdd')">
+		<div data-ng-include="'erp/glyearandperiod/gl_year_and_period_form.html'" kendo-validator="vm.validator" k-options="validatorOptions"></div>
+	</div>
+</div>

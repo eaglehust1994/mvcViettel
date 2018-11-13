@@ -1,0 +1,329 @@
+<style>
+.wrap {
+	width: 100%;
+	overflow: auto;
+}
+
+.fleft {
+	float: left;
+	width: 25%;
+	height: 700px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.fright {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	height: 700px;
+	width: 75%;
+	background: #FFFFFF;
+}
+
+.fleftdetail {
+	float: left;
+	width: 50%;
+	height: 500px;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	background: #FFFFFF;
+}
+
+.frightdetail {
+	float: right;
+	border-left: 1px solid #D3D3D3;
+	border-top: 1px solid #D3D3D3;
+	border-bottom: 1px solid #D3D3D3;
+	height: 500px;
+	width: 50%;
+	background: #FFFFFF;
+}
+</style>
+<div class="portlet light">
+	<button type="button"
+		class="btn green btn-outline padding-search-right"
+		ng-click="caller.gotoTabOnePopUp()" translate>Thông tin chung</button>
+	<button type="button"
+		class="btn green btn-outline padding-search-right"
+		ng-click="caller.gotoTabTwoPopUp()" translate>Thông tin hàng
+		hóa</button>
+	<button type="button"
+		class="btn blue btn-outline padding-search-right pull-right"
+		ng-click="caller.gotoTabOnePopUp()" translate>Xuất yêu cầu
+		không Serial</button>
+	<button type="button"
+		class="btn blue btn-outline padding-search-right pull-right"
+		ng-click="caller.gotoTabTwoPopUp()" translate>Xuất yêu cầu có
+		Serial</button>
+</div>
+<div ng-show="caller.showTabOne">
+	<div class="wrap">
+		<div class="fleft col-md-8">
+			<form class="form-horizontal row" role="form">
+				<div class="form-body">
+					<div class="portlet light">
+						<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Loại
+									yêu cầu</span>
+							</div>
+						</div>
+						<form>
+							<input type="radio" name="type" value="fromManufacturer" checked>Xuất
+							cho đơn vị sử dụng<br> <input type="radio" name="type"
+								value="beforeBHSC">Xuất ra công trình<br> <input
+								type="radio" name="type" value="afterBHSC">Xuất đi BHSC<br>
+							<input type="radio" name="type" value="fromConstruction">Xuất
+							luôn chuyển kho<br> <input type="radio" name="type"
+								value="fromUnit">Xuất tặng đối tác<br> <input
+								type="radio" name="type" value="fromBorrowedGoods">Xuất
+							cho đối tác mượn<br> <input type="radio" name="type"
+								value="fromAlternativeStock">Xuất trả đối tác<br> <input
+								type="radio" name="type" value="fromProject">Xuất thanh
+							lý<br> <input type="radio" name="type" value="direct">Xuất
+							cho đề tài/ dự án<br> <input type="radio" name="type"
+								value="direct">Xuất bán<br>
+						</form>
+					</div>
+
+				</div>
+			</form>
+		</div>
+		<div class="fright">
+			<form class="form-horizontal row" role="form">
+				<div class="form-body">
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông
+									tin chung</span>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã yêu
+									cầu</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.code"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Kho xuất</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.stockName"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									nhận hàng</label>
+								<div class="col-md-8">
+									<label class="control-label">confirm lại(thiếu trường
+										db)</label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									nhận hàng dự kiến</label>
+								<div class="col-md-8">
+									<label class="control-label">confirm lại(thiếu trường
+										db)</label>
+								</div>
+							</div>
+
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã hợp
+									đồng</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.contractCode"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã phiếu
+									nhập</label>
+								<div class="col-md-8">
+									<label class="control-label">confirm lại(thiếu trường
+										db)</label>
+								</div>
+							</div>
+
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tình
+									trạng ký CA</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.signState"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Trạng
+									thái</label>
+								<div class="col-md-8">
+									<label class="control-label"
+										ng-bind="caller.order.status"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ghi chú</label>
+								<div class="col-md-8">
+									<input class=" form-control width100" type="text"
+										ng-model="caller.order.createdDeptedName" />
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông
+									tin theo từng loại yêu cầu</span>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị
+									nhận</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.deptReceiveName"></label>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông tin bổ sung</span>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									tạo</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdByName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày tạo</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdDate"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Đơn vị
+									tạo</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdDeptedName"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="portlet light bordered">
+						<div class="portlet-title">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>Thông
+									tin hủy/từ chối</span>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Người
+									thực hiện</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdByName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Lý do</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdByName"></label>
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									thực hiện</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdByName"></label>
+								</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ghi chú</label>
+								<div class="col-md-8">
+									<label class="control-label" ng-bind="caller.order.createdByName"></label>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+</div>
+<div ng-show="!caller.showTabOne">
+	<div class="wrap">
+		<div class="fleftdetail col-md-8">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Danh
+							sách hàng hóa</span>
+					</div>
+				</div>
+				<div id="goodsListGrid" kendo-grid="caller.goodsListGrid"
+					k-editable="false" k-options="caller.goodsListGridOptions"></div>
+			</div>
+
+		</div>
+		<div class="frightdetail col-md-8">
+			<div class="portlet light">
+				<div class="portlet-title">
+					<div class="caption">
+						<span class="caption-subject bold lowercase" translate>Thông
+							tin chi tiết hàng hóa</span>
+					</div>
+				</div>
+				<div class="clearfix" style="margin-top: 20px;">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Hàng hóa</label>
+						<div class="col-md-8">
+						<label class="control-label" ng-bind="caller.orderGoodsDetailSearch.goodsName"></label>
+						</div>
+					</div>
+				</div>
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label" translate>Tình trạng</label>
+						<div class="col-md-8">
+						<label class="control-label" ng-bind="caller.orderGoodsDetailSearch.goodsStateName"></label>
+						</div>
+					</div>
+				</div>
+				<div id="goodsDetailGrid" kendo-grid="caller.goodsDetailGrid"
+					k-editable="false" k-options="caller.goodsDetailGridOptions"></div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<div class="portlet light" align="right">
+	<button type="button" class="btn red btn-outline padding-search-right"
+		ng-click="cancel()" translate>Đóng</button>
+</div>

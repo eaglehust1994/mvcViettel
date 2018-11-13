@@ -1,0 +1,111 @@
+<form class="form-horizontal row" role="form" name="addHdId"
+	id="addHdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin cập nhật</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+				<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tên nhân viên :</label>
+							<div class="col-md-8">
+							<input class=" form-control width100" type="text" 
+									k-options="caller.patternOptionsGanNVPop" kendo-auto-complete
+									name="nhanVienAuto1" ng-model="caller.updateGnvPopup.fullname" 
+									maxlength="200" id="nhanVienAuto1" />
+								
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Tên nhiệm vụ :</label>
+							<div class="col-md-8">
+									<select class=" form-control width100"
+								
+								ng-model="caller.updateGnvPopup.tenNhiemVu">
+								<option value="">~~Chọn~~</option>
+								<option value="Đã nhận tại PTK">Đã nhận tại PTK</option>
+								<option value="Đã nhận QTK">Đã nhận QTK</option>
+								<option value="Đã thẩm định QTK">Đã thẩm định QTK</option>
+								<option value="Đã lập đề nghị">Đã lập đề nghị</option>
+								<option value="Đã chốt với CDT">Đã chốt với CDT</option>
+							</select>
+							</div>
+						</div>
+				</div>
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thuộc công việc :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.updateGnvPopup.tenCongViec" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày giao nhiệm vụ :</label>
+							<div class="col-md-8">
+								<input name="ngayGiaoNv" id="ngayGiaoNv"
+									ng-model="caller.updateGnvPopup.ngayGiaoNv"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"  date-time /> <span
+									data-for="ngayGiaoNv" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+					</div>
+					
+					<div class= "clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Ngày hoàn thành :</label>
+							<div class="col-md-8">
+								<input name="ngayHoanThanh" id="ngayHoanThanh"
+									ng-model="caller.updateGnvPopup.ngayHoanThanh"
+									class="form-control width100" k-format="'dd/MM/yyyy'"
+									data-required-msg="Ngày hoàn thành không được để trống"
+									min-year="1000" data-minyear-msg=" Năm không hợp lệ"
+									data-date-msg="Ngày tháng năm  không hợp lệ"
+									ng-change="caller.checkErr()" date-time /> <span
+									data-for="ngayHoanThanh" id='err1' class="k-invalid-msg"></span>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Trạng thái :</label>
+							<div class="col-md-8">
+								<select class=" form-control width100"
+								
+								ng-model="caller.updateGnvPopup.trangThai">
+								<option value="">~~Chọn~~</option>
+								<option value="Quá hạn">Quá hạn</option>
+								<option value="Mới tạo">Mới tạo</option>
+								<option value="Hoàn thành">Hoàn thành</option>
+								
+							</select>
+							</div>
+						</div>
+					</div>
+						
+				</div>
+			</div>
+		</div>
+		
+	
+		
+		
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange1"
+							ng-click="caller.saveGanNV()" translate>Cập nhật</button>
+						
+					</div>
+				</div>
+			</div>
+	</div>
+</form>

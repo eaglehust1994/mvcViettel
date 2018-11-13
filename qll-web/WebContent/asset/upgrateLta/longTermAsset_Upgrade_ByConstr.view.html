@@ -1,0 +1,319 @@
+<div ng-controller="longTermAsset_Upgrade_ByConstrController as vm" kendo-validator="vm.validator" k-options="vm.validatorOptions">
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class=""></i> <span class="caption-subject  bold uppercase"
+					translate>Thông tin BBBG</span>
+			</div>
+		</div>
+		<div class="portlet-body form" kendo-validator="vm.validator"
+			k-options="vm.validatorOptions">
+			<!-- BEGIN FORM-->
+			<!-- <form class="form-horizontal" id="infoAssetEntityForm"> -->
+				<div class="form-body">
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Mã biên
+								bản bàn giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="handoverCode"
+									id="handoverCode" ng-model="vm.termassetentity.handoverCode"
+									readonly>
+							</div>
+						</div>
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Kho xuất</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="catWarehouseName"
+									id="catWarehouseName"
+									ng-model="vm.termassetentity.catWarehouseName"
+									disabled="disabled">
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>Người
+								nhận</label>
+							<div class="col-md-8">
+								<input class="form-control width100" name="receiverName"
+									id="receiverName" ng-model="vm.termassetentity.receiverName"
+									disabled="disabled">
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label">Ngày biên bản bàn
+								giao</label>
+							<div class="col-md-8">
+								<input class="form-control width100" data-for='handOverDate'
+									class='k-invalid-msg' name="handOverDate"
+									k-format="'dd/MM/yyyy'" id="handOverDate"
+									ng-model="vm.termassetentity.handOverDate" disabled="disabled">
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label">Trạng thái tài sản</label>
+							<div class="col-md-8">
+								<input class="form-control width100" type="text"
+									value="Đã quyết toán" disabled="disabled">
+							</div>
+						</div>
+					</div>
+
+
+				</div>
+			<!-- </form> -->
+
+		</div>
+	</div>
+
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class=""></i> <span class="caption-subject  bold uppercase"
+					translate>Danh sách hàng hóa</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+			<form class="form-horizontal">
+				<!-- 	<div kendo-grid="vm.merHandOverEntityGrid" k-options="vm.gridOptions" id= "merHandOverEntityGrid"></div> -->
+				<div class="form-group col-md-12">
+					<table class="table table-bordered margin-top"
+						style="margin-bottom: 0px;" id="merHandOverEntityGrid">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Tên hàng hóa</th>
+								<th>Mã hàng hóa</th>
+								<th>Loại hàng hóa</th>
+								<th>Serial Number</th>
+								<th>Số lượng</th>
+								<th>Nguyên giá</th>
+
+							<!-- 	<th><input type="checkbox" id="select_all" /></th> -->
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="item in vm.allData">
+								<td class="text-center"><span class="hide">{{item}}</span>{{$index
+									+ 1}}</td>
+								<td class="text-left">{{item.name}}</td>
+								<td class="text-left">{{item.code}}</td>
+								<td class="text-left">
+									<div ng-switch="item.isDevice">
+										<span ng-switch-when="1">Thiết bị</span> <span
+											ng-switch-when="0">Vật tư</span>
+									</div>
+								</td>
+								<td class="text-left">
+									<div ng-switch="item.isDevice">
+										<span ng-switch-when="1">{{item.serialNumber}}</span> <span
+											ng-switch-when="0"></span>
+
+									</div>
+								</td>
+								<td class="text-left">{{item.count}}</td>
+								<td class="text-right" id="originalPrice">
+									{{item.originalPrice | currency : "" : 0}}</td>
+								<td class="hide">{{item.handOverId}}</td>
+								<td class="hide">{{item.merEntityId}}</td>
+								<!-- <td class="text-center"><input type='checkbox'
+									ng-disabled="false" /></td> -->
+							</tr>
+						</tbody>
+					</table>
+				</div>							
+			</form>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+
+	<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<i class=""></i> <span class="caption-subject  bold uppercase"
+					translate>Thông tin tài sản cố định</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<!-- BEGIN FORM-->
+			<form class="form-horizontal">
+				<div class="form-body" ng-if="!vm.isExistLta">
+					<div class="clearfix" ng-if="!vm.isExistLta">
+						
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req">Nguồn vốn</label>
+							<div class="col-md-8">
+								<select kendo-drop-down-list="vm.createdSourceSelect"
+									class="form-control" id="createdSource" style="width: 100%"
+									name="createdSource" k-data-text-field="'name'"
+									k-data-value-field="'id'" k-data-source="vm.createdSource"
+									ng-model="vm.termassetentity.createdSource" required
+									data-required-msg="Nguồn hình thành không được để trống">
+								</select> <span data-for='createdSource' class='k-invalid-msg'></span>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+	
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Đơn vị
+								sử dụng</label>
+							<div class="col-md-8">
+								<div class="input-icon right">
+									<i class="fa fa-chevron-down "
+										ng-click="vm.sysUserGroup.search();" style="cursor: pointer"></i>
+									<input kendo-auto-complete="vm.sysUserGroup"
+										k-options="vm.sysUserGroupOptions"
+										ng-model="vm.termassetentity.useGroupName" required
+										data-required-msg="Đơn vị sử dụng không được để trống"
+										class="form-control width100" name="groupUserCode" /> <span
+										data-for="groupUserCode" class="k-invalid-msg"></span>
+								</div>
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Đơn vị
+								hạch toán</label>
+							<div class="col-md-8">
+								<div class="input-icon right">
+									<i class="fa fa-chevron-down " ng-click="vm.sysGroup.search();"
+										style="cursor: pointer"></i> <input
+										kendo-auto-complete="vm.sysGroup"
+										k-options="vm.sysGroupOptions"
+										ng-model="vm.termassetentity.groupName" required
+										data-required-msg="Đơn vị hạch toán không được để trống"
+										class="form-control width100" name="groupCode" id="groupCode" />
+									<span data-for="groupCode" class="k-invalid-msg"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label" translate>File đình
+								kèm</label>
+							<div class="col-md-8">
+								<div class="input-group input-group-file">
+									<input id="changeBBBGUpgrade" name="changeBBBGUpgrade" type="file"
+										style="display: none;"
+										onchange="angular.element(this).scope().changeFileEntity()" />
+									<input id="choseBBBGUpgrade" name="choseBBBGUpgrade" type="text"
+										class="form-control file  width100"
+										ng-model="vm.termassetentity.attachName"
+										placeholder="Chọn file..." ng-click="vm.choseFileEntity();"
+										readonly
+										data-required-msg="File đình kèm BBBG không được để trống" />
+									<span data-for="choseBBBGUpgrade" class="k-invalid-msg"></span> <span
+										for="changeBBBGUpgrade" class="input-group-btn">
+										<button class="btn btn-default btn-sm" type="button"
+											style="padding-bottom: 3px; padding-top: 2px;"
+											ng-click="vm.choseFileEntity();">Broswer</button>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Nguồn
+								hình thành</label>
+							<div class="col-md-8">
+								<select class="form-control" id="voucherType" name="voucherType"
+									style="width: 100%" kendo-drop-down-list
+									k-data-text-field="'name'" k-data-value-field="'id'"
+									k-data-source="vm.voucherType"
+									ng-model="vm.termassetentity.voucherType" required
+									data-required-msg="Nguồn hình thành không được để trống">
+								</select>
+							</div>
+						</div>
+					</div>
+				
+				
+				
+					<div class="clearfix">
+						
+							<search-box-asset model-label="Nhóm TS" caller="vm"
+								popup-id="term_asset_entity_gruopCaac" popup-type="grid"
+								popup-source-link="merHandOverInfoServiceRest/getGruopCaac"
+								combo-id="term_asset_entity_gruopCaac"
+								combo-source-link="merHandOverInfoServiceRest/getGruopCaac"
+								combo-name="text" combo-value="caacCode" combo-code="caacCode"
+								combo-search="vm.commonSearch" combo-grid="vm.gridCommon"
+								model-id="vm.termassetentity.caacCode" 
+								model-name="vm.termassetentity.nameCaac"> </search-box-asset>
+							
+							<search-box-grid model-label="Tên TS" caller="vm"
+								req="req"
+								msg="Tên tài sản không được để trống"
+								popup-id="term_asset_entity_caacName" popup-type="grid"
+								popup-source-link="merHandOverInfoServiceRest/getCaacname"
+								combo-id="term_asset_entity_caacName"
+								combo-source-link="merHandOverInfoServiceRest/getCaacname"
+								combo-name="caacName" combo-value="catAssetCodeId"
+								combo-code="catAssetCodeId" combo-search="vm.commonSearch"
+								combo-grid="vm.termassetentity.caacCode"
+								model-id="vm.termassetentity.catAssetCodeId" 
+								
+								model-name="vm.termassetentity.caacName"> </search-box-grid>
+						</div>
+					</div>
+				</div>
+				<div class="form-body" ng-if="vm.isExistLta">
+					<div class="clearfix">
+						<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Mã tài sản</label>
+							<div class="margin-bottom-asset col-md-6">
+								<input class="form-control width100" readonly ng-click="vm.viewDetailLta(vm.termassetentity.longTermAssetId,1)" style="text-decoration: underline;" ng-model="vm.termassetentity.lotaCode" /> 
+							</div>
+						</div>
+							<div class="margin-bottom-asset col-md-6">
+							<label class="col-md-4 control-label req" translate>Nguyên giá</label>
+							<div class="margin-bottom-asset col-md-6">
+							<input class="form-control width100" readonly translate ng-model="vm.termassetentity.originalPrice" vt-currency/>
+							</div>
+						</div>					
+					</div>
+				</div>
+				<div class="form-group col-md-12"></div>
+				<div class="clearfix">
+					<div class="form-group col-md-12 text-right">
+						<button type="button" class="btn green" ng-disabled="vm.isdisable"
+							ng-click="vm.save()">Lưu lại</button>
+						<span ng-show="vm.isdisable" translate>{{vm.notAllowToCreateMsg}}</span>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<div class="loading-effect">
+	<img src="assets/layouts/layout/img/loading-img.gif" />
+</div>
+<style>
+.loading-effect {
+	display: none;
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background-color: rgba(216, 216, 224, 0.35);
+	z-index: +99;
+}
+
+.loading-effect img {
+	top: 50%;
+	left: 50%;
+	position: absolute;
+}
+
+.input-icon.right>.form-control {
+	padding-left: inherit;
+}
+</style>
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="deploy" name="qll-service">
+	<property environment="env" />
+	<property name="TOMCAT_HOME" value="/opt/tomcat-qlhc/apache-tomcat-8.5.8" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<property name="project.name" value="${ant.project.name}" />
+	<property name="project.war" value="${project.name}.war" />
+	<property name="project.deploy.location" value="${TOMCAT_HOME}/webapps" />
+	
+	<target name="deploy" description="Copying ${project.war} to ${project.deploy.location}">
+		<copy file="target/${project.war}" todir="${project.deploy.location}" />
+	</target>
+
+</project>
+

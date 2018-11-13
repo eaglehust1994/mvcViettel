@@ -1,0 +1,89 @@
+
+<form class="form-horizontal row padding10" role="form"
+	name="catConstructionType" id="catConstructionType" kendo-validator="validator"
+	k-options="validatorOptions" style="width: 575px;">
+<!-- 	<div class="clearfix"> -->
+<!-- 		<div class="form-group row"> -->
+<!-- 			<label class="col-md-3 control-label req" translate>Loại công trình</label> -->
+<!-- 			<div class="col-md-9"> -->
+<!-- 				<select kendo-drop-down-list="applySelect" class="form-control" k-option-label="'--Chọn--'" ng-blur="focusOut($index)" tabindex="2" -->
+<!-- 									id="catConstructionTypeName" style="width: 100%" name="catConstructionTypeName" required -->
+<!-- 									data-required-msg="Loại công trình không được để trống" -->
+<!-- 									ng-model="caller.catConstructionDeploy.catConstructionTypeId"> -->
+<!-- 									<option value="1">Công trình BTS</option> -->
+<!-- 									<option value="2">Công trình Tuyến</option> -->
+<!-- 									<option value="3">Công trình GPON</option> -->
+<!-- 									<option value="4">Công trình Lẻ</option> -->
+<!-- 								</select> <span data-for="catConstructionTypeName" class="k-invalid-msg"></span>   -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-3 control-label req" translate>Loại công trình</label>
+			<div class="col-md-9">
+												<input id="catConstructionTypeName" kendo-auto-complete k-options="caller.constructionTypeOptions" maxlength="50" tabindex="5"
+												header-template="caller.headerTemplate3" name="catConstructionTypeName" required data-required-msg="Loại công trình không được để trống"
+												 class="form-control width100" id="proj" ng-blur="caller.changeDataAuto('proj')"
+																name="catConstructionTypeName" ng-model="caller.catConstructionDeploy.catConstructionTypeName"/>
+											
+<!-- 											<div  style ="right:20px"class="One_icon" ng-click="caller.cancelChoose('catConstructionType')"> -->
+<!-- 												<i class="fa fa-times" aria-hidden="true"></i> -->
+<!-- 											</div> -->
+											</div>
+		</div>
+	</div>
+	<div class="clearfix" style="margin-top:14px">
+		<div class="form-group row">
+			<label class="col-md-3 control-label req" translate>Hình thức triển khai</label>
+			<div class="col-md-9">
+				<input class="form-control" ng-blur="focusOut()" name="name"
+					id="name" maxlength="200" ng-model="caller.catConstructionDeploy.name"
+					required data-required-msg="Hình thức triển khai không được để trống" />
+				<!--  <span style="color:red">{{caller.listApp.mess}}</span> -->
+			</div>
+		</div>
+	</div>
+	<div class="clearfix">
+		<div class="form-group row">
+			<label class="col-md-3 control-label " translate>Mô tả</label>
+			<div class="col-md-9">
+				<textarea class="form-control" name="description" id="description"rows="3"
+					maxlength="1000" ng-model="caller.catConstructionDeploy.description"></textarea>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="col-md-12 text-right">
+					<button type="button"
+						class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+						ng-click="caller.cancel()" translate>Hủy bỏ</button>
+					<button type="button" id="savepopupApp"
+						class="btn btn-qlk padding-search-right saveQLK" ng-click="save()"
+						translate>Ghi lại</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$("input").change(function() {
+			$(this).val($.trim($(this).val()));
+		});
+		document.onkeydown = keyDown;
+		function keyDown(e) {
+			switch (e.keyCode) {
+			case 27:
+				$("#cancel").click();
+				break;
+			case 13:
+				if (e.keyCode === 13 && !$('#cancel:focus').length
+						&& !$('#savepopupApp:focus').length) {
+					$("#savepopupApp").click();
+					break;
+				}
+			}
+		}
+	</script>
+</form>

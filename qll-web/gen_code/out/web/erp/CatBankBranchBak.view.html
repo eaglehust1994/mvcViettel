@@ -1,0 +1,26 @@
+<!-- @author hailh10 -->
+<div ng-controller="CatBankBranchBakController as vm">
+     <div class="btn-toolbar margin-bottom-10 margin-top" ng-show="!vm.showSum">
+			<div data-ng-include="'erp/apcommon/category_header.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>	
+	</div>
+	<hr class="line-Hr">
+    <div ng-show="!vm.showDetail" id="catBankBranchBak">
+	    <div ng-show="vm.showSearch">
+	    	<div data-ng-include="'erp/catBankBranchBak/searchForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	    </div>
+        <div id="catBankBranchBakGridId" kendo-grid="vm.catBankBranchBakGrid" k-options="vm.gridOptions" k-on-change="vm.onGridChange(kendoEvent, { selected: selected }, data)">
+            <!-- <div k-detail-template grid-detail>
+                <div data-ng-include="'erp/gl/catBankBranchBak/CatBankBranchBakForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+            </div> -->
+        </div>
+    </div>
+    <div ng-show="vm.showDetail">
+        <div data-ng-include="'erp/catBankBranchBak/CatBankBranchBakForm.html'" kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+    </div>
+</div>
+<script type="text/x-kendo-template" id="CatBankBranchBak_template">
+    <div style="float: right;">
+        <label>Tổng:</label>
+        <label id="CatBankBranchBak_summary_id" style="width: 150px"></label>
+    </div>
+</script>

@@ -1,0 +1,86 @@
+<div ng-controller="listController as vm">
+	<div class="btn-toolbar margin-bottom-10 margin-top">
+		<div data-ng-include="'erp/apcommon/ap_action_header.html'"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions"></div>
+	</div>
+
+	<hr class="line-Hr">
+	<form class="form-horizontal row" role="form">
+		<div style="border: 0.5px solid black">
+			<label translate><h4 style="margin-left: 10px">Duyệt văn bản</h4></label>
+			<div class="form-body">
+				<div class="clearfix">
+					<div class="form-group col-md-6">
+						<label class="col-md-4 control-label " translate>Mã văn
+							bản trình duyệt</label>
+						<div class="col-md-8">
+							<input class="form-control" name="documentCode" id="documentCode"
+								ng-model="vm.dataItem.documentCode" required
+								data-required-msg="Tên không được để trống" /> <span
+								data-for='documentCode' class='k-invalid-msg'></span>
+						</div>
+					</div>
+					<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Ngày trình duyệt</label>
+					<div class="col-md-8">
+						<input class="form-control" name="userVoffice" id="userVoffice"
+							ng-model="vm.dataItem.userVoffice" required
+							data-required-msg="Tên không được để trống" /> <span
+							data-for='userVoffice' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				</div>
+			</div>
+
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label " translate>Người trình duyệt</label>
+					<div class="col-md-8">
+						<input class="form-control" name="userVoffice" id="userVoffice"
+							ng-model="vm.dataItem.userVoffice" required
+							data-required-msg="Tên không được để trống" /> <span
+							data-for='userVoffice' class='k-invalid-msg'></span>
+					</div>
+				</div>
+				
+			</div>
+			
+		</div>
+
+		<p></p>
+		<div style="border: 0.5px solid black">
+			<label translate><h4 style="margin-left: 10px">Danh sách Người duyệt</h4></label>
+			<div class="clearfix" >
+				<div kendo-grid="vm.listPersonSign" k-options="vm.gridOptionsSign" style="height:200px !important">					
+				</div>
+
+			</div>
+		</div>
+		
+		<p></p>
+		<div style="border: 0.5px solid black">
+			<label translate><h4 style="margin-left: 10px">Danh sách file trình duyệt</h4></label>
+			<div class="clearfix" >
+				<div kendo-grid="vm.listFileSign" k-options="vm.gridOptionsFileSign" style="height:150px !important">					
+				</div>
+
+			</div>
+		</div>
+
+		<p></p>
+		<div class="clearfix">
+			<div class="col-md-12"
+				style="text-align: center; margin-bottom: 20px;">
+				<button type="button" class="btn green" translate="" ng-click=""
+					style="width: 120px; margin-right: 15px">
+					<span class="ng-scope">Trình Duyệt</span>
+				</button>				
+				<button type="button" class="btn green" translate=""
+					ng-click="" style="width: 120px; margin-right: 15px">
+					<span class="ng-scope">Đóng</span>
+				</button>
+			</div>
+		</div>
+
+	</form>
+</div>

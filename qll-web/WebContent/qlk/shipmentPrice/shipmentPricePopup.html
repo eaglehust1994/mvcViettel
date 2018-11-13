@@ -1,0 +1,10 @@
+<form class="form-horizontal row" role="form" name="shipmentGoods"
+	id="shipmentGoods" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div ng-show="caller.showDetail1" id="apctitle">
+		<div data-ng-include="'qlk/shipmentPrice/shipmentPricePopup1.html'"></div>
+	</div>
+	<div ng-show="caller.showDetail2" id="apctitle">
+		<div data-ng-include="'qlk/shipmentPrice/shipmentPricePopup2.html'"></div>
+	</div>
+</form>

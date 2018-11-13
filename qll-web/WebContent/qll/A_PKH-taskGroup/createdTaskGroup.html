@@ -1,0 +1,120 @@
+
+<form class="form-horizontal row" role="form" name="addHdId"
+	id="addHdId" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin thêm mới</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Tên công việc:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									ng-model="caller.addTaskGroup.taskGroupName" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Đơn vị thực hiện :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="text"
+									k-options="caller.patternOptionsTaskDept" kendo-auto-complete
+									name="taskDept" ng-model="caller.addTaskGroup.department"
+									maxlength="200" id="taskDept" />
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label " translate>Nội dung công việc  :</label>
+								<div class="col-md-10">
+									<textarea class=" form-control width100 " maxlength="2000"
+										type="text" ng-model="caller.addTaskGroup.taskGroupContent"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Định kỳ 
+								:</label>
+							<div class="col-md-8">
+								<select ng-model="caller.addTaskGroup.periodic"
+									class=" form-control width100">
+									<option value="" selected="selected">~~Chọn~~</option>
+									<option value="1">Tuần</option>
+									<option value="2">Tháng</option>
+									
+								</select>
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Thời gian bắt đầu :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number"
+									ng-model="caller.addTaskGroup.startTaskGroup" />
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label" translate>Thời gian cảnh báo:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number"
+									ng-model="caller.addTaskGroup.warningTaskGroup" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Thời gian kết thúc
+								:</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number"
+									ng-model="caller.addTaskGroup.endTaskGroup" />
+							</div>
+						</div>
+
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Chu kì cảnh báo :</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" type="number"
+									ng-model="caller.addTaskGroup.warningCycle" />
+							</div>
+						</div>
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label " translate>Email nhận cảnh báo
+								</label>
+							<div class="col-md-8">
+							<input class=" form-control width100" type="text" 
+							ng-model="caller.addTaskGroup.warningEmail"	
+							 />
+								
+							</div>
+						</div>
+					</div>
+				
+				</div>
+			</div>
+
+
+			<div class="clearfix form-actions margin-top">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<button type="button"
+							class="btn btn-qlk padding-search-right closeQLK" id="cancel"
+							ng-click="cancel()" translate>Hủy bỏ</button>
+						<button type="button"
+							class="btn btn-qlk padding-search-right saveQLK" id="saveChange"
+							ng-click="caller.saveTaskGroup()" translate>Ghi lại</button>
+					</div>
+				</div>
+			</div>
+</form>

@@ -1,0 +1,161 @@
+<!-- saved from url=(0063)http://104.199.131.150:68/pmtc2.0/app/popup/donViForm.view.html -->
+<html>
+<head>
+<meta http-equiv="Content-Type"
+	content="text/html; charset=windows-utf8">
+</head>
+
+<body>
+	<div class="modal-body">
+		<!-- BEGIN PORTLET-->
+		<div class="portlet-body">
+			<form class="form-horizontal row" role="form">
+				<div class="form-body">
+					<div class="portlet">
+						<div class="margin-top">
+							<div class="caption">
+								<span class="caption-subject bold lowercase" translate>
+									Thông tin phiếu xuất kho</span>
+							</div>
+						</div>
+						<div class="padding-width18">
+							<div class="border-gray">
+								<div class="clearfix ext10">
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Mã yêu
+											cầu</label>
+										<div class="col-md-8">
+											<label class="control-label"
+												ng-bind="caller.stockTrans.orderCode"></label>
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Đơn vị tạo
+											yêu cầu</label>
+										<div class="col-md-8">
+											<input Readonly class=" form-control width100" id="dept"
+												name="dept" ng-model="caller.stockTrans.createdDeptName" />
+
+										</div>
+									</div>
+								</div>
+								<div class="clearfix ext10">
+									<!-- <div class="form-group col-md-6">
+										<label class="col-md-4 control-label" translate>Đơn vị
+											yêu cầu</label>
+										<div class="col-md-8">
+											<input Readonly class=" form-control width100" id="dept"
+												name="dept" ng-model="caller.stockTrans.createdDeptName" />
+
+										</div>
+									</div> -->
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label req" translate>Mã
+											phiếu</label>
+										<div class="col-md-8">
+											<!-- <input class=" form-control width100" type="text"
+												ng-bind="caller.stockTrans.code" /> -->
+											<label class="control-label" ng-bind="caller.stockTrans.code"></label>
+										</div>
+									</div>
+									<div class="form-group col-md-6">
+										<label class="col-md-4 control-label req" translate>Người
+											giao hàng</label>
+										<div class="col-md-8">
+											<input Readonly class=" form-control width100" type="text"
+												id="dev" name="dev"
+												ng-model="caller.stockTrans.receiverName" />
+										</div>
+									</div>
+								</div>
+								<div class="clearfix ext10">
+									<div class="form-group col-md-12">
+										<div class="form-group col-md-12">
+											<label class="col-md-2 control-label" translate>Ghi
+												chú</label>
+											<div class="col-md-10">
+												<textarea Readonly class="form-control" name="description"
+													id="description" maxlength="500"
+													ng-model="data.description"></textarea>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="margin-top">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Import
+								serial</span>
+						</div>
+					</div>
+				<div class="portlet " disable-all="caller.disbledSerial">
+					
+					<div class="padding-width18">
+						<div class="clearfix border-gray">
+							<div class="clearfix">
+								<div class="form-group col-md-8">
+									<file-input list-file-type="xls,xlsx"
+													model="caller.dataList" size="100000" caller="caller"
+													input-id="fileExport" model-label="File import" 
+													msg="Không được để trống file"></file-input>
+											<input  class="col-md-2" ng-click="caller.submit()" type="submit" value="Tải lên">
+									</div>
+								
+								<div class="form-group col-md-4" align="right">
+									<a id="templateLink" href="javascript:void(0);"
+										ng-click="caller.downloadTemplate('XK_ImportSerialThucXuat')">Tải
+										file biểu mẫu</a>
+								</div>
+							</div>
+							<div class="form-group col-md-4" align="right" style="margin-left: 5px;">
+								<span style="color: gray;">Dung lượng &lt;= 100MB, định dạng
+									xls,xlsx</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="portlet " >
+					<div class="margin-top">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>
+								Danh sách hàng hóa</span>
+						</div>
+
+					</div>
+					<div class="padding-width18">
+						<div class="border-gray">
+							<div id="goodsListForNoteGrid"
+								kendo-grid="caller.goodsListForNoteGrid"
+								k-options="caller.goodsListForNoteGridOptions"></div>
+
+						</div>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+	<!-- END PORTLET-->
+	<div class="modal-footer row">
+		<div class="col-md-12 text-right">
+
+			<button type="button" id="cancel"
+				class="btn btn-qlk padding-search-right closeQLK "
+				ng-click="cancel()">Hủy bỏ</button>
+			<button type="submit" id="submit"
+				class="btn btn-qlk padding-search-right saveQLK "
+				ng-click="caller.realExport()">Thực xuất</button>
+		</div>
+	</div>
+	
+</body>
+</html>
+
+
+
+
+
+
+

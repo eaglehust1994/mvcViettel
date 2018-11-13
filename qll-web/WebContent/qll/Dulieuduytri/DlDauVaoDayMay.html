@@ -1,0 +1,274 @@
+<style>
+	#phatDLduytriGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#phatDLduytriGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="DlDauVaoDayMayController as vm">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoreson"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+
+					<!-- bat dau tim kiem -->
+					<div id="demoreson" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div class="form-group col-md-12">
+									<label class="col-md-2 control-label" translate>Tìm
+										kiếm nhanh</label>
+									<div class="col-md-10">
+										<div class="input-icon right">
+											<input class=" form-control width100" type="text"
+												id="keySearchDLduytri" ng-model="vm.phatDLduytriSearch.keySearch" />
+										</div>
+
+									</div>
+									<!-- <div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div> -->
+								</div>
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Tháng
+									</label>
+									<div class="col-md-3">
+									<input type="date" name="bday" id="dateDLduytri"min="2000-01-02"><br><br>
+								</div>
+								<!-- 	<div class="col-md-3">
+										<select id="exThangDLduytri" style="width: 100%; height: 25px;"
+											name="exThangDLduytri" ng-model="vm.phatDLduytriSearch.exThang">
+											<option value="">---Chọn---</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+										</select>
+									</div>
+									<label class="col-md-2 control-label" translate>Năm</label>
+									<div class="col-md-3 position-relative">
+										<select id="exNamDLduytri" style="width: 100%; height: 25px;"
+											name="exNamDLduytri" ng-model="vm.phatDLduytriSearch.exNam">
+											<option value="">---Chọn---</option>
+											<option value="2005">2005</option>
+											<option value="2006">2006</option>
+											<option value="2007">2007</option>
+											<option value="2008">2008</option>
+											<option value="2009">2009</option>
+											<option value="2010">2010</option>
+											<option value="2011">2011</option>
+											<option value="2012">2012</option>
+											<option value="2013">2013</option>
+											<option value="2014">2014</option>
+											<option value="2015">2015</option>
+											<option value="2016">2016</option>
+											<option value="2017">2017</option>
+											<option value="2018">2018</option>
+											<option value="2019">2019</option>
+											<option value="2020">2020</option>
+											<option value="2021">2021</option>
+										</select>
+									</div>
+ 									<div class="One_icon">
+										<i class="fa fa-times" aria-hidden="true"
+											ng-click="vm.clearSearchDate()"></i>
+									</div> -->
+								</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Họ và
+									tên</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.phatDLduytriSearch.hoVaTen" id="hoVaTenDLduytri" />
+								</div>
+
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã nhân
+									viên</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.phatDLduytriSearch.maNv" id="maNvDLduytri" />
+								</div>
+
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tên tỉnh</label>
+								<!--<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.phatDLduytriSearch.maTinh" id="maTinhDLduytri" />
+								</div>-->
+							<div class="col-md-8">
+										<select id="tenTinhId" style="width: 100%; height: 25px;"
+											name="tenTinhId" ng-model="vm.phatDLduytriSearch.donVi">
+											<option value=""> </option>
+											<option value="An Giang">An Giang</option>
+											<option value="Bà Rịa - Vũng Tàu">Bà Rịa - Vũng Tàu</option>
+											<option value="Bình Dương">Bình Dương</option>
+											<option value="Bình Phước">Bình Phước</option>
+											<option value="Bình Thuận">Bình Thuận</option>
+											<option value="Bình Định">Bình Định</option>
+											<option value="Bạc Liêu">Bạc Liêu</option>
+											<option value="Bắc Giang">Bắc Giang</option>
+											<option value="Bắc Kạn">Bắc Kạn</option>
+											<option value="Bắc Ninh">Bắc Ninh</option>
+											<option value="Bến Tre">Bến Tre</option>
+											<option value="Cao Bằng">Cao Bằng</option>
+											<option value="Chi nhánh Khu vực 1">Chi nhánh Khu vực 1</option>
+											<option value="Chi nhánh Khu vực 2">Chi nhánh Khu vực 2</option>
+											<option value="Chi nhánh Khu vực 3">Chi nhánh Khu vực 3</option>
+											<option value="Chi nhánh Khu vực 4">Chi nhánh Khu vực 4</option>
+											<option value="Chi nhánh Khu vực 5">Chi nhánh Khu vực 5</option>
+											<option value="Cà Mau">Cà Mau</option>
+											<option value="Cần Thơ">Cần Thơ</option>
+											<option value="Gia Lai">Gia Lai</option>
+											<option value="Hà Giang">Hà Giang</option>
+											<option value="Hà Nam">Hà Nam</option>
+											<option value="Hà Nội">Hà Nội</option>
+											<option value="Hà Tĩnh">Hà Tĩnh</option>
+											<option value="Hòa Bình">Hòa Bình</option>
+											<option value="Hưng Yên">Hưng Yên</option>
+											<option value="Hải Dương">Hải Dương</option>
+											<option value="Hải Phòng">Hải Phòng</option>
+											<option value="Hậu Giang">Hậu Giang</option>
+											<option value="Hồ Chí Minh">Hồ Chí Minh</option>
+											<option value="Khánh Hòa">Khánh Hòa</option>
+											<option value="Kiên Giang">Kiên Giang</option>
+											<option value="Kon Tum">Kon Tum</option>
+											<option value="Lai Châu">Lai Châu</option>
+											<option value="Long An">Long An</option>
+											<option value="Lào Cai">Lào Cai</option>
+											<option value="Lâm Đồng">Lâm Đồng</option>
+											<option value="Lạng Sơn">Lạng Sơn</option>
+											<option value="Nam Định">Nam Định</option>
+											<option value="Nghệ An">Nghệ An</option>
+											<option value="Ninh Bình">Ninh Bình</option>
+											<option value="Ninh Thuận">Ninh Thuận</option>
+											<option value="Phú Thọ">Phú Thọ</option>
+											<option value="Phú Yên">Phú Yên</option>
+											<option value="Quảng Bình">Quảng Bình</option>
+											<option value="Quảng Nam">Quảng Nam</option>
+											<option value="Quảng Ngãi">Quảng Ngãi</option>
+											<option value="Quảng Ninh">Quảng Ninh</option>
+											<option value="Quảng Trị">Quảng Trị</option>
+											<option value="Sóc Trăng">Sóc Trăng</option>
+											<option value="Sơn La">Sơn La</option>
+											<option value="Thanh Hóa">Thanh Hóa</option>
+											<option value="Thái Bình">Thái Bình</option>
+											<option value="Thái Nguyên">Thái Nguyên</option>
+											<option value="Thừa Thiên Huế">Thừa Thiên Huế</option>
+											<option value="Tiền Giang">Tiền Giang</option>
+											<option value="Trà Vinh">Trà Vinh</option>
+											<option value="Tuyên Quang">Tuyên Quang</option>
+											<option value="Tây Ninh">Tây Ninh</option>
+											<option value="Vĩnh Long">Vĩnh Long</option>
+											<option value="Vĩnh Phúc">Vĩnh Phúc</option>
+											<option value="Yên Bái">Yên Bái</option>
+											<option value="Điện Biên">Điện Biên</option>
+											<option value="Đà Nẵng">Đà Nẵng</option>
+											<option value="Đắk Lắk">Đắk Lắk</option>
+											<option value="Đắk Nông">Đắk Nông</option>
+											<option value="Đồng Nai">Đồng Nai</option>
+											<option value="Đồng Tháp">Đồng Tháp</option>
+															</select>
+									</div>
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Tên
+									huyện</label>
+							<!--  	<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.phatDLduytriSearch.tenHuyen" id="quanHuyenDLduytri" />
+								</div>-->
+								<div class="col-md-8" style="heigth: 25px;">
+										<input class=" form-control width100" type="text" ng-keydown="vm.checkNullTinh()"
+												k-options="vm.patternOptions1" kendo-auto-complete
+												name="quanHuyenDLduytriAuto1" ng-model="vm.phatDLduytriSearch.tenHuyen"
+												maxlength="200" id="quanHuyenDLduytriAuto1" />
+									</div>
+							</div>
+						</div>
+
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findDLduytri" ng-click="vm.doSearch()"
+										class="btn btn-qlk padding-search-right searchQLK" translate>Tìm
+										kiếm</button>
+									<button type="button" id="importDLduytri" ng-click="vm.importFile()"
+										class="btn btn-qlk padding-search-right TkQLK" translate>Import</button>
+									<button type="button" id="importDLduytri" ng-click="vm.exportPhatDLduytri()"
+										class="btn btn-qlk padding-search-right excelQLK" translate>Xuất Excel</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end tìm kiếm -->
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm :</span>&nbsp;<label class="control-label bold lowercase"
+					id="phatDLduytriCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#ext2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="ext2" class="collapse in ">
+
+			<div ng-show="vm.showDetail" id="sign"></div>
+			<div id="phatDLduytriGrid" kendo-grid="phatDLduytriGrid" k-editable="false"
+				k-options="vm.phatDLduytriGridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	document.onkeydown = keyDown;
+	function keyDown(e) {
+		switch (e.keyCode) {
+		case 13:
+			$("#findDLduytri").click();
+			break;
+		}
+	}
+</script>

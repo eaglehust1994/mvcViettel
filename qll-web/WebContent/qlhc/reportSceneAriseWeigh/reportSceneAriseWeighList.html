@@ -1,0 +1,103 @@
+<form class="form-horizontal row" role="form" id="formIDList">
+	<div class="form-body">
+	<div class="portlet light bordered">
+			<div class="portlet-title">
+				<div class="caption">
+					<span class="caption-subject bold lowercase" translate>Thông tin chung</span>
+				</div>
+			</div>
+		<div class="portlet-body form">
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Số hợp đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="contractCode"
+								id="contractCode" ng-model="vm.item.contractCode" readonly=""/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Tên hợp đồng</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="contractName"
+								id="contractName" ng-model="vm.item.contractName" readonly=""/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Mã công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constrtCode"
+								id="constrtCode" ng-model="vm.item.constrtCode" readonly=""/>
+						</div>
+					</div>
+				</div>
+				<div class="form-group col-md-6">
+					<label class="col-md-4 control-label" translate>Tên công trình</label>
+					<div class="col-md-8">
+						<div class="input-icon right">
+							<input class="form-control width100" name="constrtName"
+								id="constrtName" ng-model="vm.item.constrtName" readonly=""/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="clearfix">
+				<div class="form-group col-md-12">
+					<div class="form-group col-md-12">
+						<label class="col-md-2 control-label" translate>Địa chỉ công trình</label>
+						<div class="col-md-10">
+							<div class="input-icon right">
+								<input class="form-control width100" name="constrtAddress"
+									id="constrtAddress" ng-model="vm.item.constrtAddress" readonly=""/>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+		<p>
+		<div class="portlet light bordered">
+		<div class="portlet-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Danh sách</span>
+			</div>
+		</div>
+		<div class="portlet-body form">
+			<div kendo-grid="vm.reportSceneAriseWeighGrid" k-options="vm.gridListOptions" id="mainReportSceneAriseWeighGrid"></div>
+		</div>
+		<script>
+                $(document).ready(function() {
+                    var tooltip = $("#mainReportSceneAriseWeighGrid").kendoTooltip({
+                        filter: "td",
+                        position: "top",
+                        content: function (e) {
+                        	var target = e.target; // element for which the tooltip is shown
+            	              if ($(target).hasClass('statusColumn')) {//check column status
+            	            	var dataItem = $("#mainReportSceneAriseWeighGrid").data("kendoGrid").dataItem(e.target.closest("tr"));
+            	              	var status = dataItem.statusCa;
+            	              	if(status===3){ // check co pjai tu choi hay ko
+            	              		var content=dataItem.comments;
+            	              	} else {
+            	              	var content=$(target).text();
+            	              	}
+            	              	return content;
+            	              } else {
+            	            	return $(target).text();
+            	              }
+          	            }
+                    }).data("kendoTooltip");
+
+
+                    $("#mainReportSceneAriseWeighGrid").find("td").click(false);
+                });
+            </script>
+	</div>
+	</div>
+</form>

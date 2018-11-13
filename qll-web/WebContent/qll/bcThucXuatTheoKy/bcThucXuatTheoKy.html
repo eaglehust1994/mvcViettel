@@ -1,0 +1,181 @@
+<style>
+	#bctxtkGrid > .k-grid-content{
+		overflow-y:hidden !important;
+	}
+	
+</style>
+<style>
+	#bctxtkGrid >.k-grid-header {
+        padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="bcThucXuatTheoKyController as vm">
+	<div ng-show="vm.showSearch">
+		<p class="text-brecum">{{vm.String}}</p>
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption">
+							<span class="caption-subject bold lowercase" translate>Thông
+								tin tìm kiếm</span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoreson"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+
+					<!-- bat dau tim kiem -->
+					<div id="demoreson" class="collapse in from-search"style="margin-left: -5%;">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-12">
+									<div class="form-group col-md-12">
+										<label class="col-md-2 control-label" translate>Tìm
+											kiếm nhanh</label>
+										<div class="col-md-10">
+											<div class="input-icon right">
+												<input class=" form-control width100" type="text"
+													id="keySearch" ng-model="vm.bctxtkSearch.keySearch" />
+											</div>
+
+										</div>
+										<div class="One_icon">
+											<i class="fa fa-times" aria-hidden="true"
+												ng-click="vm.clearkeySearch()"></i>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Số
+										phiếu xuất</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.bctxtkSearch.soPhieuXuat" id="soPhieuXuat1" />
+									</div>
+								</div>
+
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label" translate>Số
+										phiếu xuất bên Logistic</label>
+									<div class="col-md-8">
+										<input class=" form-control width100" type="text"
+											ng-model="vm.bctxtkSearch.soPhieuXuatBenLogistic"
+											id="soPhieuXuatBenLogistic" />
+									</div>
+								</div>
+
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã kho
+									xuất</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.bctxtkSearch.maKhoXuat" id="maKhoXuat1" />
+								</div>
+
+							</div>
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã vật
+									tư</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.bctxtkSearch.maVatTu" id="maVatTu1" />
+								</div>
+
+							</div>
+						</div>
+						<div class="clearfix">
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Ngày
+									xuất : Từ ngày </label>
+								<div class="col-md-4">
+									<input kendo-date-picker date-time name="ngayXuatFrom11"
+										id="ngayXuatFrom11" ng-model="vm.bctxtkSearch.ngayXuatFrom"
+										class="form-control width100"
+										data-required-msg="Ngày xuất không được để trống"
+										k-format="'dd/MM/yyyy'" data-date-msg="Ngày xuất không hợp lệ"
+										ng-change="vm.validateDate('checkErr1')" min-year="1000"
+										data-minyear-msg="Ngày xuất không hợp lệ" /> 
+								</div>
+								<label class="col-md-1 control-label" translate>đến</label>
+								<div class="col-md-3 position-relative">
+									<input kendo-date-picker date-time name="ngayXuatTo11"
+										id="ngayXuatTo11" ng-model="vm.bctxtkSearch.ngayXuatTo"
+										class="form-control width100" k-format="'dd/MM/yyyy'"
+										data-date-msg="Ngày xuất không hợp lệ"
+										ng-change="vm.validateDate('checkErr')" min-year="1000"
+										data-minyear-msg="Ngày xuất không hợp lệ" />
+								</div>
+							</div>
+
+							<div class="form-group col-md-6">
+								<label class="col-md-4 control-label" translate>Mã công
+									trình</label>
+								<div class="col-md-8 position-relative">
+									<input class=" form-control width100" type="text"
+										ng-model="vm.bctxtkSearch.maCongTrinh" id="maCongTrinh1" />
+								</div>
+
+							</div>
+
+						</div>
+						<div class="clearfix"></div>
+						<div class="clearfix form-actions margin-top">
+							<div class="row">
+								<div class="col-md-12 text-center">
+									<button type="button" id="findBctxtk1" ng-click="vm.doSearch()"
+										class="btn btn-qlk padding-search-right searchQLK" translate>Tìm
+										kiếm</button>
+									<!-- <button type="button" class="btn green btn-outline padding-search-right" ng-click="vm.exportExcel()" translate>Export Excel</button> -->
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- end tìm kiếm -->
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết
+					quả tìm kiếm :</span>&nbsp;<label class="control-label bold lowercase"
+					id="bctxtkGridCount"></label><label class="control-label bold lowercase">&nbsp;bản
+					ghi</span>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#ext2"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="ext2" class="collapse in ">
+
+			<div ng-show="vm.showDetail" id="sign"></div>
+			<div id="bctxtkGrid" kendo-grid="vm.bctxtkGrid" k-editable="false"
+				k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	document.onkeydown = keyDown;
+	function keyDown(e) {
+		switch (e.keyCode) {
+		case 13:
+			$("#findBctxtk").click();
+			break;
+		}
+	}
+	$("input").change(function() {
+		$(this).val($.trim($(this).val()));
+	});
+</script>

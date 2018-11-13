@@ -1,0 +1,138 @@
+
+<form class="form-horizontal row" role="form" name="changeGoods"
+	id="changeGoods" kendo-validator="validator" k-options="validatorOptions">
+	<div class="form-horizontal border-left padding-height-20 col-md-12"
+		role="form">
+		<div class="form-body ">
+			<div class="row caption">
+				<span class="caption-subject bold lowercase" translate>Thông
+					tin chung</span>
+			</div>
+			<div class="padding-width18">
+				<div class="border-gray">
+					<div class="clearfix">
+						<div class="form-group col-md-6">
+							<label class="col-md-4 control-label req" translate>Mã
+								yêu cầu</label>
+							<div class="col-md-8">
+								<input class=" form-control width100" id="mayc" type="text" 
+									required ng-model="caller.orderChangeGoodsDetailPop.code" disabled="disabled" />
+							</div>
+						</div>
+						<auto-search model-label="Kho thay đổi" caller="caller" req="req" 
+							template-url="views/popup/gridView.html" ng-blur="focusOut()" domain="true"
+							header-template="caller.headerTemplate"
+							template-auto="caller.template" page="1" page-size="20"
+							popup-id="ar_deposit_browser_adOrgId" popup-type="gridplus"
+							popup-source-link="configSignVofficeRsServiceRest/configSignVoffice/doSearchStock"
+							combo-id="changepopupStock"
+							combo-source-link="stockRsServiceRest/getForAutoCompleteStockDomain"
+							combo-name="name" combo-value="stockId" combo-code="code"
+							combo-search="caller.commonSearch" combo-grid="caller.gridCommon"
+							model-id="caller.orderChangeGoodsDetailPop.stockId"
+							model-name="caller.orderChangeGoodsDetailPop.stockName">
+						</auto-search>
+					</div>
+					<div class="clearfix">
+						<div class="form-group col-md-12">
+							<div class="form-group col-md-12">
+								<label class="col-md-2 control-label" translate>Ghi chú</label>
+								<div class="col-md-10">
+									<div class="input-icon right">
+										<textarea class="form-control width100" type="text" maxlength="1000" id='descript'
+											ng-model="caller.orderChangeGoodsDetailPop.cancelDescription"></textarea>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="caption row margin-top10">
+				<span class="caption-subject bold lowercase" translate>Import
+					danh sách hàng hóa</span>
+			</div>
+			<div class="padding-width18">
+					<div class="border-gray">
+						<div class="clearfix">
+							<div class="form-group col-md-12">
+								<div>
+									<file-input list-file-type="xls,xlsx" model="caller.dataList"
+										size="100000" caller="caller" input-id="fileChange"
+										model-label="File import" 
+										msg="Không được để trống file"></file-input>
+	
+								</div>
+								<button class="col-md-1" ng-click="caller.submit()" id="upfile" >Tải lên</button>
+								<div class="form-group col-md-4" align="right">
+									<a id="downFile" href="" ng-click="caller.getExcelTemplate()"><u>Tải biểu
+											mẫu</u></a>
+								</div>
+							</div>
+							<div class="form-group col-md-5" align="right">
+								<i style="color: gray;margin-right: 85px;">Dung lượng <= 100MB, định dạng
+									xls,xlsx</i>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="caption row margin-bottom margin-top10">
+					<span class="col-md-8 bold lowercase" translate>Thông
+						tin hàng hóa</span>
+					<div class="col-md-4 position-relative pull-right" >
+						<input ng-model="caller.orderChangeGoodsDetailPop.keySearch"
+							id="orderChange" kendo-auto-complete
+							k-options="caller.patternOptions1"
+							class="form-control width100" />
+
+					</div>
+				</div>
+				<div class="padding-width18">
+					<div class="border-gray">
+						<div id="detailGrid" kendo-grid="caller.detailGrid"
+						k-editable="true" k-options="caller.detailGridOptions" 
+						k-on-change="onGridChange(kendoEvent, { selected: selected }, data)"></div>
+					</div>
+				</div>
+				<div class="clearfix form-actions margin-top">
+					<div class="row">
+						<div class="col-md-12 text-right">
+							<button type="button"
+								class="btn btn-qlk padding-search-right closeQLK" id="cancel1"
+								ng-click="caller.cancel1()" translate>Hủy bỏ</button>
+							<button type="button"
+								class="btn btn-qlk padding-search-right saveQLK" id="saveChange"
+								ng-click="caller.save1()" translate>Ghi lại</button>
+						</div>
+					</div>
+				</div>
+</form>
+<script>
+	$('#changeGoods').keypress(function(){
+					if($('#changepopupStock:focus').length||$('#orderChange:focus').length){
+									$('#upfile').prop('disabled', true);
+								}else{
+									$('#upfile').prop('disabled',false);
+								}
+               document.onkeydown= keyDown;
+                         function keyDown(e){
+                    		switch(e.keyCode) {
+                    			case 27:
+                    				$("#cancel").click();
+                    				break;
+                    			case 13:
+								if($('#changepopupStock:focus').length){
+										$("#saveChange").click();
+										break;
+								}else if (e.keyCode == 13&& !$('#cancel1:focus').length&& !$('#saveChange:focus').length
+								&&!$('#downFile:focus').length&&!$('#upfile:focus').length&&!$('#fileChange:focus').length&&!('#descript:focus').length) {
+									$("#saveChange").click();
+                    				break;
+								}
+                    		}
+                    } 
+})
+	
+
+</script>

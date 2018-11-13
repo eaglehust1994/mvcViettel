@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxws="http://cxf.apache.org/jaxws"
+	xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws 
+http://cxf.apache.org/schemas/jaxws.xsd">
+
+	<!-- Beans definition for module webservice -->
+
+
+	<jaxrs:server id="biddingPackageServiceRest" address="/biddingPackageServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+			<ref bean="exceptionMapper" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="biddingPackageServiceRest" class="com.viettel.ims.rest.BiddingPackageRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+	
+	<jaxrs:server id="taskQuotaServiceRest" address="/taskQuotaServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="taskQuotaServiceClass" class="com.viettel.ims.rest.TaskQuotaRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="workItemQuotaServiceRest" address="/workItemQuotaServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="workItemQuotaServiceClass" class="com.viettel.ims.rest.WorkItemQuotaRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="catConstructionTypeServiceRest" address="/catConstructionTypeServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catConstructionTypeServiceClass" class="com.viettel.ims.rest.CatConstructionTypeRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="catWorkItemTypeServiceRest" address="/catWorkItemTypeServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catWorkItemTypeServiceClass" class="com.viettel.ims.rest.CatWorkItemTypeRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="sysGroupServiceRest" address="/sysGroupServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="sysGroupServiceClass" class="com.viettel.ims.rest.SysGroupRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="catTaskServiceRest" address="/catTaskServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catTaskServiceClass" class="com.viettel.ims.rest.CatTaskRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="catPartnerServiceRest" address="/catPartnerServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="catPartnerServiceClass" class="com.viettel.ims.rest.CatPartnerRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="sysUserServiceRest" address="/sysUserServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="sysUserServiceClass" class="com.viettel.ims.rest.SysUserRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+	 <jaxrs:server id="purchaseOrderServiceRest" address="/purchaseOrderServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="purchaseOrderServiceClass" class="com.viettel.ims.rest.PurchaseOrderRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		<jaxrs:server id="cntContractServiceRest" address="/cntContractServiceRest">
+			<jaxrs:providers>
+				<ref bean="jsonProvider" />
+			</jaxrs:providers>
+			<jaxrs:serviceBeans>
+				<bean id="cntContractServiceClass" class="com.viettel.ims.rest.CntContractRsServiceImpl"/>
+			</jaxrs:serviceBeans>
+		</jaxrs:server>
+		
+		<jaxrs:server id="commonServiceRest" address="/commonServiceRest">
+		<jaxrs:providers>
+			<ref bean="jsonProvider" />
+		</jaxrs:providers>
+		<jaxrs:serviceBeans>
+			<bean id="/commonServiceClass" class="com.viettel.Common.rest.CommonRsServiceImpl" />
+		</jaxrs:serviceBeans>
+	</jaxrs:server>
+</beans>
+

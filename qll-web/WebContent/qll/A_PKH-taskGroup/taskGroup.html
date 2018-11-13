@@ -1,0 +1,93 @@
+<style>
+#taskGroupGrid>.k-grid-content {
+	overflow-y: hidden !important;
+}
+</style>
+<style>
+#taskGroupGrid>.k-grid-header {
+	padding-right: 0px !important;
+}
+</style>
+<div data-ng-controller="taskGroupController as vm" id="tblTimeWorkControl">
+	<div ng-show="vm.showSearch">
+		<form class="form-horizontal row" role="form"
+			kendo-validator="vm.validator" k-options="vm.validatorOptions">
+			<div class="form-body">
+				<div class="portlet light bordered">
+					<div class="portlet-title background-title">
+						<div class="caption ">
+							<span class="caption-subject bold lowercase" translate>Thông tin tìm kiếm </span>
+						</div>
+						<div class="text-right margin-row-title">
+							<i data-toggle="collapse" data-target="#demoOrderChange1"
+								class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+						</div>
+					</div>
+
+					<div id="demoOrderChange1" class="collapse in from-search">
+						<div class="clearfix position-relative">
+							<div class="clearfix">
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Đơn vị thực hiện:</label>
+									<div class="col-md-8">
+											<input class=" form-control width100" type="text"
+													k-options="vm.OptionsAutoDept" kendo-auto-complete
+													name="departmentName" ng-model="vm.taskGroupSearch.department"
+													id="departmentName" />
+									</div>
+								</div>
+								
+								<div class="form-group col-md-6">
+									<label class="col-md-4 control-label " translate>Định kỳ:</label>
+									<div class="col-md-8">
+											<select ng-model="vm.taskGroupSearch.periodic"
+												class=" form-control width100">
+												<option value="" selected="selected">~~Chọn~~</option>
+												<option value="1">Tuần</option>
+												<option value="2">Tháng</option>
+											</select>
+									</div>
+								</div>
+							</div>
+							<div class="clearfix form-actions margin-top">
+								<div class="row">
+									<div class="col-md-12 text-center">
+										<button type="button" id="timqLHDTK"
+											class="btn  btn-qlk padding-search-right searchQLK" translate
+											ng-click="vm.doSearch()">Tìm kiếm</button> 
+											
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</form>
+	</div>
+
+
+	<div class="portlet light bordered">
+		<div class="portlet-title background-title">
+			<div class="caption">
+				<span class="caption-subject bold lowercase" translate>Kết quả tìm kiếm:
+				 </span>&nbsp;<label class="control-label bold lowercase"
+					id="taskGroupCount"></label><label
+					class="control-label bold lowercase">&nbsp;bản ghi</label>
+			</div>
+			<div class="text-right margin-row-title">
+				<i data-toggle="collapse" data-target="#taskGroupCollapse"
+					class="fa fa-chevron-circle-up" aria-hidden="true"></i>
+			</div>
+		</div>
+		<div id="taskGroupCollapse" class="collapse in ">
+			<div id="taskGroupGrid" kendo-grid="vm.taskGroupGrid" k-editable="false"
+				k-options="vm.gridOptions"></div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$("input").change(function() {
+		$(this).val($.trim($(this).val()));
+	});
+</script>

@@ -1,0 +1,104 @@
+<form class="form-horizontal row" role="form" name="commonDelete"
+	id="commonDelete" kendo-validator="validator"
+	k-options="validatorOptions">
+	<div class="form-body">
+	<div class="portlet light bordered">
+		<p></p>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Mã lô hàng</label>
+				<div class="col-md-8">
+					<input class=" form-control width100" type="text" readonly maxlength="50"
+						ng-model="data.code" />
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label req" translate>Lý do
+					hủy</label>
+				<div class="col-md-8">
+					<select kendo-drop-down-list 
+						id="cancelReasonCode" style="width: 100%" name="cancelReasonName" k-option-label="'--Chọn--'"
+						ng-model="data.cancelReasonName"
+						k-data-source="caller.dataReasonDelete"
+						k-data-value-field="'name'" k-data-text-field="'name'" required
+						data-required-msg="Lý do hủy không được để trống">						
+					</select><span data-for="cancelReasonName"  id="msg" class="k-invalid-msg"></span>
+				</div>
+				<script>
+				function reset_msg() {
+					document.getElementById('msg').innerHTML = '';
+				}
+			</script>
+			</div>
+			</div>
+		<div class="clearfix">
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" traslate>Người hủy</label>
+				<div class="col-md-8">
+					<input class="form-control" name="cancelby" id="cancelby" maxlength="200"
+						ng-model="data.cancelbyName" Readonly>
+				</div>
+			</div>
+			<div class="form-group col-md-6">
+				<label class="col-md-4 control-label" translate>Ngày hủy</label>
+				<div class="col-md-8">
+					<input kendo-date-picker class="form-control width100"
+						name="cancelDate" ng-model="data.cancelDate" readonly="readonly"
+						k-format="'dd/MM/yyyy'" id="cancelDate" />
+				</div>
+			</div>
+			<script>
+				$(function() {
+					var transDate = $("#cancelDate");
+					transDate.kendoMaskedTextBox({
+						mask : "00/00/0000"
+					});
+					transDate.closest(".k-datepicker").add(transDate)
+							.removeClass("k-textbox");
+				});
+			</script>
+		</div>
+		<div class="clearfix">
+			<div class="form-group col-md-12">
+				<div class="form-group col-md-12">
+					<label class="col-md-2 control-label" translate>Ghi chú</label>
+					<div class="col-md-10">
+						<div class="input-icon right">
+							<textarea class="form-control width100" name="cancelDescription" maxlength="1000"
+								id="cancelDescription" type="text"
+								ng-model="data.cancelDescription"></textarea>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix form-actions margin-top">
+			<div class="row">
+				<div class="portlet light" align="right">
+			<button type="button"
+				class="btn btn-qlk padding-search-right margin_right10 closeQLK" id="cancel"
+				ng-click="caller.cancel()" translate>Hủy bỏ</button>
+				<button type="button"
+				class="btn btn-qlk padding-search-right saveQLK" ng-click="remove()" id="removeS"
+				translate>Ghi lại</button>
+		</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<script type="text/javascript">
+			  document.onkeydown= keyDown;
+              function keyDown(e){
+         		switch(e.keyCode) {
+         			case 27:
+         				$("#cancel").click();
+         				break;
+         			case 13:
+         				if (e.keyCode == 13&& !$('#removeS:focus').length&& !$('#cancel:focus').length&&!$('#confirmPopup_btnConfirm:focus').length&&!$('#confirmPopup_btnCancel:focus').length) {
+         				$("#removeS").click();
+         				break;
+						}
+         		}
+         	} 
+	</script>  
+</form>
